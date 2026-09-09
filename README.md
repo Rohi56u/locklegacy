@@ -7,6 +7,7 @@
   <img src="https://img.shields.io/badge/Database-Prisma%20ORM%20%7C%20PostgreSQL-2d3748?style=for-the-badge&logo=prisma" alt="Prisma" />
   <img src="https://img.shields.io/badge/Security-Zero--Knowledge%20AES--256--GCM-10b981?style=for-the-badge&logo=lock" alt="Security" />
   <img src="https://img.shields.io/badge/Tests-14%2F14%20PASS-success?style=for-the-badge" alt="Tests" />
+  <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT%20(OSI%20Approved)-green.svg?style=for-the-badge" alt="License: MIT" /></a>
 </p>
 
 ---
@@ -255,7 +256,11 @@ All core API endpoints have been rigorously validated end-to-end:
 
 ---
 
-## 📄 License & Attribution
+## 📄 License
 
-Developed for **LegacyLock Project Demonstration & Evaluation**.  
-All rights reserved © 2026 LegacyLock Architecture Group.
+This project is licensed under the **MIT License (OSI Approved)** — see the [LICENSE](LICENSE) file for details.
+
+```
+MIT License - Copyright (c) 2026 Rohi56u (LegacyLock Project)
+Open Source Initiative (OSI) Approved License
+```

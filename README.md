@@ -74,6 +74,29 @@ flowchart TD
 
 ---
 
+
+---
+
+## 🎥 Demonstration Video
+
+An automated end-to-end product walkthrough (~35 seconds) showcasing all core flows:
+- **Video File**: [\legacylock_demo_30s.mp4\](legacylock_demo_30s.mp4) (High-Definition 720p)
+- **WebM Format**: [\legacylock_demo_30s.webm\](legacylock_demo_30s.webm)
+
+Key Milestones Demonstrated:
+1. Landing Page & Zero-Knowledge Architecture
+2. User Registration & Session Initialization
+3. Master Passphrase & PBKDF2 Key Derivation (600,000 rounds)
+4. Multi-Shard Cryptographic Recovery Kit
+5. Encrypted Asset Vault Dashboard (Bank, Crypto, Deeds)
+6. Client-Side Financial Asset Ingestion
+7. Vitality Heartbeat Policy & Inactivity Cadence
+8. Vitality Check-In Confirmation (I'm Alive)
+9. Trusted Nominees & Cryptographic SHA-256 Invitations
+10. Proof-of-Demise AI OCR Document Review
+11. Multi-Party Quorum Approval & Watermarked Handover
+12. Tamper-Evident Immutable Security Audit Log
+
 ## 🌟 Core Pillars & Key Features
 
 ### 1. 🛡️ Zero-Knowledge Client-Side Cryptography

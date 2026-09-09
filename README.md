@@ -10,6 +10,19 @@
   <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT%20(OSI%20Approved)-green.svg?style=for-the-badge" alt="License: MIT" /></a>
 </p>
 
+<p align="center">
+  <a href="https://rohi56u.github.io/locklegacy/" target="_blank">
+    <img src="https://img.shields.io/badge/Live%20Demo-GitHub%20Pages-blue?style=for-the-badge&logo=githubpages" alt="Live Demo" />
+  </a>
+  <a href="https://vercel.com/new/clone?repository-url=https://github.com/Rohi56u/locklegacy" target="_blank">
+    <img src="https://img.shields.io/badge/Deploy%20with-Vercel-black?style=for-the-badge&logo=vercel" alt="Deploy to Vercel" />
+  </a>
+  <a href="https://app.netlify.com/start/deploy?repository_url=https://github.com/Rohi56u/locklegacy" target="_blank">
+    <img src="https://img.shields.io/badge/Deploy%20to-Netlify-00C7B7?style=for-the-badge&logo=netlify" alt="Deploy to Netlify" />
+  </a>
+</p>
+
+
 ---
 
 ## 📖 Executive Summary
@@ -171,6 +184,23 @@ locklegacy/
 ```
 
 ---
+
+
+---
+
+## 🌐 Live Deployments & Instant Cloud Hosting
+
+The frontend application is ready for 1-click cloud deployment:
+
+| Platform | Deployment Status & URL | Instant Setup |
+|---|---|---|
+| **GitHub Pages** | 🟢 **Live:** [https://rohi56u.github.io/locklegacy/](https://rohi56u.github.io/locklegacy/) | Already activated directly on repository! |
+| **Vercel** | [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/Rohi56u/locklegacy) | Preconfigured with `vercel.json` routing |
+| **Netlify** | [![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository_url=https://github.com/Rohi56u/locklegacy) | Preconfigured with `netlify.toml` publish settings |
+
+### How to Deploy to Vercel or Netlify in 30 Seconds:
+1. **Vercel**: Visit [vercel.com/new](https://vercel.com/new), select your GitHub account, import `Rohi56u/locklegacy`, and click **Deploy**. Vercel automatically reads `vercel.json`.
+2. **Netlify**: Visit [app.netlify.com](https://app.netlify.com), click **Add new site** → **Import an existing project** → select `Rohi56u/locklegacy`, and click **Deploy site**. Netlify automatically uses `DOC-20260830-WA0017` as the publish directory.
 
 ## 🚀 Quick Start Guide
 

@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Onboarding - Let's build your continuity plan</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Manrope:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary-fixed-variant": "#3323cc",
+                        "danger-red": "#EF4444",
+                        "on-primary-container": "#808393",
+                        "on-primary-fixed-variant": "#434654",
+                        "primary-fixed": "#dfe2f3",
+                        "inverse-surface": "#2f3130",
+                        "on-error": "#ffffff",
+                        "primary-fixed-dim": "#c3c6d7",
+                        "on-tertiary-fixed": "#002113",
+                        "outline-variant": "#c7c6cc",
+                        "surface-tint": "#5a5e6d",
+                        "error": "#ba1a1a",
+                        "on-tertiary-fixed-variant": "#005236",
+                        "on-secondary": "#ffffff",
+                        "inverse-on-surface": "#f1f0f0",
+                        "on-tertiary": "#ffffff",
+                        "surface-container-lowest": "#ffffff",
+                        "attention-amber": "#F59E0B",
+                        "surface-container": "#eeeeed",
+                        "verified-emerald": "#10B981",
+                        "surface-container-low": "#f4f3f2",
+                        "surface-variant": "#e3e2e1",
+                        "tertiary-fixed-dim": "#4edea3",
+                        "on-surface": "#1a1c1c",
+                        "border-subtle": "#E5E7EB",
+                        "on-background": "#1a1c1c",
+                        "background": "#faf9f8",
+                        "error-container": "#ffdad6",
+                        "surface": "#faf9f8",
+                        "on-secondary-fixed": "#0f0069",
+                        "tertiary-container": "#002113",
+                        "tertiary-fixed": "#6ffbbe",
+                        "primary": "#000000",
+                        "on-primary-fixed": "#171b28",
+                        "surface-container-highest": "#e3e2e1",
+                        "on-primary": "#ffffff",
+                        "on-tertiary-container": "#009668",
+                        "outline": "#76767c",
+                        "tertiary": "#000000",
+                        "on-secondary-container": "#fffbff",
+                        "surface-dim": "#dadad9",
+                        "secondary-fixed-dim": "#c3c0ff",
+                        "on-error-container": "#93000a",
+                        "secondary": "#4b41e1",
+                        "inverse-primary": "#c3c6d7",
+                        "secondary-container": "#645efb",
+                        "surface-bright": "#faf9f8",
+                        "on-surface-variant": "#46464c",
+                        "secondary-fixed": "#e2dfff",
+                        "surface-container-high": "#e9e8e7",
+                        "primary-container": "#171b28"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-desktop": "40px",
+                        "container-max": "1280px",
+                        "base": "8px",
+                        "margin-mobile": "20px",
+                        "gutter": "24px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Inter"],
+                        "label-md": ["Inter"],
+                        "label-caps": ["Inter"],
+                        "headline-md": ["Manrope"],
+                        "body-md": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "headline-lg-mobile": ["Manrope"],
+                        "headline-xl": ["Manrope"],
+                        "headline-lg": ["Manrope"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "fontWeight": "500" }],
+                        "label-caps": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "headline-lg-mobile": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "headline-xl": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .progress-ring__circle {
+            transition: stroke-dashoffset 1s ease-in-out;
+            transform: rotate(-90deg);
+            transform-origin: 50% 50%;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen flex flex-col font-body-md" data-page="onboarding_dashboard_desktop.html">
+<!-- TopAppBar (Transactional - Nav suppressed, brand only) -->
+<header class="fixed top-0 w-full bg-background border-b border-border-subtle z-50">
+<div class="flex justify-between items-center h-14 px-gutter max-w-container-max mx-auto">
+<div class="text-headline-md font-headline-md font-bold text-primary">LegacyLock</div>
+<div class="flex items-center gap-4 text-on-surface-variant">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-grow pt-[88px] pb-[64px] px-margin-mobile md:px-margin-desktop max-w-[800px] mx-auto w-full">
+<!-- Header Section -->
+<div class="mb-12 text-center md:text-left flex flex-col md:flex-row items-center md:items-start gap-8">
+<!-- Progress Ring -->
+<div class="relative w-32 h-32 flex-shrink-0">
+<svg class="w-full h-full" viewbox="0 0 120 120">
+<circle class="text-surface-variant stroke-current" cx="60" cy="60" fill="transparent" r="54" stroke-width="8"></circle>
+<circle class="progress-ring__circle text-secondary stroke-current" cx="60" cy="60" fill="transparent" r="54" stroke-dasharray="339.292" stroke-dashoffset="271.433" stroke-linecap="round" stroke-width="8"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="font-headline-md text-headline-md text-primary">20%</span>
+</div>
+</div>
+<div class="pt-2">
+<div class="inline-flex items-center gap-2 px-3 py-1 bg-surface-container-low rounded-full mb-4">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+<span class="font-label-caps text-label-caps text-on-surface-variant">Setup in progress</span>
+</div>
+<h1 class="font-headline-xl text-headline-xl text-primary mb-4 md:hidden">Let’s build your continuity plan.</h1>
+<h1 class="font-headline-xl text-headline-xl text-primary mb-4 hidden md:block">Let’s build your continuity plan.</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-[500px]">Complete these core steps to ensure your digital estate is secured and ready for future transition.</p>
+</div>
+</div>
+<!-- Checklist Grid -->
+<div class="grid grid-cols-1 gap-4 mb-12">
+<!-- Card 1: Add first asset (Complete) -->
+<div class="bg-surface-container-lowest border border-border-subtle rounded-xl p-6 relative overflow-hidden transition-all hover:shadow-[0_4px_20px_rgba(10,14,26,0.04)]">
+<div class="flex items-start gap-4">
+<div class="mt-1 flex-shrink-0 w-8 h-8 rounded-full bg-verified-emerald/10 flex items-center justify-center text-verified-emerald">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<div class="flex-grow">
+<div class="flex flex-col md:flex-row md:justify-between md:items-center gap-2 mb-2">
+<h3 class="font-headline-md text-[18px] leading-[24px] font-semibold text-primary">Add first asset</h3>
+<span class="font-label-caps text-label-caps text-verified-emerald flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">done</span> Complete
+                            </span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-4">You've successfully secured your first digital asset in the vault.</p>
+<!-- Preview Data (Privacy Safe) -->
+<div class="bg-surface-container-low rounded-lg p-3 border border-border-subtle flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-surface-container flex items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined">account_balance</span>
+</div>
+<div>
+<div class="font-label-md text-label-md text-primary">Primary Savings Vault</div>
+<div class="font-body-sm text-[12px] leading-[16px] text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px]">lock</span> Encrypted Entry
+                                </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Card 2: Add trusted person -->
+<a class="block bg-surface-container-lowest border border-border-subtle rounded-xl p-6 relative overflow-hidden transition-all hover:shadow-[0_4px_20px_rgba(10,14,26,0.04)] group" href="#">
+<div class="flex items-start gap-4">
+<div class="mt-1 flex-shrink-0 w-8 h-8 rounded-full border-2 border-outline-variant flex items-center justify-center text-outline-variant group-hover:border-secondary group-hover:text-secondary transition-colors">
+<span class="material-symbols-outlined text-[16px]">person_add</span>
+</div>
+<div class="flex-grow">
+<div class="flex flex-col md:flex-row md:justify-between md:items-center gap-2 mb-2">
+<h3 class="font-headline-md text-[18px] leading-[24px] font-semibold text-primary group-hover:text-secondary transition-colors">Add trusted person</h3>
+<span class="font-label-caps text-label-caps text-on-surface-variant bg-surface-container-high px-2 py-1 rounded">2 mins</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Designate who will have access to your vault when conditions are met.</p>
+</div>
+<div class="flex-shrink-0 mt-2 text-outline-variant group-hover:text-secondary transition-colors">
+<span class="material-symbols-outlined">chevron_right</span>
+</div>
+</div>
+</a>
+<!-- Card 3: Set check-in schedule -->
+<a class="block bg-surface-container-lowest border border-border-subtle rounded-xl p-6 relative overflow-hidden transition-all hover:shadow-[0_4px_20px_rgba(10,14,26,0.04)] group opacity-75 hover:opacity-100" href="#">
+<div class="flex items-start gap-4">
+<div class="mt-1 flex-shrink-0 w-8 h-8 rounded-full border-2 border-outline-variant flex items-center justify-center text-outline-variant group-hover:border-secondary group-hover:text-secondary transition-colors">
+<span class="material-symbols-outlined text-[16px]">schedule</span>
+</div>
+<div class="flex-grow">
+<div class="flex flex-col md:flex-row md:justify-between md:items-center gap-2 mb-2">
+<h3 class="font-headline-md text-[18px] leading-[24px] font-semibold text-primary group-hover:text-secondary transition-colors">Set check-in schedule</h3>
+<span class="font-label-caps text-label-caps text-on-surface-variant bg-surface-container-high px-2 py-1 rounded">1 min</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Define how often we should verify your status to ensure continuity.</p>
+</div>
+<div class="flex-shrink-0 mt-2 text-outline-variant group-hover:text-secondary transition-colors">
+<span class="material-symbols-outlined">chevron_right</span>
+</div>
+</div>
+</a>
+<!-- Card 4: Store emergency instructions -->
+<a class="block bg-surface-container-lowest border border-border-subtle rounded-xl p-6 relative overflow-hidden transition-all hover:shadow-[0_4px_20px_rgba(10,14,26,0.04)] group opacity-75 hover:opacity-100" href="#">
+<div class="flex items-start gap-4">
+<div class="mt-1 flex-shrink-0 w-8 h-8 rounded-full border-2 border-outline-variant flex items-center justify-center text-outline-variant group-hover:border-secondary group-hover:text-secondary transition-colors">
+<span class="material-symbols-outlined text-[16px]">description</span>
+</div>
+<div class="flex-grow">
+<div class="flex flex-col md:flex-row md:justify-between md:items-center gap-2 mb-2">
+<h3 class="font-headline-md text-[18px] leading-[24px] font-semibold text-primary group-hover:text-secondary transition-colors">Store emergency instructions</h3>
+<span class="font-label-caps text-label-caps text-on-surface-variant bg-surface-container-high px-2 py-1 rounded">5 mins</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Draft a secure note guiding your trusted persons on next steps.</p>
+</div>
+<div class="flex-shrink-0 mt-2 text-outline-variant group-hover:text-secondary transition-colors">
+<span class="material-symbols-outlined">chevron_right</span>
+</div>
+</div>
+</a>
+<!-- Card 5: Test recovery -->
+<a class="block bg-surface-container-lowest border border-border-subtle rounded-xl p-6 relative overflow-hidden transition-all hover:shadow-[0_4px_20px_rgba(10,14,26,0.04)] group opacity-75 hover:opacity-100" href="#">
+<div class="flex items-start gap-4">
+<div class="mt-1 flex-shrink-0 w-8 h-8 rounded-full border-2 border-outline-variant flex items-center justify-center text-outline-variant group-hover:border-secondary group-hover:text-secondary transition-colors">
+<span class="material-symbols-outlined text-[16px]">health_and_safety</span>
+</div>
+<div class="flex-grow">
+<div class="flex flex-col md:flex-row md:justify-between md:items-center gap-2 mb-2">
+<h3 class="font-headline-md text-[18px] leading-[24px] font-semibold text-primary group-hover:text-secondary transition-colors">Test recovery</h3>
+<span class="font-label-caps text-label-caps text-on-surface-variant bg-surface-container-high px-2 py-1 rounded">2 mins</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Run a secure simulation to verify your continuity plan operates as intended.</p>
+</div>
+<div class="flex-shrink-0 mt-2 text-outline-variant group-hover:text-secondary transition-colors">
+<span class="material-symbols-outlined">chevron_right</span>
+</div>
+</div>
+</a>
+</div>
+<!-- Footer Action -->
+<div class="text-center mt-8">
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-secondary transition-colors" href="#">Do this later</a>
+</div>
+</main>
+<script src="crypto.js"></script>
+<script src="app.js"></script>
+</body></html>

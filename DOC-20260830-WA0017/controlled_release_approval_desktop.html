@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Controlled Release Approval - LegacyLock</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Manrope:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-low": "#f4f3f2",
+                        "surface-container-highest": "#e3e2e1",
+                        "on-secondary-container": "#fffbff",
+                        "on-tertiary": "#ffffff",
+                        "outline": "#76767c",
+                        "on-error-container": "#93000a",
+                        "surface-container-high": "#e9e8e7",
+                        "error-container": "#ffdad6",
+                        "tertiary-fixed": "#6ffbbe",
+                        "attention-amber": "#F59E0B",
+                        "tertiary-container": "#002113",
+                        "on-tertiary-fixed-variant": "#005236",
+                        "border-subtle": "#E5E7EB",
+                        "on-primary-container": "#808393",
+                        "primary": "#000000",
+                        "surface-container": "#eeeeed",
+                        "surface": "#faf9f8",
+                        "on-secondary-fixed": "#0f0069",
+                        "secondary": "#4b41e1",
+                        "verified-emerald": "#10B981",
+                        "surface-tint": "#5a5e6d",
+                        "inverse-on-surface": "#f1f0f0",
+                        "inverse-surface": "#2f3130",
+                        "on-tertiary-fixed": "#002113",
+                        "danger-red": "#EF4444",
+                        "on-primary-fixed-variant": "#434654",
+                        "on-background": "#1a1c1c",
+                        "outline-variant": "#c7c6cc",
+                        "on-primary": "#ffffff",
+                        "tertiary": "#000000",
+                        "on-secondary-fixed-variant": "#3323cc",
+                        "primary-fixed": "#dfe2f3",
+                        "tertiary-fixed-dim": "#4edea3",
+                        "surface-bright": "#faf9f8",
+                        "on-error": "#ffffff",
+                        "surface-variant": "#e3e2e1",
+                        "on-surface": "#1a1c1c",
+                        "error": "#ba1a1a",
+                        "surface-dim": "#dadad9",
+                        "primary-fixed-dim": "#c3c6d7",
+                        "secondary-fixed": "#e2dfff",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary-container": "#009668",
+                        "primary-container": "#171b28",
+                        "on-surface-variant": "#46464c",
+                        "inverse-primary": "#c3c6d7",
+                        "background": "#faf9f8",
+                        "on-primary-fixed": "#171b28",
+                        "secondary-fixed-dim": "#c3c0ff",
+                        "secondary-container": "#645efb"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-desktop": "40px",
+                        "base": "8px",
+                        "margin-mobile": "20px",
+                        "container-max": "1280px",
+                        "gutter": "24px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Manrope"],
+                        "label-caps": ["Inter"],
+                        "body-md": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "headline-lg-mobile": ["Manrope"],
+                        "headline-xl": ["Manrope"],
+                        "label-md": ["Inter"],
+                        "headline-md": ["Manrope"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "label-caps": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "headline-lg-mobile": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "headline-xl": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "fontWeight": "500" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined.fill {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .modal-blur {
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen flex flex-col font-body-md antialiased selection:bg-secondary selection:text-on-secondary" data-page="controlled_release_approval_desktop.html">
+<!-- TopNavBar -->
+<nav class="bg-surface text-primary font-headline-md text-headline-md docked full-width top-0 border-b border-surface-variant flat no shadows">
+<div class="flex justify-between items-center w-full px-gutter h-16 max-w-container-max mx-auto">
+<div class="font-headline-md text-headline-md font-bold text-primary flex items-center gap-2">
+                LegacyLock
+            </div>
+<div class="flex gap-4">
+<!-- Search would go here in a real app based on "on_left" but omitted for this specific focused view as per layout rules to not crowd header -->
+</div>
+<div class="flex items-center gap-4 text-on-surface-variant">
+<button aria-label="shield_lock" class="hover:text-secondary transition-colors cursor-pointer duration-200"><span class="material-symbols-outlined">shield_lock</span></button>
+<button aria-label="notifications" class="hover:text-secondary transition-colors cursor-pointer duration-200"><span class="material-symbols-outlined">notifications</span></button>
+<button aria-label="account_circle" class="hover:text-secondary transition-colors cursor-pointer duration-200"><span class="material-symbols-outlined">account_circle</span></button>
+</div>
+</div>
+</nav>
+<div class="flex flex-1 max-w-container-max mx-auto w-full">
+<!-- SideNavBar -->
+<aside class="hidden md:flex flex-col h-screen sticky top-0 bg-surface-container-low text-primary font-label-md text-label-md h-full w-64 border-r border-r border-surface-variant flat no shadows">
+<div class="p-6 border-b border-surface-variant">
+<div class="font-headline-md text-headline-md text-primary mb-1">Digital Estate</div>
+<div class="text-body-sm font-body-sm text-verified-emerald flex items-center gap-1"><span class="material-symbols-outlined text-[16px] fill">shield</span> Secure Mode Active</div>
+</div>
+<nav class="flex-1 py-4 px-2 space-y-1">
+<a class="flex items-center gap-3 text-on-surface-variant px-4 py-3 hover:bg-surface-container-high transition-all scale-98 active:scale-95 transition-transform rounded-lg" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span>Dashboard</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant px-4 py-3 hover:bg-surface-container-high transition-all scale-98 active:scale-95 transition-transform rounded-lg" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+<span>Digital Assets</span>
+</a>
+<a class="flex items-center gap-3 bg-secondary-container text-on-secondary-container rounded-lg px-4 py-3 hover:bg-surface-container-high transition-all scale-98 active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined">history_edu</span>
+<span>Legacy Plan</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant px-4 py-3 hover:bg-surface-container-high transition-all scale-98 active:scale-95 transition-transform rounded-lg" href="#">
+<span class="material-symbols-outlined">lock</span>
+<span>Vaults</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant px-4 py-3 hover:bg-surface-container-high transition-all scale-98 active:scale-95 transition-transform rounded-lg" href="#">
+<span class="material-symbols-outlined">verified_user</span>
+<span>Audit Log</span>
+</a>
+</nav>
+<div class="p-4 border-t border-surface-variant">
+<button class="w-full py-2 px-4 bg-danger-red text-white font-label-md text-label-md rounded-lg hover:bg-opacity-90 transition-colors flex items-center justify-center gap-2 mb-4">
+<span class="material-symbols-outlined text-[18px]">emergency</span> Emergency Access
+                </button>
+<div class="space-y-1">
+<a class="flex items-center gap-3 text-on-surface-variant px-4 py-3 hover:bg-surface-container-high transition-all scale-98 active:scale-95 transition-transform rounded-lg" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span>Settings</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant px-4 py-3 hover:bg-surface-container-high transition-all scale-98 active:scale-95 transition-transform rounded-lg" href="#">
+<span class="material-symbols-outlined">contact_support</span>
+<span>Support</span>
+</a>
+</div>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="flex-1 px-margin-mobile md:px-margin-desktop py-8 md:py-12 overflow-y-auto">
+<!-- Page Header -->
+<header class="mb-8 flex flex-col md:flex-row md:items-end justify-between gap-4">
+<div>
+<h1 class="font-headline-xl text-headline-xl text-primary flex items-center gap-3">
+<span class="material-symbols-outlined text-[40px] text-secondary fill">shield_lock</span>
+                        Final Release Authorization
+                    </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant mt-2 max-w-2xl">
+                        Review the sharing boundary and security controls before authorizing the controlled release of assets to designated recipients.
+                    </p>
+</div>
+<div class="flex items-center gap-2 bg-surface-container-low px-4 py-2 rounded-lg border border-border-subtle">
+<span class="material-symbols-outlined text-attention-amber">timer</span>
+<div class="flex flex-col">
+<span class="font-label-caps text-label-caps text-on-surface-variant">Release Expiry</span>
+<span class="font-headline-md text-headline-md text-primary">23:59:59</span>
+</div>
+</div>
+</header>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<!-- Central Panel: Sharing Boundary -->
+<div class="lg:col-span-8 space-y-6">
+<div class="bg-surface-container-lowest border border-border-subtle rounded-xl p-6 relative overflow-hidden">
+<!-- Decorative top border line -->
+<div class="absolute top-0 left-0 w-full h-1 bg-secondary"></div>
+<h2 class="font-headline-md text-headline-md text-primary mb-6">Sharing Boundary</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- 1. Asset Metadata -->
+<div class="border border-border-subtle rounded-lg p-4 bg-surface">
+<h3 class="font-label-md text-label-md text-primary flex items-center gap-2 mb-4 border-b border-border-subtle pb-2">
+<span class="material-symbols-outlined text-secondary text-[18px]">account_balance</span>
+                                    Asset Metadata
+                                </h3>
+<ul class="space-y-3 font-body-sm text-body-sm text-on-surface-variant">
+<li class="flex justify-between items-center">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-surface-container-high flex items-center justify-center"><span class="material-symbols-outlined text-[14px]">account_balance</span></div>
+<span>Chase Checking</span>
+</div>
+<span class="font-mono text-xs">•••• 4829</span>
+</li>
+<li class="flex justify-between items-center">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-surface-container-high flex items-center justify-center"><span class="material-symbols-outlined text-[14px]">savings</span></div>
+<span>Schwab Brokerage</span>
+</div>
+<span class="font-mono text-xs">•••• 1102</span>
+</li>
+<li class="flex justify-between items-center">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-surface-container-high flex items-center justify-center"><span class="material-symbols-outlined text-[14px]">account_balance</span></div>
+<span>BoA Savings</span>
+</div>
+<span class="font-mono text-xs">•••• 9931</span>
+</li>
+<li class="flex justify-between items-center pt-2 border-t border-border-subtle">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-surface-container-high flex items-center justify-center"><span class="material-symbols-outlined text-[14px]">currency_bitcoin</span></div>
+<span>Cold Storage Wallet</span>
+</div>
+<span class="font-mono text-xs">0xA1...B9f</span>
+</li>
+</ul>
+</div>
+<!-- 2. Selected Documents -->
+<div class="border border-border-subtle rounded-lg p-4 bg-surface">
+<h3 class="font-label-md text-label-md text-primary flex items-center gap-2 mb-4 border-b border-border-subtle pb-2">
+<span class="material-symbols-outlined text-secondary text-[18px]">description</span>
+                                    Selected Documents
+                                </h3>
+<ul class="space-y-3 font-body-sm text-body-sm text-on-surface-variant">
+<li class="flex items-start gap-2">
+<span class="material-symbols-outlined text-verified-emerald text-[18px] mt-0.5">check_circle</span>
+<span>Certified Death Certificate (Digital Copy)</span>
+</li>
+<li class="flex items-start gap-2">
+<span class="material-symbols-outlined text-verified-emerald text-[18px] mt-0.5">check_circle</span>
+<span>Signed Affidavit of Execution</span>
+</li>
+<li class="flex items-start gap-2">
+<span class="material-symbols-outlined text-verified-emerald text-[18px] mt-0.5">check_circle</span>
+<span>Government Issued ID (Redacted)</span>
+</li>
+</ul>
+</div>
+<!-- 3. Personal Instructions -->
+<div class="border border-border-subtle rounded-lg p-4 bg-surface md:col-span-2">
+<h3 class="font-label-md text-label-md text-primary flex items-center gap-2 mb-4 border-b border-border-subtle pb-2">
+<span class="material-symbols-outlined text-secondary text-[18px]">edit_note</span>
+                                    Personal Instructions
+                                </h3>
+<div class="bg-surface-container-low border border-border-subtle rounded p-3 font-body-sm text-body-sm text-on-surface italic">
+                                    "Note to Nominees: Please ensure the crypto assets are transferred directly to the designated trust address as discussed. Do not attempt to liquidate them before consulting with the tax advisor."
+                                </div>
+</div>
+<!-- 4. Excluded Information -->
+<div class="border border-border-subtle rounded-lg p-4 bg-surface-container-low opacity-80 md:col-span-2">
+<h3 class="font-label-md text-label-md text-on-surface-variant flex items-center gap-2 mb-4 border-b border-border-subtle pb-2">
+<span class="material-symbols-outlined text-on-surface-variant text-[18px]">visibility_off</span>
+                                    Excluded Information (Protected)
+                                </h3>
+<div class="flex flex-wrap gap-2">
+<span class="inline-flex items-center gap-1 bg-surface px-2 py-1 rounded border border-border-subtle font-label-caps text-label-caps text-on-surface-variant">
+<span class="material-symbols-outlined text-[14px]">key</span> Private Keys
+                                    </span>
+<span class="inline-flex items-center gap-1 bg-surface px-2 py-1 rounded border border-border-subtle font-label-caps text-label-caps text-on-surface-variant">
+<span class="material-symbols-outlined text-[14px]">fingerprint</span> Biometric Data
+                                    </span>
+<span class="inline-flex items-center gap-1 bg-surface px-2 py-1 rounded border border-border-subtle font-label-caps text-label-caps text-on-surface-variant">
+<span class="material-symbols-outlined text-[14px]">book</span> Personal Journals
+                                    </span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Sidebar: Details & Actions -->
+<div class="lg:col-span-4 space-y-6">
+<!-- Recipients -->
+<div class="bg-surface-container-lowest border border-border-subtle rounded-xl p-5">
+<h3 class="font-label-caps text-label-caps text-on-surface-variant mb-4 uppercase tracking-wider">Recipients</h3>
+<div class="space-y-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center font-headline-md text-headline-md">E</div>
+<div>
+<div class="font-label-md text-label-md text-primary">Eleanor Vance</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">Spouse</div>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container-high text-on-surface-variant flex items-center justify-center font-headline-md text-headline-md">R</div>
+<div>
+<div class="font-label-md text-label-md text-primary">Robert Smith</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">Executor</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Security Controls -->
+<div class="bg-surface-container-lowest border border-border-subtle rounded-xl p-5">
+<h3 class="font-label-caps text-label-caps text-on-surface-variant mb-4 uppercase tracking-wider">Security Controls</h3>
+<ul class="space-y-3 font-body-sm text-body-sm text-on-surface">
+<li class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[18px]">branding_watermark</span>
+                                Watermarking enabled
+                            </li>
+<li class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[18px]">hourglass_empty</span>
+                                48-hour download window
+                            </li>
+<li class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[18px]">history</span>
+                                Audit logging active
+                            </li>
+</ul>
+</div>
+<!-- Required Approvals (Multi-sig) -->
+<div class="bg-surface-container-lowest border border-border-subtle rounded-xl p-5 border-l-4 border-l-attention-amber">
+<h3 class="font-label-caps text-label-caps text-on-surface-variant mb-2 uppercase tracking-wider flex items-center gap-2">
+<span class="material-symbols-outlined text-attention-amber text-[16px]">rule</span>
+                            Required Approvals
+                        </h3>
+<div class="flex justify-between items-end mb-2">
+<span class="font-headline-lg text-headline-lg text-primary">1/2</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant mb-1">Signatures</span>
+</div>
+<div class="w-full bg-surface-container-high rounded-full h-2 mb-3">
+<div class="bg-attention-amber h-2 rounded-full" style="width: 50%"></div>
+</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]">pending</span>
+                            Pending Co-approver: <span class="font-medium text-primary">Sarah Jenkins</span>
+</div>
+</div>
+<!-- Actions -->
+<div class="flex flex-col gap-3 pt-4">
+<button class="w-full h-12 bg-secondary text-on-secondary font-label-md text-label-md rounded-lg flex items-center justify-center gap-2 hover:bg-opacity-90 transition-opacity shadow-[0_4px_20px_rgba(10,14,26,0.04)]" id="btn-approve">
+<span class="material-symbols-outlined">lock</span>
+                            Approve Controlled Release
+                        </button>
+<button class="w-full h-12 border border-primary text-primary font-label-md text-label-md rounded-lg flex items-center justify-center hover:bg-surface-container-low transition-colors">
+                            Request Changes
+                        </button>
+<button class="w-full h-12 text-on-surface-variant font-label-md text-label-md rounded-lg flex items-center justify-center hover:text-primary transition-colors">
+                            Cancel
+                        </button>
+</div>
+</div>
+</div>
+</main>
+</div>
+<!-- Footer -->
+<footer class="bg-surface-container-lowest text-on-surface-variant font-body-sm text-body-sm w-full py-base border-t border-surface-variant flat no shadows">
+<div class="w-full px-gutter max-w-container-max mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+<div class="font-label-caps text-label-caps text-secondary opacity-100 hover:opacity-80 transition-opacity">AETERNA</div>
+<div class="flex gap-4">
+<a class="hover:text-secondary transition-colors" href="#">Security Architecture</a>
+<a class="hover:text-secondary transition-colors" href="#">Privacy Policy</a>
+<a class="hover:text-secondary transition-colors" href="#">Compliance</a>
+<a class="hover:text-secondary transition-colors" href="#">Data Sovereignty</a>
+</div>
+<div>© 2024 LegacyLock Continuity. Protected by AES-256 Military-Grade Encryption.</div>
+</div>
+</footer>
+<!-- Identity Confirmation Modal (Hidden by default) -->
+<div class="fixed inset-0 bg-primary/20 modal-blur z-50 hidden flex items-center justify-center p-4" id="modal-backdrop">
+<div class="bg-surface-container-lowest border border-border-subtle rounded-xl shadow-[0_4px_20px_rgba(10,14,26,0.04)] max-w-md w-full p-6 relative">
+<button class="absolute top-4 right-4 text-on-surface-variant hover:text-primary" id="btn-close-modal">
+<span class="material-symbols-outlined">close</span>
+</button>
+<div class="text-center mb-6">
+<div class="w-16 h-16 bg-secondary/10 text-secondary rounded-full flex items-center justify-center mx-auto mb-4">
+<span class="material-symbols-outlined text-[32px]">fingerprint</span>
+</div>
+<h2 class="font-headline-md text-headline-md text-primary mb-2">Final Identity Confirmation</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                    Please confirm your identity to authorize this release. This action is immutable and will be recorded in the audit log.
+                </p>
+</div>
+<div class="space-y-4">
+<div>
+<label class="block font-label-md text-label-md text-primary mb-1">Master Password</label>
+<input class="w-full border border-border-subtle rounded-lg px-3 py-2 bg-surface focus:border-secondary focus:ring-1 focus:ring-secondary outline-none transition-colors" placeholder="Enter password" type="password"/>
+</div>
+<div>
+<label class="block font-label-md text-label-md text-primary mb-1">2FA Authenticator Code</label>
+<input class="w-full border border-border-subtle rounded-lg px-3 py-2 bg-surface focus:border-secondary focus:ring-1 focus:ring-secondary outline-none transition-colors" maxlength="7" placeholder="000 000" type="text"/>
+</div>
+<button class="w-full h-12 bg-secondary text-on-secondary font-label-md text-label-md rounded-lg flex items-center justify-center gap-2 hover:bg-opacity-90 transition-opacity mt-6">
+<span class="material-symbols-outlined text-[18px]">verified</span>
+                    Confirm &amp; Sign
+                </button>
+</div>
+</div>
+</div>
+<script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const btnApprove = document.getElementById('btn-approve');
+            const modalBackdrop = document.getElementById('modal-backdrop');
+            const btnCloseModal = document.getElementById('btn-close-modal');
+
+            btnApprove.addEventListener('click', () => {
+                modalBackdrop.classList.remove('hidden');
+            });
+
+            btnCloseModal.addEventListener('click', () => {
+                modalBackdrop.classList.add('hidden');
+            });
+
+            modalBackdrop.addEventListener('click', (e) => {
+                if (e.target === modalBackdrop) {
+                    modalBackdrop.classList.add('hidden');
+                }
+            });
+        });
+    </script>
+<script src="crypto.js"></script>
+<script src="app.js"></script>
+</body></html>

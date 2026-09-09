@@ -1,0 +1,345 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id              String   @id @default(uuid()) @db.Uuid
+  email           String   @unique
+  emailVerified   Boolean  @default(false)
+  fullName        String
+  country         String?
+  timezone        String   @default("UTC")
+  mfaEnabled      Boolean  @default(false)
+  mfaSecretEnc    String?  @map("mfa_secret_encrypted")
+  passkeyCredId   String?  @map("passkey_credential_id")
+  passwordHash    String   @map("password_hash")
+  accountStatus   AccountStatus @default(ACTIVE)
+  createdAt       DateTime @default(now()) @map("created_at")
+  updatedAt       DateTime @updatedAt @map("updated_at")
+
+  vaultKeys       VaultKey[]
+  vaultRecords    VaultRecord[]
+  documents       Document[]
+  trustedPersons  TrustedPerson[]
+  checkInPolicy   CheckInPolicy?
+  checkInEvents   CheckInEvent[]
+  escalationCases EscalationCase[]
+  auditEvents     AuditEvent[]     @relation("AuditActor")
+  reviewCases     EscalationCase[] @relation("AssignedReviewer")
+  releasePolicies ReleasePolicy[]
+
+  @@map("users")
+}
+
+enum AccountStatus {
+  ACTIVE
+  SUSPENDED
+  DELETED
+}
+
+model VaultKey {
+  id                String   @id @default(uuid()) @db.Uuid
+  userId            String   @map("user_id") @db.Uuid
+  wrappedDek        String   @map("wrapped_dek")
+  dekIv             String   @map("dek_iv")
+  passphraseSalt    String   @map("passphrase_salt")
+  kdfIterations     Int      @default(600000) @map("kdf_iterations")
+  recoveryWrappedDek String? @map("recovery_wrapped_dek")
+  recoveryDekIv     String?  @map("recovery_dek_iv")
+  recoverySalt      String?  @map("recovery_salt")
+  nomineeWrappedDek String?  @map("nominee_wrapped_dek")
+  nomineeDekIv      String?  @map("nominee_dek_iv")
+  nomineeSalt       String?  @map("nominee_salt")
+  createdAt         DateTime @default(now()) @map("created_at")
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("vault_keys")
+}
+
+model VaultRecord {
+  id               String    @id @default(uuid()) @db.Uuid
+  userId           String    @map("user_id") @db.Uuid
+  category         RecordCategory
+  encryptedPayload String    @map("encrypted_payload")
+  payloadIv        String    @map("payload_iv")
+  maskedPreview    String?   @map("masked_preview")
+  tags             String[]
+  lastReviewedAt   DateTime? @map("last_reviewed_at")
+  createdAt        DateTime  @default(now()) @map("created_at")
+  updatedAt        DateTime  @updatedAt @map("updated_at")
+
+  user      User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  documents Document[]
+
+  @@index([userId, category])
+  @@map("vault_records")
+}
+
+enum RecordCategory {
+  BANK
+  CRYPTO
+  INSURANCE
+  INVESTMENT
+  DIGITAL_LEGACY
+  LEGAL
+  PROPERTY
+  PERSONAL
+}
+
+model Document {
+  id                String    @id @default(uuid()) @db.Uuid
+  userId            String    @map("user_id") @db.Uuid
+  vaultRecordId     String?   @map("vault_record_id") @db.Uuid
+  storagePath       String    @map("storage_path")
+  fileType          String    @map("file_type")
+  fileSizeBytes     BigInt?   @map("file_size_bytes")
+  checksumSha256    String    @map("checksum_sha256")
+  encryptedMetadata String?   @map("encrypted_metadata")
+  metadataIv        String?   @map("metadata_iv")
+  retentionDate     DateTime? @map("retention_date")
+  createdAt         DateTime  @default(now()) @map("created_at")
+
+  user        User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  vaultRecord VaultRecord? @relation(fields: [vaultRecordId], references: [id])
+  claimCases  ClaimCase[]  @relation("DeathCertificate")
+
+  @@map("documents")
+}
+
+model TrustedPerson {
+  id                  String             @id @default(uuid()) @db.Uuid
+  userId              String             @map("user_id") @db.Uuid
+  name                String
+  email               String
+  phone               String?
+  relationship        String?
+  role                TrustedPersonRole
+  verificationStatus  VerificationStatus @default(PENDING)
+  invitationTokenHash String?            @map("invitation_token_hash")
+  invitationSentAt    DateTime?          @map("invitation_sent_at")
+  verifiedAt          DateTime?          @map("verified_at")
+  govIdEncrypted      String?            @map("gov_id_encrypted")
+  govIdIv             String?            @map("gov_id_iv")
+  createdAt           DateTime           @default(now()) @map("created_at")
+  updatedAt           DateTime           @updatedAt @map("updated_at")
+
+  user       User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  claimCases ClaimCase[]
+
+  @@map("trusted_persons")
+}
+
+enum TrustedPersonRole {
+  NOMINEE
+  EXECUTOR
+  PROFESSIONAL_REVIEWER
+}
+
+enum VerificationStatus {
+  PENDING
+  INVITED
+  VERIFIED
+  REJECTED
+  EXPIRED
+}
+
+model CheckInPolicy {
+  id                    String   @id @default(uuid()) @db.Uuid
+  userId                String   @unique @map("user_id") @db.Uuid
+  frequencyDays         Int      @default(30) @map("frequency_days")
+  gracePeriodDays       Int      @default(7) @map("grace_period_days")
+  notificationChannels  Json     @default("{\"email\": true, \"sms\": false, \"push\": false}") @map("notification_channels")
+  escalationEnabled     Boolean  @default(true) @map("escalation_enabled")
+  nextCheckInDate       DateTime? @map("next_check_in_date")
+  createdAt             DateTime @default(now()) @map("created_at")
+  updatedAt             DateTime @updatedAt @map("updated_at")
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("check_in_policies")
+}
+
+model CheckInEvent {
+  id              String        @id @default(uuid()) @db.Uuid
+  userId          String        @map("user_id") @db.Uuid
+  eventType       CheckInEventType @map("event_type")
+  channel         String?
+  deviceMetadata  Json?         @map("device_metadata")
+  idempotencyKey  String        @unique @map("idempotency_key")
+  createdAt       DateTime      @default(now()) @map("created_at")
+
+  user User @relation(fields: [userId], references: [id])
+
+  @@map("check_in_events")
+}
+
+enum CheckInEventType {
+  CHECK_IN
+  REMINDER_1
+  REMINDER_2
+  GRACE_START
+  PAUSE
+  RESUME
+  CANCEL
+  ESCALATE
+}
+
+model EscalationCase {
+  id                String          @id @default(uuid()) @db.Uuid
+  userId            String          @map("user_id") @db.Uuid
+  state             EscalationState @default(ACTIVE)
+  eventId           String          @unique @map("event_id")
+  triggeredAt       DateTime?       @map("triggered_at")
+  graceExpiresAt    DateTime?       @map("grace_expires_at")
+  assignedReviewerId String?        @map("assigned_reviewer_id") @db.Uuid
+  createdAt         DateTime        @default(now()) @map("created_at")
+  updatedAt         DateTime        @updatedAt @map("updated_at")
+
+  user             User        @relation(fields: [userId], references: [id])
+  assignedReviewer User?       @relation("AssignedReviewer", fields: [assignedReviewerId], references: [id])
+  claimCases       ClaimCase[]
+
+  @@index([userId, state])
+  @@map("escalation_cases")
+}
+
+enum EscalationState {
+  ACTIVE
+  REMINDER_1
+  REMINDER_2
+  GRACE_PERIOD
+  CONTACT_VERIFICATION
+  MANUAL_REVIEW
+  LIMITED_RELEASE
+  FINAL_RELEASE
+  PAUSED
+  CANCELLED
+}
+
+model ClaimCase {
+  id                  String      @id @default(uuid()) @db.Uuid
+  escalationCaseId    String      @map("escalation_case_id") @db.Uuid
+  claimantId          String      @map("claimant_id") @db.Uuid
+  status              ClaimStatus @default(INITIATED)
+  deathCertificateDocId String?   @map("death_certificate_doc_id") @db.Uuid
+  dossierGeneratedAt  DateTime?   @map("dossier_generated_at")
+  reviewerNotes       String?     @map("reviewer_notes")
+  createdAt           DateTime    @default(now()) @map("created_at")
+  updatedAt           DateTime    @updatedAt @map("updated_at")
+
+  escalationCase     EscalationCase @relation(fields: [escalationCaseId], references: [id])
+  claimant           TrustedPerson  @relation(fields: [claimantId], references: [id])
+  deathCertificate   Document?      @relation("DeathCertificate", fields: [deathCertificateDocId], references: [id])
+  releaseEvents      ReleaseEvent[]
+
+  @@map("claim_cases")
+}
+
+enum ClaimStatus {
+  INITIATED
+  IDENTITY_VERIFIED
+  EVIDENCE_SUBMITTED
+  UNDER_REVIEW
+  APPROVED
+  PARTIALLY_RELEASED
+  FULLY_RELEASED
+  REJECTED
+  SUSPENDED
+}
+
+model ReleasePolicy {
+  id                String   @id @default(uuid()) @db.Uuid
+  userId            String   @map("user_id") @db.Uuid
+  triggerState      String   @map("trigger_state")
+  gracePeriodDays   Int?     @map("grace_period_days")
+  requiredApprovals Int      @default(1) @map("required_approvals")
+  allowedScopes     String[] @map("allowed_scopes")
+  createdAt         DateTime @default(now()) @map("created_at")
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("release_policies")
+}
+
+model ReleaseEvent {
+  id                String    @id @default(uuid()) @db.Uuid
+  claimCaseId       String    @map("claim_case_id") @db.Uuid
+  scope             String
+  approvedBy        String[]  @map("approved_by") @db.Uuid
+  downloadTokenHash String?   @map("download_token_hash")
+  downloadExpiresAt DateTime? @map("download_expires_at")
+  downloadLimit     Int       @default(3) @map("download_limit")
+  downloadsUsed     Int       @default(0) @map("downloads_used")
+  watermarkId       String?   @map("watermark_id")
+  createdAt         DateTime  @default(now()) @map("created_at")
+
+  claimCase ClaimCase @relation(fields: [claimCaseId], references: [id])
+
+  @@map("release_events")
+}
+
+model AuditEvent {
+  id           String      @id @default(uuid()) @db.Uuid
+  actorId      String      @map("actor_id") @db.Uuid
+  actorType    ActorType   @map("actor_type")
+  action       String
+  resourceType String?     @map("resource_type")
+  resourceId   String?     @map("resource_id") @db.Uuid
+  scope        String?
+  result       AuditResult
+  ipAddress    String?     @map("ip_address")
+  userAgent    String?     @map("user_agent")
+  metadata     Json?
+  createdAt    DateTime    @default(now()) @map("created_at")
+
+  actor User @relation("AuditActor", fields: [actorId], references: [id])
+
+  @@index([actorId, createdAt(sort: Desc)])
+  @@index([resourceType, resourceId])
+  @@map("audit_events")
+}
+
+enum ActorType {
+  USER
+  NOMINEE
+  SYSTEM
+  REVIEWER
+  SUPPORT
+}
+
+enum AuditResult {
+  SUCCESS
+  FAILURE
+  DENIED
+}
+
+model JobEvent {
+  id              String    @id @default(uuid()) @db.Uuid
+  jobType         String    @map("job_type")
+  referenceId     String?   @map("reference_id") @db.Uuid
+  idempotencyKey  String    @unique @map("idempotency_key")
+  status          JobStatus @default(PENDING)
+  retryCount      Int       @default(0) @map("retry_count")
+  maxRetries      Int       @default(3) @map("max_retries")
+  nextRetryAt     DateTime? @map("next_retry_at")
+  processedAt     DateTime? @map("processed_at")
+  errorMessage    String?   @map("error_message")
+  createdAt       DateTime  @default(now()) @map("created_at")
+
+  @@index([status, nextRetryAt])
+  @@map("job_events")
+}
+
+enum JobStatus {
+  PENDING
+  PROCESSING
+  COMPLETED
+  FAILED
+  RETRYING
+}

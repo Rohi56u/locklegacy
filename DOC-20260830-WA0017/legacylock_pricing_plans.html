@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>LegacyLock - Transparent Pricing</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-surface-variant": "#46464c",
+                        "tertiary-container": "#002113",
+                        "danger-red": "#EF4444",
+                        "on-error": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "primary": "#000000",
+                        "on-primary-fixed-variant": "#434654",
+                        "on-tertiary-fixed-variant": "#005236",
+                        "tertiary-fixed": "#6ffbbe",
+                        "on-surface": "#1a1c1c",
+                        "tertiary-fixed-dim": "#4edea3",
+                        "on-secondary-container": "#fffbff",
+                        "surface-container-highest": "#e3e2e1",
+                        "secondary-container": "#645efb",
+                        "on-primary-container": "#808393",
+                        "tertiary": "#000000",
+                        "on-tertiary-fixed": "#002113",
+                        "attention-amber": "#F59E0B",
+                        "on-tertiary": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "error": "#ba1a1a",
+                        "error-container": "#ffdad6",
+                        "secondary-fixed": "#e2dfff",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary-fixed-variant": "#3323cc",
+                        "on-background": "#1a1c1c",
+                        "on-secondary-fixed": "#0f0069",
+                        "surface-container-high": "#e9e8e7",
+                        "primary-fixed-dim": "#c3c6d7",
+                        "outline": "#76767c",
+                        "outline-variant": "#c7c6cc",
+                        "on-primary-fixed": "#171b28",
+                        "background": "#faf9f8",
+                        "primary-container": "#171b28",
+                        "primary-fixed": "#dfe2f3",
+                        "border-subtle": "#E5E7EB",
+                        "on-error-container": "#93000a",
+                        "surface-tint": "#5a5e6d",
+                        "surface-variant": "#e3e2e1",
+                        "on-tertiary-container": "#009668",
+                        "surface": "#faf9f8",
+                        "inverse-on-surface": "#f1f0f0",
+                        "surface-dim": "#dadad9",
+                        "secondary": "#4b41e1",
+                        "secondary-fixed-dim": "#c3c0ff",
+                        "surface-container": "#eeeeed",
+                        "inverse-primary": "#c3c6d7",
+                        "surface-bright": "#faf9f8",
+                        "surface-container-low": "#f4f3f2",
+                        "inverse-surface": "#2f3130",
+                        "verified-emerald": "#10B981"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "24px",
+                        "margin-desktop": "40px",
+                        "container-max": "1280px",
+                        "margin-mobile": "20px",
+                        "base": "8px"
+                    },
+                    "fontFamily": {
+                        "label-caps": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-xl": ["Manrope"],
+                        "headline-lg-mobile": ["Manrope"],
+                        "headline-md": ["Manrope"],
+                        "label-md": ["Inter"],
+                        "headline-lg": ["Manrope"],
+                        "body-sm": ["Inter"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label-caps": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-xl": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-lg-mobile": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "fontWeight": "500" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Manrope:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body { background-color: theme('colors.background'); color: theme('colors.on-background'); }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+    </style>
+</head>
+<body class="antialiased flex flex-col min-h-screen" data-page="legacylock_pricing_plans.html">
+<!-- TopNavBar from Shared Components JSON -->
+<nav class="bg-surface/80 dark:bg-shell-navy/80 backdrop-blur-xl fixed top-0 w-full border-b border-subtle dark:border-outline-variant z-50">
+<div class="flex justify-between items-center h-20 px-base md:px-margin-desktop max-w-container-max mx-auto">
+<div class="font-headline-md text-headline-md font-bold text-shell-navy dark:text-surface-warm">
+                LegacyLock
+            </div>
+<div class="hidden md:flex space-x-8">
+<a class="font-label-md text-label-md text-on-surface-variant dark:text-on-primary-container hover:text-electric-indigo transition-colors duration-200" href="#">Product</a>
+<a class="font-label-md text-label-md text-on-surface-variant dark:text-on-primary-container hover:text-electric-indigo transition-colors duration-200" href="#">Security</a>
+<!-- Active State applied to Pricing -->
+<a class="font-label-md text-label-md text-primary font-bold border-b-2 border-primary pb-1 hover:text-electric-indigo transition-colors duration-200" href="#">Pricing</a>
+<a class="font-label-md text-label-md text-on-surface-variant dark:text-on-primary-container hover:text-electric-indigo transition-colors duration-200" href="#">Support</a>
+</div>
+<button class="bg-primary text-on-primary px-4 py-2 rounded-lg font-label-md text-label-md active:scale-95 transition-transform hover:bg-on-surface">
+                Get Started
+            </button>
+</div>
+</nav>
+<main class="flex-grow pt-32 pb-24 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto w-full">
+<!-- Hero Section -->
+<section class="text-center max-w-3xl mx-auto mb-16 md:mb-24">
+<h1 class="font-headline-xl text-headline-lg-mobile md:text-headline-xl text-primary mb-6">Transparent pricing for your peace of mind.</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Secure your digital legacy with plans designed for individuals, families, and professionals. No hidden fees, no data ownership—just security.</p>
+</section>
+<!-- Pricing Cards Grid -->
+<section class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-24">
+<!-- Essential Plan -->
+<div class="bg-surface-container-lowest border border-border-subtle rounded-xl p-8 flex flex-col">
+<h3 class="font-headline-md text-headline-md text-primary mb-2">Essential</h3>
+<div class="flex items-baseline gap-1 mb-6">
+<span class="font-headline-lg text-headline-lg text-primary">$5</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">/mo</span>
+</div>
+<ul class="space-y-4 mb-8 flex-grow">
+<li class="flex items-start gap-3"><span class="material-symbols-outlined text-primary text-[20px]" data-icon="check">check</span><span class="font-body-md text-body-md text-on-surface-variant">50 Encrypted Records</span></li>
+<li class="flex items-start gap-3"><span class="material-symbols-outlined text-primary text-[20px]" data-icon="check">check</span><span class="font-body-md text-body-md text-on-surface-variant">1 Check-in Channel</span></li>
+<li class="flex items-start gap-3"><span class="material-symbols-outlined text-primary text-[20px]" data-icon="check">check</span><span class="font-body-md text-body-md text-on-surface-variant">2 Trusted Contacts</span></li>
+<li class="flex items-start gap-3"><span class="material-symbols-outlined text-primary text-[20px]" data-icon="check">check</span><span class="font-body-md text-body-md text-on-surface-variant">5GB Document Storage</span></li>
+<li class="flex items-start gap-3"><span class="material-symbols-outlined text-primary text-[20px]" data-icon="check">check</span><span class="font-body-md text-body-md text-on-surface-variant">30-day Audit History</span></li>
+<li class="flex items-start gap-3"><span class="material-symbols-outlined text-primary text-[20px]" data-icon="check">check</span><span class="font-body-md text-body-md text-on-surface-variant">Standard Support</span></li>
+</ul>
+<button class="w-full h-12 border border-primary text-primary font-label-md text-label-md rounded-lg hover:bg-surface-container transition-colors">Choose this plan</button>
+</div>
+<!-- Family Plan (Prominent) -->
+<div class="bg-surface-container-lowest border border-border-subtle rounded-xl p-8 flex flex-col shadow-[0_4px_20px_rgba(10,14,26,0.04)] relative overflow-hidden">
+<div class="absolute top-0 left-0 w-full h-1 bg-secondary"></div>
+<h3 class="font-headline-md text-headline-md text-primary mb-2">Family</h3>
+<div class="flex items-baseline gap-1 mb-6">
+<span class="font-headline-lg text-headline-lg text-primary">$12</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">/mo</span>
+</div>
+<ul class="space-y-4 mb-8 flex-grow">
+<li class="flex items-start gap-3"><span class="material-symbols-outlined text-secondary text-[20px]" data-icon="check">check</span><span class="font-body-md text-body-md text-primary font-medium">250 Encrypted Records</span></li>
+<li class="flex items-start gap-3"><span class="material-symbols-outlined text-secondary text-[20px]" data-icon="check">check</span><span class="font-body-md text-body-md text-primary font-medium">3 Check-in Channels</span></li>
+<li class="flex items-start gap-3"><span class="material-symbols-outlined text-secondary text-[20px]" data-icon="check">check</span><span class="font-body-md text-body-md text-primary font-medium">10 Trusted Contacts</span></li>
+<li class="flex items-start gap-3"><span class="material-symbols-outlined text-secondary text-[20px]" data-icon="check">check</span><span class="font-body-md text-body-md text-primary font-medium">50GB Document Storage</span></li>
+<li class="flex items-start gap-3"><span class="material-symbols-outlined text-secondary text-[20px]" data-icon="check">check</span><span class="font-body-md text-body-md text-primary font-medium">Full Audit History</span></li>
+<li class="flex items-start gap-3"><span class="material-symbols-outlined text-secondary text-[20px]" data-icon="check">check</span><span class="font-body-md text-body-md text-primary font-medium">Priority Support</span></li>
+</ul>
+<button class="w-full h-12 bg-secondary text-on-secondary font-label-md text-label-md rounded-lg hover:bg-[#3d34b8] transition-colors">Choose this plan</button>
+</div>
+<!-- Professional Plan -->
+<div class="bg-surface-container-lowest border border-border-subtle rounded-xl p-8 flex flex-col">
+<h3 class="font-headline-md text-headline-md text-primary mb-2">Professional</h3>
+<div class="flex items-baseline gap-1 mb-6">
+<span class="font-headline-lg text-headline-lg text-primary">$25</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">/mo</span>
+</div>
+<ul class="space-y-4 mb-8 flex-grow">
+<li class="flex items-start gap-3"><span class="material-symbols-outlined text-primary text-[20px]" data-icon="check">check</span><span class="font-body-md text-body-md text-on-surface-variant">Unlimited Encrypted Records</span></li>
+<li class="flex items-start gap-3"><span class="material-symbols-outlined text-primary text-[20px]" data-icon="check">check</span><span class="font-body-md text-body-md text-on-surface-variant">All Check-in Channels</span></li>
+<li class="flex items-start gap-3"><span class="material-symbols-outlined text-primary text-[20px]" data-icon="check">check</span><span class="font-body-md text-body-md text-on-surface-variant">Unlimited Trusted Contacts</span></li>
+<li class="flex items-start gap-3"><span class="material-symbols-outlined text-primary text-[20px]" data-icon="check">check</span><span class="font-body-md text-body-md text-on-surface-variant">250GB Document Storage</span></li>
+<li class="flex items-start gap-3"><span class="material-symbols-outlined text-primary text-[20px]" data-icon="check">check</span><span class="font-body-md text-body-md text-on-surface-variant">Full Audit History</span></li>
+<li class="flex items-start gap-3"><span class="material-symbols-outlined text-primary text-[20px]" data-icon="check">check</span><span class="font-body-md text-body-md text-on-surface-variant">24/7 Dedicated Support</span></li>
+</ul>
+<button class="w-full h-12 border border-primary text-primary font-label-md text-label-md rounded-lg hover:bg-surface-container transition-colors">Choose this plan</button>
+</div>
+</section>
+<!-- Trust Strip / Note -->
+<div class="bg-surface-container-low border border-border-subtle rounded-lg p-6 mb-24 flex items-center justify-center gap-4 text-center">
+<span class="material-symbols-outlined text-verified-emerald" data-icon="shield_lock">shield_lock</span>
+<p class="font-label-md text-label-md text-primary">No plan gives LegacyLock ownership of your assets.</p>
+</div>
+<!-- Comparison Table (Desktop mostly, scrolls on mobile) -->
+<section class="mb-24 overflow-x-auto">
+<h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-primary mb-8 text-center">Compare plans in detail</h2>
+<div class="min-w-[800px]">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="border-b border-border-subtle">
+<th class="py-4 px-6 font-label-caps text-label-caps text-on-surface-variant w-1/4">Feature</th>
+<th class="py-4 px-6 font-label-md text-label-md text-primary w-1/4">Essential</th>
+<th class="py-4 px-6 font-label-md text-label-md text-primary w-1/4 bg-surface-container-low rounded-t-lg">Family</th>
+<th class="py-4 px-6 font-label-md text-label-md text-primary w-1/4">Professional</th>
+</tr>
+</thead>
+<tbody class="font-body-sm text-body-sm text-on-surface-variant">
+<tr class="border-b border-border-subtle hover:bg-surface-container-lowest transition-colors">
+<td class="py-4 px-6">Encrypted Records</td>
+<td class="py-4 px-6">50</td>
+<td class="py-4 px-6 bg-surface-container-low">250</td>
+<td class="py-4 px-6">Unlimited</td>
+</tr>
+<tr class="border-b border-border-subtle hover:bg-surface-container-lowest transition-colors">
+<td class="py-4 px-6">Check-in Channels</td>
+<td class="py-4 px-6">1</td>
+<td class="py-4 px-6 bg-surface-container-low">3</td>
+<td class="py-4 px-6">All</td>
+</tr>
+<tr class="border-b border-border-subtle hover:bg-surface-container-lowest transition-colors">
+<td class="py-4 px-6">Trusted Contacts</td>
+<td class="py-4 px-6">2</td>
+<td class="py-4 px-6 bg-surface-container-low">10</td>
+<td class="py-4 px-6">Unlimited</td>
+</tr>
+<tr class="border-b border-border-subtle hover:bg-surface-container-lowest transition-colors">
+<td class="py-4 px-6">Document Storage</td>
+<td class="py-4 px-6">5GB</td>
+<td class="py-4 px-6 bg-surface-container-low">50GB</td>
+<td class="py-4 px-6">250GB</td>
+</tr>
+<tr class="border-b border-border-subtle hover:bg-surface-container-lowest transition-colors">
+<td class="py-4 px-6">Audit History</td>
+<td class="py-4 px-6">30-day</td>
+<td class="py-4 px-6 bg-surface-container-low">Full</td>
+<td class="py-4 px-6">Full</td>
+</tr>
+<tr class="border-b border-border-subtle hover:bg-surface-container-lowest transition-colors">
+<td class="py-4 px-6">Support Level</td>
+<td class="py-4 px-6">Standard</td>
+<td class="py-4 px-6 bg-surface-container-low">Priority</td>
+<td class="py-4 px-6">24/7 Dedicated</td>
+</tr>
+<tr class="border-b border-border-subtle hover:bg-surface-container-lowest transition-colors">
+<td class="py-4 px-6">Custom Instructions</td>
+<td class="py-4 px-6">Basic</td>
+<td class="py-4 px-6 bg-surface-container-low">Advanced</td>
+<td class="py-4 px-6">Complex logic</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<!-- FAQ Section -->
+<section class="max-w-3xl mx-auto">
+<h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-primary mb-8 text-center">Frequently Asked Questions</h2>
+<div class="space-y-4">
+<details class="group bg-surface-container-lowest border border-border-subtle rounded-lg p-6 [&amp;_summary::-webkit-details-marker]:hidden">
+<summary class="flex justify-between items-center font-headline-md text-headline-md text-primary cursor-pointer list-none">
+<span>Who owns my data?</span>
+<span class="transition group-open:rotate-180 material-symbols-outlined" data-icon="expand_more">expand_more</span>
+</summary>
+<div class="text-on-surface-variant font-body-md text-body-md mt-4">
+                        You do. Always. We provide the vault, but you hold the only keys. We cannot access, read, or sell your personal information.
+                    </div>
+</details>
+<details class="group bg-surface-container-lowest border border-border-subtle rounded-lg p-6 [&amp;_summary::-webkit-details-marker]:hidden">
+<summary class="flex justify-between items-center font-headline-md text-headline-md text-primary cursor-pointer list-none">
+<span>Can I cancel anytime?</span>
+<span class="transition group-open:rotate-180 material-symbols-outlined" data-icon="expand_more">expand_more</span>
+</summary>
+<div class="text-on-surface-variant font-body-md text-body-md mt-4">
+                        Yes, and you can export all your data before leaving. There are no lock-in contracts or hidden cancellation fees.
+                    </div>
+</details>
+<details class="group bg-surface-container-lowest border border-border-subtle rounded-lg p-6 [&amp;_summary::-webkit-details-marker]:hidden">
+<summary class="flex justify-between items-center font-headline-md text-headline-md text-primary cursor-pointer list-none">
+<span>How do recovery kits work?</span>
+<span class="transition group-open:rotate-180 material-symbols-outlined" data-icon="expand_more">expand_more</span>
+</summary>
+<div class="text-on-surface-variant font-body-md text-body-md mt-4">
+                        Recovery kits are local decryption keys that never touch our servers. They allow you to regain access to your vault if you lose your master password, ensuring you're never permanently locked out.
+                    </div>
+</details>
+<details class="group bg-surface-container-lowest border border-border-subtle rounded-lg p-6 [&amp;_summary::-webkit-details-marker]:hidden">
+<summary class="flex justify-between items-center font-headline-md text-headline-md text-primary cursor-pointer list-none">
+<span>What do my nominees receive?</span>
+<span class="transition group-open:rotate-180 material-symbols-outlined" data-icon="expand_more">expand_more</span>
+</summary>
+<div class="text-on-surface-variant font-body-md text-body-md mt-4">
+                        A guided, secure dossier only when the continuity protocol initiates. They will not have access to your data beforehand, preserving your privacy during your lifetime.
+                    </div>
+</details>
+</div>
+</section>
+</main>
+<!-- Footer from Shared Components JSON -->
+<footer class="bg-shell-navy dark:bg-black w-full">
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center py-12 px-base md:px-margin-desktop max-w-container-max mx-auto">
+<div class="font-headline-sm text-headline-sm text-surface-warm mb-6 md:mb-0">
+                LegacyLock
+            </div>
+<div class="font-body-sm text-body-sm text-surface-warm mb-6 md:mb-0 max-w-md">
+                © 2024 LegacyLock. Your legacy is your own. All data is end-to-end encrypted and remains your exclusive property.
+            </div>
+<div class="flex flex-col md:flex-row gap-4 md:gap-8">
+<a class="font-body-sm text-body-sm text-on-primary-container hover:text-tertiary-fixed-dim transition-colors cursor-pointer" href="#">Privacy Policy</a>
+<a class="font-body-sm text-body-sm text-on-primary-container hover:text-tertiary-fixed-dim transition-colors cursor-pointer" href="#">Terms of Service</a>
+<a class="font-body-sm text-body-sm text-on-primary-container hover:text-tertiary-fixed-dim transition-colors cursor-pointer" href="#">Security Whitepaper</a>
+<a class="font-body-sm text-body-sm text-on-primary-container hover:text-tertiary-fixed-dim transition-colors cursor-pointer" href="#">Data Ownership</a>
+</div>
+</div>
+</footer>
+<script src="crypto.js"></script>
+<script src="app.js"></script>
+</body></html>

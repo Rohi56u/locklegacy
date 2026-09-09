@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Check-in History - LegacyLock</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Manrope:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-error": "#ffffff",
+                      "primary-fixed": "#dfe2f3",
+                      "inverse-surface": "#2f3130",
+                      "primary-fixed-dim": "#c3c6d7",
+                      "on-background": "#1a1c1c",
+                      "on-tertiary-container": "#009668",
+                      "on-tertiary": "#ffffff",
+                      "on-primary-fixed-variant": "#434654",
+                      "inverse-on-surface": "#f1f0f0",
+                      "secondary": "#4b41e1",
+                      "on-tertiary-fixed-variant": "#005236",
+                      "surface-dim": "#dadad9",
+                      "attention-amber": "#F59E0B",
+                      "surface-tint": "#5a5e6d",
+                      "inverse-primary": "#c3c6d7",
+                      "border-subtle": "#E5E7EB",
+                      "primary": "#000000",
+                      "secondary-fixed": "#e2dfff",
+                      "outline": "#76767c",
+                      "on-secondary-fixed": "#0f0069",
+                      "on-error-container": "#93000a",
+                      "surface-bright": "#faf9f8",
+                      "outline-variant": "#c7c6cc",
+                      "verified-emerald": "#10B981",
+                      "on-primary": "#ffffff",
+                      "on-secondary-container": "#fffbff",
+                      "surface-container-low": "#f4f3f2",
+                      "background": "#faf9f8",
+                      "on-secondary": "#ffffff",
+                      "on-surface": "#1a1c1c",
+                      "secondary-container": "#645efb",
+                      "surface-variant": "#e3e2e1",
+                      "danger-red": "#EF4444",
+                      "on-primary-fixed": "#171b28",
+                      "on-tertiary-fixed": "#002113",
+                      "surface-container-high": "#e9e8e7",
+                      "tertiary-fixed": "#6ffbbe",
+                      "error-container": "#ffdad6",
+                      "primary-container": "#171b28",
+                      "tertiary-container": "#002113",
+                      "surface-container-highest": "#e3e2e1",
+                      "surface": "#faf9f8",
+                      "tertiary": "#000000",
+                      "on-secondary-fixed-variant": "#3323cc",
+                      "on-surface-variant": "#46464c",
+                      "surface-container-lowest": "#ffffff",
+                      "on-primary-container": "#808393",
+                      "tertiary-fixed-dim": "#4edea3",
+                      "error": "#ba1a1a",
+                      "secondary-fixed-dim": "#c3c0ff",
+                      "surface-container": "#eeeeed"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "base": "8px",
+                      "container-max": "1280px",
+                      "margin-desktop": "40px",
+                      "gutter": "24px",
+                      "margin-mobile": "20px"
+              },
+              "fontFamily": {
+                      "body-lg": [
+                              "Inter"
+                      ],
+                      "headline-xl": [
+                              "Manrope"
+                      ],
+                      "headline-md": [
+                              "Manrope"
+                      ],
+                      "body-sm": [
+                              "Inter"
+                      ],
+                      "body-md": [
+                              "Inter"
+                      ],
+                      "headline-lg": [
+                              "Manrope"
+                      ],
+                      "headline-lg-mobile": [
+                              "Manrope"
+                      ],
+                      "label-md": [
+                              "Inter"
+                      ],
+                      "label-caps": [
+                              "Inter"
+                      ]
+              },
+              "fontSize": {
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-xl": [
+                              "48px",
+                              {
+                                      "lineHeight": "56px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "headline-md": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-sm": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-lg": [
+                              "32px",
+                              {
+                                      "lineHeight": "40px",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-lg-mobile": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "label-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "label-caps": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "600"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+    </script>
+<style>
+        body {
+            background-color: theme('colors.background');
+            color: theme('colors.on-background');
+        }
+    </style>
+</head>
+<body class="antialiased min-h-screen flex flex-col" data-page="check_in_history_desktop.html">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-surface/80 dark:bg-shell-navy/80 backdrop-blur-xl border-b border-subtle dark:border-outline-variant flat no shadows">
+<div class="flex justify-between items-center h-20 px-base md:px-margin-desktop max-w-container-max mx-auto">
+<div class="flex items-center gap-8">
+<a class="font-headline-md text-headline-md font-bold text-shell-navy dark:text-surface-warm flex items-center gap-2" href="#">
+<span class="material-symbols-outlined text-primary">lock</span>
+                    LegacyLock
+                </a>
+<div class="hidden md:flex gap-6">
+<a class="font-label-md text-label-md text-on-surface-variant dark:text-on-primary-container hover:text-electric-indigo transition-colors duration-200" href="#">Product</a>
+<a class="font-label-md text-label-md text-on-surface-variant dark:text-on-primary-container hover:text-electric-indigo transition-colors duration-200" href="#">Security</a>
+<a class="font-label-md text-label-md text-on-surface-variant dark:text-on-primary-container hover:text-electric-indigo transition-colors duration-200" href="#">Pricing</a>
+<a class="font-label-md text-label-md text-on-surface-variant dark:text-on-primary-container hover:text-electric-indigo transition-colors duration-200" href="#">Support</a>
+</div>
+</div>
+<button class="font-label-md text-label-md text-electric-indigo active:scale-95 transition-transform flex items-center gap-2 bg-primary text-on-primary px-4 py-2 rounded-lg">
+                Get Started
+                <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="flex-grow pt-[120px] pb-[80px] px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto w-full">
+<!-- Header Section -->
+<header class="mb-12">
+<h1 class="font-headline-xl text-headline-xl text-primary mb-4">Check-in History</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">A chronological record of your recent check-in confirmations and alerts. All location data is strictly limited to broad regions.</p>
+</header>
+<!-- Metrics Cards -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+<!-- Card 1 -->
+<div class="bg-surface-container-lowest border border-subtle rounded-xl p-6 flex flex-col justify-between">
+<div class="flex items-center gap-3 mb-4">
+<div class="w-10 h-10 rounded-full bg-primary/5 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">verified_user</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface-variant">Confirmations</span>
+</div>
+<div class="font-headline-lg text-headline-lg text-primary">11</div>
+</div>
+<!-- Card 2 -->
+<div class="bg-surface-container-lowest border border-subtle rounded-xl p-6 flex flex-col justify-between">
+<div class="flex items-center gap-3 mb-4">
+<div class="w-10 h-10 rounded-full bg-primary/5 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">notifications_active</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface-variant">Unresolved Alerts</span>
+</div>
+<div class="font-headline-lg text-headline-lg text-primary">0</div>
+</div>
+<!-- Card 3 -->
+<div class="bg-surface-container-lowest border border-subtle rounded-xl p-6 flex flex-col justify-between">
+<div class="flex items-center gap-3 mb-4">
+<div class="w-10 h-10 rounded-full bg-primary/5 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">local_fire_department</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface-variant">Current Streak</span>
+</div>
+<div class="font-headline-lg text-headline-lg text-primary">5 days</div>
+</div>
+</div>
+<!-- Filter & Action Bar -->
+<div class="flex flex-col sm:flex-row justify-between items-center gap-4 mb-8">
+<div class="flex gap-4 w-full sm:w-auto">
+<select class="form-select bg-surface-container-lowest border border-subtle rounded-lg font-body-sm text-body-sm text-on-surface py-2.5 px-4 focus:border-secondary focus:ring-0 cursor-pointer w-full sm:w-auto">
+<option>Past 30 Days</option>
+<option>October 2024</option>
+<option>September 2024</option>
+</select>
+<select class="form-select bg-surface-container-lowest border border-subtle rounded-lg font-body-sm text-body-sm text-on-surface py-2.5 px-4 focus:border-secondary focus:ring-0 cursor-pointer w-full sm:w-auto">
+<option>All Statuses</option>
+<option>Confirmed</option>
+<option>Reminder Sent</option>
+</select>
+</div>
+<button class="w-full sm:w-auto h-[44px] px-6 rounded-lg border border-primary text-primary font-label-md text-label-md hover:bg-surface-container-low transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[18px]">download</span>
+                Export Activity
+            </button>
+</div>
+<!-- Timeline -->
+<div class="bg-surface-container-lowest border border-subtle rounded-xl overflow-hidden">
+<div class="hidden md:grid grid-cols-12 gap-4 px-6 py-4 border-b border-subtle bg-surface-container-low">
+<div class="col-span-3 font-label-caps text-label-caps text-on-surface-variant uppercase">Date &amp; Time</div>
+<div class="col-span-2 font-label-caps text-label-caps text-on-surface-variant uppercase">Channel</div>
+<div class="col-span-3 font-label-caps text-label-caps text-on-surface-variant uppercase">Device &amp; Location</div>
+<div class="col-span-4 font-label-caps text-label-caps text-on-surface-variant uppercase">Status</div>
+</div>
+<div class="divide-y divide-subtle">
+<!-- Timeline Row 1 -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-4 px-6 py-5 items-center hover:bg-surface-container-low/50 transition-colors">
+<div class="col-span-3">
+<div class="font-body-md text-body-md text-primary">Oct 24, 2024</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">09:41 AM</div>
+</div>
+<div class="col-span-2 flex items-center gap-2">
+<span class="material-symbols-outlined text-on-surface-variant text-[20px]">phone_iphone</span>
+<span class="font-body-md text-body-md text-on-surface">App Push</span>
+</div>
+<div class="col-span-3">
+<div class="font-body-md text-body-md text-on-surface">iPhone 14 Pro</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">location_on</span>
+                            City/Country level only
+                        </div>
+</div>
+<div class="col-span-4 flex justify-between items-center">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-verified-emerald/10 text-verified-emerald font-label-md text-label-md">
+<span class="material-symbols-outlined text-[16px]">check_circle</span>
+                            Confirmed
+                        </span>
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+</div>
+<!-- Timeline Row 2 -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-4 px-6 py-5 items-center hover:bg-surface-container-low/50 transition-colors">
+<div class="col-span-3">
+<div class="font-body-md text-body-md text-primary">Oct 23, 2024</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">10:15 AM</div>
+</div>
+<div class="col-span-2 flex items-center gap-2">
+<span class="material-symbols-outlined text-on-surface-variant text-[20px]">mail</span>
+<span class="font-body-md text-body-md text-on-surface">Email</span>
+</div>
+<div class="col-span-3">
+<div class="font-body-md text-body-md text-on-surface">MacBook Pro</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">location_on</span>
+                            City/Country level only
+                        </div>
+</div>
+<div class="col-span-4 flex justify-between items-center">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-attention-amber/10 text-attention-amber font-label-md text-label-md">
+<span class="material-symbols-outlined text-[16px]">schedule</span>
+                            Reminder Sent
+                        </span>
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+</div>
+<!-- Timeline Row 3 -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-4 px-6 py-5 items-center hover:bg-surface-container-low/50 transition-colors">
+<div class="col-span-3">
+<div class="font-body-md text-body-md text-primary">Oct 22, 2024</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">08:30 AM</div>
+</div>
+<div class="col-span-2 flex items-center gap-2">
+<span class="material-symbols-outlined text-on-surface-variant text-[20px]">sms</span>
+<span class="font-body-md text-body-md text-on-surface">SMS</span>
+</div>
+<div class="col-span-3">
+<div class="font-body-md text-body-md text-on-surface">iPhone 14 Pro</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">location_off</span>
+                            Location Hidden
+                        </div>
+</div>
+<div class="col-span-4 flex justify-between items-center">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-secondary/10 text-secondary font-label-md text-label-md">
+<span class="material-symbols-outlined text-[16px]">restore</span>
+                            Missed but Recovered
+                        </span>
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Privacy Card -->
+<div class="mt-12 bg-surface-container-lowest border border-subtle rounded-xl p-6 flex flex-col md:flex-row items-start gap-4">
+<div class="w-12 h-12 rounded-full bg-primary/5 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-primary">shield_lock</span>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md text-primary mb-2">Privacy Explanation</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">LegacyLock only logs the timestamp and broad location of check-ins to maintain technical trust. Precise coordinates are never stored.</p>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-shell-navy dark:bg-black w-full bg-shell-navy flat no shadows mt-auto">
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center py-12 px-base md:px-margin-desktop max-w-container-max mx-auto gap-8 md:gap-0">
+<div class="flex flex-col gap-4">
+<span class="font-headline-sm text-headline-sm text-surface-warm font-bold text-white">LegacyLock</span>
+<p class="font-body-sm text-body-sm text-on-primary-container max-w-sm">© 2024 LegacyLock. Your legacy is your own. All data is end-to-end encrypted and remains your exclusive property.</p>
+</div>
+<div class="flex flex-wrap gap-x-8 gap-y-4">
+<a class="font-body-sm text-body-sm text-on-primary-container hover:text-tertiary-fixed-dim transition-colors cursor-pointer" href="#">Privacy Policy</a>
+<a class="font-body-sm text-body-sm text-on-primary-container hover:text-tertiary-fixed-dim transition-colors cursor-pointer" href="#">Terms of Service</a>
+<a class="font-body-sm text-body-sm text-on-primary-container hover:text-tertiary-fixed-dim transition-colors cursor-pointer" href="#">Security Whitepaper</a>
+<a class="font-body-sm text-body-sm text-on-primary-container hover:text-tertiary-fixed-dim transition-colors cursor-pointer" href="#">Data Ownership</a>
+</div>
+</div>
+</footer>
+<script src="crypto.js"></script>
+<script src="app.js"></script>
+</body></html>

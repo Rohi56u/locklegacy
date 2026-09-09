@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>LegacyLock - Secure Sign In</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Manrope:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-error": "#ffffff",
+                    "primary-container": "#171b28",
+                    "secondary-container": "#645efb",
+                    "tertiary-container": "#002113",
+                    "verified-emerald": "#10B981",
+                    "inverse-on-surface": "#f1f0f0",
+                    "error-container": "#ffdad6",
+                    "on-secondary-fixed-variant": "#3323cc",
+                    "attention-amber": "#F59E0B",
+                    "primary": "#000000",
+                    "on-surface-variant": "#46464c",
+                    "on-primary-container": "#808393",
+                    "primary-fixed-dim": "#c3c6d7",
+                    "surface-container-low": "#f4f3f2",
+                    "on-primary": "#ffffff",
+                    "tertiary-fixed-dim": "#4edea3",
+                    "on-primary-fixed-variant": "#434654",
+                    "surface-container": "#eeeeed",
+                    "tertiary-fixed": "#6ffbbe",
+                    "on-secondary": "#ffffff",
+                    "surface-container-high": "#e9e8e7",
+                    "secondary": "#4b41e1",
+                    "inverse-surface": "#2f3130",
+                    "secondary-fixed": "#e2dfff",
+                    "on-secondary-fixed": "#0f0069",
+                    "surface-tint": "#5a5e6d",
+                    "tertiary": "#000000",
+                    "on-surface": "#1a1c1c",
+                    "on-tertiary": "#ffffff",
+                    "outline": "#76767c",
+                    "surface-dim": "#dadad9",
+                    "surface-variant": "#e3e2e1",
+                    "error": "#ba1a1a",
+                    "secondary-fixed-dim": "#c3c0ff",
+                    "border-subtle": "#E5E7EB",
+                    "background": "#faf9f8",
+                    "on-tertiary-container": "#009668",
+                    "outline-variant": "#c7c6cc",
+                    "surface-container-highest": "#e3e2e1",
+                    "surface": "#faf9f8",
+                    "on-tertiary-fixed": "#002113",
+                    "danger-red": "#EF4444",
+                    "primary-fixed": "#dfe2f3",
+                    "on-tertiary-fixed-variant": "#005236",
+                    "on-secondary-container": "#fffbff",
+                    "on-primary-fixed": "#171b28",
+                    "on-background": "#1a1c1c",
+                    "inverse-primary": "#c3c6d7",
+                    "on-error-container": "#93000a",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-bright": "#faf9f8"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "gutter": "24px",
+                    "margin-desktop": "40px",
+                    "container-max": "1280px",
+                    "base": "8px",
+                    "margin-mobile": "20px"
+            },
+            "fontFamily": {
+                    "body-sm": [
+                            "Inter"
+                    ],
+                    "label-md": [
+                            "Inter"
+                    ],
+                    "headline-xl": [
+                            "Manrope"
+                    ],
+                    "body-md": [
+                            "Inter"
+                    ],
+                    "headline-md": [
+                            "Manrope"
+                    ],
+                    "headline-lg-mobile": [
+                            "Manrope"
+                    ],
+                    "headline-lg": [
+                            "Manrope"
+                    ],
+                    "label-caps": [
+                            "Inter"
+                    ],
+                    "body-lg": [
+                            "Inter"
+                    ]
+            },
+            "fontSize": {
+                    "body-sm": [
+                            "14px",
+                            {
+                                    "lineHeight": "20px",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "label-md": [
+                            "14px",
+                            {
+                                    "lineHeight": "20px",
+                                    "fontWeight": "500"
+                            }
+                    ],
+                    "headline-xl": [
+                            "48px",
+                            {
+                                    "lineHeight": "56px",
+                                    "letterSpacing": "-0.02em",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "body-md": [
+                            "16px",
+                            {
+                                    "lineHeight": "24px",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "headline-md": [
+                            "24px",
+                            {
+                                    "lineHeight": "32px",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "headline-lg-mobile": [
+                            "24px",
+                            {
+                                    "lineHeight": "32px",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "headline-lg": [
+                            "32px",
+                            {
+                                    "lineHeight": "40px",
+                                    "letterSpacing": "-0.01em",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "label-caps": [
+                            "12px",
+                            {
+                                    "lineHeight": "16px",
+                                    "letterSpacing": "0.05em",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "body-lg": [
+                            "18px",
+                            {
+                                    "lineHeight": "28px",
+                                    "fontWeight": "400"
+                            }
+                    ]
+            }
+    },
+        },
+      }
+    </script>
+<style>
+        /* Base reset and utility classes that fall outside standard tailwind */
+        body {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        
+        .material-symbols-outlined[style*="FILL' 1"] {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        /* Custom Input Focus transition */
+        .input-transition {
+            transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+        .input-transition:focus {
+            border-color: #645efb; /* Electric Indigo/secondary-container equivalent for visual punch */
+            box-shadow: 0 0 0 1px #645efb;
+            outline: none;
+        }
+    </style>
+</head>
+<body class="bg-background min-h-screen flex flex-col font-body-md text-on-background selection:bg-secondary-fixed selection:text-on-secondary-fixed" data-page="secure_sign_in_desktop.html">
+<!-- TopAppBar -->
+<header class="bg-background dark:bg-background text-primary dark:text-on-primary-fixed font-headline-md text-headline-md fixed top-0 w-full border-b border-border-subtle dark:border-outline-variant flat no shadows z-50">
+<div class="flex justify-between items-center h-14 px-gutter max-w-container-max mx-auto">
+<div class="text-headline-md font-headline-md font-bold text-primary dark:text-on-primary-fixed flex items-center gap-2">
+                LegacyLock
+            </div>
+<!-- Contextual Navigation Hidden on Transactional Screens -->
+<nav class="hidden md:flex gap-6 items-center">
+<!-- Navigation is suppressed on this linear auth screen as per architectural rules -->
+</nav>
+<div class="flex items-center gap-4">
+<button aria-label="verified_user" class="text-on-surface-variant hover:text-secondary hover:bg-surface-container-low transition-colors duration-200 p-2 rounded-full flex items-center justify-center opacity-80">
+<span class="material-symbols-outlined">verified_user</span>
+</button>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-grow flex items-center justify-center pt-24 pb-16 px-gutter md:px-margin-desktop">
+<!-- Auth Container (Level 1 Card Architecture) -->
+<div class="w-full max-w-[440px] bg-surface-container-lowest border border-border-subtle rounded-xl p-8 shadow-[0_4px_20px_rgba(10,14,26,0.04)] flex flex-col gap-8 relative">
+<!-- Encrypted Session Indicator (Top Right Absolute) -->
+<div class="absolute top-8 right-8 flex items-center gap-1.5 px-2 py-1 rounded bg-verified-emerald/10 text-verified-emerald border border-verified-emerald/20 font-label-caps text-label-caps uppercase tracking-wider">
+<span class="material-symbols-outlined text-[14px]">shield_lock</span>
+<span>Encrypted</span>
+</div>
+<!-- Header Section -->
+<div class="flex flex-col gap-2 pt-2">
+<h1 class="font-headline-lg text-headline-lg text-on-surface font-semibold tracking-tight">Access Vault</h1>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Authenticate to view your digital estate.</p>
+</div>
+<!-- Trust Strip / Security Note -->
+<div class="flex items-start gap-3 p-3 bg-surface-container-low border border-border-subtle rounded-lg">
+<div class="text-primary-container/40 pt-0.5">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">info</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+                    We will never ask for your vault passphrase by email. Ensure you are on <strong class="text-on-surface font-medium">legacylock.com</strong>.
+                </p>
+</div>
+<!-- Auth Form -->
+<form class="flex flex-col gap-5">
+<!-- Email Input -->
+<div class="flex flex-col gap-1.5">
+<label class="font-label-md text-label-md text-on-surface font-medium" for="email">Email address</label>
+<input class="w-full h-11 px-3 bg-surface-container-lowest border border-outline-variant rounded-lg text-on-surface font-body-md input-transition placeholder:text-on-surface-variant/50" id="email" name="email" placeholder="name@example.com" required="" type="email"/>
+</div>
+<!-- Password Input -->
+<div class="flex flex-col gap-1.5">
+<div class="flex justify-between items-baseline">
+<label class="font-label-md text-label-md text-on-surface font-medium" for="password">Password</label>
+<a class="font-body-sm text-body-sm text-secondary hover:text-secondary-container transition-colors" href="#">Forgot access?</a>
+</div>
+<div class="relative">
+<input class="w-full h-11 px-3 pr-10 bg-surface-container-lowest border border-outline-variant rounded-lg text-on-surface font-body-md input-transition" id="password" name="password" required="" type="password"/>
+<button class="absolute right-3 top-1/2 -translate-y-1/2 text-on-surface-variant/50 hover:text-on-surface-variant transition-colors flex items-center justify-center" type="button">
+<span class="material-symbols-outlined text-[20px]">visibility_off</span>
+</button>
+</div>
+</div>
+<!-- Trust Device Checkbox -->
+<div class="flex items-center gap-2 mt-1 group">
+<input class="w-4 h-4 rounded border-outline-variant text-secondary-container focus:ring-secondary-container focus:ring-offset-0 bg-surface-container-lowest transition-colors cursor-pointer" id="remember" type="checkbox"/>
+<label class="font-body-sm text-body-sm text-on-surface-variant cursor-pointer flex items-center gap-1.5" for="remember">
+                        Remember this trusted device
+                        <span class="material-symbols-outlined text-[16px] text-on-surface-variant/40 group-hover:text-on-surface-variant/70 transition-colors" title="Reduces MFA frequency on this hardware.">help</span>
+</label>
+</div>
+<!-- Primary Actions -->
+<div class="flex flex-col gap-3 mt-3">
+<button class="w-full h-11 bg-secondary-container text-on-secondary font-label-md text-label-md font-medium rounded-lg hover:bg-secondary transition-colors flex items-center justify-center gap-2 shadow-sm" type="submit">
+                        Continue securely
+                        <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+</form>
+<div class="relative flex items-center py-2">
+<div class="flex-grow border-t border-border-subtle"></div>
+<span class="flex-shrink-0 mx-4 font-label-caps text-label-caps text-on-surface-variant tracking-widest uppercase">Or</span>
+<div class="flex-grow border-t border-border-subtle"></div>
+</div>
+<!-- Alternative Auth Methods -->
+<div class="flex flex-col gap-3">
+<button class="w-full h-11 bg-surface-container-lowest border border-primary-container text-primary-container font-label-md text-label-md font-medium rounded-lg hover:bg-surface-container-low transition-colors flex items-center justify-center gap-2" type="button">
+<span class="material-symbols-outlined text-[18px]">passkey</span>
+                    Sign in with a passkey
+                </button>
+<button class="w-full h-11 bg-transparent text-on-surface-variant font-label-md text-label-md font-medium rounded-lg hover:text-on-surface hover:bg-surface-container transition-colors flex items-center justify-center gap-2" type="button">
+<span class="material-symbols-outlined text-[18px]">medical_services</span>
+                    Use recovery kit
+                </button>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-background dark:bg-background text-on-surface-variant dark:text-on-surface-variant font-body-sm text-body-sm w-full border-t border-border-subtle dark:border-outline-variant flat no shadows mt-auto">
+<div class="flex flex-col md:flex-row justify-between items-center py-margin-mobile px-gutter gap-4 max-w-container-max mx-auto duration-200 ease-in-out">
+<div class="font-label-caps text-label-caps text-primary dark:text-on-primary-fixed uppercase tracking-wider">
+                LegacyLock
+            </div>
+<div class="text-on-surface-variant dark:text-on-surface-variant text-center md:text-left">
+                © 2024 LegacyLock. Encrypted Session Active.
+            </div>
+<nav class="flex flex-wrap justify-center gap-x-6 gap-y-2">
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-secondary dark:hover:text-secondary-fixed transition-colors" href="#">Security Policy</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-secondary dark:hover:text-secondary-fixed transition-colors" href="#">Privacy Vault</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-secondary dark:hover:text-secondary-fixed transition-colors" href="#">Help Center</a>
+</nav>
+</div>
+</footer>
+<script src="crypto.js"></script>
+<script src="app.js"></script>
+</body></html>

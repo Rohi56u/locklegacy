@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AI Document Verification - LegacyLock</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary": "#ffffff",
+                        "on-primary-fixed-variant": "#434654",
+                        "on-secondary-fixed": "#0f0069",
+                        "inverse-primary": "#c3c6d7",
+                        "error-container": "#ffdad6",
+                        "tertiary-fixed-dim": "#4edea3",
+                        "on-tertiary-fixed-variant": "#005236",
+                        "on-secondary-fixed-variant": "#3323cc",
+                        "primary-fixed-dim": "#c3c6d7",
+                        "on-tertiary-container": "#009668",
+                        "secondary": "#4b41e1",
+                        "surface-container-lowest": "#ffffff",
+                        "on-surface-variant": "#46464c",
+                        "primary-container": "#171b28",
+                        "on-secondary": "#ffffff",
+                        "secondary-container": "#645efb",
+                        "surface-container-high": "#e9e8e7",
+                        "on-error": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "inverse-on-surface": "#f1f0f0",
+                        "surface-tint": "#5a5e6d",
+                        "background": "#faf9f8",
+                        "verified-emerald": "#10B981",
+                        "tertiary-fixed": "#6ffbbe",
+                        "tertiary": "#000000",
+                        "error": "#ba1a1a",
+                        "on-primary-fixed": "#171b28",
+                        "surface-container-highest": "#e3e2e1",
+                        "secondary-fixed": "#e2dfff",
+                        "inverse-surface": "#2f3130",
+                        "on-background": "#1a1c1c",
+                        "primary": "#000000",
+                        "secondary-fixed-dim": "#c3c0ff",
+                        "on-secondary-container": "#fffbff",
+                        "on-tertiary-fixed": "#002113",
+                        "danger-red": "#EF4444",
+                        "surface-container-low": "#f4f3f2",
+                        "outline": "#76767c",
+                        "tertiary-container": "#002113",
+                        "on-surface": "#1a1c1c",
+                        "attention-amber": "#F59E0B",
+                        "surface-container": "#eeeeed",
+                        "outline-variant": "#c7c6cc",
+                        "primary-fixed": "#dfe2f3",
+                        "on-error-container": "#93000a",
+                        "surface-bright": "#faf9f8",
+                        "surface-variant": "#e3e2e1",
+                        "on-primary-container": "#808393",
+                        "surface-dim": "#dadad9",
+                        "surface": "#faf9f8",
+                        "border-subtle": "#E5E7EB"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-desktop": "40px",
+                        "container-max": "1280px",
+                        "base": "8px",
+                        "gutter": "24px",
+                        "margin-mobile": "20px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Manrope"],
+                        "label-md": ["Inter"],
+                        "label-caps": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "headline-lg-mobile": ["Manrope"],
+                        "body-lg": ["Inter"],
+                        "headline-md": ["Manrope"],
+                        "body-md": ["Inter"],
+                        "headline-xl": ["Manrope"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "fontWeight": "500" }],
+                        "label-caps": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "headline-lg-mobile": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-xl": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .bounding-box {
+            position: absolute;
+            border: 2px solid theme('colors.secondary');
+            background-color: rgba(75, 65, 225, 0.1);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border-radius: 4px;
+        }
+        .bounding-box:hover, .bounding-box.active {
+            background-color: rgba(75, 65, 225, 0.2);
+            box-shadow: 0 0 0 4px rgba(75, 65, 225, 0.1);
+        }
+        .bounding-box-amber {
+            border-color: theme('colors.attention-amber');
+            background-color: rgba(245, 158, 11, 0.1);
+        }
+        .bounding-box-amber:hover, .bounding-box-amber.active {
+            background-color: rgba(245, 158, 11, 0.2);
+            box-shadow: 0 0 0 4px rgba(245, 158, 11, 0.1);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen flex flex-col font-body-md overflow-hidden" data-page="ai_assisted_document_review_desktop.html">
+<!-- TopNavBar -->
+<nav class="bg-background border-b border-border-subtle w-full flex justify-between items-center px-margin-desktop py-4 mx-auto z-10 relative shadow-sm">
+<div class="flex items-center gap-4">
+<span class="font-headline-md text-headline-md font-bold text-primary">LegacyLock</span>
+<div class="h-6 w-px bg-border-subtle mx-2 hidden md:block"></div>
+<span class="font-label-md text-label-md text-on-surface-variant hidden md:block">Document Verification Protocol</span>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex gap-4">
+<button class="text-on-surface-variant hover:text-secondary transition-colors duration-200">
+<span class="material-symbols-outlined" data-icon="help_outline">help_outline</span>
+</button>
+<button class="text-on-surface-variant hover:text-secondary transition-colors duration-200">
+<span class="material-symbols-outlined" data-icon="security">security</span>
+</button>
+</div>
+<img alt="Nominee profile avatar" class="w-8 h-8 rounded-full border border-border-subtle object-cover" data-alt="A small circular avatar placeholder image showing a silhouetted profile on a light grey background, indicating user profile access in a secure professional web application." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAlHSYhELXH-JVyhlFn1Ad1krvajIMrf1LPCk6Ltef0o4uIaglvetREt-Xs-MLTOPZTWD4OU9eRClxi4G37H0CkeiQcWC6-5iwiySlUUuebtooG5CCM4XLwr4H6i087eDMkhcmsLpd0nV7O64W7Hu0ORBKEEyH_MtVBrbkMDHVMT-W8OhCVNGnrHVgpUtD0-7EAMjSLqbc132rwdR7Uhy5_DPW7s6lRir6t_XNifWMsue2OzsW2TF4w"/>
+</div>
+</nav>
+<!-- Main Content Area - Split Screen -->
+<main class="flex-1 flex flex-col md:flex-row overflow-hidden relative">
+<!-- Document Viewer (Left) -->
+<section class="flex-1 bg-surface-container-low border-r border-border-subtle flex flex-col relative overflow-hidden">
+<!-- Context Banner -->
+<div class="bg-surface-container-highest px-6 py-3 border-b border-border-subtle flex items-start gap-3 z-10">
+<span class="material-symbols-outlined text-attention-amber mt-0.5" data-icon="info">info</span>
+<div>
+<p class="font-label-md text-label-md text-on-surface">AI assists with extraction; a person must review before the dossier is finalized.</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Reviewing document 1 of 1: Official Death Certificate</p>
+</div>
+</div>
+<!-- Canvas Container -->
+<div class="flex-1 p-8 overflow-auto flex justify-center items-center bg-surface-container-low relative">
+<!-- Document Wrapper -->
+<div class="relative bg-surface-container-lowest shadow-sm border border-border-subtle w-full max-w-2xl min-h-[800px]" data-alt="A high resolution scan of a formal death certificate document, mostly white paper with intricate security borders. Sensitive personal details like names, dates, and addresses are heavily redacted with dark grey rectangular blocks to ensure absolute privacy in a security-focused context." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAcTJ87qyp-kI75oYO9KXsv-45N8xe1amGaX3LPxYQGsYUM90qvonKteaI0kcyTI-YmomgZ9pW-ICcxQieBHIJkK3sNw675SBvScMdeAMa8H9KQ6dWGQQ77V3pZXv-Rqmf5Jjz40fd-Z1Hwr8QMxKwrv4C_sjADfCE46XW3zmYCxhs6U23YIR_4z_Et8tqCYNkIql2Ueq5l7j7iapGgvH1XfD057-7hbzwbHkczJfX0BxDgzJ1op8fw'); background-size: cover; background-position: center;">
+<!-- Bounding Boxes Overlay (Simulated) -->
+<div class="absolute inset-0 pointer-events-none">
+<!-- Deceased Name Box -->
+<div class="bounding-box pointer-events-auto active" onclick="highlightField('field-name')" style="top: 25%; left: 15%; width: 45%; height: 5%;"></div>
+<!-- Date of Death Box -->
+<div class="bounding-box pointer-events-auto" onclick="highlightField('field-date')" style="top: 32%; left: 15%; width: 30%; height: 5%;"></div>
+<!-- Certificate Number Box (Amber/Uncertain) -->
+<div class="bounding-box bounding-box-amber pointer-events-auto" onclick="highlightField('field-cert')" style="top: 15%; left: 65%; width: 25%; height: 5%;"></div>
+<!-- Issuing Authority Box -->
+<div class="bounding-box pointer-events-auto" onclick="highlightField('field-auth')" style="top: 10%; left: 15%; width: 40%; height: 6%;"></div>
+</div>
+</div>
+<!-- Zoom Controls Overlay -->
+<div class="absolute bottom-6 right-6 bg-surface-container-lowest border border-border-subtle rounded-full shadow-sm flex items-center p-1">
+<button class="p-2 text-on-surface-variant hover:text-primary transition-colors rounded-full hover:bg-surface-container"><span class="material-symbols-outlined text-[20px]" data-icon="remove">remove</span></button>
+<span class="font-label-caps text-label-caps px-2 w-12 text-center text-on-surface-variant">100%</span>
+<button class="p-2 text-on-surface-variant hover:text-primary transition-colors rounded-full hover:bg-surface-container"><span class="material-symbols-outlined text-[20px]" data-icon="add">add</span></button>
+<div class="w-px h-6 bg-border-subtle mx-1"></div>
+<button class="p-2 text-on-surface-variant hover:text-primary transition-colors rounded-full hover:bg-surface-container"><span class="material-symbols-outlined text-[20px]" data-icon="fit_screen">fit_screen</span></button>
+</div>
+</div>
+</section>
+<!-- Verification Panel (Right) -->
+<aside class="w-full md:w-[450px] lg:w-[500px] bg-background flex flex-col h-full overflow-y-auto">
+<div class="p-6 border-b border-border-subtle">
+<h1 class="font-headline-md text-headline-md text-primary">Verification Panel</h1>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-2">Confirm extracted data fields against the original document.</p>
+</div>
+<div class="flex-1 p-6 space-y-6">
+<!-- Field: Deceased Name -->
+<div class="bg-surface-container-lowest border border-secondary shadow-[0_4px_20px_rgba(75,65,225,0.04)] rounded-lg p-5 transition-all duration-200" id="field-name">
+<div class="flex justify-between items-start mb-3">
+<label class="font-label-md text-label-md text-on-surface font-semibold">Deceased Name</label>
+<span class="inline-flex items-center gap-1 bg-surface-container-low text-secondary font-label-caps text-label-caps px-2 py-1 rounded">
+<span class="material-symbols-outlined text-[14px]" data-icon="check_circle">check_circle</span> High Confidence
+                        </span>
+</div>
+<div class="relative">
+<input class="w-full border-border-subtle rounded bg-background font-body-md text-body-md text-primary focus:border-secondary focus:ring-1 focus:ring-secondary py-2 px-3 transition-colors" readonly="" type="text" value="Eleanor R. Vance"/>
+</div>
+<div class="flex gap-2 mt-4 pt-4 border-t border-border-subtle">
+<button class="flex-1 bg-surface-container-low hover:bg-surface-container border border-border-subtle text-primary font-label-md text-label-md py-2 rounded transition-colors flex justify-center items-center gap-2">
+<span class="material-symbols-outlined text-[18px]" data-icon="edit">edit</span> Correct
+                        </button>
+<button class="flex-1 bg-secondary text-on-secondary font-label-md text-label-md py-2 rounded transition-colors shadow-sm flex justify-center items-center gap-2">
+<span class="material-symbols-outlined text-[18px]" data-icon="check">check</span> Confirm Field
+                        </button>
+</div>
+</div>
+<!-- Field: Date of Death -->
+<div class="bg-surface-container-lowest border border-border-subtle rounded-lg p-5 transition-all duration-200" id="field-date">
+<div class="flex justify-between items-start mb-3">
+<label class="font-label-md text-label-md text-on-surface font-semibold">Date of Death</label>
+<span class="inline-flex items-center gap-1 bg-surface-container-low text-secondary font-label-caps text-label-caps px-2 py-1 rounded">
+<span class="material-symbols-outlined text-[14px]" data-icon="check_circle">check_circle</span> High Confidence
+                        </span>
+</div>
+<div class="relative">
+<input class="w-full border-border-subtle rounded bg-background font-body-md text-body-md text-primary focus:border-secondary focus:ring-1 focus:ring-secondary py-2 px-3 transition-colors" readonly="" type="text" value="October 14, 2023"/>
+</div>
+<div class="flex gap-2 mt-4 pt-4 border-t border-border-subtle">
+<button class="flex-1 bg-surface-container-low hover:bg-surface-container border border-border-subtle text-primary font-label-md text-label-md py-2 rounded transition-colors flex justify-center items-center gap-2">
+<span class="material-symbols-outlined text-[18px]" data-icon="edit">edit</span> Correct
+                        </button>
+<button class="flex-1 bg-surface-container-lowest hover:bg-surface-container border border-secondary text-secondary font-label-md text-label-md py-2 rounded transition-colors flex justify-center items-center gap-2">
+<span class="material-symbols-outlined text-[18px]" data-icon="check">check</span> Confirm Field
+                        </button>
+</div>
+</div>
+<!-- Field: Certificate Number (Uncertain) -->
+<div class="bg-surface-container-lowest border border-attention-amber rounded-lg p-5 transition-all duration-200 relative overflow-hidden" id="field-cert">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-attention-amber"></div>
+<div class="flex justify-between items-start mb-3 pl-2">
+<label class="font-label-md text-label-md text-on-surface font-semibold">Certificate Number</label>
+<span class="inline-flex items-center gap-1 bg-[#fffbeb] text-attention-amber font-label-caps text-label-caps px-2 py-1 rounded">
+<span class="material-symbols-outlined text-[14px]" data-icon="warning">warning</span> Needs Confirmation
+                        </span>
+</div>
+<div class="relative pl-2">
+<input class="w-full border-attention-amber rounded bg-background font-body-md text-body-md text-primary focus:border-secondary focus:ring-1 focus:ring-secondary py-2 px-3 transition-colors" type="text" value="DC-8849-?2"/>
+<p class="font-body-sm text-body-sm text-attention-amber mt-2">Ambiguous character detected at position 8.</p>
+</div>
+<div class="flex gap-2 mt-4 pt-4 border-t border-border-subtle pl-2">
+<button class="flex-1 bg-surface-container-lowest hover:bg-surface-container border border-border-subtle text-on-surface-variant font-label-md text-label-md py-2 rounded transition-colors flex justify-center items-center gap-2">
+<span class="material-symbols-outlined text-[18px]" data-icon="help">help</span> Mark Uncertain
+                        </button>
+<button class="flex-1 bg-surface-container-lowest hover:bg-surface-container border border-border-subtle text-primary font-label-md text-label-md py-2 rounded transition-colors flex justify-center items-center gap-2">
+<span class="material-symbols-outlined text-[18px]" data-icon="edit">edit</span> Correct
+                        </button>
+<button class="flex-1 bg-surface-container-lowest hover:bg-surface-container border border-secondary text-secondary font-label-md text-label-md py-2 rounded transition-colors flex justify-center items-center gap-2">
+<span class="material-symbols-outlined text-[18px]" data-icon="check">check</span> Confirm
+                        </button>
+</div>
+</div>
+</div>
+<!-- Action Area -->
+<div class="p-6 border-t border-border-subtle bg-surface-container-lowest sticky bottom-0">
+<div class="flex flex-col gap-3">
+<button class="w-full bg-secondary text-on-secondary font-label-md text-label-md h-12 rounded transition-colors shadow-sm flex justify-center items-center gap-2 hover:bg-secondary-container">
+                        Finalize Extraction
+                    </button>
+<button class="w-full bg-surface-container-lowest hover:bg-surface-container border border-primary text-primary font-label-md text-label-md h-12 rounded transition-colors flex justify-center items-center gap-2">
+<span class="material-symbols-outlined text-[20px]" data-icon="assignment_ind">assignment_ind</span> Send to manual review
+                    </button>
+</div>
+</div>
+</aside>
+</main>
+<script>
+        function highlightField(fieldId) {
+            // Very basic interaction simulation
+            document.querySelectorAll('.bounding-box').forEach(box => box.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            // Scroll to field in panel
+            const panelField = document.getElementById(fieldId);
+            if(panelField) {
+                 panelField.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                 
+                 // Remove focus from all
+                 const allFields = document.querySelectorAll('aside .bg-surface-container-lowest');
+                 allFields.forEach(f => {
+                     f.classList.remove('border-secondary', 'shadow-[0_4px_20px_rgba(75,65,225,0.04)]');
+                     if(!f.classList.contains('border-attention-amber')) {
+                         f.classList.add('border-border-subtle');
+                     }
+                 });
+
+                 // Add focus to selected
+                 if(!panelField.classList.contains('border-attention-amber')) {
+                    panelField.classList.remove('border-border-subtle');
+                    panelField.classList.add('border-secondary', 'shadow-[0_4px_20px_rgba(75,65,225,0.04)]');
+                 }
+            }
+        }
+    </script>
+<script src="crypto.js"></script>
+<script src="app.js"></script>
+</body></html>

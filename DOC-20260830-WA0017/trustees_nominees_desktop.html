@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Trustees &amp; Nominees - LegacyLock</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Manrope:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "outline-variant": "#c7c6cc",
+                        "secondary-fixed": "#e2dfff",
+                        "on-secondary": "#ffffff",
+                        "primary-fixed": "#dfe2f3",
+                        "error-container": "#ffdad6",
+                        "verified-emerald": "#10B981",
+                        "surface-container-lowest": "#ffffff",
+                        "surface": "#faf9f8",
+                        "on-error-container": "#93000a",
+                        "primary-fixed-dim": "#c3c6d7",
+                        "surface-dim": "#dadad9",
+                        "attention-amber": "#F59E0B",
+                        "on-surface-variant": "#46464c",
+                        "background": "#faf9f8",
+                        "secondary-fixed-dim": "#c3c0ff",
+                        "on-primary-container": "#808393",
+                        "tertiary": "#000000",
+                        "on-primary-fixed-variant": "#434654",
+                        "primary-container": "#171b28",
+                        "surface-tint": "#5a5e6d",
+                        "on-secondary-container": "#fffbff",
+                        "on-secondary-fixed-variant": "#3323cc",
+                        "error": "#ba1a1a",
+                        "tertiary-fixed-dim": "#4edea3",
+                        "on-background": "#1a1c1c",
+                        "on-surface": "#1a1c1c",
+                        "danger-red": "#EF4444",
+                        "on-tertiary-fixed": "#002113",
+                        "inverse-on-surface": "#f1f0f0",
+                        "on-tertiary-fixed-variant": "#005236",
+                        "on-primary": "#ffffff",
+                        "surface-container-low": "#f4f3f2",
+                        "tertiary-fixed": "#6ffbbe",
+                        "inverse-surface": "#2f3130",
+                        "on-tertiary-container": "#009668",
+                        "surface-container-high": "#e9e8e7",
+                        "secondary": "#4b41e1",
+                        "inverse-primary": "#c3c6d7",
+                        "on-error": "#ffffff",
+                        "surface-bright": "#faf9f8",
+                        "surface-container": "#eeeeed",
+                        "on-primary-fixed": "#171b28",
+                        "on-secondary-fixed": "#0f0069",
+                        "surface-variant": "#e3e2e1",
+                        "secondary-container": "#645efb",
+                        "outline": "#76767c",
+                        "primary": "#000000",
+                        "tertiary-container": "#002113",
+                        "surface-container-highest": "#e3e2e1",
+                        "on-tertiary": "#ffffff",
+                        "border-subtle": "#E5E7EB"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "container-max": "1280px",
+                        "margin-desktop": "40px",
+                        "gutter": "24px",
+                        "margin-mobile": "20px",
+                        "base": "8px"
+                    },
+                    "fontFamily": {
+                        "label-md": ["Inter"],
+                        "headline-lg-mobile": ["Manrope"],
+                        "body-md": ["Inter"],
+                        "headline-md": ["Manrope"],
+                        "body-lg": ["Inter"],
+                        "headline-xl": ["Manrope"],
+                        "headline-lg": ["Manrope"],
+                        "body-sm": ["Inter"],
+                        "label-caps": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label-md": ["14px", { "lineHeight": "20px", "fontWeight": "500" }],
+                        "headline-lg-mobile": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "headline-xl": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "label-caps": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background antialiased selection:bg-secondary selection:text-on-secondary min-h-screen flex flex-col" data-page="trustees_nominees_desktop.html">
+<!-- TopAppBar -->
+<header class="bg-surface dark:bg-on-background docked full-width top-0 border-b border-border-subtle dark:border-outline-variant flat no shadows transition-all duration-200 z-50 sticky">
+<div class="flex justify-between items-center px-gutter py-4 w-full max-w-container-max mx-auto">
+<div class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed">LegacyLock</div>
+<div class="hidden md:flex gap-6 items-center">
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed hover:opacity-80 transition-opacity cursor-pointer active:scale-95" data-icon="shield_lock">shield_lock</span>
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed hover:opacity-80 transition-opacity cursor-pointer active:scale-95" data-icon="account_circle">account_circle</span>
+</div>
+<!-- Mobile Menu Trigger -->
+<button class="md:hidden text-primary">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</header>
+<div class="flex flex-1 relative">
+<!-- SideNavBar -->
+<nav class="hidden md:flex flex-col h-full w-64 fixed left-0 top-[73px] bg-surface-container-low dark:bg-surface-container-lowest border-r border-border-subtle dark:border-outline-variant py-8 px-4 gap-4 z-40 transition-colors duration-200">
+<div class="mb-8 px-4">
+<h2 class="font-label-md text-label-md text-on-surface-variant">Digital Estate</h2>
+<p class="font-body-sm text-body-sm text-outline mt-1">Tier: Platinum</p>
+</div>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant dark:text-outline hover:bg-surface-container-high dark:hover:bg-surface-variant hover:text-primary transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="vape_free">vape_free</span>
+<span class="font-label-md text-label-md">Vault</span>
+</a>
+<!-- Active Navigation Item based on context (Trustees & Nominees -> Beneficiaries) -->
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-secondary dark:text-secondary-fixed font-bold border-l-4 border-secondary bg-surface-container-high dark:bg-surface-variant transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="family_history" data-weight="fill" style="font-variation-settings: 'FILL' 1;">family_history</span>
+<span class="font-label-md text-label-md">Beneficiaries</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant dark:text-outline hover:bg-surface-container-high dark:hover:bg-surface-variant hover:text-primary transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="settings_backup_restore">settings_backup_restore</span>
+<span class="font-label-md text-label-md">Recovery</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant dark:text-outline hover:bg-surface-container-high dark:hover:bg-surface-variant hover:text-primary transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="security">security</span>
+<span class="font-label-md text-label-md">Security</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant dark:text-outline hover:bg-surface-container-high dark:hover:bg-surface-variant hover:text-primary transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-label-md text-label-md">Settings</span>
+</a>
+<div class="mt-auto pt-8">
+<button class="w-full bg-primary-container text-on-primary-container hover:opacity-80 transition-opacity font-label-md text-label-md py-3 rounded-lg flex justify-center items-center gap-2">
+<span class="material-symbols-outlined" data-icon="lock">lock</span>
+                    Lock Vault
+                </button>
+</div>
+</nav>
+<!-- Main Content -->
+<main class="flex-1 md:ml-64 p-gutter md:p-margin-desktop w-full max-w-container-max mx-auto min-h-screen">
+<!-- Page Header & Actions -->
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 mb-12">
+<div>
+<h1 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-background mb-2">Trustees &amp; Nominees</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">Manage the individuals who hold access to or inherit your digital estate.</p>
+</div>
+<button class="bg-secondary text-on-secondary h-[48px] px-6 rounded-lg font-label-md text-label-md hover:bg-secondary-container transition-colors shadow-[0_4px_20px_rgba(10,14,26,0.04)] flex items-center gap-2 shrink-0">
+<span class="material-symbols-outlined">person_add</span>
+                    Add Trusted Person
+                </button>
+</div>
+<div class="grid grid-cols-1 xl:grid-cols-12 gap-8">
+<!-- Main Content Column -->
+<div class="xl:col-span-8 flex flex-col gap-12">
+<!-- Section: Nominees -->
+<section>
+<h2 class="font-label-caps text-label-caps text-outline mb-4 uppercase tracking-wider">Nominees (Heirs)</h2>
+<div class="flex flex-col gap-4">
+<!-- Card 1 -->
+<div class="bg-surface-container-lowest border border-border-subtle rounded-xl p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4 transition-all hover:shadow-[0_4px_20px_rgba(10,14,26,0.04)]">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-primary-fixed flex items-center justify-center text-primary-fixed-dim font-headline-md text-headline-md">
+                                        EH
+                                    </div>
+<div>
+<div class="flex items-center gap-3 mb-1">
+<h3 class="font-label-md text-label-md text-on-background">Eleanor Hughes</h3>
+<span class="bg-verified-emerald/10 text-verified-emerald px-2 py-0.5 rounded-full font-label-caps text-label-caps flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">verified_user</span>
+                                                Verified
+                                            </span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Spouse • Receives access to 12 assets</p>
+</div>
+</div>
+<div class="text-right sm:text-right text-left">
+<p class="font-body-sm text-body-sm text-outline mb-1">Last active: Today</p>
+<button class="text-secondary font-label-md text-label-md hover:underline">Manage Access</button>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="bg-surface-container-lowest border border-border-subtle rounded-xl p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4 transition-all hover:shadow-[0_4px_20px_rgba(10,14,26,0.04)]">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant font-headline-md text-headline-md">
+                                        JH
+                                    </div>
+<div>
+<div class="flex items-center gap-3 mb-1">
+<h3 class="font-label-md text-label-md text-on-background">James Hughes</h3>
+<span class="bg-attention-amber/10 text-attention-amber px-2 py-0.5 rounded-full font-label-caps text-label-caps flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">pending</span>
+                                                Pending
+                                            </span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Child • Receives access to 12 assets</p>
+</div>
+</div>
+<div class="text-right sm:text-right text-left">
+<p class="font-body-sm text-body-sm text-outline mb-1">Last active: Never</p>
+<button class="text-secondary font-label-md text-label-md hover:underline">Resend Invite</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Section: Executors -->
+<section>
+<h2 class="font-label-caps text-label-caps text-outline mb-4 uppercase tracking-wider">Executors</h2>
+<div class="bg-surface-container-lowest border border-border-subtle rounded-xl p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4 transition-all hover:shadow-[0_4px_20px_rgba(10,14,26,0.04)] relative overflow-hidden">
+<!-- Subtle security accent -->
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-secondary opacity-50"></div>
+<div class="flex items-center gap-4 ml-2">
+<img class="w-12 h-12 rounded-full object-cover border border-border-subtle" data-alt="A professional headshot of a mature legal counsel with a neutral expression, wearing a dark suit against a minimalist light gray studio background. Crisp lighting, shallow depth of field, conveying trust and authority in a corporate setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCgi36FflJyw6tOzV3Yf_2z7hHynRfCEFJ8OoBu5wWWnxjXvuLygWTN58zqFX3D-PKfiugMuXRnUBoxUmGV1a069vOOkXnjPZJVZivexH71tLxs7Qc4vd-awqb-6_hZBvv1hA3mOP-v5lI5VoO1EuxZf3FmH7loL843CVYDVMA552NJcxsDg77Kvx2sWNqC9fIwRf6q5bFoDyOgkGfBYxAF0fdaz8_-EXEiuqG4_tY1rRRJV-f8CPeF"/>
+<div>
+<div class="flex items-center gap-3 mb-1">
+<h3 class="font-label-md text-label-md text-on-background">Robert Sterling, Esq.</h3>
+<span class="bg-verified-emerald/10 text-verified-emerald px-2 py-0.5 rounded-full font-label-caps text-label-caps flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">verified_user</span>
+                                            Verified
+                                        </span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-1">
+                                        Legal Counsel • <span class="material-symbols-outlined text-[16px] text-secondary">vpn_key</span> Controls release trigger
+                                    </p>
+</div>
+</div>
+<div class="text-right sm:text-right text-left">
+<p class="font-body-sm text-body-sm text-outline mb-1">Last active: 2 days ago</p>
+<button class="text-secondary font-label-md text-label-md hover:underline">View Policy</button>
+</div>
+</div>
+</section>
+<!-- Section: Professional Reviewers & Trusted Contacts (Grid) -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<!-- Professional Reviewers -->
+<section>
+<h2 class="font-label-caps text-label-caps text-outline mb-4 uppercase tracking-wider">Professional Reviewers</h2>
+<div class="bg-surface-container-low border border-border-subtle rounded-xl p-6 opacity-60 grayscale hover:grayscale-0 transition-all duration-300">
+<div class="flex items-start gap-4 mb-4">
+<div class="w-10 h-10 rounded bg-surface-container flex items-center justify-center text-outline">
+<span class="material-symbols-outlined">gavel</span>
+</div>
+<div>
+<div class="flex items-center gap-2 mb-1 flex-wrap">
+<h3 class="font-label-md text-label-md text-on-surface-variant line-through">Sarah Jenkins</h3>
+<span class="bg-surface-variant text-outline px-2 py-0.5 rounded-full font-label-caps text-label-caps">Revoked</span>
+</div>
+<p class="font-body-sm text-body-sm text-outline">Notary Public</p>
+</div>
+</div>
+<div class="pt-4 border-t border-border-subtle">
+<p class="font-body-sm text-body-sm text-outline">Last active: Oct 2023</p>
+</div>
+</div>
+</section>
+<!-- Trusted Contacts -->
+<section>
+<h2 class="font-label-caps text-label-caps text-outline mb-4 uppercase tracking-wider">Trusted Contacts</h2>
+<div class="bg-surface-container-lowest border border-border-subtle rounded-xl p-6 transition-all hover:shadow-[0_4px_20px_rgba(10,14,26,0.04)]">
+<div class="flex items-start gap-4 mb-4">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant font-label-md text-label-md">
+                                        MC
+                                    </div>
+<div>
+<div class="flex items-center gap-2 mb-1 flex-wrap">
+<h3 class="font-label-md text-label-md text-on-background">Marcus Chen</h3>
+<span class="bg-attention-amber/10 text-attention-amber px-2 py-0.5 rounded-full font-label-caps text-label-caps">Pending Invite</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Friend</p>
+</div>
+</div>
+<div class="pt-4 border-t border-border-subtle flex justify-between items-center">
+<p class="font-body-sm text-body-sm text-outline">Emergency Contact</p>
+<button class="text-secondary font-label-md text-label-md hover:underline">Manage</button>
+</div>
+</div>
+</section>
+</div>
+</div>
+<!-- Info Panel Column -->
+<aside class="xl:col-span-4">
+<div class="bg-surface-container-lowest border border-border-subtle rounded-xl p-6 sticky top-24">
+<div class="flex items-center gap-3 mb-6">
+<div class="w-10 h-10 rounded-full bg-secondary/10 flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined">info</span>
+</div>
+<h2 class="font-headline-md text-headline-md text-on-background">Why Roles Matter</h2>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6">Understanding the distinct permissions ensures your digital estate is managed securely and precisely according to your wishes.</p>
+<div class="space-y-6">
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-outline mt-1">family_restroom</span>
+<div>
+<h3 class="font-label-md text-label-md text-on-background mb-1">Nominees (Heirs)</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Individuals designated to receive access to specific assets after the release policy triggers.</p>
+</div>
+</div>
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-outline mt-1">gavel</span>
+<div>
+<h3 class="font-label-md text-label-md text-on-background mb-1">Executors (Managers)</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Trusted individuals legally empowered to manage the release process and verify triggering events.</p>
+</div>
+</div>
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-outline mt-1">contact_phone</span>
+<div>
+<h3 class="font-label-md text-label-md text-on-background mb-1">Trusted Contacts</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Monitors who receive "heartbeat" checks. They cannot access assets or trigger releases directly.</p>
+</div>
+</div>
+</div>
+<div class="mt-8 pt-6 border-t border-border-subtle">
+<a class="text-secondary font-label-md text-label-md hover:underline flex items-center gap-1" href="#">
+                                Read full security whitepaper
+                                <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+</div>
+</div>
+</aside>
+</div>
+</main>
+</div>
+<!-- Footer -->
+<footer class="bg-surface-container-highest dark:bg-surface-container-low w-full py-12 border-t border-border-subtle dark:border-outline-variant flat no shadows">
+<div class="flex flex-col items-center gap-4 max-w-container-max mx-auto px-gutter">
+<div class="font-label-caps text-label-caps text-on-surface-variant dark:text-outline mb-2">
+                © 2024 LegacyLock Digital Assets. Encrypted and Secured.
+            </div>
+<div class="flex gap-6 flex-wrap justify-center">
+<a class="font-body-sm text-body-sm text-on-surface-variant dark:text-outline hover:text-primary dark:hover:text-primary-fixed transition-colors duration-150" href="#">Privacy Policy</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant dark:text-outline hover:text-primary dark:hover:text-primary-fixed transition-colors duration-150" href="#">Terms of Service</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant dark:text-outline hover:text-primary dark:hover:text-primary-fixed transition-colors duration-150" href="#">Security Whitepaper</a>
+</div>
+</div>
+</footer>
+<script src="crypto.js"></script>
+<script src="app.js"></script>
+</body></html>

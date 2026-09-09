@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+
+<html class="h-full" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Upload Death Certificate - LegacyLock</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Manrope:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "tertiary": "#000000",
+                    "surface-container-lowest": "#ffffff",
+                    "tertiary-fixed-dim": "#4edea3",
+                    "on-primary": "#ffffff",
+                    "secondary-container": "#645efb",
+                    "primary-fixed": "#dfe2f3",
+                    "on-tertiary": "#ffffff",
+                    "verified-emerald": "#10B981",
+                    "primary-fixed-dim": "#c3c6d7",
+                    "danger-red": "#EF4444",
+                    "inverse-on-surface": "#f1f0f0",
+                    "on-surface": "#1a1c1c",
+                    "surface-variant": "#e3e2e1",
+                    "surface-container-high": "#e9e8e7",
+                    "on-secondary-fixed": "#0f0069",
+                    "inverse-primary": "#c3c6d7",
+                    "tertiary-container": "#002113",
+                    "surface-container-low": "#f4f3f2",
+                    "primary-container": "#171b28",
+                    "on-tertiary-container": "#009668",
+                    "primary": "#000000",
+                    "on-primary-fixed-variant": "#434654",
+                    "outline": "#76767c",
+                    "secondary": "#4b41e1",
+                    "inverse-surface": "#2f3130",
+                    "surface-tint": "#5a5e6d",
+                    "on-background": "#1a1c1c",
+                    "tertiary-fixed": "#6ffbbe",
+                    "on-tertiary-fixed": "#002113",
+                    "on-error-container": "#93000a",
+                    "surface": "#faf9f8",
+                    "error": "#ba1a1a",
+                    "on-primary-fixed": "#171b28",
+                    "background": "#faf9f8",
+                    "surface-bright": "#faf9f8",
+                    "on-surface-variant": "#46464c",
+                    "surface-container-highest": "#e3e2e1",
+                    "surface-container": "#eeeeed",
+                    "attention-amber": "#F59E0B",
+                    "on-primary-container": "#808393",
+                    "on-secondary": "#ffffff",
+                    "border-subtle": "#E5E7EB",
+                    "error-container": "#ffdad6",
+                    "secondary-fixed": "#e2dfff",
+                    "outline-variant": "#c7c6cc",
+                    "on-secondary-fixed-variant": "#3323cc",
+                    "secondary-fixed-dim": "#c3c0ff",
+                    "on-tertiary-fixed-variant": "#005236",
+                    "on-error": "#ffffff",
+                    "on-secondary-container": "#fffbff",
+                    "surface-dim": "#dadad9"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "container-max": "1280px",
+                    "margin-desktop": "40px",
+                    "margin-mobile": "20px",
+                    "base": "8px",
+                    "gutter": "24px"
+            },
+            "fontFamily": {
+                    "label-md": [
+                            "Inter"
+                    ],
+                    "headline-md": [
+                            "Manrope"
+                    ],
+                    "headline-xl": [
+                            "Manrope"
+                    ],
+                    "body-md": [
+                            "Inter"
+                    ],
+                    "headline-lg": [
+                            "Manrope"
+                    ],
+                    "body-lg": [
+                            "Inter"
+                    ],
+                    "body-sm": [
+                            "Inter"
+                    ],
+                    "headline-lg-mobile": [
+                            "Manrope"
+                    ],
+                    "label-caps": [
+                            "Inter"
+                    ]
+            },
+            "fontSize": {
+                    "label-md": [
+                            "14px",
+                            {
+                                    "lineHeight": "20px",
+                                    "fontWeight": "500"
+                            }
+                    ],
+                    "headline-md": [
+                            "24px",
+                            {
+                                    "lineHeight": "32px",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "headline-xl": [
+                            "48px",
+                            {
+                                    "lineHeight": "56px",
+                                    "letterSpacing": "-0.02em",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "body-md": [
+                            "16px",
+                            {
+                                    "lineHeight": "24px",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "headline-lg": [
+                            "32px",
+                            {
+                                    "lineHeight": "40px",
+                                    "letterSpacing": "-0.01em",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "body-lg": [
+                            "18px",
+                            {
+                                    "lineHeight": "28px",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "body-sm": [
+                            "14px",
+                            {
+                                    "lineHeight": "20px",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "headline-lg-mobile": [
+                            "24px",
+                            {
+                                    "lineHeight": "32px",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "label-caps": [
+                            "12px",
+                            {
+                                    "lineHeight": "16px",
+                                    "letterSpacing": "0.05em",
+                                    "fontWeight": "600"
+                            }
+                    ]
+            }
+    },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined.fill {
+            font-variation-settings: 'FILL' 1;
+        }
+        
+        /* Custom Upload Zone Styling */
+        .upload-zone {
+            border: 1px dashed theme('colors.outline-variant');
+            transition: all 0.3s ease;
+        }
+        .upload-zone:hover {
+            border-color: theme('colors.secondary');
+            background-color: theme('colors.surface-container-low');
+        }
+        .upload-zone.dragover {
+            border-color: theme('colors.secondary');
+            background-color: theme('colors.secondary-fixed');
+        }
+        
+        /* Input Styling */
+        .form-input {
+            border: 1px solid theme('colors.border-subtle');
+            border-radius: theme('borderRadius.DEFAULT');
+            padding: 0.5rem 0.75rem;
+            width: 100%;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+            background-color: theme('colors.surface-container-lowest');
+        }
+        .form-input:focus {
+            outline: none;
+            border-color: theme('colors.secondary');
+            box-shadow: 0 0 0 1px theme('colors.secondary');
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background h-full font-body-md flex flex-col" data-page="death_certificate_upload_desktop.html">
+<!-- Header / TopNavBar -->
+<header class="bg-background dark:bg-background full-width top-0 border-b border-border-subtle dark:border-outline-variant flat no shadows">
+<div class="flex justify-between items-center w-full px-margin-desktop py-4 max-w-container-max mx-auto">
+<div class="font-headline-md text-headline-md font-bold text-primary dark:text-on-primary-fixed flex items-center gap-2">
+<span class="material-symbols-outlined fill text-[28px]">lock</span>
+                LegacyLock
+            </div>
+<div class="flex items-center gap-4">
+<button class="text-on-surface-variant hover:text-secondary transition-colors duration-200">
+<span class="material-symbols-outlined" data-icon="help_outline">help_outline</span>
+</button>
+<button class="text-on-surface-variant hover:text-secondary transition-colors duration-200">
+<span class="material-symbols-outlined" data-icon="security">security</span>
+</button>
+<img alt="Nominee profile avatar" class="w-8 h-8 rounded-full object-cover border border-border-subtle" data-alt="A small circular profile avatar showing a professional looking person in a calm, modern setting, suitable for a secure digital vault application. High key lighting, minimalist aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD1VsKjhArE2b1A6wXk6Wj5ryLFPlptY5qahnt81r9Z2nadaTp1-g82AcjKchQRTnA_zy_Ev3CFwTlzrPq77me_nifhddVh4ETu5kYUW3qqnoQCTjwEwJCdjPQO7A-6sYp-XOvJHKKkHTHiLGCc3ktkRMMq-ax37JW9BZfQEzEOSQ0iCrdl_e_Ma4D3XLaELOwixME5aOQAymDK7ek1Rk4iXV7QTlCTVrKSWvYQSOr5jYgFvqBIVHXJ"/>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-1 overflow-y-auto px-margin-mobile md:px-margin-desktop py-gutter md:py-[48px]">
+<div class="max-w-[800px] mx-auto">
+<!-- Page Header -->
+<div class="mb-8">
+<h1 class="font-headline-xl text-headline-xl text-primary mb-4">Upload Death Certificate</h1>
+<div class="bg-surface-container-low p-4 rounded-lg border border-border-subtle flex gap-3 items-start">
+<span class="material-symbols-outlined text-on-surface-variant mt-0.5">info</span>
+<p class="font-body-md text-body-md text-on-surface-variant">
+                        Uploading a certificate initiates a formal verification review. This is a manual process and does not automatically unlock any vault assets.
+                    </p>
+</div>
+</div>
+<!-- Upload Layout: Left Form, Right Upload Zone (on desktop) -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-[32px]">
+<!-- Form Section -->
+<div class="space-y-6">
+<div>
+<label class="block font-label-md text-label-md text-primary mb-1" for="deceasedName">Deceased Person's Full Name</label>
+<input class="form-input font-body-md text-body-md text-on-surface" id="deceasedName" placeholder="e.g. John Doe" type="text"/>
+</div>
+<div>
+<label class="block font-label-md text-label-md text-primary mb-1" for="issuingAuthority">Issuing Authority</label>
+<input class="form-input font-body-md text-body-md text-on-surface" id="issuingAuthority" placeholder="e.g. King County, Washington" type="text"/>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">County, State, or relevant government body.</p>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div>
+<label class="block font-label-md text-label-md text-primary mb-1" for="certificateDate">Certificate Date</label>
+<input class="form-input font-body-md text-body-md text-on-surface" id="certificateDate" type="date"/>
+</div>
+<div>
+<label class="block font-label-md text-label-md text-primary mb-1" for="documentLanguage">Document Language</label>
+<select class="form-input font-body-md text-body-md text-on-surface appearance-none bg-[url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%2376767c%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpolyline%20points%3D%226%209%2012%2015%2018%209%22%3E%3C%2Fpolyline%3E%3C%2Fsvg%3E')] bg-no-repeat bg-[position:right_0.5rem_center] bg-[size:1.5em_1.5em] pr-8" id="documentLanguage">
+<option>English</option>
+<option>Spanish</option>
+<option>French</option>
+<option>Other</option>
+</select>
+</div>
+</div>
+<div>
+<label class="block font-label-md text-label-md text-primary mb-1" for="optionalNotes">Optional Notes</label>
+<textarea class="form-input font-body-md text-body-md text-on-surface resize-none" id="optionalNotes" placeholder="Any additional context for the review team..." rows="3"></textarea>
+</div>
+</div>
+<!-- Upload & States Section -->
+<div class="flex flex-col gap-6">
+<!-- Primary Upload Zone -->
+<div class="upload-zone rounded-xl p-8 flex flex-col items-center justify-center text-center cursor-pointer min-h-[240px] bg-surface-container-lowest" id="uploadZone">
+<div class="w-12 h-12 rounded-full bg-surface-container flex items-center justify-center mb-4 text-on-surface-variant">
+<span class="material-symbols-outlined text-[28px]">upload_file</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-primary mb-2">Select or drag document</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-6">PDF, JPG, PNG up to 10MB</p>
+<button class="bg-secondary text-on-primary font-label-md text-label-md px-6 py-0 h-[44px] rounded flex items-center justify-center transition-colors hover:bg-secondary-container" type="button">
+                            Browse Files
+                        </button>
+</div>
+<!-- Trust Strip -->
+<div class="flex items-center gap-2 p-3 bg-surface rounded-lg border border-border-subtle">
+<span class="material-symbols-outlined text-verified-emerald fill">shield</span>
+<p class="font-label-caps text-label-caps text-on-surface-variant">ZERO-KNOWLEDGE ENCRYPTION ENABLED</p>
+</div>
+</div>
+</div>
+<!-- Privacy Text & Actions -->
+<div class="mt-8 pt-8 border-t border-border-subtle flex flex-col md:flex-row md:items-center justify-between gap-6">
+<p class="font-body-sm text-body-sm text-on-surface-variant max-w-md">
+                    Documents are stored in your private, zero-knowledge vault and are only accessible by authorized compliance officers during the review period.
+                </p>
+<div class="flex gap-4 items-center">
+<button class="border border-primary text-primary font-label-md text-label-md px-4 h-[44px] rounded flex items-center justify-center transition-colors hover:bg-surface-container-low" type="button">
+                        Contact Support
+                    </button>
+<button class="bg-secondary text-on-primary font-label-md text-label-md px-6 h-[44px] rounded flex items-center justify-center transition-colors hover:bg-secondary-container opacity-50 cursor-not-allowed" type="button">
+                        Submit Document
+                    </button>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-background dark:bg-background full-width bottom-0 border-t border-border-subtle dark:border-outline-variant flat no shadows mt-auto">
+<div class="flex flex-col md:flex-row justify-between items-center w-full px-margin-desktop py-gutter max-w-container-max mx-auto gap-4">
+<div class="font-headline-md text-headline-md font-bold text-primary">LegacyLock</div>
+<div class="flex gap-6">
+<a class="font-label-md text-label-md text-on-surface-variant dark:text-on-primary-container hover:text-secondary dark:hover:text-secondary-fixed transition-colors opacity-80 hover:opacity-100 duration-200" href="#">Security Overview</a>
+<a class="font-label-md text-label-md text-on-surface-variant dark:text-on-primary-container hover:text-secondary dark:hover:text-secondary-fixed transition-colors opacity-80 hover:opacity-100 duration-200" href="#">Terms of Service</a>
+<a class="font-label-md text-label-md text-on-surface-variant dark:text-on-primary-container hover:text-secondary dark:hover:text-secondary-fixed transition-colors opacity-80 hover:opacity-100 duration-200" href="#">Help Center</a>
+</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">© 2024 LegacyLock Digital Estates. All rights reserved.</div>
+</div>
+</footer>
+<script>
+        // Simple drag and drop visual interaction for the upload zone
+        const uploadZone = document.getElementById('uploadZone');
+
+        ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+            uploadZone.addEventListener(eventName, preventDefaults, false);
+        });
+
+        function preventDefaults (e) {
+            e.preventDefault();
+            e.stopPropagation();
+        }
+
+        ['dragenter', 'dragover'].forEach(eventName => {
+            uploadZone.addEventListener(eventName, highlight, false);
+        });
+
+        ['dragleave', 'drop'].forEach(eventName => {
+            uploadZone.addEventListener(eventName, unhighlight, false);
+        });
+
+        function highlight(e) {
+            uploadZone.classList.add('dragover');
+        }
+
+        function unhighlight(e) {
+            uploadZone.classList.remove('dragover');
+        }
+    </script>
+<script src="crypto.js"></script>
+<script src="app.js"></script>
+</body></html>

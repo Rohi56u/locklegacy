@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Invite a Trusted Person | LegacyLock</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Manrope:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "primary-fixed-dim": "#c3c6d7",
+                      "secondary": "#4b41e1",
+                      "surface-variant": "#e3e2e1",
+                      "background": "#faf9f8",
+                      "surface-container": "#eeeeed",
+                      "primary": "#000000",
+                      "surface-tint": "#5a5e6d",
+                      "on-secondary-fixed": "#0f0069",
+                      "tertiary": "#000000",
+                      "tertiary-container": "#002113",
+                      "on-secondary-fixed-variant": "#3323cc",
+                      "surface": "#faf9f8",
+                      "surface-container-lowest": "#ffffff",
+                      "on-secondary": "#ffffff",
+                      "outline": "#76767c",
+                      "on-tertiary": "#ffffff",
+                      "outline-variant": "#c7c6cc",
+                      "error-container": "#ffdad6",
+                      "surface-bright": "#faf9f8",
+                      "on-primary-fixed": "#171b28",
+                      "on-tertiary-fixed": "#002113",
+                      "on-tertiary-container": "#009668",
+                      "on-primary-fixed-variant": "#434654",
+                      "secondary-container": "#645efb",
+                      "on-primary": "#ffffff",
+                      "danger-red": "#EF4444",
+                      "surface-container-high": "#e9e8e7",
+                      "tertiary-fixed-dim": "#4edea3",
+                      "inverse-surface": "#2f3130",
+                      "primary-fixed": "#dfe2f3",
+                      "on-background": "#1a1c1c",
+                      "on-surface-variant": "#46464c",
+                      "secondary-fixed-dim": "#c3c0ff",
+                      "on-secondary-container": "#fffbff",
+                      "on-error": "#ffffff",
+                      "surface-container-highest": "#e3e2e1",
+                      "on-primary-container": "#808393",
+                      "attention-amber": "#F59E0B",
+                      "on-surface": "#1a1c1c",
+                      "on-tertiary-fixed-variant": "#005236",
+                      "on-error-container": "#93000a",
+                      "inverse-on-surface": "#f1f0f0",
+                      "secondary-fixed": "#e2dfff",
+                      "surface-container-low": "#f4f3f2",
+                      "surface-dim": "#dadad9",
+                      "border-subtle": "#E5E7EB",
+                      "error": "#ba1a1a",
+                      "inverse-primary": "#c3c6d7",
+                      "primary-container": "#171b28",
+                      "verified-emerald": "#10B981",
+                      "tertiary-fixed": "#6ffbbe"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "margin-mobile": "20px",
+                      "base": "8px",
+                      "margin-desktop": "40px",
+                      "container-max": "1280px",
+                      "gutter": "24px"
+              },
+              "fontFamily": {
+                      "headline-md": ["Manrope"],
+                      "headline-lg-mobile": ["Manrope"],
+                      "label-caps": ["Inter"],
+                      "headline-lg": ["Manrope"],
+                      "body-lg": ["Inter"],
+                      "headline-xl": ["Manrope"],
+                      "body-md": ["Inter"],
+                      "label-md": ["Inter"],
+                      "body-sm": ["Inter"]
+              },
+              "fontSize": {
+                      "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                      "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                      "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                      "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                      "headline-xl": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+                      "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}]
+              }
+            }
+          }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background min-h-screen flex flex-col antialiased" data-page="invite_trusted_person_desktop.html">
+<header class="bg-surface border-b border-outline-variant sticky w-full top-0 z-50">
+<div class="max-w-container-max mx-auto px-margin-desktop flex justify-between items-center h-12">
+<div class="flex items-center gap-8">
+<a class="text-headline-md font-headline-md text-primary flex items-center gap-2" href="#">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">shield</span>
+                    LegacyLock
+                </a>
+<nav class="hidden md:flex items-center gap-6">
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-secondary transition-colors duration-200" href="#">Product</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-secondary transition-colors duration-200" href="#">Security</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-secondary transition-colors duration-200" href="#">Pricing</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-secondary transition-colors duration-200" href="#">Support</a>
+</nav>
+</div>
+<div class="flex items-center">
+<button class="flex items-center gap-2 font-label-md text-label-md text-secondary hover:text-secondary transition-colors duration-200 scale-95 active:opacity-80 transition-all">
+                    Secure Login
+                    <span class="material-symbols-outlined text-secondary">lock</span>
+</button>
+</div>
+</div>
+</header>
+<main class="flex-grow max-w-container-max mx-auto w-full px-margin-mobile md:px-margin-desktop py-12 md:py-16">
+<div class="max-w-3xl lg:max-w-none mx-auto grid grid-cols-1 lg:grid-cols-12 gap-gutter lg:gap-16">
+<div class="lg:col-span-7 flex flex-col">
+<div class="mb-12">
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile md:font-headline-xl md:text-headline-xl text-primary mb-4">Invite a Trusted Person</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Designate someone to help manage or inherit your digital estate. No access is granted until a release policy is triggered.</p>
+</div>
+<form class="flex flex-col gap-8">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="flex flex-col gap-2">
+<label class="font-label-md text-label-md text-primary" for="fullName">Full Name</label>
+<input class="h-12 w-full border border-border-subtle rounded-DEFAULT bg-surface text-on-surface px-4 font-body-md focus:border-secondary focus:ring-1 focus:ring-secondary outline-none transition-colors shadow-sm" id="fullName" placeholder="e.g. Jane Doe" type="text"/>
+</div>
+<div class="flex flex-col gap-2">
+<label class="font-label-md text-label-md text-primary" for="contactInfo">Email or Phone</label>
+<input class="h-12 w-full border border-border-subtle rounded-DEFAULT bg-surface text-on-surface px-4 font-body-md focus:border-secondary focus:ring-1 focus:ring-secondary outline-none transition-colors shadow-sm" id="contactInfo" placeholder="name@example.com" type="text"/>
+</div>
+</div>
+<div class="flex flex-col gap-4">
+<label class="font-label-md text-label-md text-primary">Role Selector</label>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+<label class="cursor-pointer relative block rounded-lg border border-border-subtle bg-surface p-4 hover:border-secondary transition-colors group">
+<input class="peer sr-only" name="role" type="radio" value="nominee"/>
+<div class="absolute inset-0 rounded-lg border border-transparent peer-checked:border-secondary peer-checked:bg-secondary/5 pointer-events-none transition-all"></div>
+<div class="relative z-10 flex flex-col gap-1">
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-on-surface-variant peer-checked:text-secondary group-hover:text-secondary transition-colors">person</span>
+<span class="font-label-md text-label-md text-primary">Nominee</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Standard beneficiary for specific asset allocation.</p>
+</div>
+</label>
+<label class="cursor-pointer relative block rounded-lg border border-border-subtle bg-surface p-4 hover:border-secondary transition-colors group">
+<input checked="" class="peer sr-only" name="role" type="radio" value="executor"/>
+<div class="absolute inset-0 rounded-lg border border-transparent peer-checked:border-secondary peer-checked:bg-secondary/5 pointer-events-none transition-all shadow-[0_4px_20px_rgba(10,14,26,0.04)]"></div>
+<div class="relative z-10 flex flex-col gap-1">
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-on-surface-variant peer-checked:text-secondary group-hover:text-secondary transition-colors">gavel</span>
+<span class="font-label-md text-label-md text-primary">Executor</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Full administrative control upon policy trigger.</p>
+</div>
+</label>
+<label class="cursor-pointer relative block rounded-lg border border-border-subtle bg-surface p-4 hover:border-secondary transition-colors group">
+<input class="peer sr-only" name="role" type="radio" value="reviewer"/>
+<div class="absolute inset-0 rounded-lg border border-transparent peer-checked:border-secondary peer-checked:bg-secondary/5 pointer-events-none transition-all"></div>
+<div class="relative z-10 flex flex-col gap-1">
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-on-surface-variant peer-checked:text-secondary group-hover:text-secondary transition-colors">verified_user</span>
+<span class="font-label-md text-label-md text-primary">Professional Reviewer</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Legal or financial counsel with audit rights.</p>
+</div>
+</label>
+<label class="cursor-pointer relative block rounded-lg border border-border-subtle bg-surface p-4 hover:border-secondary transition-colors group">
+<input class="peer sr-only" name="role" type="radio" value="contact"/>
+<div class="absolute inset-0 rounded-lg border border-transparent peer-checked:border-secondary peer-checked:bg-secondary/5 pointer-events-none transition-all"></div>
+<div class="relative z-10 flex flex-col gap-1">
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-on-surface-variant peer-checked:text-secondary group-hover:text-secondary transition-colors">contact_support</span>
+<span class="font-label-md text-label-md text-primary">Trusted Contact</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Emergency point of contact for verification only.</p>
+</div>
+</label>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="flex flex-col gap-2 relative">
+<label class="font-label-md text-label-md text-primary" for="relationship">Relationship</label>
+<select class="h-12 w-full border border-border-subtle rounded-DEFAULT bg-surface text-on-surface px-4 font-body-md focus:border-secondary focus:ring-1 focus:ring-secondary outline-none transition-colors appearance-none shadow-sm cursor-pointer" id="relationship">
+<option disabled="" selected="" value="">Select relationship</option>
+<option value="spouse">Spouse</option>
+<option value="child">Child</option>
+<option value="parent">Parent</option>
+<option value="sibling">Sibling</option>
+<option value="counsel">Legal Counsel</option>
+<option value="executor">Executor</option>
+<option value="friend">Friend</option>
+<option value="other">Other</option>
+</select>
+<span class="material-symbols-outlined absolute right-4 top-[42px] pointer-events-none text-on-surface-variant">expand_more</span>
+</div>
+<div class="flex flex-col gap-2 relative">
+<label class="font-label-md text-label-md text-primary" for="country">Country</label>
+<select class="h-12 w-full border border-border-subtle rounded-DEFAULT bg-surface text-on-surface px-4 font-body-md focus:border-secondary focus:ring-1 focus:ring-secondary outline-none transition-colors appearance-none shadow-sm cursor-pointer" id="country">
+<option disabled="" selected="" value="">Select country</option>
+<option value="us">United States</option>
+<option value="uk">United Kingdom</option>
+<option value="ca">Canada</option>
+<option value="au">Australia</option>
+<option value="other">Other</option>
+</select>
+<span class="material-symbols-outlined absolute right-4 top-[42px] pointer-events-none text-on-surface-variant">expand_more</span>
+</div>
+</div>
+<div class="flex flex-col gap-2 relative">
+<label class="font-label-md text-label-md text-primary" for="permissionTemplate">Permission Template</label>
+<select class="h-12 w-full border border-border-subtle rounded-DEFAULT bg-surface text-on-surface px-4 font-body-md focus:border-secondary focus:ring-1 focus:ring-secondary outline-none transition-colors appearance-none shadow-sm cursor-pointer" id="permissionTemplate">
+<option value="standard">Standard</option>
+<option value="limited">Limited</option>
+<option value="full">Full Discovery</option>
+</select>
+<span class="material-symbols-outlined absolute right-4 top-[42px] pointer-events-none text-on-surface-variant">expand_more</span>
+</div>
+<div class="flex flex-col gap-2">
+<label class="font-label-md text-label-md text-primary flex justify-between" for="message">
+<span>Personal Message</span>
+<span class="text-on-surface-variant font-normal">Optional</span>
+</label>
+<textarea class="w-full border border-border-subtle rounded-DEFAULT bg-surface text-on-surface p-4 font-body-md focus:border-secondary focus:ring-1 focus:ring-secondary outline-none transition-colors shadow-sm resize-none" id="message" placeholder="Add a personal note to this invitation..." rows="4"></textarea>
+</div>
+<div class="pt-6 flex flex-col sm:flex-row items-center gap-4 border-t border-border-subtle">
+<button class="w-full sm:w-auto bg-secondary text-on-secondary h-[48px] px-8 rounded-DEFAULT font-label-md text-label-md hover:bg-secondary-container transition-colors flex items-center justify-center gap-2" type="button">
+                            Send secure invitation
+                            <span class="material-symbols-outlined text-[20px]">send</span>
+</button>
+<a class="w-full sm:w-auto h-[48px] px-8 rounded-DEFAULT border border-primary text-primary font-label-md text-label-md hover:bg-surface-container transition-colors flex items-center justify-center" href="#">
+                            Cancel
+                        </a>
+</div>
+</form>
+</div>
+<div class="lg:col-span-5 flex flex-col gap-6 lg:sticky lg:top-24 self-start mt-12 lg:mt-0">
+<div class="bg-surface border border-border-subtle rounded-[20px] overflow-hidden shadow-[0_4px_20px_rgba(10,14,26,0.02)]">
+<div class="p-6 border-b border-border-subtle bg-surface-container-low relative">
+<div class="flex items-center gap-2 mb-1 relative z-10">
+<span class="material-symbols-outlined text-secondary">policy</span>
+<h3 class="font-headline-md text-headline-md text-primary">Visual Permission Preview</h3>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant relative z-10">Based on standard Executor template</p>
+</div>
+<div class="p-6 flex flex-col gap-4 bg-surface-container-lowest">
+<div class="flex items-center gap-4 p-3 rounded-lg bg-surface-container-low border border-border-subtle">
+<div class="w-10 h-10 rounded-full bg-secondary/10 flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-secondary">database</span>
+</div>
+<div>
+<h4 class="font-label-md text-label-md text-primary">Discovery Metadata</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">e.g., Bank Name, Account Type</p>
+</div>
+<span class="material-symbols-outlined text-verified-emerald ml-auto" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<div class="flex items-center gap-4 p-3 rounded-lg bg-surface-container-low border border-border-subtle">
+<div class="w-10 h-10 rounded-full bg-secondary/10 flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-secondary">description</span>
+</div>
+<div>
+<h4 class="font-label-md text-label-md text-primary">Supporting Documents</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Encrypted until triggered</p>
+</div>
+<span class="material-symbols-outlined text-verified-emerald ml-auto" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<div class="flex items-center gap-4 p-3 rounded-lg bg-surface-container-low border border-border-subtle">
+<div class="w-10 h-10 rounded-full bg-secondary/10 flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-secondary">integration_instructions</span>
+</div>
+<div>
+<h4 class="font-label-md text-label-md text-primary">Claim Instructions</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Step-by-step guidance</p>
+</div>
+<span class="material-symbols-outlined text-verified-emerald ml-auto" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<div class="mt-4 pt-4 border-t border-border-subtle flex items-center justify-between">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider">Current State</span>
+<div class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-surface-container-high border border-border-subtle">
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant" style="font-variation-settings: 'FILL' 1;">lock</span>
+<span class="font-label-md text-label-md text-on-surface-variant">No Access (Locked)</span>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-surface-container-low border border-border-subtle rounded-[20px] p-6 flex items-start gap-4">
+<span class="material-symbols-outlined text-secondary mt-1" style="font-variation-settings: 'FILL' 1;">shield_lock</span>
+<div>
+<h4 class="font-label-md text-label-md text-primary mb-1">Security Guardrail</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+                            This invitee will <strong class="text-primary font-medium">NOT</strong> have access to your vault contents. Access is only provisioned after a verified release policy trigger and rigorous identity verification.
+                        </p>
+</div>
+</div>
+</div>
+</div>
+</main>
+<footer class="bg-surface-container-low border-t border-outline-variant mt-auto w-full">
+<div class="max-w-container-max mx-auto px-margin-desktop py-8 flex flex-col md:flex-row justify-between items-center gap-base">
+<div class="flex flex-col md:flex-row items-center gap-4 md:gap-8">
+<span class="text-label-caps font-label-caps text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">shield</span>
+                    LegacyLock
+                </span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">
+                    © 2024 LegacyLock. Your digital estate is secured with AES-256 encryption.
+                </span>
+</div>
+<nav class="flex items-center gap-6">
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-secondary underline transition-all opacity-90 hover:opacity-100" href="#">Privacy Policy</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-secondary underline transition-all opacity-90 hover:opacity-100" href="#">Terms of Service</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-secondary underline transition-all opacity-90 hover:opacity-100" href="#">Security Audit</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-secondary underline transition-all opacity-90 hover:opacity-100" href="#">Status</a>
+</nav>
+</div>
+</footer>
+<script src="crypto.js"></script>
+<script src="app.js"></script>
+</body></html>

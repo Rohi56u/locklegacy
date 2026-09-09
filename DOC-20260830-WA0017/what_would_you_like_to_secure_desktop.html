@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>What would you like to secure? - LegacyLock</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "outline-variant": "#c7c6cc",
+                        "primary-container": "#171b28",
+                        "surface-container-low": "#f4f3f2",
+                        "on-surface-variant": "#46464c",
+                        "secondary-fixed-dim": "#c3c0ff",
+                        "on-tertiary": "#ffffff",
+                        "verified-emerald": "#10B981",
+                        "surface-tint": "#5a5e6d",
+                        "primary": "#000000",
+                        "on-primary": "#ffffff",
+                        "primary-fixed": "#dfe2f3",
+                        "error-container": "#ffdad6",
+                        "outline": "#76767c",
+                        "on-secondary-container": "#fffbff",
+                        "on-surface": "#1a1c1c",
+                        "surface": "#faf9f8",
+                        "on-background": "#1a1c1c",
+                        "inverse-surface": "#2f3130",
+                        "secondary-fixed": "#e2dfff",
+                        "error": "#ba1a1a",
+                        "inverse-on-surface": "#f1f0f0",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary-fixed-variant": "#434654",
+                        "border-subtle": "#E5E7EB",
+                        "surface-bright": "#faf9f8",
+                        "on-error-container": "#93000a",
+                        "primary-fixed-dim": "#c3c6d7",
+                        "surface-dim": "#dadad9",
+                        "surface-container-highest": "#e3e2e1",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary-fixed": "#002113",
+                        "surface-container": "#eeeeed",
+                        "danger-red": "#EF4444",
+                        "attention-amber": "#F59E0B",
+                        "surface-container-high": "#e9e8e7",
+                        "on-tertiary-container": "#009668",
+                        "tertiary-container": "#002113",
+                        "tertiary": "#000000",
+                        "on-primary-container": "#808393",
+                        "tertiary-fixed": "#6ffbbe",
+                        "on-primary-fixed": "#171b28",
+                        "on-error": "#ffffff",
+                        "secondary-container": "#645efb",
+                        "on-tertiary-fixed-variant": "#005236",
+                        "secondary": "#4b41e1",
+                        "tertiary-fixed-dim": "#4edea3",
+                        "background": "#faf9f8",
+                        "surface-variant": "#e3e2e1",
+                        "inverse-primary": "#c3c6d7",
+                        "on-secondary-fixed": "#0f0069",
+                        "on-secondary-fixed-variant": "#3323cc"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "24px",
+                        "margin-desktop": "40px",
+                        "base": "8px",
+                        "margin-mobile": "20px",
+                        "container-max": "1280px"
+                    },
+                    "fontFamily": {
+                        "label-md": ["Inter"],
+                        "label-caps": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-lg": ["Manrope"],
+                        "body-lg": ["Inter"],
+                        "headline-lg-mobile": ["Manrope"],
+                        "headline-xl": ["Manrope"],
+                        "headline-md": ["Manrope"],
+                        "body-sm": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label-md": ["14px", { "lineHeight": "20px", "fontWeight": "500" }],
+                        "label-caps": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "headline-lg-mobile": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "headline-xl": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .icon-container {
+            background-color: rgba(10, 14, 26, 0.1);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background antialiased min-h-screen flex flex-col pt-16" data-page="what_would_you_like_to_secure_desktop.html">
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin-mobile md:px-margin-desktop h-16 bg-surface dark:bg-primary-container border-b border-border-subtle dark:border-outline-variant flat no shadows transition-all duration-200 active:scale-95">
+<div class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed">LegacyLock</div>
+<nav class="hidden md:flex gap-6">
+<!-- Suppressed generic navigation to focus on the task -->
+</nav>
+<button class="font-label-md text-label-md text-primary dark:text-on-primary-fixed hover:opacity-80 transition-opacity flex items-center gap-2">
+            Log In <span class="material-symbols-outlined" data-icon="login">login</span>
+</button>
+</header>
+<main class="flex-grow flex flex-col items-center justify-start px-margin-mobile md:px-margin-desktop py-12">
+<div class="w-full max-w-container-max flex flex-col gap-[48px]">
+<!-- Header Section -->
+<div class="text-center max-w-2xl mx-auto space-y-4">
+<h1 class="font-headline-xl text-headline-xl text-primary">What would you like to secure?</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Select the categories you'd like to organize first. We'll guide you step-by-step to build a comprehensive digital estate.</p>
+</div>
+<!-- Recommendation Banner -->
+<div class="bg-surface-container-low rounded-xl p-6 border border-border-subtle flex items-start gap-4 mx-auto max-w-3xl">
+<div class="w-10 h-10 rounded-full bg-secondary-fixed flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-secondary" data-icon="lightbulb">lightbulb</span>
+</div>
+<div>
+<h3 class="font-label-md text-label-md font-semibold text-primary mb-1">Guided Recommendation</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Start with the assets your family would struggle to discover, such as digital logins or hidden accounts.</p>
+</div>
+</div>
+<!-- Categories Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-[24px]">
+<!-- Card 1 -->
+<button class="bg-surface-container-lowest border border-border-subtle rounded-xl p-6 flex items-start gap-4 text-left hover:shadow-[0_4px_20px_rgba(10,14,26,0.04)] transition-all duration-300 focus:border-secondary focus:ring-1 focus:ring-secondary focus:outline-none group">
+<div class="icon-container w-12 h-12 rounded-lg flex items-center justify-center shrink-0 group-hover:bg-secondary-fixed group-hover:text-secondary transition-colors">
+<span class="material-symbols-outlined text-2xl" data-icon="account_balance" style="font-variation-settings: 'FILL' 1;">account_balance</span>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md text-primary mb-2 group-hover:text-secondary transition-colors">Financial Accounts</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Bank details, investments, and insurance policies.</p>
+</div>
+</button>
+<!-- Card 2 -->
+<button class="bg-surface-container-lowest border border-border-subtle rounded-xl p-6 flex items-start gap-4 text-left hover:shadow-[0_4px_20px_rgba(10,14,26,0.04)] transition-all duration-300 focus:border-secondary focus:ring-1 focus:ring-secondary focus:outline-none group">
+<div class="icon-container w-12 h-12 rounded-lg flex items-center justify-center shrink-0 group-hover:bg-secondary-fixed group-hover:text-secondary transition-colors">
+<span class="material-symbols-outlined text-2xl" data-icon="gavel" style="font-variation-settings: 'FILL' 1;">gavel</span>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md text-primary mb-2 group-hover:text-secondary transition-colors">Legal Documents</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Wills, trusts, and power of attorney.</p>
+</div>
+</button>
+<!-- Card 3 -->
+<button class="bg-surface-container-lowest border border-border-subtle rounded-xl p-6 flex items-start gap-4 text-left hover:shadow-[0_4px_20px_rgba(10,14,26,0.04)] transition-all duration-300 focus:border-secondary focus:ring-1 focus:ring-secondary focus:outline-none group">
+<div class="icon-container w-12 h-12 rounded-lg flex items-center justify-center shrink-0 group-hover:bg-secondary-fixed group-hover:text-secondary transition-colors">
+<span class="material-symbols-outlined text-2xl" data-icon="cloud" style="font-variation-settings: 'FILL' 1;">cloud</span>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md text-primary mb-2 group-hover:text-secondary transition-colors">Digital Legacy</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Social media, photos, and personal emails.</p>
+</div>
+</button>
+<!-- Card 4 -->
+<button class="bg-surface-container-lowest border border-border-subtle rounded-xl p-6 flex items-start gap-4 text-left hover:shadow-[0_4px_20px_rgba(10,14,26,0.04)] transition-all duration-300 focus:border-secondary focus:ring-1 focus:ring-secondary focus:outline-none group">
+<div class="icon-container w-12 h-12 rounded-lg flex items-center justify-center shrink-0 group-hover:bg-secondary-fixed group-hover:text-secondary transition-colors">
+<span class="material-symbols-outlined text-2xl" data-icon="real_estate_agent" style="font-variation-settings: 'FILL' 1;">real_estate_agent</span>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md text-primary mb-2 group-hover:text-secondary transition-colors">Property &amp; Assets</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Real estate, vehicle titles, and physical storage.</p>
+</div>
+</button>
+<!-- Card 5 -->
+<button class="bg-surface-container-lowest border border-border-subtle rounded-xl p-6 flex items-start gap-4 text-left hover:shadow-[0_4px_20px_rgba(10,14,26,0.04)] transition-all duration-300 focus:border-secondary focus:ring-1 focus:ring-secondary focus:outline-none group">
+<div class="icon-container w-12 h-12 rounded-lg flex items-center justify-center shrink-0 group-hover:bg-secondary-fixed group-hover:text-secondary transition-colors">
+<span class="material-symbols-outlined text-2xl" data-icon="business_center" style="font-variation-settings: 'FILL' 1;">business_center</span>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md text-primary mb-2 group-hover:text-secondary transition-colors">Business Interests</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Ownership details, passwords, and key contacts.</p>
+</div>
+</button>
+<!-- Card 6 -->
+<button class="bg-surface-container-lowest border border-border-subtle rounded-xl p-6 flex items-start gap-4 text-left hover:shadow-[0_4px_20px_rgba(10,14,26,0.04)] transition-all duration-300 focus:border-secondary focus:ring-1 focus:ring-secondary focus:outline-none group border-secondary ring-1 ring-secondary">
+<div class="bg-secondary-fixed text-secondary w-12 h-12 rounded-lg flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-2xl" data-icon="favorite" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</div>
+<div class="relative w-full">
+<h3 class="font-headline-md text-headline-md text-secondary mb-2">Personal Wishes</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Funeral plans and final messages to loved ones.</p>
+<span class="material-symbols-outlined absolute top-0 right-0 text-secondary" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+</button>
+</div>
+<!-- Recently Added (Placeholder Data) -->
+<div class="pt-8 border-t border-border-subtle">
+<h3 class="font-label-caps text-label-caps text-on-surface-variant mb-4 uppercase tracking-widest">Recently Added Items</h3>
+<div class="flex gap-4 overflow-x-auto pb-4 snap-x">
+<div class="bg-surface border border-border-subtle rounded-lg p-4 min-w-[200px] snap-start flex items-center gap-3">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="description">description</span>
+<div class="truncate text-ellipsis">
+<p class="font-label-md text-label-md text-primary truncate">Primary Residence Deed</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant text-[12px]">Property &amp; Assets</p>
+</div>
+</div>
+<div class="bg-surface border border-border-subtle rounded-lg p-4 min-w-[200px] snap-start flex items-center gap-3">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="shield">shield</span>
+<div class="truncate text-ellipsis">
+<p class="font-label-md text-label-md text-primary truncate">Life Insurance Policy</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant text-[12px]">Financial Accounts</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Action Buttons -->
+<div class="flex flex-col sm:flex-row gap-4 justify-center items-center pt-[32px]">
+<button class="w-full sm:w-auto h-[48px] px-8 bg-secondary text-on-primary font-label-md text-label-md rounded-lg hover:opacity-90 transition-opacity flex items-center justify-center gap-2">
+                    Continue <span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
+</button>
+<button class="w-full sm:w-auto h-[48px] px-8 bg-surface-container-lowest border border-primary text-primary font-label-md text-label-md rounded-lg hover:bg-surface transition-colors flex items-center justify-center">
+                    Save for later
+                </button>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full py-8 px-margin-mobile md:px-margin-desktop flex flex-col md:flex-row justify-between items-center gap-4 bg-surface-container-low dark:bg-primary-container border-t border-border-subtle dark:border-outline-variant flat no shadows">
+<div class="font-label-caps text-label-caps tracking-widest text-primary dark:text-primary-fixed">
+            © 2024 LegacyLock. Securely architectural.
+        </div>
+<nav class="flex gap-4 flex-wrap justify-center">
+<a class="font-body-sm text-body-sm text-on-surface-variant dark:text-on-primary-container hover:text-secondary dark:hover:text-secondary-fixed-dim transition-colors duration-200" href="#">Privacy Policy</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant dark:text-on-primary-container hover:text-secondary dark:hover:text-secondary-fixed-dim transition-colors duration-200" href="#">Terms of Service</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant dark:text-on-primary-container hover:text-secondary dark:hover:text-secondary-fixed-dim transition-colors duration-200" href="#">Security Whitepaper</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant dark:text-on-primary-container hover:text-secondary dark:hover:text-secondary-fixed-dim transition-colors duration-200" href="#">Contact Support</a>
+</nav>
+</footer>
+<script src="crypto.js"></script>
+<script src="app.js"></script>
+</body></html>

@@ -1,0 +1,417 @@
+ALL THINGS AGENTIC – HACKATHON SUBMISSION
+Legacy Lock
+A Secure Continuity & Claim-Preparation Platform for
+Financial and Digital Assets
+Product & System Overview
+What the platform does, how presence & claims are verified, and what it deliberately
+will not do.
+Document prepared for the hackathon submission | August 30, 2026
+Legacy Lock – Product & System Overview
+1
+Contents
+1
+Executive Summary
+2
+2
+The Problem
+2
+2.1
+A Real Scenario . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+2
+2.2
+Problem Statement & Product Promise . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+2
+3
+What Legacy Lock Is – and Is Not
+2
+4
+System Architecture: Four Modules
+3
+5
+Vault: Registration to Secure Storage
+3
+5.1
+User Journey
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+3
+5.2
+Data Flow & Encryption . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+4
+5.3
+Core Data Model . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+4
+6
+Presence & Safety: Check-in and Escalation
+4
+6.1
+Normal Flow
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+4
+6.2
+Missed Check-in Flow
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+4
+6.3
+State Machine . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+5
+7
+Claim Workspace: Nominee & Claim Flow
+5
+8
+The Role of AI – Clearly Bounded
+6
+9
+Team & Build Roadmap
+6
+9.1
+Roles & Responsibilities
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+6
+9.2
+Six-Phase Build Sequence
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+6
+10 Judge Demo Script
+7
+11 Decisions from This Meeting
+7
+12 Closing Note
+7
+All Things Agentic Hackathon
+Legacy Lock – Product & System Overview
+2
+1 Executive Summary
+“Aaj hum ek aisa product define karne wale hain jo kisi family ko emergency ya death ke baad apne loved
+one ki financial aur digital life discover karne ke liye mahino tak struggle nahi karne dega. Hum funds ko
+illegally transfer nahi karenge, passwords ko unsafe way mein share nahi karenge, aur AI ko legal authority
+nahi denge.”
+— Founder, opening line to the team
+Legacy Lock is a secure continuity and claim-preparation platform. It organizes a person’s financial and
+digital footprint into an encrypted vault, periodically confirms that person is still active, and – only when they
+stop responding and death is independently corroborated – guides an authorized nominee through a verified,
+institution-by-institution claim process.
+It is deliberately not an automatic asset-transfer engine. The team’s core design principle is that discovery
+and claim coordination is the real problem, not moving money – because no third party can legally bypass a
+bank’s, insurer’s, or exchange’s own KYC and legal-heir process.
+2 The Problem
+2.1 A Real Scenario
+Consider Arjun. His death is sudden. His family knows he likely had bank accounts, mutual funds,
+insurance, crypto, and cloud documents – but not which institutions, which account identifiers, whether
+nominees were even registered, or what the claim process requires. Every institution has its own KYC,
+documentation, and legal-heir rules; there is no universal portal that can move money on their behalf.
+2.2 Problem Statement & Product Promise
+Problem
+People have financial and digital assets dis-
+tributed across many services, but their families
+lack a secure, trusted, and organized way to dis-
+cover those assets and follow the correct next
+steps when the person is unavailable.
+Promise
+Legacy Lock securely organizes your continuity
+plan, checks that you are active, and helps an
+authorized person prepare the right next steps if
+you cannot respond.
+3 What Legacy Lock Is – and Is Not
+✓What It Does
+✓Organizes assets, documents, and instruc-
+tions into an encrypted vault
+✓Runs scheduled check-ins with safe, staged es-
+calation
+✓Verifies nominee identity before any informa-
+tion is shared
+✓Builds
+an
+institution-specific
+claim-
+preparation checklist
+✓Requires human review before any sensitive
+release
+✓Logs every sensitive action for audit
+✗What It Will Never Do
+✗Automatically transfer funds from any ac-
+count
+✗Treat missed check-ins as final proof of death
+✗Let AI decide a nominee or legal heir
+✗Forward raw passwords,
+OTPs,
+or seed
+phrases
+✗Promise guaranteed regulatory approval or
+claim settlement
+✗Give AI legal authority over any decision
+4 System Architecture: Four Modules
+All Things Agentic Hackathon
+Legacy Lock – Product & System Overview
+3
+1. Encrypted Estate Vault
+Where the user organizes asset information and
+documents into a structured, encrypted record
+– the single source of truth for what exists and
+where.
+Owned by: Frontend & Backend Engineering
+2. Presence & Safety Engine
+Periodically confirms the user is active, and
+moves through a safe, staged escalation only
+when check-ins are missed.
+Owned by: Automation/AI Engineering
+3. Claim Workspace
+Gives an authorized nominee or executor a
+guided, institution-by-institution checklist and
+verification path once escalation begins.
+Owned by: Automation/AI & QA/Compliance
+4. Release Governance
+Decides who may see what, at which stage, and
+only after which approvals – enforcing scope, tim-
+ing, and audit on every release.
+Owned by: Backend/Security & QA/Compliance
+In this architecture, AI is an assistant, not an authority. The key-management system manages encryp-
+tion keys, but is not by itself a substitute for zero-knowledge design. A nominee is a role in the process,
+not an automatic beneficial owner.
+5 Vault: Registration to Secure Storage
+5.1 User Journey
+1. Account creation – email/passkey sign-up with MFA; vault stays locked until passphrase setup is complete.
+2. Vault passphrase – the user is warned this is critical. Keys are ideally derived on-device so the server never
+sees a plaintext passphrase. A recovery kit is generated for offline safekeeping.
+3. Guided onboarding checklist – add a first asset, add a trusted person, set a check-in schedule, write
+emergency instructions, test recovery.
+4. Asset inventory – categorized entries across bank/deposits, investments, insurance, crypto, cloud accounts,
+documents, loans, subscriptions, and personal instructions.
+MVP boundary. Raw internet-banking passwords, OTPs, crypto private keys, and seed phrases are not
+collected. Instead the vault stores safer references: provider name, account hint, public wallet address,
+recovery arrangement, support URL, and a professional contact.
+All Things Agentic Hackathon
+Legacy Lock – Product & System Overview
+4
+5.2 Data Flow & Encryption
+User Device
+Client-Side Encryption
+Ciphertext Sent to Backend
+Encrypted Record Stored
+Permission Checked on Every Access
+Action Added to Audit Log
+An authorized user may see “Bank – HDFC –  4812” in their own vault; an unauthorized nominee sees nothing until
+their role, record scope, release stage, and approval status all permit it.
+5.3 Core Data Model
+Entity
+Example data
+User
+User ID, email, authentication metadata, timezone
+VaultRecord
+Category, encrypted payload, masked preview, last reviewed
+Document
+Encrypted object path, type, checksum, retention date
+TrustedPerson
+Name, contact, role, verification status
+ReleasePolicy
+Trigger, grace period, approval rules, allowed scopes
+CheckIn
+Date, channel, status, device/session metadata
+ClaimCase
+Claimant, case status, evidence, assigned reviewer
+AuditEvent
+Actor, action, timestamp, record scope, result
+JobEvent
+Reminder/retry/event ID, status, processed timestamp
+6 Presence & Safety: Check-in and Escalation
+This system is a continuity alert mechanism, not a death detector – the distinction the whole team needs to
+hold onto.
+6.1 Normal Flow
+User sets a 30/60/90-day interval →system calculates the next check-in date →reminder sent by email/app/SMS
+→user confirms “I’m active” →timestamp and channel logged →next date calculated.
+6.2 Missed Check-in Flow
+1. First reminder sent.
+2. Second reminder sent on an alternate channel.
+All Things Agentic Hackathon
+Legacy Lock – Product & System Overview
+5
+3. Grace period begins.
+4. User can cancel, pause, ask for more time, or confirm activity at any point.
+5. After the grace period, the trusted contact receives only a verification request.
+6. Claimant goes through identity verification and the document process.
+7. High-risk cases route to manual human review.
+8. Information is released strictly within the approved scope.
+6.3 State Machine
+ACTIVE
+REMINDER_1
+REMINDER_2
+GRACE_PERIOD
+CONTACT_VERIFICATION
+MANUAL_REVIEW
+LIMITED_RELEASE
+FINAL_RELEASE
+PAUSED / CANCELLED – reachable from any safe stage (ACTIVE through GRACE_PERIOD)
+Idempotency matters. Every transition needs an event ID, actor, timestamp, notification, retry behav-
+ior, audit event, and rollback path. If the same job runs twice, it must never send a duplicate reminder,
+open a duplicate claim case, or trigger a duplicate release.
+7 Claim Workspace: Nominee & Claim Flow
+Invitation
+Identity Verification
+Death Certificate
+Claim Dashboard
+AI Dossier
+Controlled Release
+• Invitation: contains no assets, balances, or sensitive data – only notice that a continuity case has started.
+• Identity verification: name, government ID, relationship, and required documents; encrypted upload with
+OCR-assisted extraction, each field shown with a confidence level (e.g. “Name extracted with medium confi-
+dence – confirm or correct”).
+• Death certificate: uploading starts a review – it does not trigger automatic release. The file is scanned,
+encrypted, OCR’d, and queued for manual review.
+• Claim dashboard: institution-wise cards (bank, mutual fund, insurance, crypto exchange, digital account)
+each showing required documents, missing items, claim URL, contact, status, and next step.
+• Dossier: AI places approved fields into a template – asset summary, masked identifiers, claimant info, doc-
+ument checklist, institution contacts, instructions, source links, reviewer notes, and disclaimer. Labelled
+“Institution-specific claim-preparation dossier” – never “guaranteed claim dossier”; each institution makes its
+own final decision.
+• Controlled release: the exact scope is shown before release, and high-risk items require two-person ap-
+proval, re-authentication, an expiring link, a watermark, a download limit, and an audit log entry.
+Item
+Status
+Asset metadata
+✓Shared / ✗Not shared
+Claim checklist
+✓Shared / ✗Not shared
+Personal instructions
+✓Shared / ✗Not shared
+Identity documents
+✓Shared after approval only
+Passwords / OTP / seed phrase
+✗Never shared by default
+All Things Agentic Hackathon
+Legacy Lock – Product & System Overview
+6
+8 The Role of AI – Clearly Bounded
+AI Does
+✓OCR and structured field extraction
+✓Missing-document detection
+✓Institution-specific checklist suggestions
+✓Arranging approved information into dossier
+format
+AI Never Does
+✗Final certification of death
+✗Legal heir or nominee ownership decisions
+✗Automatic release approval
+✗Inventing legal citations or compelling insti-
+tutions
+✗Declaring a document definitely genuine
+9 Team & Build Roadmap
+9.1 Roles & Responsibilities
+Role
+Name
+Mission
+First deliverable
+Product Lead
+TBD
+Owns problem, scope, pri-
+orities, user stories, judge
+demo
+PRD, MVP scope, acceptance criteria
+UX/UI Designer
+TBD
+Converts screens into a co-
+herent, premium design sys-
+tem
+Design tokens, anchor screens, responsive flows
+Frontend Engineer
+TBD
+Builds reusable, responsive,
+accessible product UI
+App shell, routes, components, auth flow
+Backend/Security Engineer
+TBD
+Keeps data, identity, permis-
+sions, encryption safe
+Schema, API contract, auth, authorization, audit log
+Automation/AI Engineer
+TBD
+Makes check-in, escalation,
+OCR, dossier pipeline reli-
+able
+State machine, jobs, notifications, AI contract
+QA/Compliance/Trust Lead
+TBD
+Proves the product is safe,
+testable, non-misleading
+Test plan, threat scenarios, compliance matrix
+Team member names to be filled in.
+9.2 Six-Phase Build Sequence
+1
+Foundation. Data model, design tokens, and product claims locked
+2
+Auth & Onboarding. New user can safely sign up; server never logs the passphrase
+3
+Vault. No raw secrets stored; unauthorized records never returned by the API
+4
+Check-in. A missed check-in never causes a direct release
+5
+Nominee Claim. AI never finalizes without human review; nominee sees only approved scope
+6
+Hardening & Demo. Full flow tested end to end on synthetic data; demo rehearsed
+All Things Agentic Hackathon
+Legacy Lock – Product & System Overview
+7
+10 Judge Demo Script
+Opening
+20s
+Dashboard
+25s
+Vault Demo
+30s
+Check-in
+20s
+Escalation
+25s
+Nominee Portal
+35s
+AI Dossier
+25s
+Release
+20s
+Closing
+20s
+• Opening (20s): “Families know that assets exist, but not where they are or how to claim them. Legacy Lock
+creates a secure continuity plan before a crisis happens.”
+• Dashboard (25s): Continuity health, next check-in, vault completion, verified people, and documents need-
+ing review.
+• Vault Demo (30s): Add a bank record; show the masked identifier, encrypted badge, nominee status, and
+claim guidance. Explain that raw passwords are never stored.
+• Check-in (20s): Click “I’m active”; show the timestamp and next reminder.
+• Escalation (25s): Show a simulated missed check-in timeline – reminder, grace period, verification, review
+– with “no final release has occurred” clearly visible.
+• Nominee Portal (35s): Invitation, identity verification, death-certificate upload, and checklist.
+• AI Dossier (25s): Extracted fields with confidence scores and a visible human-review requirement.
+• Controlled Release (20s): Exact permission scope, two-person approval, expiring download, and audit log.
+• Closing (20s): “Legacy Lock does not bypass institutions. It gives families a secure starting point, the correct
+documents, and a controlled path forward.”
+Total run time: approx. 3 minutes 40 seconds across nine beats.
+11 Decisions from This Meeting
+Decision
+Team’s direction
+Product name
+Legacy Lock
+MVP scope
+Vault, check-in, contacts, documents, checklist, audit
+Excluded from MVP
+Automatic transfer, raw passwords, seed phrases, unrestricted provider access
+User roles
+Owner, nominee, executor, professional reviewer, support, system worker
+Release model
+Staged, verified, human-reviewed, permission-scoped
+Design source
+Stitch plus shared design system
+Primary logo
+Light-themed redesigned asset
+Backend/data architecture
+Still to be finalized – database, storage, auth, key-management
+AI output rule
+Structured, confidence-labeled, human-reviewed
+Demo data
+100% synthetic
+First milestone
+Authentication + dashboard + vault shell
+12 Closing Note
+“Legacy Lock ka main feature sirf vault ya reminder nahi hai. Hamara main feature trust hai. User ko
+trust hona chahiye ki hum uski information unnecessarily nahi dekhenge. Nominee ko trust hona chahiye
+ki usse correct process milega. Judge ko trust hona chahiye ki product real-world constraints samajhta hai.
+Isliye hum flashy automatic transfer nahi, balki secure, verified, auditable aur human-controlled continuity
+experience build karenge.”
+All Things Agentic Hackathon

@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Robert Sterling, Esq. - Contact Detail</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-tertiary": "#ffffff",
+                      "inverse-primary": "#c3c6d7",
+                      "on-tertiary-container": "#009668",
+                      "secondary": "#4b41e1",
+                      "inverse-surface": "#2f3130",
+                      "inverse-on-surface": "#f1f0f0",
+                      "primary": "#000000",
+                      "on-primary-container": "#808393",
+                      "surface-container-low": "#f4f3f2",
+                      "primary-container": "#171b28",
+                      "on-error-container": "#93000a",
+                      "on-secondary-fixed": "#0f0069",
+                      "verified-emerald": "#10B981",
+                      "tertiary-fixed": "#6ffbbe",
+                      "surface-variant": "#e3e2e1",
+                      "tertiary": "#000000",
+                      "secondary-fixed": "#e2dfff",
+                      "error-container": "#ffdad6",
+                      "on-secondary-fixed-variant": "#3323cc",
+                      "on-secondary": "#ffffff",
+                      "tertiary-container": "#002113",
+                      "surface-container-highest": "#e3e2e1",
+                      "on-surface": "#1a1c1c",
+                      "attention-amber": "#F59E0B",
+                      "surface": "#faf9f8",
+                      "surface-dim": "#dadad9",
+                      "outline": "#76767c",
+                      "primary-fixed": "#dfe2f3",
+                      "on-tertiary-fixed": "#002113",
+                      "secondary-fixed-dim": "#c3c0ff",
+                      "on-primary": "#ffffff",
+                      "on-secondary-container": "#fffbff",
+                      "outline-variant": "#c7c6cc",
+                      "background": "#faf9f8",
+                      "primary-fixed-dim": "#c3c6d7",
+                      "on-surface-variant": "#46464c",
+                      "surface-container-lowest": "#ffffff",
+                      "on-background": "#1a1c1c",
+                      "secondary-container": "#645efb",
+                      "surface-tint": "#5a5e6d",
+                      "surface-container": "#eeeeed",
+                      "on-primary-fixed-variant": "#434654",
+                      "border-subtle": "#E5E7EB",
+                      "tertiary-fixed-dim": "#4edea3",
+                      "on-error": "#ffffff",
+                      "on-tertiary-fixed-variant": "#005236",
+                      "on-primary-fixed": "#171b28",
+                      "danger-red": "#EF4444",
+                      "surface-bright": "#faf9f8",
+                      "error": "#ba1a1a",
+                      "surface-container-high": "#e9e8e7"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "gutter": "24px",
+                      "base": "8px",
+                      "margin-desktop": "40px",
+                      "container-max": "1280px",
+                      "margin-mobile": "20px"
+              },
+              "fontFamily": {
+                      "headline-md": ["Manrope"],
+                      "label-md": ["Inter"],
+                      "label-caps": ["Inter"],
+                      "headline-lg-mobile": ["Manrope"],
+                      "headline-xl": ["Manrope"],
+                      "body-sm": ["Inter"],
+                      "body-md": ["Inter"],
+                      "headline-lg": ["Manrope"],
+                      "body-lg": ["Inter"]
+              },
+              "fontSize": {
+                      "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                      "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+                      "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                      "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                      "headline-xl": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}]
+              }
+            }
+          }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+          font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined.fill {
+          font-variation-settings: 'FILL' 1;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen flex flex-col font-body-md antialiased" data-page="contact_detail_status_desktop.html">
+<!-- TopNavBar -->
+<header class="bg-surface dark:bg-surface-container-low border-b border-outline-variant dark:border-outline flex justify-between items-center w-full px-margin-desktop max-w-container-max mx-auto transition-all duration-200 ease-in-out h-[72px]">
+<div class="flex items-center gap-6">
+<span class="font-headline-md text-headline-md font-extrabold text-primary dark:text-inverse-primary tracking-tight">LegacyLock</span>
+<nav class="hidden md:flex space-x-1 ml-8 h-full">
+<a class="h-full flex items-center px-4 text-on-surface-variant dark:text-outline hover:text-secondary dark:hover:text-secondary-fixed transition-colors font-body-md text-body-md" href="#">Portfolio</a>
+<a class="h-full flex items-center px-4 text-on-surface-variant dark:text-outline hover:text-secondary dark:hover:text-secondary-fixed transition-colors font-body-md text-body-md" href="#">Legacy Plan</a>
+<a class="h-full flex items-center px-4 text-primary dark:text-inverse-primary border-b-2 border-primary dark:border-inverse-primary font-body-md text-body-md" href="#">Trustees</a>
+<a class="h-full flex items-center px-4 text-on-surface-variant dark:text-outline hover:text-secondary dark:hover:text-secondary-fixed transition-colors font-body-md text-body-md" href="#">Vault</a>
+</nav>
+</div>
+<div class="flex items-center space-x-4">
+<button class="p-2 text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="shield_person">shield_person</span>
+</button>
+<div class="w-8 h-8 rounded-full bg-surface-container-high border border-border-subtle flex items-center justify-center overflow-hidden">
+<span class="material-symbols-outlined text-outline">person</span>
+</div>
+</div>
+</header>
+<main class="flex-grow w-full max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-[48px] space-y-[32px]">
+<!-- Header Section -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-border-subtle pb-6">
+<div>
+<p class="font-label-caps text-label-caps text-on-surface-variant uppercase mb-2 flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]">admin_panel_settings</span> Executor Profile
+                </p>
+<h1 class="font-headline-xl text-headline-xl text-primary">Robert Sterling, Esq.</h1>
+</div>
+<div class="flex items-center bg-surface-container px-3 py-1.5 rounded-full border border-attention-amber/20">
+<div class="w-2 h-2 rounded-full bg-attention-amber mr-2 animate-pulse"></div>
+<span class="font-label-md text-label-md text-on-surface">Verification in Progress</span>
+</div>
+</div>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<!-- Left Column: Main Content -->
+<div class="lg:col-span-8 space-y-gutter">
+<!-- Verification Timeline -->
+<section class="bg-surface-container-lowest border border-border-subtle rounded-xl p-6">
+<h2 class="font-headline-md text-headline-md mb-6">Onboarding Status</h2>
+<div class="relative flex flex-col md:flex-row justify-between items-start md:items-center">
+<!-- Line connecting steps (Desktop) -->
+<div class="hidden md:block absolute top-4 left-6 right-6 h-[2px] bg-surface-variant -z-10">
+<div class="h-full bg-secondary w-1/2 transition-all duration-500"></div>
+</div>
+<!-- Line connecting steps (Mobile) -->
+<div class="md:hidden absolute top-6 bottom-6 left-[15px] w-[2px] bg-surface-variant -z-10">
+<div class="w-full bg-secondary h-1/2 transition-all duration-500"></div>
+</div>
+<!-- Step 1 -->
+<div class="flex md:flex-col items-center gap-4 md:gap-2 relative z-10 w-full md:w-auto mb-6 md:mb-0">
+<div class="w-8 h-8 rounded-full bg-secondary text-on-secondary flex items-center justify-center border-2 border-surface-container-lowest">
+<span class="material-symbols-outlined text-[16px] fill">check</span>
+</div>
+<div class="text-left md:text-center">
+<p class="font-label-md text-label-md text-primary">Invited</p>
+</div>
+</div>
+<!-- Step 2 -->
+<div class="flex md:flex-col items-center gap-4 md:gap-2 relative z-10 w-full md:w-auto mb-6 md:mb-0">
+<div class="w-8 h-8 rounded-full bg-secondary text-on-secondary flex items-center justify-center border-2 border-surface-container-lowest">
+<span class="material-symbols-outlined text-[16px] fill">check</span>
+</div>
+<div class="text-left md:text-center">
+<p class="font-label-md text-label-md text-primary">Email Confirmed</p>
+</div>
+</div>
+<!-- Step 3 (Active) -->
+<div class="flex md:flex-col items-center gap-4 md:gap-2 relative z-10 w-full md:w-auto mb-6 md:mb-0">
+<div class="w-8 h-8 rounded-full bg-surface-container-lowest border-2 border-secondary text-secondary flex items-center justify-center ring-4 ring-secondary/10">
+<span class="material-symbols-outlined text-[16px]">pending</span>
+</div>
+<div class="text-left md:text-center">
+<p class="font-label-md text-label-md text-primary font-bold">Identity Pending</p>
+</div>
+</div>
+<!-- Step 4 -->
+<div class="flex md:flex-col items-center gap-4 md:gap-2 relative z-10 w-full md:w-auto mb-6 md:mb-0">
+<div class="w-8 h-8 rounded-full bg-surface-container border-2 border-border-subtle text-outline flex items-center justify-center">
+<span class="material-symbols-outlined text-[16px]">hourglass_empty</span>
+</div>
+<div class="text-left md:text-center">
+<p class="font-label-md text-label-md text-on-surface-variant">Relationship Pending</p>
+</div>
+</div>
+<!-- Step 5 -->
+<div class="flex md:flex-col items-center gap-4 md:gap-2 relative z-10 w-full md:w-auto">
+<div class="w-8 h-8 rounded-full bg-surface-container border-2 border-border-subtle text-outline flex items-center justify-center">
+<span class="material-symbols-outlined text-[16px]">lock_open</span>
+</div>
+<div class="text-left md:text-center">
+<p class="font-label-md text-label-md text-on-surface-variant">Approved</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Profile & Access Warning -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<!-- Profile Details -->
+<section class="bg-surface-container-lowest border border-border-subtle rounded-xl p-6">
+<div class="flex items-center justify-between mb-6 border-b border-border-subtle pb-4">
+<h2 class="font-headline-md text-headline-md">Contact Details</h2>
+<span class="material-symbols-outlined text-outline">contact_page</span>
+</div>
+<dl class="space-y-4">
+<div>
+<dt class="font-label-caps text-label-caps text-on-surface-variant uppercase mb-1">Email Address</dt>
+<dd class="font-body-md text-body-md text-primary flex items-center gap-2">
+                                    robert.sterling@sterlinglaw.com
+                                    <span class="material-symbols-outlined text-[16px] text-verified-emerald" title="Email Verified">verified</span>
+</dd>
+</div>
+<div>
+<dt class="font-label-caps text-label-caps text-on-surface-variant uppercase mb-1">Relationship</dt>
+<dd class="font-body-md text-body-md text-primary">Legal Counsel</dd>
+</div>
+<div>
+<dt class="font-label-caps text-label-caps text-on-surface-variant uppercase mb-1">Assigned Role</dt>
+<dd class="font-body-md text-body-md text-primary font-medium">Lead Executor</dd>
+</div>
+</dl>
+</section>
+<!-- Secure Access Message -->
+<section class="bg-surface-container border border-outline-variant/50 rounded-xl p-6 flex flex-col justify-center relative overflow-hidden">
+<div class="absolute -right-4 -top-4 opacity-5 pointer-events-none">
+<span class="material-symbols-outlined text-[120px]">enhanced_encryption</span>
+</div>
+<div class="flex items-start gap-4 relative z-10">
+<div class="text-primary mt-1">
+<span class="material-symbols-outlined text-[24px]">lock</span>
+</div>
+<div>
+<h3 class="font-label-md text-label-md text-primary mb-2">Vault Access Restricted</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                                    Currently, Robert has <strong>NO access</strong> to vault contents. Access is only provisioned after a verified release policy trigger and rigorous identity verification.
+                                </p>
+</div>
+</div>
+</section>
+</div>
+</div>
+<!-- Right Column: Sidebar & Actions -->
+<div class="lg:col-span-4 space-y-gutter">
+<!-- Action Panel -->
+<section class="bg-surface-container-lowest border border-border-subtle rounded-xl p-6">
+<h2 class="font-label-caps text-label-caps text-on-surface-variant uppercase mb-4">Management Actions</h2>
+<div class="space-y-3">
+<button class="w-full flex items-center justify-center gap-2 bg-secondary text-on-secondary font-label-md text-label-md h-[44px] rounded-lg hover:bg-secondary/90 transition-colors">
+<span class="material-symbols-outlined text-[18px]">send</span> Resend Invitation
+                        </button>
+<button class="w-full flex items-center justify-center gap-2 border border-primary text-primary font-label-md text-label-md h-[44px] rounded-lg hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-[18px]">manage_accounts</span> Change Role
+                        </button>
+<button class="w-full flex items-center justify-center gap-2 border border-border-subtle text-primary font-label-md text-label-md h-[44px] rounded-lg hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-[18px]">support_agent</span> Contact Support
+                        </button>
+<button class="w-full flex items-center justify-center gap-2 text-danger-red font-label-md text-label-md h-[44px] rounded-lg hover:bg-error-container/50 transition-colors mt-2">
+<span class="material-symbols-outlined text-[18px]">block</span> Revoke Access
+                        </button>
+</div>
+</section>
+<!-- Audit Log -->
+<section class="bg-surface-container-lowest border border-border-subtle rounded-xl p-6">
+<div class="flex items-center justify-between mb-4">
+<h2 class="font-label-caps text-label-caps text-on-surface-variant uppercase">Audit Trail</h2>
+<span class="material-symbols-outlined text-outline text-[18px]">history</span>
+</div>
+<ul class="space-y-4 relative before:absolute before:inset-0 before:ml-[9px] before:w-[2px] before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:bg-surface-variant">
+<li class="relative flex items-start gap-4">
+<div class="absolute left-0 mt-1.5 w-[20px] h-[20px] rounded-full bg-surface-container-lowest border-2 border-secondary flex items-center justify-center z-10">
+<div class="w-2 h-2 bg-secondary rounded-full"></div>
+</div>
+<div class="pl-8">
+<p class="font-body-sm text-body-sm text-primary">Identity verification initiated</p>
+<p class="font-label-caps text-label-caps text-on-surface-variant mt-1">Oct 14, 2023 • 09:41 AM</p>
+</div>
+</li>
+<li class="relative flex items-start gap-4">
+<div class="absolute left-0 mt-1.5 w-[20px] h-[20px] rounded-full bg-surface-container-lowest border-2 border-border-subtle flex items-center justify-center z-10">
+<div class="w-2 h-2 bg-outline-variant rounded-full"></div>
+</div>
+<div class="pl-8">
+<p class="font-body-sm text-body-sm text-on-surface-variant">Email verified</p>
+<p class="font-label-caps text-label-caps text-outline-variant mt-1">Oct 13, 2023 • 14:22 PM</p>
+</div>
+</li>
+<li class="relative flex items-start gap-4">
+<div class="absolute left-0 mt-1.5 w-[20px] h-[20px] rounded-full bg-surface-container-lowest border-2 border-border-subtle flex items-center justify-center z-10">
+<div class="w-2 h-2 bg-outline-variant rounded-full"></div>
+</div>
+<div class="pl-8">
+<p class="font-body-sm text-body-sm text-on-surface-variant">Invitation sent</p>
+<p class="font-label-caps text-label-caps text-outline-variant mt-1">Oct 12, 2023 • 10:05 AM</p>
+</div>
+</li>
+</ul>
+</section>
+</div>
+</div>
+</main>
+<script src="crypto.js"></script>
+<script src="app.js"></script>
+</body></html>

@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Pause Release Process - LegacyLock</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Manrope:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-bright": "#faf9f8",
+                        "secondary-fixed-dim": "#c3c0ff",
+                        "on-error-container": "#93000a",
+                        "surface": "#faf9f8",
+                        "secondary-fixed": "#e2dfff",
+                        "background": "#faf9f8",
+                        "on-primary-fixed": "#171b28",
+                        "on-secondary-container": "#fffbff",
+                        "on-primary-container": "#808393",
+                        "primary": "#000000",
+                        "on-tertiary-fixed-variant": "#005236",
+                        "secondary": "#4b41e1",
+                        "tertiary-container": "#002113",
+                        "on-surface": "#1a1c1c",
+                        "outline": "#76767c",
+                        "inverse-primary": "#c3c6d7",
+                        "danger-red": "#EF4444",
+                        "surface-tint": "#5a5e6d",
+                        "error": "#ba1a1a",
+                        "verified-emerald": "#10B981",
+                        "surface-container-low": "#f4f3f2",
+                        "inverse-on-surface": "#f1f0f0",
+                        "on-error": "#ffffff",
+                        "tertiary-fixed": "#6ffbbe",
+                        "primary-fixed-dim": "#c3c6d7",
+                        "on-primary": "#ffffff",
+                        "secondary-container": "#645efb",
+                        "error-container": "#ffdad6",
+                        "on-surface-variant": "#46464c",
+                        "on-tertiary": "#ffffff",
+                        "attention-amber": "#F59E0B",
+                        "surface-container-highest": "#e3e2e1",
+                        "tertiary": "#000000",
+                        "on-tertiary-container": "#009668",
+                        "on-tertiary-fixed": "#002113",
+                        "inverse-surface": "#2f3130",
+                        "on-secondary": "#ffffff",
+                        "surface-dim": "#dadad9",
+                        "surface-container": "#eeeeed",
+                        "on-background": "#1a1c1c",
+                        "primary-fixed": "#dfe2f3",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary-fixed": "#0f0069",
+                        "surface-variant": "#e3e2e1",
+                        "on-primary-fixed-variant": "#434654",
+                        "surface-container-high": "#e9e8e7",
+                        "outline-variant": "#c7c6cc",
+                        "tertiary-fixed-dim": "#4edea3",
+                        "primary-container": "#171b28",
+                        "on-secondary-fixed-variant": "#3323cc",
+                        "border-subtle": "#E5E7EB"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-desktop": "40px",
+                        "gutter": "24px",
+                        "container-max": "1280px",
+                        "margin-mobile": "20px",
+                        "base": "8px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Inter"],
+                        "headline-xl": ["Manrope"],
+                        "headline-lg": ["Manrope"],
+                        "headline-md": ["Manrope"],
+                        "headline-lg-mobile": ["Manrope"],
+                        "label-caps": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "label-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-xl": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "headline-lg-mobile": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "label-caps": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "fontWeight": "500" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid theme('colors.border-subtle');
+        }
+        
+        .toast-enter {
+            transform: translateY(100%);
+            opacity: 0;
+        }
+        
+        .toast-enter-active {
+            transform: translateY(0);
+            opacity: 1;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .toast-exit {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        .toast-exit-active {
+            transform: translateY(100%);
+            opacity: 0;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+    </style>
+</head>
+<body class="bg-surface font-body-md text-body-md text-on-surface antialiased min-h-screen flex flex-col" data-page="pause_release_process_desktop.html">
+<!-- Header (Transactional, minimal nav) -->
+<header class="bg-surface border-b border-border-subtle fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin-mobile md:px-margin-desktop h-16">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">shield</span>
+<span class="font-headline-md text-headline-md font-bold text-primary">LegacyLock</span>
+</div>
+<button class="text-on-surface-variant hover:text-primary transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined">close</span>
+<span class="font-label-md text-label-md hidden md:inline">Cancel</span>
+</button>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-grow pt-24 pb-32 px-margin-mobile md:px-margin-desktop flex justify-center items-start">
+<div class="w-full max-w-2xl mt-8">
+<!-- Context Header -->
+<div class="mb-12 flex flex-col items-center text-center">
+<div class="w-16 h-16 rounded-full bg-attention-amber/10 flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-attention-amber text-3xl" style="font-variation-settings: 'FILL' 1;">pause_circle</span>
+</div>
+<h1 class="font-headline-xl text-headline-xl mb-4 text-primary">Pause this release process?</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-lg">
+                    Pausing this process will halt all automated reminders and scheduled data releases. Your nominees will not be notified until you manually resume this policy or the pause period expires.
+                </p>
+</div>
+<!-- Configuration Form -->
+<div class="glass-panel rounded-xl p-8 mb-8">
+<form class="space-y-8" id="pauseForm">
+<!-- Reason Selection -->
+<section>
+<h2 class="font-headline-md text-headline-md mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-outline">help</span>
+                            Reason for pause
+                        </h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<label class="flex items-start gap-3 p-4 rounded-lg border border-border-subtle hover:border-primary cursor-pointer transition-colors bg-surface-container-lowest">
+<input checked="" class="mt-1 text-secondary focus:ring-secondary border-outline" name="pause_reason" type="radio" value="active"/>
+<span class="font-body-md text-body-md">I am active</span>
+</label>
+<label class="flex items-start gap-3 p-4 rounded-lg border border-border-subtle hover:border-primary cursor-pointer transition-colors bg-surface-container-lowest">
+<input class="mt-1 text-secondary focus:ring-secondary border-outline" name="pause_reason" type="radio" value="more_time"/>
+<span class="font-body-md text-body-md">I need more time</span>
+</label>
+<label class="flex items-start gap-3 p-4 rounded-lg border border-border-subtle hover:border-primary cursor-pointer transition-colors bg-surface-container-lowest">
+<input class="mt-1 text-secondary focus:ring-secondary border-outline" name="pause_reason" type="radio" value="contact_changed"/>
+<span class="font-body-md text-body-md">My contact details changed</span>
+</label>
+<label class="flex items-start gap-3 p-4 rounded-lg border border-border-subtle hover:border-primary cursor-pointer transition-colors bg-surface-container-lowest">
+<input class="mt-1 text-secondary focus:ring-secondary border-outline" name="pause_reason" type="radio" value="unauthorized"/>
+<span class="font-body-md text-body-md">I suspect unauthorized activity</span>
+</label>
+<label class="flex items-start gap-3 p-4 rounded-lg border border-border-subtle hover:border-primary cursor-pointer transition-colors bg-surface-container-lowest md:col-span-2">
+<input class="mt-1 text-secondary focus:ring-secondary border-outline" name="pause_reason" type="radio" value="other"/>
+<span class="font-body-md text-body-md">Other</span>
+</label>
+</div>
+</section>
+<div class="w-full h-px bg-border-subtle"></div>
+<!-- Notes -->
+<section>
+<label class="block font-label-md text-label-md text-on-surface mb-2" for="notes">Additional notes (Optional)</label>
+<textarea class="w-full rounded-lg border-border-subtle focus:border-secondary focus:ring-secondary bg-surface-container-lowest text-on-surface p-3 transition-colors resize-none" id="notes" name="notes" placeholder="Add context for your audit log..." rows="3"></textarea>
+</section>
+<div class="w-full h-px bg-border-subtle"></div>
+<!-- Authentication -->
+<section class="bg-surface-container-low p-6 rounded-lg border border-border-subtle">
+<div class="flex items-center gap-3 mb-4">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">lock</span>
+<h2 class="font-headline-md text-headline-md">Security Verification</h2>
+</div>
+<label class="block font-label-md text-label-md text-on-surface-variant mb-2" for="passphrase">Confirm with Vault Passphrase</label>
+<div class="relative">
+<input class="w-full rounded-lg border-border-subtle focus:border-secondary focus:ring-secondary bg-surface-container-lowest text-on-surface p-4 pl-12 transition-colors font-mono" id="passphrase" name="passphrase" placeholder="••••••••" required="" type="password"/>
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline">key</span>
+</div>
+</section>
+<!-- Actions -->
+<div class="flex flex-col-reverse md:flex-row items-center justify-end gap-4 pt-4">
+<button class="w-full md:w-auto px-6 py-3 font-label-md text-label-md text-on-surface hover:text-primary transition-colors" type="button">
+                            Cancel and return
+                        </button>
+<button class="w-full md:w-auto px-8 py-3 bg-attention-amber text-on-primary font-label-md text-label-md rounded-lg hover:bg-attention-amber/90 transition-colors h-12 flex items-center justify-center gap-2" type="submit">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">pause</span>
+                            Confirm Pause
+                        </button>
+</div>
+</form>
+</div>
+<!-- Danger Zone -->
+<div class="rounded-xl border border-danger-red/30 bg-surface-container-lowest p-8 mt-12">
+<h3 class="font-headline-md text-headline-md text-danger-red mb-2 flex items-center gap-2">
+<span class="material-symbols-outlined">warning</span>
+                    Danger Zone
+                </h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-6">
+                    Irreversible action. Deleting this policy will instantly sever all configured triggers and remove nominee access protocols permanently.
+                </p>
+<button class="px-6 py-3 border border-danger-red text-danger-red font-label-md text-label-md rounded-lg hover:bg-danger-red hover:text-on-error transition-colors h-12 flex items-center justify-center gap-2" type="button">
+<span class="material-symbols-outlined">delete_forever</span>
+                    Permanently delete this release policy
+                </button>
+</div>
+</div>
+</main>
+<!-- Toast Notification (Hidden by default) -->
+<div class="fixed bottom-margin-mobile md:bottom-margin-desktop left-1/2 -translate-x-1/2 z-50 toast-enter hidden" id="toast">
+<div class="bg-surface-container-highest text-on-surface px-6 py-4 rounded-lg shadow-lg border border-border-subtle flex items-center gap-4 min-w-[320px]">
+<span class="material-symbols-outlined text-attention-amber" style="font-variation-settings: 'FILL' 1;">info</span>
+<div class="flex-grow font-body-sm text-body-sm">
+                Policy paused successfully.
+            </div>
+<button class="font-label-caps text-label-caps text-secondary hover:text-primary transition-colors uppercase" id="undoBtn" type="button">
+                Undo (10s)
+            </button>
+<button class="text-outline hover:text-on-surface" id="closeToast" type="button">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+</div>
+<!-- Footer -->
+<footer class="w-full py-8 px-margin-mobile md:px-margin-desktop flex flex-col md:flex-row justify-between items-center gap-4 bg-surface-container-low border-t border-border-subtle mt-auto">
+<div class="font-label-caps text-label-caps tracking-widest text-primary">
+            © 2024 LEGACYLOCK. SECURELY ARCHITECTURAL.
+        </div>
+<div class="flex gap-6">
+<a class="text-on-surface-variant font-body-sm text-body-sm hover:text-secondary transition-colors" href="#">Privacy Policy</a>
+<a class="text-on-surface-variant font-body-sm text-body-sm hover:text-secondary transition-colors" href="#">Terms of Service</a>
+<a class="text-on-surface-variant font-body-sm text-body-sm hover:text-secondary transition-colors" href="#">Security Whitepaper</a>
+<a class="text-on-surface-variant font-body-sm text-body-sm hover:text-secondary transition-colors" href="#">Contact Support</a>
+</div>
+</footer>
+<script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const form = document.getElementById('pauseForm');
+            const toast = document.getElementById('toast');
+            const undoBtn = document.getElementById('undoBtn');
+            const closeToast = document.getElementById('closeToast');
+            let toastTimeout;
+            let countdownInterval;
+
+            function showToast() {
+                toast.classList.remove('hidden');
+                // Trigger reflow
+                void toast.offsetWidth;
+                toast.classList.remove('toast-enter');
+                toast.classList.add('toast-enter-active');
+                
+                let seconds = 10;
+                undoBtn.textContent = `Undo (${seconds}s)`;
+                
+                clearInterval(countdownInterval);
+                countdownInterval = setInterval(() => {
+                    seconds--;
+                    undoBtn.textContent = `Undo (${seconds}s)`;
+                    if (seconds <= 0) {
+                        hideToast();
+                    }
+                }, 1000);
+
+                clearTimeout(toastTimeout);
+                toastTimeout = setTimeout(() => {
+                    hideToast();
+                }, 10000);
+            }
+
+            function hideToast() {
+                toast.classList.remove('toast-enter-active');
+                toast.classList.add('toast-exit-active');
+                
+                setTimeout(() => {
+                    toast.classList.add('hidden');
+                    toast.classList.remove('toast-exit-active');
+                    toast.classList.add('toast-enter');
+                    clearInterval(countdownInterval);
+                }, 300);
+            }
+
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                // Simulate form submission
+                const submitBtn = form.querySelector('button[type="submit"]');
+                const originalText = submitBtn.innerHTML;
+                submitBtn.innerHTML = '<span class="material-symbols-outlined animate-spin">progress_activity</span> Processing...';
+                submitBtn.disabled = true;
+
+                setTimeout(() => {
+                    submitBtn.innerHTML = originalText;
+                    submitBtn.disabled = false;
+                    form.reset();
+                    showToast();
+                }, 800);
+            });
+
+            undoBtn.addEventListener('click', () => {
+                hideToast();
+                // Logic to undo would go here
+                console.log('Action undone');
+            });
+
+            closeToast.addEventListener('click', hideToast);
+        });
+    </script>
+<script src="crypto.js"></script>
+<script src="app.js"></script>
+</body></html>

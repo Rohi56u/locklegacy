@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Required Documentation Checklist - LegacyLock</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Manrope:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-background": "#1a1c1c",
+                    "secondary-fixed-dim": "#c3c0ff",
+                    "background": "#faf9f8",
+                    "on-tertiary-container": "#009668",
+                    "on-surface-variant": "#46464c",
+                    "secondary-container": "#645efb",
+                    "tertiary-container": "#002113",
+                    "attention-amber": "#F59E0B",
+                    "on-tertiary-fixed": "#002113",
+                    "on-error": "#ffffff",
+                    "on-primary": "#ffffff",
+                    "outline-variant": "#c7c6cc",
+                    "primary-fixed": "#dfe2f3",
+                    "tertiary-fixed-dim": "#4edea3",
+                    "inverse-primary": "#c3c6d7",
+                    "on-primary-container": "#808393",
+                    "surface": "#faf9f8",
+                    "primary-fixed-dim": "#c3c6d7",
+                    "surface-container": "#eeeeed",
+                    "secondary-fixed": "#e2dfff",
+                    "error-container": "#ffdad6",
+                    "surface-container-low": "#f4f3f2",
+                    "tertiary-fixed": "#6ffbbe",
+                    "verified-emerald": "#10B981",
+                    "on-secondary-fixed": "#0f0069",
+                    "primary-container": "#171b28",
+                    "surface-container-highest": "#e3e2e1",
+                    "surface-container-high": "#e9e8e7",
+                    "on-surface": "#1a1c1c",
+                    "on-tertiary": "#ffffff",
+                    "surface-variant": "#e3e2e1",
+                    "inverse-surface": "#2f3130",
+                    "on-tertiary-fixed-variant": "#005236",
+                    "inverse-on-surface": "#f1f0f0",
+                    "on-secondary-container": "#fffbff",
+                    "on-secondary-fixed-variant": "#3323cc",
+                    "secondary": "#4b41e1",
+                    "surface-bright": "#faf9f8",
+                    "on-error-container": "#93000a",
+                    "on-primary-fixed-variant": "#434654",
+                    "outline": "#76767c",
+                    "surface-tint": "#5a5e6d",
+                    "tertiary": "#000000",
+                    "border-subtle": "#E5E7EB",
+                    "surface-dim": "#dadad9",
+                    "on-secondary": "#ffffff",
+                    "on-primary-fixed": "#171b28",
+                    "primary": "#000000",
+                    "surface-container-lowest": "#ffffff",
+                    "danger-red": "#EF4444",
+                    "error": "#ba1a1a"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "margin-mobile": "20px",
+                    "gutter": "24px",
+                    "base": "8px",
+                    "container-max": "1280px",
+                    "margin-desktop": "40px"
+            },
+            "fontFamily": {
+                    "headline-md": ["Manrope"],
+                    "body-sm": ["Inter"],
+                    "headline-lg": ["Manrope"],
+                    "body-md": ["Inter"],
+                    "label-caps": ["Inter"],
+                    "label-md": ["Inter"],
+                    "headline-lg-mobile": ["Manrope"],
+                    "body-lg": ["Inter"],
+                    "headline-xl": ["Manrope"]
+            },
+            "fontSize": {
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "headline-xl": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined.fill {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md antialiased min-h-screen flex flex-col" data-page="institution_document_checklist_desktop.html">
+<!-- Top Navigation Bar -->
+<header class="bg-background border-b border-border-subtle w-full flex justify-between items-center px-margin-desktop py-4 max-w-container-max mx-auto z-50 sticky top-0">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary fill text-3xl">shield</span>
+<span class="font-headline-md text-headline-md font-bold text-primary">LegacyLock</span>
+</div>
+<!-- Navigation Links (Desktop) -->
+<nav class="hidden md:flex gap-8 items-center">
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-secondary transition-colors duration-200 uppercase" href="#">Dashboard</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-secondary transition-colors duration-200 uppercase" href="#">Estates</a>
+<a class="font-label-caps text-label-caps text-secondary font-bold uppercase scale-95 transition-transform duration-150" href="#">Nominee Rights</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-secondary transition-colors duration-200 uppercase" href="#">Verify Identity</a>
+</nav>
+<div class="flex items-center gap-4">
+<button aria-label="Help" class="text-primary hover:text-secondary transition-colors duration-200">
+<span class="material-symbols-outlined" data-icon="help_outline">help_outline</span>
+</button>
+<button aria-label="Security" class="text-primary hover:text-secondary transition-colors duration-200">
+<span class="material-symbols-outlined" data-icon="security">security</span>
+</button>
+<div class="w-10 h-10 rounded-full bg-surface-container-high border border-border-subtle overflow-hidden ml-2">
+<img alt="Nominee profile avatar" class="w-full h-full object-cover" data-alt="A minimal, professional avatar placeholder image in light tones, featuring a subtle geometric silhouette on a soft gray background, conveying corporate security and privacy." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBE5R4QVP0XrEPIQLysDyAqgG0LtE6ESjppsFwwPmOTGGHJr1MC8zjVPWbpc2FdJBQ1ItFaCSdaApfMA1JSRwbA8Ji1wS82lzDEz4VaR7yQsw8LbL5SwE-GT5EqbI0voY-6XBgF7-rDvAC0bplQuhoy7N3UhD56KW9-8Xfh8CbykH7pP-zOCDPElaLXPyMWYbvc5iQ82xQAfUq6z4IED1K-PTXri7qTucGfUol_85nVtCms3JFMtEHJ"/>
+</div>
+</div>
+</header>
+<main class="flex-grow w-full max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-12 flex flex-col md:flex-row gap-gutter">
+<!-- Content Area -->
+<div class="flex-grow flex flex-col gap-8 w-full">
+<!-- Page Header & Summary Card -->
+<section class="flex flex-col gap-6">
+<div>
+<h1 class="font-headline-lg text-headline-lg text-primary mb-2">Required Documentation Checklist</h1>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-3xl">Complete the following documentation to proceed with the nominee claim process. Required documents are categorized by institution type.</p>
+</div>
+<div class="bg-surface-container-lowest border border-border-subtle rounded-xl p-6 flex flex-col md:flex-row justify-between items-start md:items-center gap-6 shadow-sm">
+<div class="flex flex-col gap-2 w-full md:w-1/2">
+<div class="flex justify-between items-center w-full">
+<span class="font-label-md text-label-md text-on-surface-variant">Overall Progress</span>
+<span class="font-headline-md text-headline-md text-primary">65%</span>
+</div>
+<div class="w-full bg-surface-container-highest rounded-full h-2 overflow-hidden">
+<div class="bg-verified-emerald h-full rounded-full" style="width: 65%;"></div>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">11 of 17 documents uploaded and verified</p>
+</div>
+<button class="px-6 py-3 border border-primary text-primary font-label-md text-label-md rounded-DEFAULT hover:bg-surface-container-low transition-colors duration-200 whitespace-nowrap flex items-center gap-2">
+<span class="material-symbols-outlined" data-icon="list_alt">list_alt</span>
+                        Generate missing-document list
+                    </button>
+</div>
+</section>
+<!-- Checklist Categories -->
+<section class="flex flex-col gap-10">
+<!-- Bank Category -->
+<div class="flex flex-col gap-4">
+<div class="flex items-center gap-3 border-b border-border-subtle pb-3">
+<div class="w-10 h-10 rounded-full bg-surface-container-low flex items-center justify-center text-primary border border-border-subtle">
+<span class="material-symbols-outlined fill" data-icon="account_balance">account_balance</span>
+</div>
+<h2 class="font-headline-md text-headline-md text-primary">Bank Institutions</h2>
+</div>
+<div class="flex flex-col gap-3">
+<!-- Document Row 1 -->
+<div class="bg-surface-container-lowest border border-border-subtle rounded-lg p-4 flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4 hover:shadow-[0_4px_20px_rgba(10,14,26,0.04)] transition-shadow duration-200">
+<div class="flex flex-col gap-1 flex-grow">
+<h3 class="font-label-md text-label-md text-primary font-semibold">Letter of Administration</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Owner: Primary Nominee</p>
+</div>
+<div class="flex flex-wrap items-center gap-3 lg:w-1/2 justify-end">
+<span class="px-3 py-1 bg-surface-container-high text-on-surface-variant font-label-caps text-label-caps rounded-full flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" data-icon="pending">pending</span>
+                                    Required
+                                </span>
+<span class="text-attention-amber font-body-sm text-body-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]" data-icon="schedule">schedule</span>
+                                    Due in 5 days
+                                </span>
+<button class="ml-auto lg:ml-4 px-4 py-2 bg-secondary text-on-primary font-label-md text-label-md rounded-DEFAULT hover:bg-secondary-container transition-colors duration-200">
+                                    Upload
+                                </button>
+</div>
+</div>
+<!-- Document Row 2 -->
+<div class="bg-surface-container-lowest border border-border-subtle rounded-lg p-4 flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4 hover:shadow-[0_4px_20px_rgba(10,14,26,0.04)] transition-shadow duration-200">
+<div class="flex flex-col gap-1 flex-grow">
+<h3 class="font-label-md text-label-md text-primary font-semibold">Signed Affidavit</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Owner: Joint Nominee</p>
+</div>
+<div class="flex flex-wrap items-center gap-3 lg:w-1/2 justify-end">
+<span class="px-3 py-1 bg-[#ECFDF5] text-verified-emerald font-label-caps text-label-caps rounded-full flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" data-icon="check_circle">check_circle</span>
+                                    Uploaded
+                                </span>
+<button class="ml-auto lg:ml-4 px-4 py-2 border border-border-subtle text-primary font-label-md text-label-md rounded-DEFAULT hover:bg-surface-container-low transition-colors duration-200">
+                                    View
+                                </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Mutual Fund Category -->
+<div class="flex flex-col gap-4">
+<div class="flex items-center gap-3 border-b border-border-subtle pb-3">
+<div class="w-10 h-10 rounded-full bg-surface-container-low flex items-center justify-center text-primary border border-border-subtle">
+<span class="material-symbols-outlined fill" data-icon="monitoring">monitoring</span>
+</div>
+<h2 class="font-headline-md text-headline-md text-primary">Mutual Funds</h2>
+</div>
+<div class="flex flex-col gap-3">
+<!-- Document Row 3 -->
+<div class="bg-surface-container-lowest border border-border-subtle rounded-lg p-4 flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4 hover:shadow-[0_4px_20px_rgba(10,14,26,0.04)] transition-shadow duration-200 border-l-2 border-l-danger-red">
+<div class="flex flex-col gap-1 flex-grow">
+<h3 class="font-label-md text-label-md text-primary font-semibold">Folio Verification</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Owner: Primary Nominee</p>
+</div>
+<div class="flex flex-wrap items-center gap-3 lg:w-1/2 justify-end">
+<span class="px-3 py-1 bg-error-container text-on-error-container font-label-caps text-label-caps rounded-full flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" data-icon="error">error</span>
+                                    Needs correction
+                                </span>
+<button class="ml-auto lg:ml-4 px-4 py-2 bg-secondary text-on-primary font-label-md text-label-md rounded-DEFAULT hover:bg-secondary-container transition-colors duration-200">
+                                    Re-upload
+                                </button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Footer Disclaimer -->
+<div class="mt-8 p-4 bg-surface-container-low rounded-lg border border-border-subtle flex items-start gap-3">
+<span class="material-symbols-outlined text-on-surface-variant mt-0.5" data-icon="info">info</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant italic">
+                    This checklist is for preparation purposes only and does not guarantee institutional approval. Requirements are subject to change based on specific policy terms.
+                </p>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-background border-t border-border-subtle w-full px-margin-desktop py-gutter max-w-container-max mx-auto flex flex-col md:flex-row justify-between items-center gap-4 mt-auto">
+<div class="flex items-center gap-2">
+<span class="font-headline-md text-headline-md font-bold text-primary">LegacyLock</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant opacity-80 hover:opacity-100 duration-200">
+            © 2024 LegacyLock Digital Estates. All rights reserved.
+        </p>
+<div class="flex gap-6">
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-secondary transition-colors" href="#">Security Overview</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-secondary transition-colors" href="#">Terms of Service</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-secondary transition-colors" href="#">Help Center</a>
+</div>
+</footer>
+<script src="crypto.js"></script>
+<script src="app.js"></script>
+</body></html>

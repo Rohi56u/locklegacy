@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>LegacyLock - Add Digital Legacy Form</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Manrope:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-primary-fixed": "#171b28",
+                    "secondary-container": "#645efb",
+                    "error-container": "#ffdad6",
+                    "secondary-fixed": "#e2dfff",
+                    "on-tertiary-container": "#009668",
+                    "on-primary-fixed-variant": "#434654",
+                    "surface": "#faf9f8",
+                    "error": "#ba1a1a",
+                    "surface-dim": "#dadad9",
+                    "surface-bright": "#faf9f8",
+                    "on-surface": "#1a1c1c",
+                    "primary": "#000000",
+                    "on-primary": "#ffffff",
+                    "inverse-surface": "#2f3130",
+                    "primary-fixed": "#dfe2f3",
+                    "background": "#faf9f8",
+                    "surface-container": "#eeeeed",
+                    "on-secondary-container": "#fffbff",
+                    "on-tertiary-fixed-variant": "#005236",
+                    "primary-fixed-dim": "#c3c6d7",
+                    "surface-container-highest": "#e3e2e1",
+                    "verified-emerald": "#10B981",
+                    "inverse-primary": "#c3c6d7",
+                    "on-primary-container": "#808393",
+                    "tertiary-fixed": "#6ffbbe",
+                    "tertiary-container": "#002113",
+                    "surface-variant": "#e3e2e1",
+                    "surface-tint": "#5a5e6d",
+                    "tertiary-fixed-dim": "#4edea3",
+                    "on-secondary-fixed": "#0f0069",
+                    "surface-container-lowest": "#ffffff",
+                    "on-secondary-fixed-variant": "#3323cc",
+                    "primary-container": "#171b28",
+                    "secondary-fixed-dim": "#c3c0ff",
+                    "attention-amber": "#F59E0B",
+                    "on-tertiary-fixed": "#002113",
+                    "surface-container-low": "#f4f3f2",
+                    "inverse-on-surface": "#f1f0f0",
+                    "secondary": "#4b41e1",
+                    "outline": "#76767c",
+                    "on-tertiary": "#ffffff",
+                    "on-secondary": "#ffffff",
+                    "on-surface-variant": "#46464c",
+                    "on-background": "#1a1c1c",
+                    "surface-container-high": "#e9e8e7",
+                    "on-error": "#ffffff",
+                    "border-subtle": "#E5E7EB",
+                    "outline-variant": "#c7c6cc",
+                    "on-error-container": "#93000a",
+                    "tertiary": "#000000",
+                    "danger-red": "#EF4444"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "margin-desktop": "40px",
+                    "base": "8px",
+                    "gutter": "24px",
+                    "container-max": "1280px",
+                    "margin-mobile": "20px"
+            },
+            "fontFamily": {
+                    "headline-lg-mobile": ["Manrope"],
+                    "headline-md": ["Manrope"],
+                    "body-sm": ["Inter"],
+                    "label-md": ["Inter"],
+                    "headline-lg": ["Manrope"],
+                    "label-caps": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "body-md": ["Inter"],
+                    "headline-xl": ["Manrope"]
+            },
+            "fontSize": {
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-xl": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .icon-fill {
+        font-variation-settings: 'FILL' 1;
+      }
+      
+      input:focus, textarea:focus, select:focus {
+        outline: none;
+        border-color: #4b41e1;
+        box-shadow: 0 0 0 1px #4b41e1;
+      }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex flex-col" data-page="add_digital_legacy_record_desktop.html">
+<!-- Top Navigation (Shared Component) -->
+<header class="bg-surface border-b border-outline-variant docked full-width top-0 z-50">
+<div class="max-w-container-max mx-auto px-margin-desktop flex justify-between items-center h-12">
+<div class="flex items-center gap-base">
+<span class="text-headline-md font-headline-md text-primary">LegacyLock</span>
+</div>
+<nav class="hidden md:flex gap-gutter h-full">
+<a class="flex flex-col justify-center h-full text-secondary font-bold border-b-2 border-secondary pb-1 text-label-md font-label-md transition-colors duration-200" href="#">Product</a>
+<a class="flex flex-col justify-center h-full text-on-surface-variant hover:text-secondary transition-colors duration-200 text-label-md font-label-md" href="#">Security</a>
+<a class="flex flex-col justify-center h-full text-on-surface-variant hover:text-secondary transition-colors duration-200 text-label-md font-label-md" href="#">Pricing</a>
+<a class="flex flex-col justify-center h-full text-on-surface-variant hover:text-secondary transition-colors duration-200 text-label-md font-label-md" href="#">Support</a>
+</nav>
+<div class="flex items-center gap-base">
+<button class="flex items-center gap-2 text-secondary font-label-md text-label-md hover:text-secondary-container transition-colors">
+<span class="material-symbols-outlined" data-icon="lock">lock</span>
+                    Secure Login
+                </button>
+</div>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="flex-grow max-w-container-max mx-auto w-full px-margin-desktop py-12 flex flex-col lg:flex-row gap-gutter relative">
+<!-- Form Container -->
+<div class="flex-1 max-w-3xl">
+<div class="mb-8">
+<h1 class="text-headline-lg font-headline-lg text-primary mb-2">Add Digital Legacy</h1>
+<p class="text-body-lg font-body-lg text-on-surface-variant">Securely record instructions for your digital estate assets.</p>
+</div>
+<!-- Stepper -->
+<div class="flex items-center justify-between mb-12 relative">
+<div class="absolute left-0 top-1/2 w-full h-[1px] bg-border-subtle -z-10 transform -translate-y-1/2"></div>
+<div class="flex flex-col items-center gap-2 bg-background px-2">
+<div class="w-8 h-8 rounded-full bg-secondary text-on-secondary flex items-center justify-center font-label-md text-label-md">1</div>
+<span class="text-label-md font-label-md text-primary">Provider</span>
+</div>
+<div class="flex flex-col items-center gap-2 bg-background px-2 opacity-50">
+<div class="w-8 h-8 rounded-full border border-outline-variant bg-surface text-on-surface-variant flex items-center justify-center font-label-md text-label-md">2</div>
+<span class="text-label-md font-label-md text-on-surface-variant">Security Settings</span>
+</div>
+<div class="flex flex-col items-center gap-2 bg-background px-2 opacity-50">
+<div class="w-8 h-8 rounded-full border border-outline-variant bg-surface text-on-surface-variant flex items-center justify-center font-label-md text-label-md">3</div>
+<span class="text-label-md font-label-md text-on-surface-variant">Legacy Plan</span>
+</div>
+<div class="flex flex-col items-center gap-2 bg-background px-2 opacity-50">
+<div class="w-8 h-8 rounded-full border border-outline-variant bg-surface text-on-surface-variant flex items-center justify-center font-label-md text-label-md">4</div>
+<span class="text-label-md font-label-md text-on-surface-variant">Review</span>
+</div>
+</div>
+<!-- Form Content -->
+<div class="bg-surface border border-border-subtle rounded-xl p-8 shadow-sm">
+<!-- Category Grid -->
+<div class="mb-8">
+<label class="block text-label-md font-label-md text-primary mb-4">Select Asset Category</label>
+<div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
+<label class="cursor-pointer">
+<input checked="" class="peer sr-only" name="category" type="radio"/>
+<div class="flex flex-col items-center p-4 border border-border-subtle rounded-lg peer-checked:border-secondary peer-checked:bg-secondary/5 hover:border-outline-variant transition-all">
+<span class="material-symbols-outlined text-3xl mb-2 text-on-surface-variant" data-icon="cloud">cloud</span>
+<span class="text-label-md font-label-md text-center">Google Drive/Photos</span>
+</div>
+</label>
+<label class="cursor-pointer">
+<input class="peer sr-only" name="category" type="radio"/>
+<div class="flex flex-col items-center p-4 border border-border-subtle rounded-lg peer-checked:border-secondary peer-checked:bg-secondary/5 hover:border-outline-variant transition-all">
+<span class="material-symbols-outlined text-3xl mb-2 text-on-surface-variant" data-icon="phone_iphone">phone_iphone</span>
+<span class="text-label-md font-label-md text-center">Apple/iCloud</span>
+</div>
+</label>
+<label class="cursor-pointer">
+<input class="peer sr-only" name="category" type="radio"/>
+<div class="flex flex-col items-center p-4 border border-border-subtle rounded-lg peer-checked:border-secondary peer-checked:bg-secondary/5 hover:border-outline-variant transition-all">
+<span class="material-symbols-outlined text-3xl mb-2 text-on-surface-variant" data-icon="window">window</span>
+<span class="text-label-md font-label-md text-center">Microsoft</span>
+</div>
+</label>
+</div>
+</div>
+<!-- Fields -->
+<div class="space-y-6">
+<div>
+<label class="block text-label-md font-label-md text-primary mb-2" for="account-id">Account Email/ID Hint</label>
+<input class="w-full h-11 px-3 border border-border-subtle rounded-DEFAULT text-body-md font-body-md focus:border-secondary focus:ring-1 focus:ring-secondary transition-colors" id="account-id" placeholder="e.g., primary email address" type="text"/>
+</div>
+<div>
+<label class="block text-label-md font-label-md text-primary mb-2">Inactive-account plan enabled natively?</label>
+<div class="flex gap-4">
+<label class="flex items-center gap-2 cursor-pointer">
+<input class="text-secondary focus:ring-secondary" name="native_plan" type="radio"/>
+<span class="text-body-md font-body-md text-on-surface">Yes</span>
+</label>
+<label class="flex items-center gap-2 cursor-pointer">
+<input class="text-secondary focus:ring-secondary" name="native_plan" type="radio"/>
+<span class="text-body-md font-body-md text-on-surface">No</span>
+</label>
+<label class="flex items-center gap-2 cursor-pointer">
+<input checked="" class="text-secondary focus:ring-secondary" name="native_plan" type="radio"/>
+<span class="text-body-md font-body-md text-on-surface">Unknown</span>
+</label>
+</div>
+</div>
+<div>
+<label class="block text-label-md font-label-md text-primary mb-2" for="legacy-contact">Trusted Legacy Contact</label>
+<input class="w-full h-11 px-3 border border-border-subtle rounded-DEFAULT text-body-md font-body-md focus:border-secondary focus:ring-1 focus:ring-secondary transition-colors" id="legacy-contact" placeholder="Name of designated contact" type="text"/>
+</div>
+</div>
+<div class="mt-8 pt-8 border-t border-border-subtle flex justify-end">
+<button class="bg-secondary text-on-secondary h-11 px-6 rounded-DEFAULT font-label-md text-label-md hover:bg-secondary-container transition-colors shadow-sm">
+                        Continue to Security
+                    </button>
+</div>
+</div>
+</div>
+<!-- Right Side Guidance Card -->
+<aside class="w-full lg:w-80 shrink-0">
+<div class="sticky top-24 space-y-6">
+<!-- Guidance Card -->
+<div class="bg-surface border border-border-subtle rounded-xl p-6 relative overflow-hidden">
+<div class="absolute top-0 right-0 p-4 opacity-10">
+<span class="material-symbols-outlined text-6xl" data-icon="policy">policy</span>
+</div>
+<h3 class="text-label-md font-label-md text-primary flex items-center gap-2 mb-4">
+<span class="material-symbols-outlined text-on-surface-variant text-[20px]" data-icon="info">info</span>
+                        Provider Rules &amp; Guidance
+                    </h3>
+<p class="text-body-sm font-body-sm text-on-surface-variant leading-relaxed mb-4">
+                        Each digital provider (Google, Apple, etc.) has unique legal rules for account transfer. LegacyLock provides your family with the roadmap, but cannot bypass provider security or biometric locks.
+                    </p>
+<div class="bg-surface-container p-3 rounded-lg flex gap-3 items-start border border-border-subtle">
+<span class="material-symbols-outlined text-secondary text-[20px] mt-0.5" data-icon="lightbulb">lightbulb</span>
+<p class="text-body-sm font-body-sm text-on-surface text-xs">
+                            We strongly recommend enabling the native "Legacy Contact" features within each service directly.
+                        </p>
+</div>
+</div>
+<!-- Security Trust Strip -->
+<div class="flex items-center gap-3 p-4 border border-border-subtle rounded-lg bg-surface">
+<div class="w-10 h-10 rounded-full bg-primary/5 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-primary text-[20px]" data-icon="shield_lock">shield_lock</span>
+</div>
+<div>
+<span class="block text-label-caps font-label-caps text-on-surface-variant tracking-wider uppercase mb-1">Zero Knowledge Architecture</span>
+<p class="text-[11px] text-on-surface font-body-sm leading-tight">LegacyLock never stores passwords, 2FA codes, or session tokens.</p>
+</div>
+</div>
+</div>
+</aside>
+</main>
+<!-- Footer (Shared Component) -->
+<footer class="bg-surface-container-low mt-auto w-full border-t border-outline-variant">
+<div class="max-w-container-max mx-auto px-margin-desktop py-8 flex flex-col md:flex-row justify-between items-center gap-base">
+<span class="text-label-caps font-label-caps text-on-surface-variant">© 2024 LegacyLock. Your digital estate is secured with AES-256 encryption.</span>
+<div class="flex gap-gutter">
+<a class="text-body-sm font-body-sm text-on-surface-variant hover:text-secondary underline transition-all opacity-90 hover:opacity-100" href="#">Privacy Policy</a>
+<a class="text-body-sm font-body-sm text-on-surface-variant hover:text-secondary underline transition-all opacity-90 hover:opacity-100" href="#">Terms of Service</a>
+<a class="text-body-sm font-body-sm text-on-surface-variant hover:text-secondary underline transition-all opacity-90 hover:opacity-100" href="#">Security Audit</a>
+<a class="text-body-sm font-body-sm text-on-surface-variant hover:text-secondary underline transition-all opacity-90 hover:opacity-100" href="#">Status</a>
+</div>
+</div>
+</footer>
+<script src="crypto.js"></script>
+<script src="app.js"></script>
+</body></html>

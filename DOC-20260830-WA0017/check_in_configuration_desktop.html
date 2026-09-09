@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Check-in Policy - LegacyLock</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Manrope:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "inverse-on-surface": "#f1f0f0",
+                    "on-primary": "#ffffff",
+                    "surface-dim": "#dadad9",
+                    "primary-fixed": "#dfe2f3",
+                    "secondary-fixed-dim": "#c3c0ff",
+                    "error-container": "#ffdad6",
+                    "primary": "#000000",
+                    "secondary": "#4b41e1",
+                    "surface-container-highest": "#e3e2e1",
+                    "tertiary-fixed": "#6ffbbe",
+                    "on-error-container": "#93000a",
+                    "on-surface": "#1a1c1c",
+                    "surface": "#faf9f8",
+                    "attention-amber": "#F59E0B",
+                    "on-surface-variant": "#46464c",
+                    "surface-tint": "#5a5e6d",
+                    "on-secondary-fixed": "#0f0069",
+                    "surface-container": "#eeeeed",
+                    "on-tertiary-container": "#009668",
+                    "background": "#faf9f8",
+                    "surface-bright": "#faf9f8",
+                    "tertiary": "#000000",
+                    "on-secondary-container": "#fffbff",
+                    "danger-red": "#EF4444",
+                    "error": "#ba1a1a",
+                    "inverse-surface": "#2f3130",
+                    "secondary-fixed": "#e2dfff",
+                    "verified-emerald": "#10B981",
+                    "surface-container-lowest": "#ffffff",
+                    "primary-container": "#171b28",
+                    "inverse-primary": "#c3c6d7",
+                    "surface-variant": "#e3e2e1",
+                    "outline": "#76767c",
+                    "on-error": "#ffffff",
+                    "surface-container-low": "#f4f3f2",
+                    "on-secondary": "#ffffff",
+                    "on-background": "#1a1c1c",
+                    "secondary-container": "#645efb",
+                    "primary-fixed-dim": "#c3c6d7",
+                    "tertiary-fixed-dim": "#4edea3",
+                    "tertiary-container": "#002113",
+                    "outline-variant": "#c7c6cc",
+                    "on-tertiary-fixed-variant": "#005236",
+                    "surface-container-high": "#e9e8e7",
+                    "on-tertiary": "#ffffff",
+                    "on-primary-fixed": "#171b28",
+                    "border-subtle": "#E5E7EB",
+                    "on-primary-fixed-variant": "#434654",
+                    "on-tertiary-fixed": "#002113",
+                    "on-secondary-fixed-variant": "#3323cc",
+                    "on-primary-container": "#808393"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "margin-mobile": "20px",
+                    "gutter": "24px",
+                    "base": "8px",
+                    "margin-desktop": "40px",
+                    "container-max": "1280px"
+            },
+            "fontFamily": {
+                    "headline-md": ["Manrope"],
+                    "body-md": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "label-caps": ["Inter"],
+                    "headline-xl": ["Manrope"],
+                    "label-md": ["Inter"],
+                    "body-sm": ["Inter"],
+                    "headline-lg": ["Manrope"],
+                    "headline-lg-mobile": ["Manrope"]
+            },
+            "fontSize": {
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "headline-xl": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}]
+            }
+          }
+        }
+      }
+    </script>
+</head>
+<body class="bg-background text-on-background antialiased selection:bg-secondary-fixed-dim selection:text-on-secondary-fixed h-screen flex overflow-hidden" data-page="check_in_configuration_desktop.html">
+<!-- SideNavBar (Suppressed for focused settings/task view as per semantic shell mandate: "Task-Focused: Any sub-page featuring a 'Close' or 'Back' action that implies a temporary departure from the main navigation flow.") -->
+<!-- TopAppBar -->
+<header class="bg-surface border-b border-border-subtle docked full-width top-0 z-50 transition-all duration-200 active:scale-95 flat no shadows absolute w-full">
+<div class="flex justify-between items-center px-gutter py-4 w-full max-w-container-max mx-auto h-[72px]">
+<div class="flex items-center gap-4">
+<button aria-label="Go back" class="text-on-surface-variant hover:opacity-80 transition-opacity p-2 rounded-full hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
+</button>
+<h1 class="font-headline-md text-headline-md font-bold text-primary">Check-in Policy</h1>
+</div>
+<div class="flex items-center gap-4">
+<button aria-label="Help" class="text-on-surface-variant hover:opacity-80 transition-opacity p-2 rounded-full hover:bg-surface-container-high transition-colors hidden sm:block">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+</button>
+<div class="h-8 w-8 rounded-full bg-surface-container-highest flex items-center justify-center text-primary border border-border-subtle">
+<span class="material-symbols-outlined" data-icon="account_circle">account_circle</span>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="flex-1 w-full pt-[72px] h-full overflow-y-auto">
+<div class="max-w-4xl mx-auto px-margin-mobile md:px-margin-desktop py-8 md:py-12 flex flex-col gap-8 md:gap-12">
+<!-- Page Header Intro -->
+<section class="max-w-2xl">
+<p class="font-body-lg text-body-lg text-on-surface-variant">Configure the parameters for your Proof of Life check-ins. These settings determine how LegacyLock verifies your continued active presence before engaging release protocols.</p>
+</section>
+<div class="flex flex-col lg:flex-row gap-8 lg:gap-12 items-start">
+<!-- Settings Form -->
+<div class="flex-1 flex flex-col gap-6 w-full">
+<!-- 1. Check-in Frequency -->
+<div class="bg-surface-container-lowest border border-border-subtle rounded-xl p-6 transition-all duration-200 hover:shadow-[0_4px_20px_rgba(10,14,26,0.04)] focus-within:border-secondary">
+<div class="flex items-center gap-3 mb-4 pb-4 border-b border-border-subtle">
+<div class="h-8 w-8 rounded bg-primary-fixed-dim/20 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" data-icon="update" style="font-variation-settings: 'FILL' 1;">update</span>
+</div>
+<h2 class="font-headline-md text-headline-md text-on-surface">Check-in Frequency</h2>
+</div>
+<div class="grid grid-cols-3 gap-4 mb-4">
+<label class="cursor-pointer relative">
+<input class="peer sr-only" name="frequency" type="radio" value="30"/>
+<div class="border border-border-subtle rounded-lg py-3 px-4 text-center hover:bg-surface-container transition-colors peer-checked:border-secondary peer-checked:bg-secondary-fixed/30 peer-checked:text-on-secondary-fixed font-label-md text-label-md">
+                                    30 Days
+                                </div>
+</label>
+<label class="cursor-pointer relative">
+<input checked="" class="peer sr-only" name="frequency" type="radio" value="60"/>
+<div class="border border-border-subtle rounded-lg py-3 px-4 text-center hover:bg-surface-container transition-colors peer-checked:border-secondary peer-checked:bg-secondary-fixed/30 peer-checked:text-on-secondary-fixed font-label-md text-label-md">
+                                    60 Days
+                                </div>
+</label>
+<label class="cursor-pointer relative">
+<input class="peer sr-only" name="frequency" type="radio" value="90"/>
+<div class="border border-border-subtle rounded-lg py-3 px-4 text-center hover:bg-surface-container transition-colors peer-checked:border-secondary peer-checked:bg-secondary-fixed/30 peer-checked:text-on-secondary-fixed font-label-md text-label-md">
+                                    90 Days
+                                </div>
+</label>
+</div>
+<div class="flex gap-2 items-start text-attention-amber bg-attention-amber/10 p-3 rounded-lg">
+<span class="material-symbols-outlined text-lg" data-icon="warning">warning</span>
+<p class="font-body-sm text-body-sm">Shorter intervals may increase false-trigger risk if you are frequently disconnected.</p>
+</div>
+</div>
+<!-- 2. Grace Period -->
+<div class="bg-surface-container-lowest border border-border-subtle rounded-xl p-6 transition-all duration-200 hover:shadow-[0_4px_20px_rgba(10,14,26,0.04)] focus-within:border-secondary">
+<div class="flex items-center gap-3 mb-4 pb-4 border-b border-border-subtle">
+<div class="h-8 w-8 rounded bg-primary-fixed-dim/20 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" data-icon="hourglass_empty" style="font-variation-settings: 'FILL' 1;">hourglass_empty</span>
+</div>
+<h2 class="font-headline-md text-headline-md text-on-surface">Grace Period</h2>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-4">Days allowed after a missed check-in before escalation protocols initiate.</p>
+<select class="w-full border-border-subtle rounded-lg py-3 px-4 font-body-md text-body-md text-on-surface focus:border-secondary focus:ring-secondary bg-transparent appearance-none cursor-pointer">
+<option value="7">7 Days</option>
+<option selected="" value="14">14 Days</option>
+<option value="30">30 Days</option>
+</select>
+</div>
+<!-- 3. Notification Channels -->
+<div class="bg-surface-container-lowest border border-border-subtle rounded-xl p-6 transition-all duration-200 hover:shadow-[0_4px_20px_rgba(10,14,26,0.04)]">
+<div class="flex items-center gap-3 mb-4 pb-4 border-b border-border-subtle">
+<div class="h-8 w-8 rounded bg-primary-fixed-dim/20 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" data-icon="notifications_active" style="font-variation-settings: 'FILL' 1;">notifications_active</span>
+</div>
+<h2 class="font-headline-md text-headline-md text-on-surface">Notification Channels</h2>
+</div>
+<div class="flex flex-col gap-3">
+<label class="flex items-center gap-3 cursor-pointer p-2 hover:bg-surface-container-lowest rounded-md -ml-2 transition-colors">
+<input checked="" class="rounded border-border-subtle text-secondary focus:ring-secondary h-5 w-5 bg-transparent cursor-pointer" type="checkbox"/>
+<span class="font-body-md text-body-md text-on-surface">Email Notifications</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer p-2 hover:bg-surface-container-lowest rounded-md -ml-2 transition-colors">
+<input checked="" class="rounded border-border-subtle text-secondary focus:ring-secondary h-5 w-5 bg-transparent cursor-pointer" type="checkbox"/>
+<span class="font-body-md text-body-md text-on-surface">SMS Alerts</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer p-2 hover:bg-surface-container-lowest rounded-md -ml-2 transition-colors">
+<input class="rounded border-border-subtle text-secondary focus:ring-secondary h-5 w-5 bg-transparent cursor-pointer" type="checkbox"/>
+<span class="font-body-md text-body-md text-on-surface">App Push Notifications</span>
+</label>
+</div>
+</div>
+<!-- 6. Escalation -->
+<div class="bg-surface-container-lowest border border-border-subtle rounded-xl p-6 transition-all duration-200 hover:shadow-[0_4px_20px_rgba(10,14,26,0.04)]">
+<div class="flex items-center gap-3 mb-4 pb-4 border-b border-border-subtle">
+<div class="h-8 w-8 rounded bg-primary-fixed-dim/20 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" data-icon="security" style="font-variation-settings: 'FILL' 1;">security</span>
+</div>
+<h2 class="font-headline-md text-headline-md text-on-surface">Escalation Protocol</h2>
+</div>
+<div class="flex items-start justify-between gap-4">
+<div>
+<h3 class="font-label-md text-label-md text-on-surface mb-1">Trusted-contact escalation</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">If enabled, primary beneficiaries will be notified if the Grace Period expires without check-in resolution.</p>
+</div>
+<label class="relative inline-flex items-center cursor-pointer mt-1 flex-shrink-0">
+<input checked="" class="sr-only peer" type="checkbox" value=""/>
+<div class="w-11 h-6 bg-surface-variant peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-secondary/20 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-secondary"></div>
+</label>
+</div>
+</div>
+</div>
+<!-- Visualization Side Panel -->
+<div class="w-full lg:w-80 flex-shrink-0 lg:sticky lg:top-[104px]">
+<div class="bg-surface-container-lowest border border-border-subtle rounded-xl p-6">
+<h3 class="font-label-caps text-label-caps text-on-surface-variant mb-6 tracking-wider">Policy Timeline Preview</h3>
+<!-- Timeline -->
+<div class="relative pl-6 space-y-6">
+<!-- Vertical Line -->
+<div class="absolute left-2.5 top-2 bottom-2 w-px bg-border-subtle"></div>
+<!-- Step 1 -->
+<div class="relative">
+<div class="absolute -left-6 w-3 h-3 rounded-full bg-surface border-2 border-border-subtle mt-1.5 z-10"></div>
+<p class="font-label-md text-label-md text-on-surface">Reminder 1</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">7 days prior</p>
+</div>
+<!-- Step 2 -->
+<div class="relative">
+<div class="absolute -left-6 w-3 h-3 rounded-full bg-surface border-2 border-border-subtle mt-1.5 z-10"></div>
+<p class="font-label-md text-label-md text-on-surface">Reminder 2</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">3 days prior</p>
+</div>
+<!-- Step 3 (Current Focus) -->
+<div class="relative">
+<div class="absolute -left-[27px] w-4 h-4 rounded-full bg-primary-fixed border-[3px] border-secondary mt-1 z-10 shadow-[0_0_0_4px_rgba(75,65,225,0.1)]"></div>
+<p class="font-label-md text-label-md text-secondary font-bold">Check-in Due</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Day 60</p>
+</div>
+<!-- Step 4 -->
+<div class="relative">
+<div class="absolute -left-6 w-3 h-3 rounded-full bg-surface border-2 border-attention-amber mt-1.5 z-10"></div>
+<p class="font-label-md text-label-md text-on-surface">Grace Period</p>
+<p class="font-body-sm text-body-sm text-attention-amber">14 days to resolve</p>
+</div>
+<!-- Step 5 -->
+<div class="relative">
+<div class="absolute -left-6 w-3 h-3 rounded-full bg-surface border-2 border-danger-red mt-1.5 z-10"></div>
+<p class="font-label-md text-label-md text-on-surface">Review / Release</p>
+<p class="font-body-sm text-body-sm text-danger-red">Escalation initiated</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer Actions -->
+<div class="pt-8 border-t border-border-subtle flex justify-end pb-16 md:pb-8">
+<button class="bg-secondary text-white font-label-md text-label-md h-11 px-8 rounded-lg hover:bg-secondary/90 transition-colors shadow-sm w-full md:w-auto">
+                    Save check-in policy
+                </button>
+</div>
+</div>
+</main>
+<script src="crypto.js"></script>
+<script src="app.js"></script>
+</body></html>

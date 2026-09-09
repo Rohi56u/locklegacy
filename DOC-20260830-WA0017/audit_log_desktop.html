@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>LegacyLock - System Audit Log</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Manrope:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-variant": "#e3e2e1",
+                        "primary-fixed-dim": "#c3c6d7",
+                        "on-surface-variant": "#46464c",
+                        "surface-dim": "#dadad9",
+                        "primary": "#000000",
+                        "on-secondary-fixed-variant": "#3323cc",
+                        "attention-amber": "#F59E0B",
+                        "on-primary": "#ffffff",
+                        "on-error": "#ffffff",
+                        "background": "#faf9f8",
+                        "surface-container-low": "#f4f3f2",
+                        "on-surface": "#1a1c1c",
+                        "on-error-container": "#93000a",
+                        "surface-container": "#eeeeed",
+                        "tertiary": "#000000",
+                        "on-primary-fixed-variant": "#434654",
+                        "on-tertiary-fixed-variant": "#005236",
+                        "surface": "#faf9f8",
+                        "border-subtle": "#E5E7EB",
+                        "tertiary-container": "#002113",
+                        "on-background": "#1a1c1c",
+                        "tertiary-fixed": "#6ffbbe",
+                        "surface-container-highest": "#e3e2e1",
+                        "on-secondary-fixed": "#0f0069",
+                        "tertiary-fixed-dim": "#4edea3",
+                        "secondary-container": "#645efb",
+                        "surface-container-high": "#e9e8e7",
+                        "inverse-on-surface": "#f1f0f0",
+                        "outline-variant": "#c7c6cc",
+                        "surface-container-lowest": "#ffffff",
+                        "danger-red": "#EF4444",
+                        "error": "#ba1a1a",
+                        "secondary-fixed": "#e2dfff",
+                        "error-container": "#ffdad6",
+                        "outline": "#76767c",
+                        "secondary": "#4b41e1",
+                        "on-primary-container": "#808393",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary-container": "#009668",
+                        "verified-emerald": "#10B981",
+                        "on-primary-fixed": "#171b28",
+                        "primary-container": "#171b28",
+                        "secondary-fixed-dim": "#c3c0ff",
+                        "on-secondary-container": "#fffbff",
+                        "on-tertiary-fixed": "#002113",
+                        "inverse-surface": "#2f3130",
+                        "on-tertiary": "#ffffff",
+                        "surface-bright": "#faf9f8",
+                        "surface-tint": "#5a5e6d",
+                        "inverse-primary": "#c3c6d7",
+                        "primary-fixed": "#dfe2f3"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-mobile": "20px",
+                        "gutter": "24px",
+                        "margin-desktop": "40px",
+                        "container-max": "1280px",
+                        "base": "8px"
+                    },
+                    "fontFamily": {
+                        "body-sm": ["Inter"],
+                        "label-caps": ["Inter"],
+                        "headline-md": ["Manrope"],
+                        "headline-lg-mobile": ["Manrope"],
+                        "headline-lg": ["Manrope"],
+                        "headline-xl": ["Manrope"],
+                        "label-md": ["Inter"],
+                        "body-md": ["Inter"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "label-caps": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "headline-lg-mobile": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "headline-xl": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "fontWeight": "500" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background antialiased flex flex-col min-h-screen" data-page="audit_log_desktop.html">
+<!-- Top Navigation Area -->
+<nav class="bg-surface dark:bg-surface-container-low docked full-width top-0 border-b border-outline-variant dark:border-outline flat no shadows transition-all duration-200 ease-in-out">
+<div class="flex justify-between items-center w-full px-margin-desktop max-w-container-max mx-auto h-20">
+<!-- Brand -->
+<a class="text-headline-md font-headline-md font-extrabold text-primary dark:text-inverse-primary" href="#">LegacyLock</a>
+<!-- Links -->
+<div class="hidden md:flex items-center space-x-gutter">
+<a class="text-on-surface-variant dark:text-outline font-body-md text-body-md hover:text-secondary dark:hover:text-secondary-fixed transition-colors" href="#">Portfolio</a>
+<a class="text-on-surface-variant dark:text-outline font-body-md text-body-md hover:text-secondary dark:hover:text-secondary-fixed transition-colors" href="#">Legacy Plan</a>
+<a class="text-on-surface-variant dark:text-outline font-body-md text-body-md hover:text-secondary dark:hover:text-secondary-fixed transition-colors" href="#">Trustees</a>
+<a class="text-on-surface-variant dark:text-outline font-body-md text-body-md hover:text-secondary dark:hover:text-secondary-fixed transition-colors" href="#">Vault</a>
+</div>
+<!-- Actions -->
+<div class="flex items-center space-x-base">
+<button aria-label="notifications" class="p-2 text-on-surface-variant hover:text-secondary transition-colors">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button aria-label="shield_person" class="p-2 text-on-surface-variant hover:text-secondary transition-colors">
+<span class="material-symbols-outlined" data-icon="shield_person">shield_person</span>
+</button>
+<div class="w-10 h-10 rounded-full bg-surface-container-high border border-border-subtle overflow-hidden ml-2 flex items-center justify-center">
+<img alt="Administrator Profile" class="w-full h-full object-cover" data-alt="A professional headshot of a business executive wearing a dark suit against a neutral studio background, conveying trust and competence in a corporate setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA4VeFwHvu1G4Opwgjm2ZtO3Ic46WXK84SN12Ojg2qxAk4vAtN6J_SAbYy_I6O327cHOCYdLvvGFqxqNeIQnnYST48axlWn38VYZR00zVUZVgKEyUScoQSlDqsvKnM-0lU5xY_Bjsg9QB716r3JrRsPK-Ok041XQXUGDNVW--Zq_7sk0MR2wr_fu4A0uTyLsbNS65J_--JeB92u_pii9QREFbq0jBhFgmz9HxloJn3jc1LT8Y1YCatk"/>
+</div>
+</div>
+</div>
+</nav>
+<!-- Main Content -->
+<main class="flex-grow flex flex-col md:flex-row w-full max-w-container-max mx-auto">
+<!-- Side Navigation (Semantic Match: Security Audit) -->
+<aside class="hidden lg:flex flex-col h-[calc(100vh-80px)] w-64 bg-surface-container-lowest dark:bg-primary-container border-r border-outline-variant dark:border-outline flat no shadows p-base sticky top-20">
+<div class="mb-gutter px-2 mt-4">
+<div class="flex items-center space-x-3 mb-2">
+<div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-on-primary font-bold">L</div>
+<div>
+<h2 class="font-label-caps text-label-caps text-on-surface">LegacyLock</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant opacity-80 text-[10px]">Premium Security</p>
+</div>
+</div>
+<button class="w-full h-11 bg-primary text-on-primary rounded-lg font-label-md text-label-md mt-4 hover:bg-secondary transition-colors">New Invite</button>
+</div>
+<nav class="flex-1 flex flex-col space-y-1">
+<a class="flex items-center px-3 py-2 rounded-lg text-on-surface-variant dark:text-on-primary-container opacity-80 hover:bg-surface-container-high dark:hover:bg-primary-fixed-dim transition-all scale-98 active:scale-95" href="#">
+<span class="material-symbols-outlined mr-3 text-[20px]" data-icon="dashboard">dashboard</span>
+<span class="font-label-md text-label-md">Dashboard</span>
+</a>
+<a class="flex items-center px-3 py-2 rounded-lg text-on-surface-variant dark:text-on-primary-container opacity-80 hover:bg-surface-container-high dark:hover:bg-primary-fixed-dim transition-all scale-98 active:scale-95" href="#">
+<span class="material-symbols-outlined mr-3 text-[20px]" data-icon="account_balance_wallet">account_balance_wallet</span>
+<span class="font-label-md text-label-md">Managed Estates</span>
+</a>
+<a class="flex items-center px-3 py-2 rounded-lg text-on-surface-variant dark:text-on-primary-container opacity-80 hover:bg-surface-container-high dark:hover:bg-primary-fixed-dim transition-all scale-98 active:scale-95" href="#">
+<span class="material-symbols-outlined mr-3 text-[20px]" data-icon="lock_person">lock_person</span>
+<span class="font-label-md text-label-md">Access Control</span>
+</a>
+<a class="flex items-center px-3 py-2 rounded-lg bg-secondary-container text-on-secondary-container font-bold transition-all scale-98 active:scale-95" href="#">
+<span class="material-symbols-outlined mr-3 text-[20px]" data-icon="history_edu">history_edu</span>
+<span class="font-label-md text-label-md">Security Audit</span>
+</a>
+<a class="flex items-center px-3 py-2 rounded-lg text-on-surface-variant dark:text-on-primary-container opacity-80 hover:bg-surface-container-high dark:hover:bg-primary-fixed-dim transition-all scale-98 active:scale-95" href="#">
+<span class="material-symbols-outlined mr-3 text-[20px]" data-icon="settings">settings</span>
+<span class="font-label-md text-label-md">Settings</span>
+</a>
+</nav>
+<div class="mt-auto border-t border-border-subtle pt-4 space-y-1">
+<a class="flex items-center px-3 py-2 rounded-lg text-on-surface-variant opacity-80 hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined mr-3 text-[20px]" data-icon="contact_support">contact_support</span>
+<span class="font-label-md text-label-md">Support</span>
+</a>
+<a class="flex items-center px-3 py-2 rounded-lg text-on-surface-variant opacity-80 hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined mr-3 text-[20px]" data-icon="logout">logout</span>
+<span class="font-label-md text-label-md">Sign Out</span>
+</a>
+</div>
+</aside>
+<!-- Page Canvas -->
+<section class="flex-1 p-margin-mobile md:p-margin-desktop w-full overflow-x-hidden">
+<!-- Page Header -->
+<div class="mb-[32px] flex flex-col lg:flex-row justify-between items-start lg:items-end gap-4">
+<div>
+<h1 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-background mb-2">System Audit Log</h1>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-2xl">
+                        A transparent record of all security and estate management events. Audit records are designed for transparency and do not prove legal ownership.
+                    </p>
+</div>
+<div class="flex flex-wrap items-center gap-3">
+<div class="relative w-full sm:w-64">
+<span class="material-symbols-outlined absolute left-3 top-1/2 transform -translate-y-1/2 text-on-surface-variant text-[20px]" data-icon="search">search</span>
+<input class="w-full h-11 pl-10 pr-4 bg-surface rounded-lg border border-border-subtle focus:border-secondary focus:ring-1 focus:ring-secondary outline-none font-body-sm text-body-sm text-on-surface transition-colors" placeholder="Search events..." type="text"/>
+</div>
+<button class="h-11 px-6 bg-secondary text-on-secondary rounded-lg font-label-md text-label-md flex items-center justify-center hover:bg-secondary-container transition-colors shadow-sm">
+<span class="material-symbols-outlined mr-2 text-[20px]" data-icon="download">download</span>
+                        Export Report
+                    </button>
+</div>
+</div>
+<!-- Filters -->
+<div class="bg-surface rounded-xl border border-border-subtle p-4 mb-gutter flex flex-wrap gap-4 items-center">
+<div class="flex items-center space-x-2 text-on-surface-variant font-label-caps text-label-caps uppercase mr-2">
+<span class="material-symbols-outlined text-[18px]" data-icon="filter_list">filter_list</span>
+<span>Filters</span>
+</div>
+<select class="h-9 px-3 bg-surface border border-border-subtle rounded-md font-body-sm text-body-sm text-on-surface focus:border-secondary outline-none appearance-none pr-8 relative">
+<option>Actor: All</option>
+<option>Owner</option>
+<option>Executor</option>
+<option>Trustee</option>
+<option>System</option>
+</select>
+<select class="h-9 px-3 bg-surface border border-border-subtle rounded-md font-body-sm text-body-sm text-on-surface focus:border-secondary outline-none appearance-none pr-8">
+<option>Event Type: All</option>
+<option>Vault Access</option>
+<option>Asset Update</option>
+<option>People</option>
+<option>Documents</option>
+<option>Policy</option>
+</select>
+<select class="h-9 px-3 bg-surface border border-border-subtle rounded-md font-body-sm text-body-sm text-on-surface focus:border-secondary outline-none appearance-none pr-8">
+<option>Date: Last 7 Days</option>
+<option>Today</option>
+<option>Last 30 Days</option>
+<option>Custom Range</option>
+</select>
+<select class="h-9 px-3 bg-surface border border-border-subtle rounded-md font-body-sm text-body-sm text-on-surface focus:border-secondary outline-none appearance-none pr-8">
+<option>Severity: All</option>
+<option>Info</option>
+<option>Warning</option>
+<option>Critical</option>
+</select>
+</div>
+<!-- Audit Table (Architectural List) -->
+<div class="bg-surface border border-border-subtle rounded-xl overflow-hidden">
+<div class="w-full overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="border-b border-border-subtle bg-surface-container-low text-on-surface-variant font-label-caps text-label-caps uppercase">
+<th class="p-4 whitespace-nowrap font-semibold">Timestamp</th>
+<th class="p-4 whitespace-nowrap font-semibold">Event Action</th>
+<th class="p-4 whitespace-nowrap font-semibold">Actor &amp; Role</th>
+<th class="p-4 whitespace-nowrap font-semibold">Context (Device &amp; Region)</th>
+<th class="p-4 whitespace-nowrap font-semibold text-right">Result</th>
+</tr>
+</thead>
+<tbody class="font-body-sm text-body-sm divide-y divide-border-subtle">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-container-lowest transition-colors">
+<td class="p-4 text-on-surface-variant whitespace-nowrap">
+                                    Oct 28, 2023 • 14:32:30 UTC
+                                </td>
+<td class="p-4 text-on-surface font-medium">
+<div class="flex items-center">
+<span class="material-symbols-outlined mr-2 text-[18px] text-on-surface-variant" data-icon="lock_open">lock_open</span>
+                                        Vault opened
+                                    </div>
+</td>
+<td class="p-4 text-on-surface">You (Owner)</td>
+<td class="p-4 text-on-surface-variant">Chrome on macOS • San Francisco, CA</td>
+<td class="p-4 text-right">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full bg-verified-emerald/10 text-verified-emerald font-label-caps text-[10px] uppercase">
+<span class="w-1.5 h-1.5 rounded-full bg-verified-emerald mr-1.5"></span>
+                                        Success
+                                    </span>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface-container-lowest transition-colors">
+<td class="p-4 text-on-surface-variant whitespace-nowrap">
+                                    Oct 28, 2023 • 12:15:05 UTC
+                                </td>
+<td class="p-4 text-on-surface font-medium">
+<div class="flex items-center">
+<span class="material-symbols-outlined mr-2 text-[18px] text-on-surface-variant" data-icon="upload_file">upload_file</span>
+                                        Asset updated: Family Trust PDF
+                                    </div>
+</td>
+<td class="p-4 text-on-surface">You (Owner)</td>
+<td class="p-4 text-on-surface-variant">Mobile App • London, UK</td>
+<td class="p-4 text-right">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full bg-surface-container-high text-on-surface-variant font-label-caps text-[10px] uppercase">
+<span class="w-1.5 h-1.5 rounded-full bg-on-surface-variant mr-1.5"></span>
+                                        Encrypted
+                                    </span>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-container-lowest transition-colors bg-error-container/10">
+<td class="p-4 text-on-surface-variant whitespace-nowrap">
+                                    Oct 27, 2023 • 09:45:12 UTC
+                                </td>
+<td class="p-4 text-on-surface font-medium">
+<div class="flex items-center text-error">
+<span class="material-symbols-outlined mr-2 text-[18px]" data-icon="gpp_bad">gpp_bad</span>
+                                        Failed Login Attempt
+                                    </div>
+</td>
+<td class="p-4 text-on-surface">Unknown</td>
+<td class="p-4 text-on-surface-variant">Firefox on Windows • Unknown IP</td>
+<td class="p-4 text-right">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full bg-error-container text-error font-label-caps text-[10px] uppercase border border-error/20">
+<span class="w-1.5 h-1.5 rounded-full bg-error mr-1.5"></span>
+                                        Failed
+                                    </span>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-surface-container-lowest transition-colors">
+<td class="p-4 text-on-surface-variant whitespace-nowrap">
+                                    Oct 26, 2023 • 16:20:00 UTC
+                                </td>
+<td class="p-4 text-on-surface font-medium">
+<div class="flex items-center">
+<span class="material-symbols-outlined mr-2 text-[18px] text-attention-amber" data-icon="pause_circle">pause_circle</span>
+                                        Release paused
+                                    </div>
+</td>
+<td class="p-4 text-on-surface">System</td>
+<td class="p-4 text-on-surface-variant">Internal Server</td>
+<td class="p-4 text-right">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full bg-attention-amber/10 text-attention-amber font-label-caps text-[10px] uppercase">
+<span class="w-1.5 h-1.5 rounded-full bg-attention-amber mr-1.5"></span>
+                                        Warning
+                                    </span>
+</td>
+</tr>
+<!-- Row 5 -->
+<tr class="hover:bg-surface-container-lowest transition-colors">
+<td class="p-4 text-on-surface-variant whitespace-nowrap">
+                                    Oct 25, 2023 • 11:05:45 UTC
+                                </td>
+<td class="p-4 text-on-surface font-medium">
+<div class="flex items-center">
+<span class="material-symbols-outlined mr-2 text-[18px] text-secondary" data-icon="person_add">person_add</span>
+                                        Invitation accepted: Robert Sterling
+                                    </div>
+</td>
+<td class="p-4 text-on-surface">R. Sterling (Executor)</td>
+<td class="p-4 text-on-surface-variant">Safari on iOS • New York, NY</td>
+<td class="p-4 text-right">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full bg-verified-emerald/10 text-verified-emerald font-label-caps text-[10px] uppercase">
+<span class="w-1.5 h-1.5 rounded-full bg-verified-emerald mr-1.5"></span>
+                                        Success
+                                    </span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination Footer -->
+<div class="border-t border-border-subtle p-4 flex items-center justify-between bg-surface-container-low">
+<span class="font-body-sm text-body-sm text-on-surface-variant">Showing 1 to 5 of 124 records</span>
+<div class="flex space-x-2">
+<button class="px-3 py-1.5 border border-border-subtle rounded bg-surface text-on-surface-variant font-body-sm text-body-sm disabled:opacity-50" disabled="">Previous</button>
+<button class="px-3 py-1.5 border border-border-subtle rounded bg-surface text-on-surface hover:bg-surface-container-highest font-body-sm text-body-sm transition-colors">Next</button>
+</div>
+</div>
+</div>
+<!-- Trust Strip -->
+<div class="mt-[48px] pt-gutter border-t border-border-subtle flex flex-col md:flex-row items-center justify-center gap-4 text-on-surface-variant opacity-70">
+<div class="flex items-center space-x-2">
+<span class="material-symbols-outlined text-[20px]" data-icon="encrypted">encrypted</span>
+<span class="font-label-caps text-label-caps uppercase">End-to-End Encrypted Data</span>
+</div>
+<div class="hidden md:block w-1 h-1 rounded-full bg-on-surface-variant"></div>
+<div class="flex items-center space-x-2">
+<span class="material-symbols-outlined text-[20px]" data-icon="policy">policy</span>
+<span class="font-label-caps text-label-caps uppercase">Immutable Audit Trail</span>
+</div>
+</div>
+</section>
+</main>
+<script src="crypto.js"></script>
+<script src="app.js"></script>
+</body></html>

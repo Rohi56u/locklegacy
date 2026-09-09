@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Add Crypto Record - LegacyLock</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-tertiary-container": "#009668",
+                    "on-secondary-fixed": "#0f0069",
+                    "tertiary-container": "#002113",
+                    "danger-red": "#EF4444",
+                    "on-tertiary-fixed": "#002113",
+                    "secondary": "#4b41e1",
+                    "inverse-primary": "#c3c6d7",
+                    "secondary-fixed": "#e2dfff",
+                    "on-surface": "#1a1c1c",
+                    "error": "#ba1a1a",
+                    "surface-container-highest": "#e3e2e1",
+                    "attention-amber": "#F59E0B",
+                    "on-tertiary-fixed-variant": "#005236",
+                    "on-secondary-fixed-variant": "#3323cc",
+                    "surface-bright": "#faf9f8",
+                    "primary-fixed-dim": "#c3c6d7",
+                    "surface-dim": "#dadad9",
+                    "secondary-container": "#645efb",
+                    "inverse-surface": "#2f3130",
+                    "surface-container": "#eeeeed",
+                    "verified-emerald": "#10B981",
+                    "on-error": "#ffffff",
+                    "background": "#faf9f8",
+                    "primary": "#000000",
+                    "on-surface-variant": "#46464c",
+                    "on-error-container": "#93000a",
+                    "surface-container-lowest": "#ffffff",
+                    "primary-container": "#171b28",
+                    "error-container": "#ffdad6",
+                    "surface-container-low": "#f4f3f2",
+                    "border-subtle": "#E5E7EB",
+                    "surface": "#faf9f8",
+                    "on-primary-fixed-variant": "#434654",
+                    "tertiary-fixed-dim": "#4edea3",
+                    "on-secondary": "#ffffff",
+                    "secondary-fixed-dim": "#c3c0ff",
+                    "outline-variant": "#c7c6cc",
+                    "surface-container-high": "#e9e8e7",
+                    "tertiary-fixed": "#6ffbbe",
+                    "on-primary-fixed": "#171b28",
+                    "outline": "#76767c",
+                    "on-primary-container": "#808393",
+                    "tertiary": "#000000",
+                    "surface-tint": "#5a5e6d",
+                    "on-tertiary": "#ffffff",
+                    "inverse-on-surface": "#f1f0f0",
+                    "on-secondary-container": "#fffbff",
+                    "on-primary": "#ffffff",
+                    "surface-variant": "#e3e2e1",
+                    "primary-fixed": "#dfe2f3",
+                    "on-background": "#1a1c1c",
+                    "shell-navy": "#0A0E1A",
+                    "electric-indigo": "#4b41e1",
+                    "surface-warm": "#FDFCFB"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "margin-desktop": "40px",
+                    "container-max": "1280px",
+                    "base": "8px",
+                    "margin-mobile": "20px",
+                    "gutter": "24px",
+                    "section-gap": "48px"
+            },
+            "fontFamily": {
+                    "headline-lg-mobile": ["Manrope"],
+                    "headline-md": ["Manrope"],
+                    "body-md": ["Inter"],
+                    "label-caps": ["Inter"],
+                    "headline-lg": ["Manrope"],
+                    "body-sm": ["Inter"],
+                    "headline-xl": ["Manrope"],
+                    "body-lg": ["Inter"],
+                    "label-md": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "headline-xl": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "500"}]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        body {
+            background-color: #0A0E1A; /* shell-navy override for dark mode default */
+            color: #FDFCFB;
+        }
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Custom scrollbar for dark theme */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0A0E1A; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #171b28; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #2f3130; 
+        }
+    </style>
+</head>
+<body class="font-body-md min-h-screen flex flex-col relative" data-page="add_crypto_record_desktop.html">
+<!-- TopNavBar -->
+<nav class="bg-shell-navy/80 backdrop-blur-xl text-electric-indigo font-label-md text-label-md fixed top-0 w-full border-b border-outline-variant flat no shadows z-50">
+<div class="flex justify-between items-center h-20 px-base md:px-margin-desktop max-w-container-max mx-auto">
+<div class="flex items-center gap-6">
+<a class="font-headline-md text-headline-md font-bold text-surface-warm active:scale-95 transition-transform flex items-center gap-2" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">shield_lock</span>
+                    LegacyLock
+                </a>
+<div class="hidden md:flex gap-6 items-center ml-8">
+<a class="text-on-primary-container hover:text-electric-indigo transition-colors duration-200" href="#">Product</a>
+<a class="text-on-primary-container hover:text-electric-indigo transition-colors duration-200" href="#">Security</a>
+<a class="text-on-primary-container hover:text-electric-indigo transition-colors duration-200" href="#">Pricing</a>
+<a class="text-on-primary-container hover:text-electric-indigo transition-colors duration-200" href="#">Support</a>
+</div>
+</div>
+<div>
+<!-- Suppressed trailing action for this specific transactional screen based on UX goals, replaced with a contextual back/close -->
+<button class="flex items-center gap-2 text-on-primary-container hover:text-surface-warm transition-colors duration-200">
+<span class="material-symbols-outlined">close</span>
+<span class="font-label-md text-label-md hidden md:inline">Cancel</span>
+</button>
+</div>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="flex-grow pt-28 pb-section-gap px-margin-mobile md:px-margin-desktop max-w-4xl mx-auto w-full z-10 relative">
+<!-- Header -->
+<div class="mb-10">
+<div class="flex items-center gap-3 mb-2">
+<span class="material-symbols-outlined text-electric-indigo text-3xl">currency_bitcoin</span>
+<h1 class="font-headline-xl text-headline-xl text-surface-warm">Add Crypto Record</h1>
+</div>
+<p class="font-body-lg text-body-lg text-on-primary-container max-w-2xl">
+                Securely document your cryptocurrency holdings for estate planning. We store metadata, never the keys.
+            </p>
+</div>
+<!-- Security Warning Banner -->
+<div class="mb-10 bg-danger-red/10 border border-danger-red rounded-lg p-6 flex gap-4 items-start shadow-[0_0_20px_rgba(239,68,68,0.1)]">
+<span class="material-symbols-outlined text-danger-red text-2xl mt-1 shrink-0" style="font-variation-settings: 'FILL' 1;">warning</span>
+<div>
+<h3 class="font-label-caps text-label-caps text-danger-red mb-2 uppercase tracking-wider">Security Warning</h3>
+<p class="font-body-md text-body-md text-danger-red/90 leading-relaxed font-medium">
+                    Never upload a private key or seed phrase to LegacyLock. We only store discovery metadata to help your family find your assets. Attempting to store raw keys violates our security model.
+                </p>
+</div>
+</div>
+<!-- Form Container Level 1 (Cards) equivalent in dark mode -->
+<div class="bg-primary-container border border-outline-variant rounded-xl overflow-hidden mb-8 shadow-sm">
+<!-- Tabs -->
+<div class="flex border-b border-outline-variant bg-shell-navy">
+<button class="flex-1 py-4 px-6 text-center font-label-md text-label-md border-b-2 border-electric-indigo text-surface-warm transition-colors duration-200" id="tab-exchange" onclick="switchTab('exchange')">
+                    Exchange Account
+                </button>
+<button class="flex-1 py-4 px-6 text-center font-label-md text-label-md border-b-2 border-transparent text-on-primary-container hover:text-surface-warm transition-colors duration-200" id="tab-wallet" onclick="switchTab('wallet')">
+                    Self-custody Wallet
+                </button>
+</div>
+<div class="p-6 md:p-8">
+<!-- Exchange Account Tab -->
+<div class="tab-content active space-y-6" id="content-exchange">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="space-y-2">
+<label class="font-label-md text-label-md text-on-primary-container block">Exchange Name</label>
+<input class="w-full bg-shell-navy border border-outline-variant rounded-lg px-4 py-3 text-surface-warm focus:border-electric-indigo focus:ring-1 focus:ring-electric-indigo transition-colors placeholder:text-on-primary-container/50" placeholder="e.g., Coinbase, Binance" type="text"/>
+</div>
+<div class="space-y-2">
+<label class="font-label-md text-label-md text-on-primary-container block">Account Email Hint</label>
+<input class="w-full bg-shell-navy border border-outline-variant rounded-lg px-4 py-3 text-surface-warm focus:border-electric-indigo focus:ring-1 focus:ring-electric-indigo transition-colors placeholder:text-on-primary-container/50" placeholder="e.g., Primary Gmail, Work Email" type="text"/>
+</div>
+<div class="space-y-2">
+<label class="font-label-md text-label-md text-on-primary-container block flex items-center justify-between">
+                                Public Account ID
+                                <span class="material-symbols-outlined text-sm text-on-primary-container" title="Masked for security">visibility_off</span>
+</label>
+<input class="w-full bg-shell-navy border border-outline-variant rounded-lg px-4 py-3 text-surface-warm focus:border-electric-indigo focus:ring-1 focus:ring-electric-indigo transition-colors placeholder:text-on-primary-container/50" placeholder="••••••••••••" type="password"/>
+<p class="font-body-sm text-body-sm text-on-primary-container/70 mt-1">Leave blank if unknown. Only enter public IDs.</p>
+</div>
+<div class="space-y-2">
+<label class="font-label-md text-label-md text-on-primary-container block">Support URL (Optional)</label>
+<input class="w-full bg-shell-navy border border-outline-variant rounded-lg px-4 py-3 text-surface-warm focus:border-electric-indigo focus:ring-1 focus:ring-electric-indigo transition-colors placeholder:text-on-primary-container/50" placeholder="https://help.exchange.com" type="url"/>
+</div>
+<div class="space-y-2 md:col-span-2">
+<label class="font-label-md text-label-md text-on-primary-container block">Jurisdiction (Legal Entity)</label>
+<select class="w-full bg-shell-navy border border-outline-variant rounded-lg px-4 py-3 text-surface-warm focus:border-electric-indigo focus:ring-1 focus:ring-electric-indigo transition-colors appearance-none">
+<option disabled="" selected="" value="">Select primary jurisdiction of the exchange account</option>
+<option value="us">United States (US)</option>
+<option value="eu">European Union (EU)</option>
+<option value="uk">United Kingdom (UK)</option>
+<option value="sg">Singapore (SG)</option>
+<option value="other">Other / Unknown</option>
+</select>
+</div>
+<div class="space-y-2 md:col-span-2">
+<label class="font-label-md text-label-md text-on-primary-container block">Estate-claim Notes</label>
+<textarea class="w-full bg-shell-navy border border-outline-variant rounded-lg px-4 py-3 text-surface-warm focus:border-electric-indigo focus:ring-1 focus:ring-electric-indigo transition-colors placeholder:text-on-primary-container/50 resize-none" placeholder="Instructions for your family on how to contact support or begin the account transfer process..." rows="4"></textarea>
+</div>
+</div>
+</div>
+<!-- Self-custody Wallet Tab -->
+<div class="tab-content space-y-6" id="content-wallet">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="space-y-2">
+<label class="font-label-md text-label-md text-on-primary-container block">Wallet Name / Type</label>
+<input class="w-full bg-shell-navy border border-outline-variant rounded-lg px-4 py-3 text-surface-warm focus:border-electric-indigo focus:ring-1 focus:ring-electric-indigo transition-colors placeholder:text-on-primary-container/50" placeholder="e.g., Ledger Nano X, MetaMask" type="text"/>
+</div>
+<div class="space-y-2">
+<label class="font-label-md text-label-md text-on-primary-container block">Primary Network</label>
+<input class="w-full bg-shell-navy border border-outline-variant rounded-lg px-4 py-3 text-surface-warm focus:border-electric-indigo focus:ring-1 focus:ring-electric-indigo transition-colors placeholder:text-on-primary-container/50" placeholder="e.g., Ethereum, Bitcoin" type="text"/>
+</div>
+<div class="space-y-2 md:col-span-2">
+<label class="font-label-md text-label-md text-on-primary-container block flex items-center gap-2">
+                                Public Address
+                                <span class="bg-primary/20 text-electric-indigo font-label-caps text-[10px] px-2 py-0.5 rounded border border-electric-indigo/30">PUBLIC ONLY</span>
+</label>
+<input class="w-full bg-shell-navy border border-outline-variant rounded-lg px-4 py-3 text-surface-warm focus:border-electric-indigo focus:ring-1 focus:ring-electric-indigo transition-colors placeholder:text-on-primary-container/50 font-mono text-sm" placeholder="0x..." type="text"/>
+</div>
+<div class="space-y-2 md:col-span-2">
+<label class="font-label-md text-label-md text-on-primary-container block">Hardware-wallet Physical Location</label>
+<input class="w-full bg-shell-navy border border-outline-variant rounded-lg px-4 py-3 text-surface-warm focus:border-electric-indigo focus:ring-1 focus:ring-electric-indigo transition-colors placeholder:text-on-primary-container/50" placeholder="e.g., Home Safe, Bank Deposit Box #102" type="text"/>
+<p class="font-body-sm text-body-sm text-on-primary-container/70 mt-1">If this is a software wallet, describe which device it is installed on.</p>
+</div>
+<div class="space-y-2 md:col-span-2">
+<label class="font-label-md text-label-md text-on-primary-container block">Recovery Arrangement</label>
+<textarea class="w-full bg-shell-navy border border-outline-variant rounded-lg px-4 py-3 text-surface-warm focus:border-electric-indigo focus:ring-1 focus:ring-electric-indigo transition-colors placeholder:text-on-primary-container/50 resize-none" placeholder="Describe where the seed phrase or backup is securely stored (e.g., 'Stored in the metal capsule in the home safe. Code is...'). Do NOT paste the actual phrase here." rows="4"></textarea>
+</div>
+</div>
+</div>
+</div>
+<!-- Actions -->
+<div class="p-6 md:p-8 border-t border-outline-variant bg-primary-container flex justify-end gap-4">
+<button class="px-6 py-3 border border-outline-variant rounded-lg font-label-md text-label-md text-surface-warm hover:bg-shell-navy transition-colors h-[48px] flex items-center justify-center">
+                    Cancel
+                </button>
+<button class="px-6 py-3 bg-electric-indigo rounded-lg font-label-md text-label-md text-on-primary hover:bg-secondary transition-colors h-[48px] flex items-center justify-center gap-2 active:scale-95">
+<span class="material-symbols-outlined text-sm">save</span>
+                    Save safe recovery instructions
+                </button>
+</div>
+</div>
+<!-- Security Context Footer -->
+<div class="flex items-center justify-center gap-2 text-on-primary-container font-body-sm text-body-sm mt-8 opacity-70">
+<span class="material-symbols-outlined text-sm">lock</span>
+<span>Data entered here is end-to-end encrypted before transmission.</span>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-black text-surface-warm font-body-sm text-body-sm w-full flat no shadows mt-auto border-t border-outline-variant/30">
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center py-section-gap px-base md:px-margin-desktop max-w-container-max mx-auto">
+<div class="mb-6 md:mb-0">
+<div class="font-headline-sm text-headline-sm text-surface-warm font-bold flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-xl" style="font-variation-settings: 'FILL' 1;">shield_lock</span>
+                    LegacyLock
+                </div>
+<p class="text-on-primary-container max-w-md">© 2024 LegacyLock. Your legacy is your own. All data is end-to-end encrypted and remains your exclusive property.</p>
+</div>
+<div class="flex flex-wrap gap-6 md:gap-8">
+<a class="text-on-primary-container hover:text-tertiary-fixed-dim transition-colors cursor-pointer" href="#">Privacy Policy</a>
+<a class="text-on-primary-container hover:text-tertiary-fixed-dim transition-colors cursor-pointer" href="#">Terms of Service</a>
+<a class="text-on-primary-container hover:text-tertiary-fixed-dim transition-colors cursor-pointer" href="#">Security Whitepaper</a>
+<a class="text-on-primary-container hover:text-tertiary-fixed-dim transition-colors cursor-pointer" href="#">Data Ownership</a>
+</div>
+</div>
+</footer>
+<script>
+        function switchTab(tabName) {
+            // Update Tab Styling
+            const tabExchange = document.getElementById('tab-exchange');
+            const tabWallet = document.getElementById('tab-wallet');
+            
+            const activeClasses = ['border-electric-indigo', 'text-surface-warm'];
+            const inactiveClasses = ['border-transparent', 'text-on-primary-container'];
+            
+            if(tabName === 'exchange') {
+                tabExchange.classList.add(...activeClasses);
+                tabExchange.classList.remove(...inactiveClasses);
+                
+                tabWallet.classList.add(...inactiveClasses);
+                tabWallet.classList.remove(...activeClasses);
+                
+                document.getElementById('content-exchange').classList.add('active');
+                document.getElementById('content-wallet').classList.remove('active');
+            } else {
+                tabWallet.classList.add(...activeClasses);
+                tabWallet.classList.remove(...inactiveClasses);
+                
+                tabExchange.classList.add(...inactiveClasses);
+                tabExchange.classList.remove(...activeClasses);
+                
+                document.getElementById('content-wallet').classList.add('active');
+                document.getElementById('content-exchange').classList.remove('active');
+            }
+        }
+    </script>
+<script src="crypto.js"></script>
+<script src="app.js"></script>
+</body></html>

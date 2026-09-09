@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>LegacyLock - Support Ticket #TK-8829</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Manrope:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "border-subtle": "#E5E7EB",
+                        "inverse-primary": "#c3c6d7",
+                        "outline": "#76767c",
+                        "tertiary-fixed-dim": "#4edea3",
+                        "outline-variant": "#c7c6cc",
+                        "on-primary-fixed": "#171b28",
+                        "background": "#faf9f8",
+                        "primary-container": "#171b28",
+                        "surface-container-low": "#f4f3f2",
+                        "secondary-container": "#645efb",
+                        "on-tertiary-fixed-variant": "#005236",
+                        "surface-container-highest": "#e3e2e1",
+                        "on-primary": "#ffffff",
+                        "secondary-fixed": "#e2dfff",
+                        "error-container": "#ffdad6",
+                        "secondary-fixed-dim": "#c3c0ff",
+                        "primary": "#000000",
+                        "tertiary": "#000000",
+                        "on-surface-variant": "#46464c",
+                        "on-primary-container": "#808393",
+                        "on-tertiary-container": "#009668",
+                        "tertiary-fixed": "#6ffbbe",
+                        "attention-amber": "#F59E0B",
+                        "tertiary-container": "#002113",
+                        "on-error-container": "#93000a",
+                        "surface": "#faf9f8",
+                        "secondary": "#4b41e1",
+                        "on-surface": "#1a1c1c",
+                        "on-primary-fixed-variant": "#434654",
+                        "on-tertiary": "#ffffff",
+                        "primary-fixed": "#dfe2f3",
+                        "on-error": "#ffffff",
+                        "on-tertiary-fixed": "#002113",
+                        "error": "#ba1a1a",
+                        "surface-tint": "#5a5e6d",
+                        "verified-emerald": "#10B981",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "primary-fixed-dim": "#c3c6d7",
+                        "surface-container": "#eeeeed",
+                        "surface-dim": "#dadad9",
+                        "on-secondary-fixed": "#0f0069",
+                        "on-background": "#1a1c1c",
+                        "surface-container-high": "#e9e8e7",
+                        "surface-bright": "#faf9f8",
+                        "surface-variant": "#e3e2e1",
+                        "on-secondary-fixed-variant": "#3323cc",
+                        "danger-red": "#EF4444",
+                        "inverse-surface": "#2f3130",
+                        "on-secondary-container": "#fffbff",
+                        "inverse-on-surface": "#f1f0f0"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "container-max": "1280px",
+                        "base": "8px",
+                        "gutter": "24px",
+                        "margin-mobile": "20px",
+                        "margin-desktop": "40px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Manrope"],
+                        "body-md": ["Inter"],
+                        "headline-xl": ["Manrope"],
+                        "body-lg": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "headline-md": ["Manrope"],
+                        "headline-lg-mobile": ["Manrope"],
+                        "label-md": ["Inter"],
+                        "label-caps": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-xl": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "headline-lg-mobile": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "fontWeight": "500" }],
+                        "label-caps": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined[data-weight="fill"] {
+            font-variation-settings: 'FILL' 1;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex flex-col" data-page="support_ticket_detail_desktop.html">
+<!-- TopNavBar -->
+<nav class="bg-background border-b border-border-subtle flex justify-between items-center w-full px-margin-desktop max-w-container-max mx-auto h-12 flex-shrink-0">
+<div class="flex items-center gap-gutter">
+<span class="font-headline-md text-headline-md font-bold text-secondary">LegacyLock</span>
+</div>
+<div class="flex items-center gap-base">
+<button class="hover:text-secondary transition-colors p-2 rounded-full">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="hover:text-secondary transition-colors p-2 rounded-full">
+<span class="material-symbols-outlined" data-icon="help_outline">help_outline</span>
+</button>
+<button class="border border-primary text-primary px-4 py-1.5 rounded-full font-label-md text-label-md hover:bg-surface-container-low transition-colors ml-2">
+                Security Check
+            </button>
+<div class="w-8 h-8 rounded-full bg-surface-container-high overflow-hidden ml-2 border border-border-subtle">
+<img alt="User profile" class="w-full h-full object-cover" data-alt="A professional headshot of a mature individual representing a wealthy client, warm natural lighting, minimalist high-end studio setting, confident yet calm expression, sharp focus, digital fortitude style, high resolution." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB88407i14WcxbRS2wTJVJwFdiAuoSsXHimTK54QFLdnmUda5CobhKADqjvrzcxlgD56IOonsLX7ZkxVkRwVjU0Y0iIek9wCjpTW6O9jyu-wC5lC8EOtK1eUPe-cjQLMYzg99-3HAqIwXyOsedgJxGi0sU4iZe3mJXr5jhxoH35aqMQ5WJjZNghNk1Tr5twbjxtK-gqap50fXAcdxhPXpLX-6vy85N1uKPCUzQIugEDkFabSFkwu_xW"/>
+</div>
+</div>
+</nav>
+<!-- SideNavBar (Desktop) & Main Content Area -->
+<div class="flex flex-1 overflow-hidden w-full max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-gutter gap-gutter">
+<!-- SideNav (Hidden on Mobile) -->
+<aside class="hidden md:flex flex-col w-64 flex-shrink-0 sticky top-12 h-[calc(100vh-3rem-48px)] py-4">
+<nav class="flex flex-col gap-2 flex-1">
+<a class="flex items-center gap-3 text-on-surface-variant px-4 py-2 hover:bg-surface-container-high rounded-lg transition-all duration-200 ease-in-out font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+                    Portfolio
+                </a>
+<a class="flex items-center gap-3 text-on-surface-variant px-4 py-2 hover:bg-surface-container-high rounded-lg transition-all duration-200 ease-in-out font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined" data-icon="lock">lock</span>
+                    Vaults
+                </a>
+<a class="flex items-center gap-3 text-on-surface-variant px-4 py-2 hover:bg-surface-container-high rounded-lg transition-all duration-200 ease-in-out font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined" data-icon="family_restroom">family_restroom</span>
+                    Succession
+                </a>
+<a class="flex items-center gap-3 text-on-surface-variant px-4 py-2 hover:bg-surface-container-high rounded-lg transition-all duration-200 ease-in-out font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined" data-icon="verified_user">verified_user</span>
+                    Security
+                </a>
+</nav>
+<div class="mt-auto flex flex-col gap-2">
+<a class="flex items-center gap-3 bg-secondary-container text-on-secondary-container px-4 py-2 rounded-lg transition-all duration-200 ease-in-out font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined" data-icon="contact_support">contact_support</span>
+                    Support
+                </a>
+<a class="flex items-center gap-3 text-on-surface-variant px-4 py-2 hover:bg-surface-container-high rounded-lg transition-all duration-200 ease-in-out font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+                    Settings
+                </a>
+<button class="mt-4 w-full bg-primary text-on-primary py-2.5 rounded-lg font-label-md text-label-md hover:bg-opacity-90 transition-opacity flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[20px]" data-icon="favorite">favorite</span>
+                    Heartbeat Check-in
+                </button>
+</div>
+</aside>
+<!-- Main Canvas -->
+<main class="flex-1 overflow-y-auto pb-24 md:pb-8 flex flex-col gap-8">
+<!-- Page Header -->
+<header class="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-border-subtle pb-6">
+<div>
+<div class="flex items-center gap-3 mb-2">
+<span class="font-label-md text-label-md text-on-surface-variant">#TK-8829</span>
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#FEF3C7] text-[#92400E] font-label-caps text-label-caps border border-[#FDE68A]">
+<span class="material-symbols-outlined text-[14px]" data-icon="sync">sync</span>
+                            IN PROGRESS
+                        </span>
+</div>
+<h1 class="font-headline-lg text-headline-lg md:font-headline-xl md:text-headline-xl text-primary">Issue with Vault Access</h1>
+</div>
+<div class="flex items-center gap-2 text-on-surface-variant bg-surface-container px-3 py-1.5 rounded-lg border border-border-subtle">
+<span class="material-symbols-outlined text-[18px]" data-icon="lock" data-weight="fill">lock</span>
+<span class="font-label-caps text-label-caps text-on-surface">End-to-end Encrypted</span>
+</div>
+</header>
+<!-- Two Column Layout -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+<!-- Left Column: Messaging Thread -->
+<div class="lg:col-span-8 flex flex-col gap-6">
+<!-- Trust Strip -->
+<div class="bg-surface-container-low border border-border-subtle rounded-xl p-4 flex items-start gap-3">
+<span class="material-symbols-outlined text-secondary" data-icon="shield">shield</span>
+<div>
+<h4 class="font-label-md text-label-md text-primary mb-1">Secure Communications Channel</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">All support communications are end-to-end encrypted and audited for your protection. Uploaded documents are stored in a temporary secure enclave.</p>
+</div>
+</div>
+<!-- Message History -->
+<div class="flex flex-col gap-6">
+<!-- User Message -->
+<div class="flex flex-col items-end gap-1">
+<div class="flex items-center gap-2 mb-1">
+<span class="font-label-caps text-label-caps text-on-surface-variant">Oct 24, 10:15 AM</span>
+<span class="font-label-md text-label-md text-primary">You</span>
+</div>
+<div class="bg-primary text-on-primary rounded-2xl rounded-tr-sm p-4 max-w-[85%] shadow-[0_4px_20px_rgba(10,14,26,0.04)]">
+<p class="font-body-md text-body-md">I'm unable to access the 'Estate Planning' vault. It's asking for a secondary biometric verification that keeps failing. I need to review these documents before my meeting tomorrow.</p>
+</div>
+</div>
+<!-- Agent Message -->
+<div class="flex flex-col items-start gap-1">
+<div class="flex items-center gap-2 mb-1">
+<span class="font-label-md text-label-md text-primary">Sarah J.</span>
+<span class="inline-flex items-center gap-1 bg-surface-container text-on-surface px-1.5 py-0.5 rounded font-label-caps text-label-caps">
+<span class="material-symbols-outlined text-[12px]" data-icon="support_agent">support_agent</span>
+                                    Agent
+                                </span>
+<span class="font-label-caps text-label-caps text-on-surface-variant">Oct 24, 10:45 AM</span>
+</div>
+<div class="bg-surface-container-lowest border border-border-subtle rounded-2xl rounded-tl-sm p-4 max-w-[85%]">
+<p class="font-body-md text-body-md mb-3">Hello. I understand this is urgent. I can see the failed biometric attempts in the security log. For your protection, the vault has been temporarily locked.</p>
+<p class="font-body-md text-body-md mb-4">To restore access securely, please upload a clear image of your registered government ID using the secure attachment tool below. Once verified, I will issue a temporary bypass token.</p>
+<div class="flex items-center gap-2 bg-surface-container-low p-2 rounded-lg border border-border-subtle inline-flex">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="policy">policy</span>
+<span class="font-label-md text-label-md text-on-surface-variant">Action Required: Identity Verification</span>
+</div>
+</div>
+</div>
+<!-- User Reply (Recent) -->
+<div class="flex flex-col items-end gap-1">
+<div class="flex items-center gap-2 mb-1">
+<span class="font-label-caps text-label-caps text-on-surface-variant">2 hours ago</span>
+<span class="font-label-md text-label-md text-primary">You</span>
+</div>
+<div class="bg-primary text-on-primary rounded-2xl rounded-tr-sm p-4 max-w-[85%] shadow-[0_4px_20px_rgba(10,14,26,0.04)]">
+<p class="font-body-md text-body-md mb-3">Understood. I have attached the requested identification document.</p>
+<div class="flex items-center gap-3 bg-[#2A2D3A] p-3 rounded-lg border border-[#434654]">
+<div class="bg-[#171B28] p-2 rounded">
+<span class="material-symbols-outlined text-on-primary" data-icon="description">description</span>
+</div>
+<div class="flex-1">
+<div class="font-label-md text-label-md text-on-primary">Passport_Scan_Secure.pdf</div>
+<div class="font-body-sm text-body-sm text-on-primary-container">Encrypted • 2.4 MB</div>
+</div>
+<span class="material-symbols-outlined text-verified-emerald" data-icon="check_circle">check_circle</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Secure Reply Area -->
+<div class="mt-4 bg-surface-container-lowest border border-border-subtle rounded-xl overflow-hidden focus-within:border-secondary transition-colors duration-200 shadow-[0_4px_20px_rgba(10,14,26,0.04)]">
+<div class="bg-surface-container-low px-4 py-2 border-b border-border-subtle flex items-center justify-between">
+<span class="font-label-caps text-label-caps text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" data-icon="lock">lock</span>
+                                SECURE REPLY
+                            </span>
+</div>
+<textarea class="w-full bg-transparent border-none focus:ring-0 p-4 font-body-md text-body-md text-primary resize-none placeholder-on-surface-variant min-h-[120px]" placeholder="Type your secure message here..."></textarea>
+<div class="p-4 flex items-center justify-between border-t border-border-subtle">
+<button class="flex items-center gap-2 text-on-surface-variant hover:text-secondary transition-colors p-2 rounded-lg hover:bg-surface-container-low font-label-md text-label-md">
+<span class="material-symbols-outlined" data-icon="attach_file">attach_file</span>
+                                Attach Document
+                            </button>
+<button class="bg-secondary text-on-secondary px-6 py-2 rounded-lg font-label-md text-label-md hover:bg-opacity-90 transition-opacity h-12 flex items-center gap-2">
+                                Send Message
+                                <span class="material-symbols-outlined text-[18px]" data-icon="send">send</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Right Column: Metadata & Actions -->
+<div class="lg:col-span-4 flex flex-col gap-6">
+<!-- Metadata Card -->
+<div class="bg-surface-container-lowest border border-border-subtle rounded-xl p-6 shadow-[0_4px_20px_rgba(10,14,26,0.04)]">
+<h3 class="font-headline-md text-headline-md text-primary mb-4 pb-4 border-b border-border-subtle">Ticket Details</h3>
+<dl class="flex flex-col gap-4">
+<div>
+<dt class="font-label-caps text-label-caps text-on-surface-variant mb-1">CATEGORY</dt>
+<dd class="font-body-md text-body-md text-primary flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-secondary" data-icon="security">security</span>
+                                    Security &amp; Access
+                                </dd>
+</div>
+<div>
+<dt class="font-label-caps text-label-caps text-on-surface-variant mb-1">CREATED</dt>
+<dd class="font-body-md text-body-md text-primary">Oct 24, 2024</dd>
+</div>
+<div>
+<dt class="font-label-caps text-label-caps text-on-surface-variant mb-1">LAST ACTIVITY</dt>
+<dd class="font-body-md text-body-md text-primary">2 hours ago</dd>
+</div>
+<div>
+<dt class="font-label-caps text-label-caps text-on-surface-variant mb-1">ASSIGNED AGENT</dt>
+<dd class="flex items-center gap-3 mt-1">
+<div class="w-8 h-8 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container font-label-md text-label-md">
+                                        SJ
+                                    </div>
+<span class="font-body-md text-body-md text-primary">Sarah J.</span>
+</dd>
+</div>
+</dl>
+</div>
+<!-- Resolution Actions -->
+<div class="bg-surface-container-lowest border border-border-subtle rounded-xl p-6">
+<h3 class="font-label-caps text-label-caps text-on-surface-variant mb-4">RESOLUTION ACTIONS</h3>
+<div class="flex flex-col gap-3">
+<button class="w-full border border-border-subtle bg-surface hover:bg-surface-container-low text-primary py-3 rounded-lg font-label-md text-label-md transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[20px]" data-icon="check_circle">check_circle</span>
+                                Mark as Resolved
+                            </button>
+<button class="w-full border border-danger-red text-danger-red hover:bg-error-container py-3 rounded-lg font-label-md text-label-md transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[20px]" data-icon="warning">warning</span>
+                                Escalate to Compliance
+                            </button>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="fixed bottom-0 left-0 w-full bg-surface border-t border-border-subtle flex justify-around items-center px-margin-mobile py-2 md:hidden z-50 shadow-lg">
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 w-16" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="dashboard">dashboard</span>
+<span class="font-label-caps text-[10px]">Portfolio</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 w-16" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="lock">lock</span>
+<span class="font-label-caps text-[10px]">Vaults</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 w-16" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="family_restroom">family_restroom</span>
+<span class="font-label-caps text-[10px]">Succession</span>
+</a>
+<a class="flex flex-col items-center justify-center text-secondary font-bold p-2 w-16 active:bg-surface-container-low rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="contact_support" data-weight="fill">contact_support</span>
+<span class="font-label-caps text-[10px]">Support</span>
+</a>
+</nav>
+<script src="crypto.js"></script>
+<script src="app.js"></script>
+</body></html>

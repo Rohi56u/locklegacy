@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Encrypted Vault - LegacyLock</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Manrope:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-surface": "#2f3130",
+                        "surface-bright": "#faf9f8",
+                        "on-tertiary": "#ffffff",
+                        "secondary-container": "#645efb",
+                        "outline-variant": "#c7c6cc",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary-container": "#009668",
+                        "on-primary-fixed-variant": "#434654",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container-high": "#e9e8e7",
+                        "on-background": "#1a1c1c",
+                        "danger-red": "#EF4444",
+                        "on-tertiary-fixed-variant": "#005236",
+                        "tertiary-fixed": "#6ffbbe",
+                        "on-error-container": "#93000a",
+                        "tertiary-container": "#002113",
+                        "outline": "#76767c",
+                        "on-primary-container": "#808393",
+                        "secondary-fixed": "#e2dfff",
+                        "on-primary-fixed": "#171b28",
+                        "surface-container-low": "#f4f3f2",
+                        "secondary": "#4b41e1",
+                        "surface-container": "#eeeeed",
+                        "on-secondary-container": "#fffbff",
+                        "on-surface": "#1a1c1c",
+                        "on-secondary-fixed": "#0f0069",
+                        "surface-variant": "#e3e2e1",
+                        "attention-amber": "#F59E0B",
+                        "surface-tint": "#5a5e6d",
+                        "secondary-fixed-dim": "#c3c0ff",
+                        "inverse-on-surface": "#f1f0f0",
+                        "surface-dim": "#dadad9",
+                        "tertiary-fixed-dim": "#4edea3",
+                        "on-tertiary-fixed": "#002113",
+                        "error": "#ba1a1a",
+                        "primary-fixed": "#dfe2f3",
+                        "tertiary": "#000000",
+                        "on-secondary-fixed-variant": "#3323cc",
+                        "surface-container-highest": "#e3e2e1",
+                        "error-container": "#ffdad6",
+                        "verified-emerald": "#10B981",
+                        "primary-container": "#171b28",
+                        "on-surface-variant": "#46464c",
+                        "on-error": "#ffffff",
+                        "inverse-primary": "#c3c6d7",
+                        "border-subtle": "#E5E7EB",
+                        "surface": "#faf9f8",
+                        "background": "#faf9f8",
+                        "on-primary": "#ffffff",
+                        "primary-fixed-dim": "#c3c6d7",
+                        "primary": "#000000"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-desktop": "40px",
+                        "margin-mobile": "20px",
+                        "gutter": "24px",
+                        "base": "8px",
+                        "container-max": "1280px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Inter"],
+                        "headline-xl": ["Manrope"],
+                        "headline-lg": ["Manrope"],
+                        "label-caps": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-md": ["Manrope"],
+                        "headline-lg-mobile": ["Manrope"],
+                        "body-sm": ["Inter"],
+                        "label-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-xl": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "label-caps": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "headline-lg-mobile": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "fontWeight": "500" }]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .card-hover:hover {
+            box-shadow: 0 4px 20px rgba(10, 14, 26, 0.04);
+            transform: translateY(-2px);
+        }
+        .transition-all-ease {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md min-h-screen flex flex-col antialiased" data-page="encrypted_vault_desktop.html">
+<!-- TopNavBar (Generated from JSON context, active state set to Security/Vault conceptually if it was in the nav, but using Product as default per rules if no perfect match, though this is a vault app. We will highlight Security) -->
+<nav class="bg-surface dark:bg-inverse-surface w-full top-0 border-b border-outline-variant dark:border-outline z-50 sticky">
+<div class="max-w-container-max mx-auto px-margin-desktop flex justify-between items-center h-12">
+<div class="flex items-center gap-base text-headline-md font-headline-md text-primary dark:text-primary-fixed">
+<span class="material-symbols-outlined" data-icon="lock" style="font-variation-settings: 'FILL' 1;">lock</span>
+                LegacyLock
+            </div>
+<div class="hidden md:flex items-center gap-6 h-full">
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-secondary transition-colors duration-200 font-label-md text-label-md flex items-center h-full" href="#">Product</a>
+<a class="text-secondary font-bold border-b-2 border-secondary pb-1 flex items-center h-full mt-1 font-label-md text-label-md" href="#">Security</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-secondary transition-colors duration-200 font-label-md text-label-md flex items-center h-full" href="#">Pricing</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-secondary transition-colors duration-200 font-label-md text-label-md flex items-center h-full" href="#">Support</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="scale-95 active:opacity-80 transition-all text-on-surface-variant hover:text-secondary">
+<span class="material-symbols-outlined" data-icon="lock">lock</span>
+</button>
+<button class="scale-95 active:opacity-80 transition-all font-label-md text-label-md text-secondary dark:text-secondary-fixed">Secure Login</button>
+</div>
+</div>
+</nav>
+<!-- Main Canvas -->
+<main class="flex-grow max-w-container-max mx-auto w-full px-margin-desktop py-8 md:py-12 flex flex-col gap-12">
+<!-- Header Section -->
+<header class="flex flex-col gap-6">
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+<div>
+<h1 class="font-headline-xl text-headline-xl text-primary">Encrypted Vault</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant mt-2">Manage your sensitive digital estate securely.</p>
+</div>
+<div class="flex items-center gap-4 w-full md:w-auto">
+<div class="relative w-full md:w-64">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline" data-icon="search">search</span>
+<input class="w-full h-[44px] pl-10 pr-4 rounded-DEFAULT border border-border-subtle bg-surface-bright focus:border-secondary focus:ring-1 focus:ring-secondary transition-colors outline-none font-body-sm text-body-sm text-on-surface placeholder-on-surface-variant" placeholder="Search vault..." type="text"/>
+</div>
+<button class="flex items-center justify-center gap-2 h-[44px] px-6 bg-secondary text-on-secondary rounded-DEFAULT font-label-md text-label-md hover:bg-secondary-container transition-colors shadow-sm whitespace-nowrap">
+<span class="material-symbols-outlined text-[20px]" data-icon="add">add</span>
+                        Add record
+                    </button>
+</div>
+</div>
+<!-- Tabs -->
+<div class="flex border-b border-border-subtle overflow-x-auto no-scrollbar">
+<button class="px-4 py-3 border-b-2 border-secondary text-secondary font-label-md text-label-md whitespace-nowrap">All</button>
+<button class="px-4 py-3 border-b-2 border-transparent text-on-surface-variant hover:text-on-surface hover:border-outline-variant transition-colors font-label-md text-label-md whitespace-nowrap">Financial</button>
+<button class="px-4 py-3 border-b-2 border-transparent text-on-surface-variant hover:text-on-surface hover:border-outline-variant transition-colors font-label-md text-label-md whitespace-nowrap">Digital</button>
+<button class="px-4 py-3 border-b-2 border-transparent text-on-surface-variant hover:text-on-surface hover:border-outline-variant transition-colors font-label-md text-label-md whitespace-nowrap">Legal</button>
+<button class="px-4 py-3 border-b-2 border-transparent text-on-surface-variant hover:text-on-surface hover:border-outline-variant transition-colors font-label-md text-label-md whitespace-nowrap">Personal</button>
+</div>
+<!-- Filter Chips -->
+<div class="flex gap-2 overflow-x-auto no-scrollbar py-1">
+<button class="px-3 py-1.5 rounded-full border border-border-subtle bg-surface-bright text-on-surface-variant font-body-sm text-body-sm hover:bg-surface-container-low transition-colors whitespace-nowrap">Recently edited</button>
+<button class="px-3 py-1.5 rounded-full border border-border-subtle bg-surface-bright text-on-surface-variant font-body-sm text-body-sm hover:bg-surface-container-low transition-colors whitespace-nowrap">High value</button>
+<button class="px-3 py-1.5 rounded-full border border-border-subtle bg-surface-bright text-on-surface-variant font-body-sm text-body-sm hover:bg-surface-container-low transition-colors whitespace-nowrap">Needs review</button>
+</div>
+</header>
+<!-- Security Banner -->
+<div class="bg-surface-container-low border border-border-subtle rounded-lg p-4 flex items-start sm:items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-verified-emerald/10 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-verified-emerald text-[20px]" data-icon="shield_lock" style="font-variation-settings: 'FILL' 1;">shield_lock</span>
+</div>
+<div>
+<p class="font-label-md text-label-md text-primary">Everything shown here is encrypted and access-controlled.</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Your data is secured with zero-knowledge architecture.</p>
+</div>
+</div>
+<!-- Category Grid -->
+<section>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-gutter">
+<!-- Card 1 -->
+<div class="bg-surface-bright border border-border-subtle rounded-xl p-5 card-hover transition-all-ease flex flex-col h-full cursor-pointer relative overflow-hidden group">
+<div class="absolute top-0 right-0 w-24 h-24 bg-primary-fixed/30 rounded-bl-full -mr-8 -mt-8 transition-transform group-hover:scale-110"></div>
+<div class="flex justify-between items-start mb-4 relative z-10">
+<div class="w-10 h-10 rounded-lg bg-surface flex items-center justify-center border border-border-subtle">
+<span class="material-symbols-outlined text-primary text-[24px]" data-icon="account_balance">account_balance</span>
+</div>
+<span class="material-symbols-outlined text-outline text-[16px]" data-icon="lock">lock</span>
+</div>
+<div class="border-b border-border-subtle pb-3 mb-3 relative z-10">
+<h3 class="font-headline-md text-headline-md text-primary">Bank &amp; deposits</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">3 items</p>
+</div>
+<div class="flex justify-between items-center mt-auto relative z-10">
+<span class="font-label-caps text-label-caps text-verified-emerald bg-verified-emerald/10 px-2 py-1 rounded">80% COMPLETE</span>
+<span class="font-body-sm text-body-sm text-outline">Oct 20</span>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="bg-surface-bright border border-border-subtle rounded-xl p-5 card-hover transition-all-ease flex flex-col h-full cursor-pointer relative overflow-hidden group">
+<div class="absolute top-0 right-0 w-24 h-24 bg-primary-fixed/30 rounded-bl-full -mr-8 -mt-8 transition-transform group-hover:scale-110"></div>
+<div class="flex justify-between items-start mb-4 relative z-10">
+<div class="w-10 h-10 rounded-lg bg-surface flex items-center justify-center border border-border-subtle">
+<span class="material-symbols-outlined text-primary text-[24px]" data-icon="trending_up">trending_up</span>
+</div>
+<span class="material-symbols-outlined text-outline text-[16px]" data-icon="lock">lock</span>
+</div>
+<div class="border-b border-border-subtle pb-3 mb-3 relative z-10">
+<h3 class="font-headline-md text-headline-md text-primary">Investments</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">5 items</p>
+</div>
+<div class="flex justify-between items-center mt-auto relative z-10">
+<span class="font-label-caps text-label-caps text-verified-emerald bg-verified-emerald/10 px-2 py-1 rounded">100% COMPLETE</span>
+<span class="font-body-sm text-body-sm text-outline">Oct 18</span>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="bg-surface-bright border border-border-subtle rounded-xl p-5 card-hover transition-all-ease flex flex-col h-full cursor-pointer relative overflow-hidden group">
+<div class="absolute top-0 right-0 w-24 h-24 bg-primary-fixed/30 rounded-bl-full -mr-8 -mt-8 transition-transform group-hover:scale-110"></div>
+<div class="flex justify-between items-start mb-4 relative z-10">
+<div class="w-10 h-10 rounded-lg bg-surface flex items-center justify-center border border-border-subtle">
+<span class="material-symbols-outlined text-primary text-[24px]" data-icon="health_and_safety">health_and_safety</span>
+</div>
+<span class="material-symbols-outlined text-outline text-[16px]" data-icon="lock">lock</span>
+</div>
+<div class="border-b border-border-subtle pb-3 mb-3 relative z-10">
+<h3 class="font-headline-md text-headline-md text-primary">Insurance</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">2 items</p>
+</div>
+<div class="flex justify-between items-center mt-auto relative z-10">
+<span class="font-label-caps text-label-caps text-attention-amber bg-attention-amber/10 px-2 py-1 rounded">50% COMPLETE</span>
+<span class="font-body-sm text-body-sm text-outline">Sep 12</span>
+</div>
+</div>
+<!-- Card 4 -->
+<div class="bg-surface-bright border border-border-subtle rounded-xl p-5 card-hover transition-all-ease flex flex-col h-full cursor-pointer relative overflow-hidden group">
+<div class="absolute top-0 right-0 w-24 h-24 bg-primary-fixed/30 rounded-bl-full -mr-8 -mt-8 transition-transform group-hover:scale-110"></div>
+<div class="flex justify-between items-start mb-4 relative z-10">
+<div class="w-10 h-10 rounded-lg bg-surface flex items-center justify-center border border-border-subtle">
+<span class="material-symbols-outlined text-primary text-[24px]" data-icon="currency_bitcoin">currency_bitcoin</span>
+</div>
+<span class="material-symbols-outlined text-outline text-[16px]" data-icon="lock">lock</span>
+</div>
+<div class="border-b border-border-subtle pb-3 mb-3 relative z-10">
+<h3 class="font-headline-md text-headline-md text-primary">Crypto</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">1 item</p>
+</div>
+<div class="flex justify-between items-center mt-auto relative z-10">
+<span class="font-label-caps text-label-caps text-verified-emerald bg-verified-emerald/10 px-2 py-1 rounded">100% COMPLETE</span>
+<span class="font-body-sm text-body-sm text-outline">Oct 05</span>
+</div>
+</div>
+<!-- Card 5 -->
+<div class="bg-surface-bright border border-border-subtle rounded-xl p-5 card-hover transition-all-ease flex flex-col h-full cursor-pointer relative overflow-hidden group">
+<div class="absolute top-0 right-0 w-24 h-24 bg-primary-fixed/30 rounded-bl-full -mr-8 -mt-8 transition-transform group-hover:scale-110"></div>
+<div class="flex justify-between items-start mb-4 relative z-10">
+<div class="w-10 h-10 rounded-lg bg-surface flex items-center justify-center border border-border-subtle">
+<span class="material-symbols-outlined text-primary text-[24px]" data-icon="cloud">cloud</span>
+</div>
+<span class="material-symbols-outlined text-outline text-[16px]" data-icon="lock">lock</span>
+</div>
+<div class="border-b border-border-subtle pb-3 mb-3 relative z-10">
+<h3 class="font-headline-md text-headline-md text-primary">Cloud &amp; digital</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">8 items</p>
+</div>
+<div class="flex justify-between items-center mt-auto relative z-10">
+<span class="font-label-caps text-label-caps text-verified-emerald bg-verified-emerald/10 px-2 py-1 rounded">90% COMPLETE</span>
+<span class="font-body-sm text-body-sm text-outline">Oct 19</span>
+</div>
+</div>
+<!-- Card 6 -->
+<div class="bg-surface-bright border border-border-subtle rounded-xl p-5 card-hover transition-all-ease flex flex-col h-full cursor-pointer relative overflow-hidden group">
+<div class="absolute top-0 right-0 w-24 h-24 bg-primary-fixed/30 rounded-bl-full -mr-8 -mt-8 transition-transform group-hover:scale-110"></div>
+<div class="flex justify-between items-start mb-4 relative z-10">
+<div class="w-10 h-10 rounded-lg bg-surface flex items-center justify-center border border-border-subtle">
+<span class="material-symbols-outlined text-primary text-[24px]" data-icon="description">description</span>
+</div>
+<span class="material-symbols-outlined text-outline text-[16px]" data-icon="lock">lock</span>
+</div>
+<div class="border-b border-border-subtle pb-3 mb-3 relative z-10">
+<h3 class="font-headline-md text-headline-md text-primary">Documents</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">12 items</p>
+</div>
+<div class="flex justify-between items-center mt-auto relative z-10">
+<span class="font-label-caps text-label-caps text-verified-emerald bg-verified-emerald/10 px-2 py-1 rounded">95% COMPLETE</span>
+<span class="font-body-sm text-body-sm text-outline">Oct 21</span>
+</div>
+</div>
+<!-- Card 7 -->
+<div class="bg-surface-bright border border-border-subtle rounded-xl p-5 card-hover transition-all-ease flex flex-col h-full cursor-pointer relative overflow-hidden group">
+<div class="absolute top-0 right-0 w-24 h-24 bg-primary-fixed/30 rounded-bl-full -mr-8 -mt-8 transition-transform group-hover:scale-110"></div>
+<div class="flex justify-between items-start mb-4 relative z-10">
+<div class="w-10 h-10 rounded-lg bg-surface flex items-center justify-center border border-border-subtle">
+<span class="material-symbols-outlined text-primary text-[24px]" data-icon="real_estate_agent">real_estate_agent</span>
+</div>
+<span class="material-symbols-outlined text-outline text-[16px]" data-icon="lock">lock</span>
+</div>
+<div class="border-b border-border-subtle pb-3 mb-3 relative z-10">
+<h3 class="font-headline-md text-headline-md text-primary">Loans</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">1 item</p>
+</div>
+<div class="flex justify-between items-center mt-auto relative z-10">
+<span class="font-label-caps text-label-caps text-verified-emerald bg-verified-emerald/10 px-2 py-1 rounded">100% COMPLETE</span>
+<span class="font-body-sm text-body-sm text-outline">Aug 14</span>
+</div>
+</div>
+<!-- Card 8 -->
+<div class="bg-surface-bright border border-border-subtle rounded-xl p-5 card-hover transition-all-ease flex flex-col h-full cursor-pointer relative overflow-hidden group">
+<div class="absolute top-0 right-0 w-24 h-24 bg-primary-fixed/30 rounded-bl-full -mr-8 -mt-8 transition-transform group-hover:scale-110"></div>
+<div class="flex justify-between items-start mb-4 relative z-10">
+<div class="w-10 h-10 rounded-lg bg-surface flex items-center justify-center border border-border-subtle">
+<span class="material-symbols-outlined text-primary text-[24px]" data-icon="clinical_notes">clinical_notes</span>
+</div>
+<span class="material-symbols-outlined text-outline text-[16px]" data-icon="lock">lock</span>
+</div>
+<div class="border-b border-border-subtle pb-3 mb-3 relative z-10">
+<h3 class="font-headline-md text-headline-md text-primary">Personal instructions</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">4 items</p>
+</div>
+<div class="flex justify-between items-center mt-auto relative z-10">
+<span class="font-label-caps text-label-caps text-attention-amber bg-attention-amber/10 px-2 py-1 rounded">25% COMPLETE</span>
+<span class="font-body-sm text-body-sm text-outline">Oct 01</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Asset Preview List -->
+<section class="mt-8">
+<h2 class="font-headline-lg text-headline-lg text-primary mb-6">Recent Records</h2>
+<div class="bg-surface-bright border border-border-subtle rounded-xl overflow-hidden">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low border-b border-border-subtle">
+<th class="py-3 px-4 font-label-caps text-label-caps text-on-surface-variant">Asset Name</th>
+<th class="py-3 px-4 font-label-caps text-label-caps text-on-surface-variant">Category</th>
+<th class="py-3 px-4 font-label-caps text-label-caps text-on-surface-variant">Value / Details</th>
+<th class="py-3 px-4 font-label-caps text-label-caps text-on-surface-variant text-right">Last Updated</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-border-subtle">
+<tr class="hover:bg-surface-container-low transition-colors cursor-pointer group">
+<td class="py-4 px-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded bg-surface border border-border-subtle flex items-center justify-center">
+<span class="material-symbols-outlined text-on-surface-variant text-[18px]" data-icon="account_balance">account_balance</span>
+</div>
+<div>
+<p class="font-label-md text-label-md text-primary">Primary Savings</p>
+<p class="font-body-sm text-body-sm text-outline group-hover:text-secondary transition-colors text-[10px]">•••••• •••• 4092</p>
+</div>
+</div>
+</td>
+<td class="py-4 px-4 font-body-sm text-body-sm text-on-surface-variant">Bank &amp; deposits</td>
+<td class="py-4 px-4 font-body-sm text-body-sm text-primary tracking-widest">••••••••</td>
+<td class="py-4 px-4 font-body-sm text-body-sm text-outline text-right">Oct 20, 2023</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors cursor-pointer group">
+<td class="py-4 px-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded bg-surface border border-border-subtle flex items-center justify-center">
+<span class="material-symbols-outlined text-on-surface-variant text-[18px]" data-icon="trending_up">trending_up</span>
+</div>
+<div>
+<p class="font-label-md text-label-md text-primary">Vanguard Index</p>
+<p class="font-body-sm text-body-sm text-outline group-hover:text-secondary transition-colors text-[10px]">Brokerage Acc ••••••</p>
+</div>
+</div>
+</td>
+<td class="py-4 px-4 font-body-sm text-body-sm text-on-surface-variant">Investments</td>
+<td class="py-4 px-4 font-body-sm text-body-sm text-primary tracking-widest">••••••••</td>
+<td class="py-4 px-4 font-body-sm text-body-sm text-outline text-right">Oct 18, 2023</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors cursor-pointer group">
+<td class="py-4 px-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded bg-surface border border-border-subtle flex items-center justify-center">
+<span class="material-symbols-outlined text-on-surface-variant text-[18px]" data-icon="description">description</span>
+</div>
+<div>
+<p class="font-label-md text-label-md text-primary">Last Will</p>
+<p class="font-body-sm text-body-sm text-outline group-hover:text-secondary transition-colors text-[10px]">PDF Document</p>
+</div>
+</div>
+</td>
+<td class="py-4 px-4 font-body-sm text-body-sm text-on-surface-variant">Legal</td>
+<td class="py-4 px-4 font-body-sm text-body-sm text-primary">Encrypted Vault •••</td>
+<td class="py-4 px-4 font-body-sm text-body-sm text-outline text-right">Oct 15, 2023</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors cursor-pointer group">
+<td class="py-4 px-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded bg-surface border border-border-subtle flex items-center justify-center">
+<span class="material-symbols-outlined text-on-surface-variant text-[18px]" data-icon="key">key</span>
+</div>
+<div>
+<p class="font-label-md text-label-md text-primary">Google Drive Keys</p>
+<p class="font-body-sm text-body-sm text-outline group-hover:text-secondary transition-colors text-[10px]">Access Tokens</p>
+</div>
+</div>
+</td>
+<td class="py-4 px-4 font-body-sm text-body-sm text-on-surface-variant">Cloud &amp; digital</td>
+<td class="py-4 px-4 font-body-sm text-body-sm text-primary tracking-widest">••••••••••••</td>
+<td class="py-4 px-4 font-body-sm text-body-sm text-outline text-right">Oct 10, 2023</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="p-4 border-t border-border-subtle text-center bg-surface">
+<button class="font-label-md text-label-md text-secondary hover:text-secondary-container transition-colors">View all records</button>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-low dark:bg-inverse-surface w-full mt-auto border-t border-outline-variant dark:border-outline">
+<div class="max-w-container-max mx-auto px-margin-desktop py-8 flex flex-col md:flex-row justify-between items-center gap-base">
+<div class="flex flex-col items-center md:items-start gap-2">
+<span class="text-label-caps font-label-caps text-on-surface-variant">LEGACYLOCK</span>
+<p class="font-body-sm text-body-sm text-on-surface dark:text-surface-bright">© 2024 LegacyLock. Your digital estate is secured with AES-256 encryption.</p>
+</div>
+<div class="flex flex-wrap justify-center gap-6">
+<a class="text-on-surface-variant dark:text-outline hover:text-secondary underline transition-all opacity-90 hover:opacity-100 font-body-sm text-body-sm" href="#">Privacy Policy</a>
+<a class="text-on-surface-variant dark:text-outline hover:text-secondary underline transition-all opacity-90 hover:opacity-100 font-body-sm text-body-sm" href="#">Terms of Service</a>
+<a class="text-on-surface-variant dark:text-outline hover:text-secondary underline transition-all opacity-90 hover:opacity-100 font-body-sm text-body-sm" href="#">Security Audit</a>
+<a class="text-on-surface-variant dark:text-outline hover:text-secondary underline transition-all opacity-90 hover:opacity-100 font-body-sm text-body-sm" href="#">Status</a>
+</div>
+</div>
+</footer>
+<script src="crypto.js"></script>
+<script src="app.js"></script>
+</body></html>

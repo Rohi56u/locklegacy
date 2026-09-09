@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Contact - LegacyLock</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Manrope:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "outline-variant": "#c7c6cc",
+                        "inverse-surface": "#2f3130",
+                        "primary-fixed": "#dfe2f3",
+                        "on-primary": "#ffffff",
+                        "tertiary-container": "#002113",
+                        "tertiary-fixed-dim": "#4edea3",
+                        "danger-red": "#EF4444",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary": "#ffffff",
+                        "on-surface": "#1a1c1c",
+                        "surface-variant": "#e3e2e1",
+                        "surface-container-low": "#f4f3f2",
+                        "background": "#faf9f8",
+                        "surface-tint": "#5a5e6d",
+                        "on-error-container": "#93000a",
+                        "error": "#ba1a1a",
+                        "primary-container": "#171b28",
+                        "error-container": "#ffdad6",
+                        "surface-container": "#eeeeed",
+                        "on-surface-variant": "#46464c",
+                        "secondary-fixed": "#e2dfff",
+                        "attention-amber": "#F59E0B",
+                        "primary": "#000000",
+                        "inverse-on-surface": "#f1f0f0",
+                        "surface": "#faf9f8",
+                        "surface-dim": "#dadad9",
+                        "surface-container-high": "#e9e8e7",
+                        "on-primary-fixed": "#171b28",
+                        "border-subtle": "#E5E7EB",
+                        "on-background": "#1a1c1c",
+                        "inverse-primary": "#c3c6d7",
+                        "surface-container-highest": "#e3e2e1",
+                        "secondary-container": "#645efb",
+                        "on-error": "#ffffff",
+                        "tertiary": "#000000",
+                        "on-tertiary-fixed": "#002113",
+                        "tertiary-fixed": "#6ffbbe",
+                        "on-tertiary-fixed-variant": "#005236",
+                        "on-primary-fixed-variant": "#434654",
+                        "on-secondary-fixed": "#0f0069",
+                        "on-tertiary-container": "#009668",
+                        "outline": "#76767c",
+                        "on-primary-container": "#808393",
+                        "on-secondary-container": "#fffbff",
+                        "surface-container-lowest": "#ffffff",
+                        "primary-fixed-dim": "#c3c6d7",
+                        "surface-bright": "#faf9f8",
+                        "on-secondary-fixed-variant": "#3323cc",
+                        "verified-emerald": "#10B981",
+                        "secondary-fixed-dim": "#c3c0ff",
+                        "secondary": "#4b41e1",
+                        "shell-navy": "#0A0E1A",
+                        "electric-indigo": "#4b41e1",
+                        "surface-warm": "#FDFCFB"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px",
+                        "card": "20px"
+                    },
+                    spacing: {
+                        "base": "8px",
+                        "margin-desktop": "40px",
+                        "gutter": "24px",
+                        "container-max": "1280px",
+                        "margin-mobile": "20px",
+                        "section-gap": "48px"
+                    },
+                    fontFamily: {
+                        "headline-lg-mobile": ["Manrope"],
+                        "body-md": ["Inter"],
+                        "headline-md": ["Manrope"],
+                        "body-lg": ["Inter"],
+                        "headline-lg": ["Manrope"],
+                        "label-md": ["Inter"],
+                        "label-caps": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "headline-xl": ["Manrope"]
+                    },
+                    fontSize: {
+                        "headline-lg-mobile": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "fontWeight": "500" }],
+                        "label-caps": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "headline-xl": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined[data-weight="fill"] {
+            font-variation-settings: 'FILL' 1;
+        }
+        
+        .shadow-level-2 {
+            box-shadow: 0 4px 20px rgba(10, 14, 26, 0.04);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface antialiased flex flex-col min-h-screen" data-page="contact_legacylock.html">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-surface/80 dark:bg-shell-navy/80 backdrop-blur-xl border-b border-subtle dark:border-outline-variant transition-all duration-300">
+<div class="flex justify-between items-center h-20 px-base md:px-margin-desktop max-w-container-max mx-auto">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-electric-indigo" data-icon="lock" data-weight="fill">lock</span>
+<span class="font-headline-md text-headline-md font-bold text-shell-navy dark:text-surface-warm">LegacyLock</span>
+</div>
+<div class="hidden md:flex gap-8">
+<a class="font-label-md text-label-md text-on-surface-variant dark:text-on-primary-container hover:text-electric-indigo transition-colors duration-200" href="#">Product</a>
+<a class="font-label-md text-label-md text-on-surface-variant dark:text-on-primary-container hover:text-electric-indigo transition-colors duration-200" href="#">Security</a>
+<a class="font-label-md text-label-md text-on-surface-variant dark:text-on-primary-container hover:text-electric-indigo transition-colors duration-200" href="#">Pricing</a>
+<a class="font-label-md text-label-md text-primary font-bold border-b-2 border-primary pb-1 hover:text-electric-indigo transition-colors duration-200" href="#">Support</a>
+</div>
+<button class="hidden md:flex items-center justify-center h-12 px-6 bg-shell-navy text-surface-warm font-label-md text-label-md rounded hover:bg-electric-indigo transition-colors duration-200 active:scale-95 transition-transform">
+                Get Started
+            </button>
+<!-- Mobile Menu Button -->
+<button class="md:hidden p-2 text-on-surface">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="flex-grow pt-32 pb-24 px-margin-mobile md:px-margin-desktop w-full max-w-container-max mx-auto">
+<!-- Header Section -->
+<div class="mb-16 md:mb-24 max-w-3xl">
+<h1 class="font-headline-xl text-headline-xl text-shell-navy mb-6">Questions are part of a secure decision.</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant">
+                Our team is here to help you navigate your digital legacy planning with clarity and care.
+            </p>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-gutter">
+<!-- Contact Form Area (Bento Grid Style) -->
+<div class="lg:col-span-7 space-y-8">
+<div class="bg-surface-warm border border-border-subtle rounded-card p-8 md:p-12 shadow-level-2 transition-shadow hover:shadow-level-2">
+<form class="space-y-6">
+<div>
+<label class="block font-label-md text-label-md text-on-surface mb-2" for="email">Email Address</label>
+<input class="w-full h-12 bg-surface-warm border border-border-subtle rounded px-4 font-body-md text-body-md text-on-surface focus:outline-none focus:border-electric-indigo focus:ring-1 focus:ring-electric-indigo transition-colors" id="email" placeholder="your@email.com" required="" type="email"/>
+</div>
+<div>
+<label class="block font-label-md text-label-md text-on-surface mb-2" for="category">How can we help?</label>
+<div class="relative">
+<select class="w-full h-12 bg-surface-warm border border-border-subtle rounded px-4 font-body-md text-body-md text-on-surface appearance-none focus:outline-none focus:border-electric-indigo focus:ring-1 focus:ring-electric-indigo transition-colors" id="category">
+<option>General Inquiry</option>
+<option>Technical Support</option>
+<option>Security Concern</option>
+<option>Media</option>
+</select>
+<span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-on-surface-variant" data-icon="expand_more">expand_more</span>
+</div>
+</div>
+<div>
+<label class="block font-label-md text-label-md text-on-surface mb-2" for="message">Message</label>
+<textarea class="w-full bg-surface-warm border border-border-subtle rounded p-4 font-body-md text-body-md text-on-surface focus:outline-none focus:border-electric-indigo focus:ring-1 focus:ring-electric-indigo transition-colors resize-none" id="message" placeholder="Please provide details..." required="" rows="5"></textarea>
+</div>
+<div class="flex items-start gap-3 pt-2">
+<div class="flex items-center h-6">
+<input class="w-5 h-5 border-border-subtle rounded text-electric-indigo focus:ring-electric-indigo focus:ring-offset-surface-warm cursor-pointer bg-surface-warm" id="early-access" type="checkbox"/>
+</div>
+<label class="font-body-sm text-body-sm text-on-surface-variant cursor-pointer pt-0.5" for="early-access">
+                                I would like early access to new features.
+                            </label>
+</div>
+<div class="pt-4 border-t border-border-subtle">
+<button class="w-full h-12 bg-electric-indigo text-on-primary font-label-md text-label-md rounded flex items-center justify-center gap-2 hover:bg-opacity-90 active:scale-[0.98] transition-all" type="submit">
+                                Send Message
+                                <span class="material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</form>
+</div>
+</div>
+<!-- Side Panel & FAQ -->
+<div class="lg:col-span-5 space-y-8 flex flex-col">
+<!-- Info Cards -->
+<div class="bg-surface-warm border border-border-subtle rounded-card p-8 flex flex-col gap-6">
+<div class="flex gap-4 items-start">
+<div class="w-10 h-10 rounded-full bg-shell-navy/5 flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-shell-navy" data-icon="schedule">schedule</span>
+</div>
+<div>
+<h3 class="font-label-md text-label-md text-shell-navy mb-1">Support Expectations</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">We typically respond within 24 hours during business days.</p>
+</div>
+</div>
+<div class="h-px bg-border-subtle w-full"></div>
+<div class="flex gap-4 items-start group cursor-pointer">
+<div class="w-10 h-10 rounded-full bg-shell-navy/5 flex items-center justify-center flex-shrink-0 group-hover:bg-electric-indigo/10 transition-colors">
+<span class="material-symbols-outlined text-shell-navy group-hover:text-electric-indigo transition-colors" data-icon="security">security</span>
+</div>
+<div>
+<h3 class="font-label-md text-label-md text-shell-navy group-hover:text-electric-indigo transition-colors mb-1 flex items-center gap-1">
+                                Report a security vulnerability
+                                <span class="material-symbols-outlined text-sm opacity-0 group-hover:opacity-100 transition-opacity" data-icon="arrow_forward">arrow_forward</span>
+</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Contact our dedicated security team directly.</p>
+</div>
+</div>
+<div class="h-px bg-border-subtle w-full"></div>
+<div class="flex gap-4 items-start">
+<div class="w-10 h-10 rounded-full bg-verified-emerald/10 flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-verified-emerald" data-icon="shield">shield</span>
+</div>
+<div>
+<h3 class="font-label-md text-label-md text-shell-navy mb-1">Privacy Guarantee</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Your inquiry is handled with the same privacy as your vault. We never sell your data.</p>
+</div>
+</div>
+</div>
+<!-- FAQ Section -->
+<div class="bg-surface-warm border border-border-subtle rounded-card p-8 flex-grow">
+<h2 class="font-headline-md text-headline-md text-shell-navy mb-6">Frequently Asked</h2>
+<div class="space-y-4">
+<details class="group border-b border-border-subtle pb-4 last:border-0 last:pb-0">
+<summary class="flex justify-between items-center font-label-md text-label-md text-on-surface cursor-pointer list-none hover:text-electric-indigo transition-colors">
+                                How do you handle death certificates?
+                                <span class="material-symbols-outlined text-on-surface-variant group-open:rotate-180 transition-transform" data-icon="expand_more">expand_more</span>
+</summary>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-3 leading-relaxed">
+                                We require verified, notarized digital copies which are then authenticated through our partner legal network before any vault unlocking procedure begins.
+                            </p>
+</details>
+<details class="group border-b border-border-subtle pb-4 last:border-0 last:pb-0">
+<summary class="flex justify-between items-center font-label-md text-label-md text-on-surface cursor-pointer list-none hover:text-electric-indigo transition-colors">
+                                Can you recover my lost master password?
+                                <span class="material-symbols-outlined text-on-surface-variant group-open:rotate-180 transition-transform" data-icon="expand_more">expand_more</span>
+</summary>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-3 leading-relaxed">
+                                No. By design, we employ a zero-knowledge architecture. If you lose your master password and your emergency kit, your data is permanently inaccessible.
+                            </p>
+</details>
+<details class="group border-b border-border-subtle pb-4 last:border-0 last:pb-0">
+<summary class="flex justify-between items-center font-label-md text-label-md text-on-surface cursor-pointer list-none hover:text-electric-indigo transition-colors">
+                                Do you support cryptocurrency assets?
+                                <span class="material-symbols-outlined text-on-surface-variant group-open:rotate-180 transition-transform" data-icon="expand_more">expand_more</span>
+</summary>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-3 leading-relaxed">
+                                Yes. You can securely store seed phrases and wallet details within encrypted notes, protected by the same military-grade encryption as the rest of your vault.
+                            </p>
+</details>
+<details class="group border-b border-border-subtle pb-4 last:border-0 last:pb-0">
+<summary class="flex justify-between items-center font-label-md text-label-md text-on-surface cursor-pointer list-none hover:text-electric-indigo transition-colors">
+                                How do I delete my account and data?
+                                <span class="material-symbols-outlined text-on-surface-variant group-open:rotate-180 transition-transform" data-icon="expand_more">expand_more</span>
+</summary>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-3 leading-relaxed">
+                                Account deletion can be initiated from your Security Settings. This action permanently cryptographically shreds your vault and cannot be undone.
+                            </p>
+</details>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full bg-shell-navy dark:bg-black">
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center py-section-gap px-base md:px-margin-desktop max-w-container-max mx-auto gap-8 md:gap-0">
+<div class="flex flex-col gap-2">
+<span class="font-headline-sm text-headline-sm text-surface-warm font-semibold">LegacyLock</span>
+<p class="font-body-sm text-body-sm text-surface-warm/80 max-w-md">
+                    © 2024 LegacyLock. Your legacy is your own. All data is end-to-end encrypted and remains your exclusive property.
+                </p>
+</div>
+<div class="flex flex-wrap gap-6 md:gap-8">
+<a class="font-body-sm text-body-sm text-on-primary-container hover:text-tertiary-fixed-dim transition-colors cursor-pointer" href="#">Privacy Policy</a>
+<a class="font-body-sm text-body-sm text-on-primary-container hover:text-tertiary-fixed-dim transition-colors cursor-pointer" href="#">Terms of Service</a>
+<a class="font-body-sm text-body-sm text-on-primary-container hover:text-tertiary-fixed-dim transition-colors cursor-pointer" href="#">Security Whitepaper</a>
+<a class="font-body-sm text-body-sm text-on-primary-container hover:text-tertiary-fixed-dim transition-colors cursor-pointer" href="#">Data Ownership</a>
+</div>
+</div>
+</footer>
+<script>
+        // Simple form submission prevention for demo
+        document.querySelector('form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const btn = e.target.querySelector('button[type="submit"]');
+            const originalText = btn.innerHTML;
+            btn.innerHTML = 'Message Sent <span class="material-symbols-outlined text-sm" data-icon="check">check</span>';
+            btn.classList.add('bg-verified-emerald');
+            btn.classList.remove('bg-electric-indigo');
+            
+            setTimeout(() => {
+                btn.innerHTML = originalText;
+                btn.classList.remove('bg-verified-emerald');
+                btn.classList.add('bg-electric-indigo');
+                e.target.reset();
+            }, 3000);
+        });
+    </script>
+<script src="crypto.js"></script>
+<script src="app.js"></script>
+</body></html>

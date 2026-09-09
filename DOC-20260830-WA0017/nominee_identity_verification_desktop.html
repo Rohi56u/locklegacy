@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>LegacyLock - Nominee Identity Verification</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Manrope:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary-container": "#fffbff",
+                        "primary-fixed": "#dfe2f3",
+                        "on-error-container": "#93000a",
+                        "border-subtle": "#E5E7EB",
+                        "verified-emerald": "#10B981",
+                        "on-secondary-fixed": "#0f0069",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary-container": "#009668",
+                        "on-error": "#ffffff",
+                        "danger-red": "#EF4444",
+                        "primary-container": "#171b28",
+                        "secondary": "#4b41e1",
+                        "surface-container-low": "#f4f3f2",
+                        "on-tertiary": "#ffffff",
+                        "surface-variant": "#e3e2e1",
+                        "inverse-surface": "#2f3130",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container-high": "#e9e8e7",
+                        "on-surface": "#1a1c1c",
+                        "surface-container-highest": "#e3e2e1",
+                        "secondary-fixed-dim": "#c3c0ff",
+                        "on-primary-container": "#808393",
+                        "attention-amber": "#F59E0B",
+                        "tertiary-container": "#002113",
+                        "surface-container": "#eeeeed",
+                        "secondary-container": "#645efb",
+                        "secondary-fixed": "#e2dfff",
+                        "tertiary-fixed-dim": "#4edea3",
+                        "on-secondary-fixed-variant": "#3323cc",
+                        "on-primary": "#ffffff",
+                        "tertiary": "#000000",
+                        "on-surface-variant": "#46464c",
+                        "surface-tint": "#5a5e6d",
+                        "on-background": "#1a1c1c",
+                        "background": "#faf9f8",
+                        "primary": "#000000",
+                        "surface-dim": "#dadad9",
+                        "error-container": "#ffdad6",
+                        "outline": "#76767c",
+                        "outline-variant": "#c7c6cc",
+                        "on-tertiary-fixed-variant": "#005236",
+                        "surface-bright": "#faf9f8",
+                        "surface": "#faf9f8",
+                        "on-tertiary-fixed": "#002113",
+                        "on-primary-fixed-variant": "#434654",
+                        "primary-fixed-dim": "#c3c6d7",
+                        "tertiary-fixed": "#6ffbbe",
+                        "error": "#ba1a1a",
+                        "on-primary-fixed": "#171b28",
+                        "inverse-on-surface": "#f1f0f0",
+                        "inverse-primary": "#c3c6d7"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "container-max": "1280px",
+                        "margin-mobile": "20px",
+                        "gutter": "24px",
+                        "base": "8px",
+                        "margin-desktop": "40px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "headline-md": ["Manrope"],
+                        "label-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-lg-mobile": ["Manrope"],
+                        "headline-lg": ["Manrope"],
+                        "headline-xl": ["Manrope"],
+                        "label-caps": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "fontWeight": "500" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "headline-lg-mobile": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "headline-xl": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "label-caps": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined[data-weight="fill"] {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        /* Custom shadows and depth based on guidelines */
+        .shadow-level-2 {
+            box-shadow: 0 4px 20px rgba(10, 14, 26, 0.04);
+        }
+    </style>
+</head>
+<body class="bg-surface font-body-md text-on-surface antialiased min-h-screen flex flex-col" data-page="nominee_identity_verification_desktop.html">
+<!-- TopNavBar -->
+<nav class="bg-transparent text-primary font-label-md text-label-md docked full-width top-0 w-full z-50 flex justify-between items-center max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop h-16">
+<div class="font-headline-md text-headline-md font-bold text-primary flex items-center gap-2">
+<span class="material-symbols-outlined text-[28px]" data-icon="lock" data-weight="fill">lock</span>
+            LegacyLock
+        </div>
+<!-- Navigation is suppressed due to transactional/task-focused intent (Identity Verification) -->
+<div class="hidden">
+<a class="text-on-surface-variant hover:text-secondary transition-colors duration-200" href="#">Product</a>
+<a class="text-on-surface-variant hover:text-secondary transition-colors duration-200" href="#">Security</a>
+<a class="text-on-surface-variant hover:text-secondary transition-colors duration-200" href="#">Pricing</a>
+<a class="text-on-surface-variant hover:text-secondary transition-colors duration-200" href="#">Support</a>
+</div>
+<div>
+<button class="bg-secondary text-on-secondary px-6 py-2 rounded font-label-md hover:bg-secondary-container transition-colors h-[44px]">Get Started</button>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="flex-grow flex flex-col items-center justify-center py-[48px] px-margin-mobile md:px-margin-desktop w-full max-w-container-max mx-auto">
+<!-- Secure Card Container -->
+<div class="bg-surface-container-lowest border border-border-subtle rounded-xl w-full max-w-3xl shadow-level-2 overflow-hidden flex flex-col">
+<!-- Header & Progress -->
+<div class="border-b border-border-subtle p-6 md:p-8 bg-surface-container-low/30">
+<div class="flex items-center justify-between mb-8">
+<h1 class="font-headline-lg text-headline-lg text-primary">Identity Verification</h1>
+<div class="flex items-center gap-2 bg-verified-emerald/10 text-verified-emerald px-3 py-1.5 rounded-full">
+<span class="material-symbols-outlined text-[16px]" data-icon="shield" data-weight="fill">shield</span>
+<span class="font-label-caps text-label-caps">SECURE PROCESS</span>
+</div>
+</div>
+<!-- Progress Indicator -->
+<div class="flex items-center justify-between relative">
+<div class="absolute left-0 top-1/2 -translate-y-1/2 w-full h-[2px] bg-border-subtle z-0"></div>
+<!-- Step 1: Done -->
+<div class="relative z-10 flex flex-col items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-secondary text-on-secondary flex items-center justify-center border-2 border-surface-container-lowest shadow-sm">
+<span class="material-symbols-outlined text-[16px]" data-icon="check">check</span>
+</div>
+<span class="font-label-caps text-label-caps text-on-surface-variant absolute top-10 whitespace-nowrap">Personal</span>
+</div>
+<!-- Step 2: Active -->
+<div class="relative z-10 flex flex-col items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-secondary text-on-secondary flex items-center justify-center border-2 border-surface-container-lowest shadow-sm">
+<span class="font-label-md">2</span>
+</div>
+<span class="font-label-caps text-label-caps text-secondary absolute top-10 whitespace-nowrap">Document</span>
+</div>
+<!-- Step 3: Pending -->
+<div class="relative z-10 flex flex-col items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-surface-container-low text-on-surface-variant border-2 border-border-subtle flex items-center justify-center">
+<span class="font-label-md">3</span>
+</div>
+<span class="font-label-caps text-label-caps text-on-surface-variant absolute top-10 whitespace-nowrap opacity-50">Liveness</span>
+</div>
+<!-- Step 4: Pending -->
+<div class="relative z-10 flex flex-col items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-surface-container-low text-on-surface-variant border-2 border-border-subtle flex items-center justify-center">
+<span class="font-label-md">4</span>
+</div>
+<span class="font-label-caps text-label-caps text-on-surface-variant absolute top-10 whitespace-nowrap opacity-50">Relationship</span>
+</div>
+<!-- Step 5: Pending -->
+<div class="relative z-10 flex flex-col items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-surface-container-low text-on-surface-variant border-2 border-border-subtle flex items-center justify-center">
+<span class="font-label-md">5</span>
+</div>
+<span class="font-label-caps text-label-caps text-on-surface-variant absolute top-10 whitespace-nowrap opacity-50">Review</span>
+</div>
+</div>
+</div>
+<!-- Main Content Area -->
+<div class="p-6 md:p-8 flex flex-col gap-8 mt-4">
+<div class="flex flex-col md:flex-row gap-6 md:items-start justify-between">
+<div class="flex-1 max-w-lg">
+<h2 class="font-headline-md text-headline-md text-primary mb-2">Upload Identity Document</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">
+                            Please provide a clear photo of your official government ID. This is legally required to verify you as a designated nominee.
+                        </p>
+</div>
+<!-- Privacy Trust Strip -->
+<div class="bg-primary/5 p-4 rounded-lg border border-primary/10 flex-shrink-0 w-full md:w-64 self-start">
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-primary text-[20px]" data-icon="encrypted">encrypted</span>
+<span class="font-label-md text-label-md text-primary">Zero-Knowledge Storage</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                            Your documents are encrypted locally during upload and stored in your private vault. We cannot view them.
+                        </p>
+</div>
+</div>
+<!-- Document Options Bento Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<!-- Passport Card -->
+<button class="flex flex-col items-start p-6 rounded-lg border border-border-subtle hover:border-secondary hover:shadow-level-2 transition-all group bg-surface-container-lowest text-left relative overflow-hidden">
+<div class="w-12 h-12 rounded-full bg-primary/5 flex items-center justify-center mb-4 group-hover:bg-secondary/10 transition-colors">
+<span class="material-symbols-outlined text-[24px] text-primary group-hover:text-secondary transition-colors" data-icon="menu_book">menu_book</span>
+</div>
+<h3 class="font-label-md text-label-md text-primary mb-1">Passport</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Photo page only</p>
+<div class="absolute top-4 right-4 text-border-subtle group-hover:text-secondary transition-colors">
+<span class="material-symbols-outlined" data-icon="upload_file">upload_file</span>
+</div>
+</button>
+<!-- Identity Card - Review State Example -->
+<div class="flex flex-col items-start p-6 rounded-lg border border-verified-emerald shadow-level-2 bg-surface-container-lowest text-left relative overflow-hidden">
+<div class="absolute inset-0 bg-verified-emerald/5 z-0 pointer-events-none"></div>
+<div class="w-12 h-12 rounded-full bg-verified-emerald/10 flex items-center justify-center mb-4 relative z-10 text-verified-emerald">
+<span class="material-symbols-outlined text-[24px]" data-icon="id_card">id_card</span>
+</div>
+<h3 class="font-label-md text-label-md text-primary mb-1 relative z-10">National ID Card</h3>
+<p class="font-body-sm text-body-sm text-verified-emerald relative z-10 flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]" data-icon="check_circle">check_circle</span>
+                            Front &amp; Back uploaded
+                        </p>
+<!-- Masked Preview -->
+<div class="absolute right-4 top-1/2 -translate-y-1/2 w-24 h-16 rounded border border-border-subtle overflow-hidden z-10">
+<div class="w-full h-full bg-surface-variant backdrop-blur-md relative">
+<img class="w-full h-full object-cover opacity-40 blur-sm mix-blend-multiply" data-alt="A blurred, generic rectangular representation of an identification card lying flat on a bright white studio surface. The image is out of focus to simulate privacy masking, with soft, diffused top-down lighting creating a clean, high-end, secure digital environment aesthetic. Dominant colors are muted greys and off-whites." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB6UpMbl6BEvtDxJlkg4SUVrKtSuTBB2sp8veHe7v4gLNAjO0q9onSfdl_iH2BEFwZGp1HgAy70OmmnviW5GVseRkzDJRT1Yt82ed8nj6AIA_kReftQDtYRsSVkeC8y1m8G_6hPD3gh8ZPjpmlfGxpDi135pWT-jQhy-bpgYSgQ0hVUe0J1g6Ob0XY1Cu9dmHQ9q_4uNbtdYj-KvmbKmZtFGiDd1y5n8WRKSlWzcpUzw6fhGBXwRfR8"/>
+<div class="absolute inset-0 flex items-center justify-center text-primary/40">
+<span class="material-symbols-outlined text-[20px]" data-icon="visibility_off">visibility_off</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Status & Action -->
+<div class="mt-4 pt-6 border-t border-border-subtle flex flex-col md:flex-row items-center justify-between gap-4">
+<div class="flex items-center gap-3 text-attention-amber bg-attention-amber/5 px-4 py-3 rounded-lg border border-attention-amber/20 w-full md:w-auto">
+<span class="material-symbols-outlined text-[20px]" data-icon="pending_actions">pending_actions</span>
+<span class="font-body-sm text-body-sm text-on-surface">Manual review may be required. Expect completion within 24-48 hours.</span>
+</div>
+<button class="bg-secondary text-on-secondary h-[48px] px-8 rounded font-label-md hover:bg-secondary-container transition-colors shadow-sm w-full md:w-auto">
+                        Continue to Liveness
+                    </button>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-low border-t border-border-subtle text-on-surface-variant font-body-sm text-body-sm w-full py-12 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto flex flex-col md:flex-row justify-between gap-gutter">
+<div class="flex flex-col gap-4">
+<div class="font-headline-md text-headline-md text-primary font-bold flex items-center gap-2">
+<span class="material-symbols-outlined text-[24px]" data-icon="lock" data-weight="fill">lock</span>
+                 LegacyLock
+             </div>
+<p class="max-w-md">© 2024 LegacyLock. All rights reserved. Your data is encrypted locally before it ever reaches our servers. We never have access to your private keys.</p>
+</div>
+<div class="flex flex-wrap gap-6 items-center">
+<a class="text-on-surface-variant hover:text-secondary transition-colors underline-offset-4 hover:underline" href="#">Terms of Service</a>
+<a class="text-on-surface-variant hover:text-secondary transition-colors underline-offset-4 hover:underline" href="#">Privacy Policy</a>
+<a class="text-on-surface-variant hover:text-secondary transition-colors underline-offset-4 hover:underline" href="#">Security Whitepaper</a>
+<a class="text-on-surface-variant hover:text-secondary transition-colors underline-offset-4 hover:underline" href="#">Legal Notice</a>
+<a class="text-on-surface-variant hover:text-secondary transition-colors underline-offset-4 hover:underline" href="#">Contact</a>
+</div>
+</footer>
+<script src="crypto.js"></script>
+<script src="app.js"></script>
+</body></html>

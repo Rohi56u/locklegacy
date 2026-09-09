@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>LegacyLock - Add Investment Record</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Manrope:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-container-low": "#f4f3f2",
+                      "surface-bright": "#faf9f8",
+                      "on-surface": "#1a1c1c",
+                      "inverse-surface": "#2f3130",
+                      "on-primary-fixed-variant": "#434654",
+                      "background": "#faf9f8",
+                      "outline": "#76767c",
+                      "on-secondary-fixed": "#0f0069",
+                      "primary-fixed-dim": "#c3c6d7",
+                      "error-container": "#ffdad6",
+                      "on-primary-fixed": "#171b28",
+                      "on-primary": "#ffffff",
+                      "primary-fixed": "#dfe2f3",
+                      "surface-container-lowest": "#ffffff",
+                      "on-secondary": "#ffffff",
+                      "on-background": "#1a1c1c",
+                      "secondary-fixed-dim": "#c3c0ff",
+                      "on-tertiary-fixed-variant": "#005236",
+                      "outline-variant": "#c7c6cc",
+                      "danger-red": "#EF4444",
+                      "on-primary-container": "#808393",
+                      "on-secondary-fixed-variant": "#3323cc",
+                      "surface-variant": "#e3e2e1",
+                      "on-tertiary": "#ffffff",
+                      "inverse-primary": "#c3c6d7",
+                      "secondary-container": "#645efb",
+                      "surface": "#faf9f8",
+                      "on-tertiary-fixed": "#002113",
+                      "on-tertiary-container": "#009668",
+                      "error": "#ba1a1a",
+                      "tertiary-container": "#002113",
+                      "on-secondary-container": "#fffbff",
+                      "tertiary-fixed-dim": "#4edea3",
+                      "inverse-on-surface": "#f1f0f0",
+                      "secondary": "#4b41e1",
+                      "on-surface-variant": "#46464c",
+                      "surface-container-highest": "#e3e2e1",
+                      "surface-container-high": "#e9e8e7",
+                      "surface-dim": "#dadad9",
+                      "attention-amber": "#F59E0B",
+                      "on-error": "#ffffff",
+                      "primary": "#000000",
+                      "tertiary-fixed": "#6ffbbe",
+                      "surface-container": "#eeeeed",
+                      "surface-tint": "#5a5e6d",
+                      "on-error-container": "#93000a",
+                      "primary-container": "#171b28",
+                      "border-subtle": "#E5E7EB",
+                      "verified-emerald": "#10B981",
+                      "secondary-fixed": "#e2dfff",
+                      "tertiary": "#000000"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "margin-mobile": "20px",
+                      "gutter": "24px",
+                      "container-max": "1280px",
+                      "margin-desktop": "40px",
+                      "base": "8px"
+              },
+              "fontFamily": {
+                      "body-sm": ["Inter"],
+                      "headline-md": ["Manrope"],
+                      "body-lg": ["Inter"],
+                      "headline-lg-mobile": ["Manrope"],
+                      "label-md": ["Inter"],
+                      "body-md": ["Inter"],
+                      "headline-lg": ["Manrope"],
+                      "headline-xl": ["Manrope"],
+                      "label-caps": ["Inter"]
+              },
+              "fontSize": {
+                      "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                      "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                      "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                      "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                      "headline-xl": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}]
+              }
+            }
+          }
+        }
+    </script>
+<style>
+        /* Custom styles for radio cards to utilize peer functionality */
+        .radio-card-input:checked + .radio-card-body {
+            border-color: #4b41e1; /* secondary */
+            background-color: #e2dfff; /* secondary-fixed */
+        }
+        .radio-card-input:checked + .radio-card-body .radio-icon {
+            color: #3323cc; /* on-secondary-fixed-variant */
+            font-variation-settings: 'FILL' 1;
+        }
+        .radio-card-input:focus-visible + .radio-card-body {
+            outline: 2px solid #4b41e1;
+            outline-offset: 2px;
+        }
+        /* Smooth transitions for form steps */
+        .form-step {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+        }
+        .form-step.active {
+            display: block;
+            animation: fadeIn 0.4s ease-out forwards;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body-md antialiased min-h-screen flex flex-col" data-page="add_investment_record_desktop.html">
+<!-- Transactional Header (Suppressed global nav per guidelines) -->
+<header class="w-full bg-surface-container-lowest border-b border-border-subtle z-10 sticky top-0">
+<div class="max-w-container-max mx-auto px-margin-desktop h-16 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-2xl" style="font-variation-settings: 'FILL' 1;">enhanced_encryption</span>
+<span class="font-headline-md text-headline-md font-bold text-primary tracking-tight">LegacyLock</span>
+</div>
+<button class="flex items-center gap-2 font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors">
+<span>Save &amp; Exit</span>
+<span class="material-symbols-outlined text-sm">logout</span>
+</button>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="flex-grow w-full max-w-container-max mx-auto px-margin-desktop py-12">
+<!-- Page Title & Atmosphere -->
+<div class="relative w-full rounded-2xl overflow-hidden bg-primary-container p-8 mb-12 flex items-center justify-between border border-primary-fixed-dim">
+
+<div class="relative z-10 text-on-primary">
+<h1 class="font-headline-lg text-headline-lg mb-2">Secure Investment Record</h1>
+<p class="font-body-lg text-body-lg text-primary-fixed opacity-90">Catalog your assets to ensure seamless generational transfer.</p>
+</div>
+<div class="relative z-10 hidden md:block">
+<span class="material-symbols-outlined text-[64px] text-primary-fixed opacity-20">account_balance</span>
+</div>
+</div>
+<!-- Layout Grid -->
+<div class="grid grid-cols-12 gap-gutter">
+<!-- Left Column: Form Canvas (8 cols) -->
+<div class="col-span-12 md:col-span-8 flex flex-col gap-8">
+<!-- Progress Indicator -->
+<div class="w-full bg-surface-container-lowest border border-border-subtle rounded-xl p-6 shadow-[0_4px_20px_rgba(10,14,26,0.02)]">
+<div class="relative flex items-center justify-between w-full">
+<!-- Connecting Line -->
+<div class="absolute left-0 top-1/2 -translate-y-1/2 w-full h-[2px] bg-surface-variant -z-10 rounded"></div>
+<div class="absolute left-0 top-1/2 -translate-y-1/2 h-[2px] bg-secondary -z-10 transition-all duration-300 rounded" id="progress-line" style="width: 0%;"></div>
+<!-- Step 1 -->
+<div class="flex flex-col items-center gap-2 bg-surface-container-lowest px-2 step-indicator" data-step="1">
+<div class="w-8 h-8 rounded-full bg-secondary text-on-secondary flex items-center justify-center font-label-md transition-colors duration-300 shadow-[0_0_12px_rgba(75,65,225,0.3)]">1</div>
+<span class="font-label-caps text-label-caps text-primary tracking-wider uppercase">Asset</span>
+</div>
+<!-- Step 2 -->
+<div class="flex flex-col items-center gap-2 bg-surface-container-lowest px-2 step-indicator" data-step="2">
+<div class="w-8 h-8 rounded-full bg-surface-container border border-border-subtle text-on-surface-variant flex items-center justify-center font-label-md transition-colors duration-300">2</div>
+<span class="font-label-caps text-label-caps text-on-surface-variant tracking-wider uppercase">Nominees</span>
+</div>
+<!-- Step 3 -->
+<div class="flex flex-col items-center gap-2 bg-surface-container-lowest px-2 step-indicator" data-step="3">
+<div class="w-8 h-8 rounded-full bg-surface-container border border-border-subtle text-on-surface-variant flex items-center justify-center font-label-md transition-colors duration-300">3</div>
+<span class="font-label-caps text-label-caps text-on-surface-variant tracking-wider uppercase">Guidance</span>
+</div>
+<!-- Step 4 -->
+<div class="flex flex-col items-center gap-2 bg-surface-container-lowest px-2 step-indicator" data-step="4">
+<div class="w-8 h-8 rounded-full bg-surface-container border border-border-subtle text-on-surface-variant flex items-center justify-center font-label-md transition-colors duration-300">4</div>
+<span class="font-label-caps text-label-caps text-on-surface-variant tracking-wider uppercase">Review</span>
+</div>
+</div>
+</div>
+<!-- Form Container -->
+<form class="bg-surface-container-lowest border border-border-subtle rounded-xl p-8 shadow-[0_4px_20px_rgba(10,14,26,0.02)] min-h-[500px] flex flex-col justify-between" id="investment-form">
+<!-- STEP 1: Platform & Asset -->
+<div class="form-step active flex flex-col gap-6" id="step-1">
+<div>
+<h2 class="font-headline-md text-headline-md text-primary mb-1">Platform &amp; Asset Details</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Identify the institution holding this investment.</p>
+</div>
+<div class="flex flex-col gap-2">
+<label class="font-label-md text-label-md text-primary" for="platform_name">AMC / Platform Name</label>
+<input class="w-full h-[48px] px-4 rounded-lg border border-outline-variant bg-surface-bright text-on-surface font-body-md text-body-md focus:border-secondary focus:ring-1 focus:ring-secondary transition-all placeholder:text-outline" id="platform_name" placeholder="e.g. Vanguard, Fidelity, Coinbase" type="text"/>
+</div>
+<div class="flex flex-col gap-2">
+<label class="font-label-md text-label-md text-primary" for="investment_type">Investment Type</label>
+<div class="relative">
+<select class="w-full h-[48px] px-4 rounded-lg border border-outline-variant bg-surface-bright text-on-surface font-body-md text-body-md focus:border-secondary focus:ring-1 focus:ring-secondary transition-all appearance-none cursor-pointer" id="investment_type">
+<option disabled="" selected="" value="">Select asset class</option>
+<option value="mutual_fund">Mutual Fund / ETF</option>
+<option value="stocks">Direct Stocks / Equities</option>
+<option value="bonds">Bonds / Fixed Income</option>
+<option value="crypto">Cryptocurrency</option>
+<option value="real_estate">Real Estate Trust (REIT)</option>
+<option value="other">Other Asset Class</option>
+</select>
+<div class="absolute inset-y-0 right-4 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-outline-variant">expand_more</span>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<label class="font-label-md text-label-md text-primary flex items-center justify-between" for="folio_id">
+<span>Folio or Client ID</span>
+<div class="flex items-center gap-1 text-verified-emerald bg-verified-emerald/10 px-2 py-0.5 rounded text-xs font-medium">
+<span class="material-symbols-outlined text-[14px]">lock</span>
+<span>Encrypted locally</span>
+</div>
+</label>
+<input class="w-full h-[48px] px-4 rounded-lg border border-outline-variant bg-surface-bright text-on-surface font-body-md text-body-md focus:border-secondary focus:ring-1 focus:ring-secondary transition-all placeholder:text-outline font-mono" id="folio_id" placeholder="•••• •••• 1234" type="text"/>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1 text-xs">Enter a partial identifier if you prefer. We use this to help your nominees locate the account.</p>
+</div>
+</div>
+<!-- STEP 2: Nominees & Advisors -->
+<div class="form-step flex flex-col gap-6" id="step-2">
+<div>
+<h2 class="font-headline-md text-headline-md text-primary mb-1">Nominees &amp; Advisors</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Legal status and contact points for this asset.</p>
+</div>
+<div class="flex flex-col gap-3">
+<label class="font-label-md text-label-md text-primary">Nominee Registration Status</label>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+<!-- Option 1 -->
+<label class="relative flex flex-col">
+<input class="peer sr-only radio-card-input" name="nominee_status" type="radio" value="registered"/>
+<div class="radio-card-body flex-1 border border-border-subtle rounded-lg p-4 cursor-pointer hover:border-outline-variant transition-colors flex flex-col items-center justify-center text-center gap-2 h-full bg-surface-bright">
+<span class="material-symbols-outlined radio-icon text-on-surface-variant text-2xl">check_circle</span>
+<span class="font-label-md text-label-md text-primary">Registered</span>
+</div>
+</label>
+<!-- Option 2 -->
+<label class="relative flex flex-col">
+<input class="peer sr-only radio-card-input" name="nominee_status" type="radio" value="not_registered"/>
+<div class="radio-card-body flex-1 border border-border-subtle rounded-lg p-4 cursor-pointer hover:border-outline-variant transition-colors flex flex-col items-center justify-center text-center gap-2 h-full bg-surface-bright">
+<span class="material-symbols-outlined radio-icon text-on-surface-variant text-2xl">cancel</span>
+<span class="font-label-md text-label-md text-primary">Not Registered</span>
+</div>
+</label>
+<!-- Option 3 (Stress reduction toggle) -->
+<label class="relative flex flex-col">
+<input class="peer sr-only radio-card-input" name="nominee_status" type="radio" value="unknown"/>
+<div class="radio-card-body flex-1 border border-border-subtle rounded-lg p-4 cursor-pointer hover:border-outline-variant transition-colors flex flex-col items-center justify-center text-center gap-2 h-full bg-surface-bright">
+<span class="material-symbols-outlined radio-icon text-on-surface-variant text-2xl">help</span>
+<span class="font-label-md text-label-md text-primary">Not Sure</span>
+</div>
+</label>
+</div>
+</div>
+<div class="border-t border-border-subtle pt-6 mt-2 flex flex-col gap-4">
+<h3 class="font-label-md text-label-md text-primary">Associated Financial Advisor (Optional)</h3>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="flex flex-col gap-2">
+<label class="font-body-sm text-body-sm text-on-surface-variant" for="advisor_name">Name / Firm</label>
+<input class="w-full h-[44px] px-3 rounded-md border border-outline-variant bg-surface-bright text-on-surface font-body-sm focus:border-secondary focus:ring-1 focus:ring-secondary transition-all" id="advisor_name" type="text"/>
+</div>
+<div class="flex flex-col gap-2">
+<label class="font-body-sm text-body-sm text-on-surface-variant" for="advisor_phone">Phone Number</label>
+<input class="w-full h-[44px] px-3 rounded-md border border-outline-variant bg-surface-bright text-on-surface font-body-sm focus:border-secondary focus:ring-1 focus:ring-secondary transition-all" id="advisor_phone" type="tel"/>
+</div>
+</div>
+</div>
+</div>
+<!-- STEP 3: Claim Guidance -->
+<div class="form-step flex flex-col gap-6" id="step-3">
+<div>
+<h2 class="font-headline-md text-headline-md text-primary mb-1">Claim Guidance</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Instructions for your family on how to locate and claim this asset.</p>
+</div>
+<div class="flex flex-col gap-2">
+<label class="font-label-md text-label-md text-primary" for="statement_location">Where are the statements kept?</label>
+<div class="relative">
+<select class="w-full h-[48px] px-4 rounded-lg border border-outline-variant bg-surface-bright text-on-surface font-body-md text-body-md focus:border-secondary focus:ring-1 focus:ring-secondary transition-all appearance-none cursor-pointer" id="statement_location">
+<option disabled="" selected="" value="">Select location type</option>
+<option value="digital">Digital (Email / Platform Portal)</option>
+<option value="physical">Physical (Home Safe / Filing Cabinet)</option>
+<option value="cloud">Cloud Storage (Google Drive / Dropbox)</option>
+<option value="bank">Bank Locker</option>
+<option value="unknown">Not sure / Need to verify</option>
+</select>
+<div class="absolute inset-y-0 right-4 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-outline-variant">expand_more</span>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<label class="font-label-md text-label-md text-primary" for="claim_instructions">Special Claim Instructions (Optional)</label>
+<textarea class="w-full p-4 rounded-lg border border-outline-variant bg-surface-bright text-on-surface font-body-md text-body-md focus:border-secondary focus:ring-1 focus:ring-secondary transition-all resize-none placeholder:text-outline" id="claim_instructions" placeholder="e.g., Contact Mr. Smith at the downtown branch. You will need a copy of the original physical certificate stored in the red folder." rows="4"></textarea>
+</div>
+</div>
+<!-- STEP 4: Review -->
+<div class="form-step flex flex-col gap-6" id="step-4">
+<div>
+<h2 class="font-headline-md text-headline-md text-primary mb-1">Review &amp; Save</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Verify the metadata before committing to your vault.</p>
+</div>
+<div class="bg-surface-bright rounded-lg border border-border-subtle p-6 flex flex-col gap-4">
+<div class="flex justify-between items-start border-b border-border-subtle pb-4">
+<div>
+<p class="font-label-caps text-label-caps text-on-surface-variant mb-1 uppercase tracking-widest">Platform</p>
+<p class="font-body-md text-body-md text-primary font-medium">Vanguard (Mutual Fund)</p>
+</div>
+<div>
+<p class="font-label-caps text-label-caps text-on-surface-variant mb-1 uppercase tracking-widest text-right">Folio</p>
+<p class="font-body-md text-body-md text-primary font-mono bg-surface-container px-2 py-1 rounded">•••• •••• 1234</p>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-6 pt-2">
+<div>
+<p class="font-label-caps text-label-caps text-on-surface-variant mb-1 uppercase tracking-widest">Nominee Status</p>
+<p class="font-body-sm text-body-sm text-primary flex items-center gap-1">
+<span class="material-symbols-outlined text-attention-amber text-[16px]">help</span> Not Sure
+                                    </p>
+</div>
+<div>
+<p class="font-label-caps text-label-caps text-on-surface-variant mb-1 uppercase tracking-widest">Location</p>
+<p class="font-body-sm text-body-sm text-primary">Digital (Portal)</p>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-3 mt-4 text-on-surface-variant">
+<span class="material-symbols-outlined text-outline">calendar_today</span>
+<span class="font-body-sm text-body-sm">Last reviewed: <span class="font-medium text-primary">Today</span></span>
+</div>
+</div>
+<!-- Form Controls (Bottom) -->
+<div class="pt-8 mt-8 border-t border-border-subtle flex items-center justify-between">
+<button class="h-[44px] px-6 rounded-lg font-label-md text-label-md text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors invisible" id="btn-back" type="button">
+                            Back
+                        </button>
+<div class="flex gap-4">
+<button class="h-[44px] px-6 rounded-lg border border-border-subtle font-label-md text-label-md text-primary hover:bg-surface-container transition-colors" type="button">
+                                Save Draft
+                            </button>
+<button class="h-[44px] px-8 bg-secondary text-on-secondary rounded-lg font-label-md text-label-md flex items-center justify-center gap-2 hover:bg-on-secondary-fixed-variant transition-colors shadow-[0_4px_12px_rgba(75,65,225,0.2)]" id="btn-next" type="button">
+<span>Continue</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+<button class="hidden h-[44px] px-8 bg-primary-container text-on-primary rounded-lg font-label-md text-label-md items-center justify-center gap-2 hover:bg-primary transition-colors shadow-[0_4px_12px_rgba(23,27,40,0.2)]" id="btn-submit" type="button">
+<span class="material-symbols-outlined text-[18px]">lock</span>
+<span>Save securely</span>
+</button>
+</div>
+</div>
+</form>
+</div>
+<!-- Right Column: Sidebar & Intelligence (4 cols) -->
+<div class="col-span-12 md:col-span-4 flex flex-col gap-6 sticky top-24 self-start">
+<!-- Security Context Card -->
+<div class="bg-surface-container-low border border-border-subtle rounded-xl p-6 shadow-sm">
+<div class="flex items-start gap-4">
+<div class="w-10 h-10 rounded-full bg-verified-emerald/10 flex items-center justify-center flex-shrink-0 mt-1">
+<span class="material-symbols-outlined text-verified-emerald" style="font-variation-settings: 'FILL' 1;">shield_person</span>
+</div>
+<div>
+<h3 class="font-label-md text-label-md text-primary mb-2">Zero-Knowledge Architecture</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+                                We only store discovery metadata. <strong>Never</strong> enter your trading passwords, PINs, or raw recovery seeds here. This record is solely to guide your trusted contacts during execution.
+                            </p>
+</div>
+</div>
+</div>
+<!-- Smart Document Suggestions (Bento Style List) -->
+<div class="bg-surface-container-lowest border border-border-subtle rounded-xl p-6">
+<h3 class="font-headline-sm text-headline-sm text-primary flex items-center gap-2 mb-4 font-semibold">
+<span class="material-symbols-outlined text-secondary">auto_awesome</span>
+                        Smart Suggestions
+                    </h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-6">Attaching these documents dramatically accelerates the eventual claim process.</p>
+<div class="flex flex-col gap-3">
+<!-- Suggestion Item -->
+<div class="group flex items-center justify-between p-3 rounded-lg border border-transparent hover:border-border-subtle hover:bg-surface-container-low transition-all cursor-pointer">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded bg-surface-variant flex items-center justify-center text-on-surface-variant group-hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[18px]">receipt_long</span>
+</div>
+<span class="font-label-md text-label-md text-primary">Latest Account Statement</span>
+</div>
+<span class="material-symbols-outlined text-outline-variant group-hover:text-secondary transition-colors text-[20px]">add_circle</span>
+</div>
+<!-- Suggestion Item -->
+<div class="group flex items-center justify-between p-3 rounded-lg border border-transparent hover:border-border-subtle hover:bg-surface-container-low transition-all cursor-pointer">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded bg-surface-variant flex items-center justify-center text-on-surface-variant group-hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[18px]">badge</span>
+</div>
+<span class="font-label-md text-label-md text-primary">KYC Update Details</span>
+</div>
+<span class="material-symbols-outlined text-outline-variant group-hover:text-secondary transition-colors text-[20px]">add_circle</span>
+</div>
+<!-- Suggestion Item -->
+<div class="group flex items-center justify-between p-3 rounded-lg border border-transparent hover:border-border-subtle hover:bg-surface-container-low transition-all cursor-pointer">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded bg-surface-variant flex items-center justify-center text-on-surface-variant group-hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[18px]">group_add</span>
+</div>
+<span class="font-label-md text-label-md text-primary">Nominee Confirmation</span>
+</div>
+<span class="material-symbols-outlined text-outline-variant group-hover:text-secondary transition-colors text-[20px]">add_circle</span>
+</div>
+<!-- Suggestion Item -->
+<div class="group flex items-center justify-between p-3 rounded-lg border border-transparent hover:border-border-subtle hover:bg-surface-container-low transition-all cursor-pointer">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded bg-surface-variant flex items-center justify-center text-on-surface-variant group-hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[18px]">description</span>
+</div>
+<span class="font-label-md text-label-md text-primary">Institution Claim Form</span>
+</div>
+<span class="material-symbols-outlined text-outline-variant group-hover:text-secondary transition-colors text-[20px]">add_circle</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer from JSON Execution -->
+<footer class="bg-surface-container-low dark:bg-surface-container-lowest w-full py-12 px-margin-mobile md:px-margin-desktop border-t border-border-subtle mt-auto">
+<div class="max-w-container-max mx-auto flex flex-col md:flex-row justify-between gap-gutter">
+<div class="max-w-md">
+<p class="font-body-sm text-body-sm text-on-surface-variant dark:text-on-surface-variant">© 2024 LegacyLock. All rights reserved. Your data is encrypted locally before it ever reaches our servers. We never have access to your private keys.</p>
+</div>
+<div class="flex flex-wrap gap-4 md:gap-8">
+<a class="font-body-sm text-body-sm text-on-surface-variant dark:text-on-surface-variant hover:text-secondary transition-colors underline-offset-4 hover:underline" href="#">Terms of Service</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant dark:text-on-surface-variant hover:text-secondary transition-colors underline-offset-4 hover:underline" href="#">Privacy Policy</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant dark:text-on-surface-variant hover:text-secondary transition-colors underline-offset-4 hover:underline" href="#">Security Whitepaper</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant dark:text-on-surface-variant hover:text-secondary transition-colors underline-offset-4 hover:underline" href="#">Legal Notice</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant dark:text-on-surface-variant hover:text-secondary transition-colors underline-offset-4 hover:underline" href="#">Contact</a>
+</div>
+</div>
+</footer>
+<!-- Form Navigation Logic -->
+<script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const totalSteps = 4;
+            let currentStep = 1;
+            
+            const btnNext = document.getElementById('btn-next');
+            const btnBack = document.getElementById('btn-back');
+            const btnSubmit = document.getElementById('btn-submit');
+            const progressLine = document.getElementById('progress-line');
+            const stepIndicators = document.querySelectorAll('.step-indicator');
+
+            function updateUI() {
+                // Update Step Content Visibility
+                document.querySelectorAll('.form-step').forEach(step => {
+                    step.classList.remove('active');
+                });
+                document.getElementById(`step-${currentStep}`).classList.add('active');
+
+                // Update Progress Line
+                const progressPercentage = ((currentStep - 1) / (totalSteps - 1)) * 100;
+                progressLine.style.width = `${progressPercentage}%`;
+
+                // Update Step Indicators
+                stepIndicators.forEach((indicator, index) => {
+                    const stepNum = index + 1;
+                    const circle = indicator.querySelector('div');
+                    const text = indicator.querySelector('span');
+                    
+                    // Reset classes
+                    circle.className = 'w-8 h-8 rounded-full flex items-center justify-center font-label-md transition-colors duration-300';
+                    text.className = 'font-label-caps text-label-caps tracking-wider uppercase transition-colors duration-300';
+
+                    if (stepNum < currentStep) {
+                        // Completed
+                        circle.classList.add('bg-primary', 'text-on-primary');
+                        text.classList.add('text-primary');
+                        circle.innerHTML = '<span class="material-symbols-outlined text-[18px]">check</span>';
+                    } else if (stepNum === currentStep) {
+                        // Active
+                        circle.classList.add('bg-secondary', 'text-on-secondary', 'shadow-[0_0_12px_rgba(75,65,225,0.3)]');
+                        text.classList.add('text-primary');
+                        circle.innerHTML = stepNum;
+                    } else {
+                        // Future
+                        circle.classList.add('bg-surface-container', 'border', 'border-border-subtle', 'text-on-surface-variant');
+                        text.classList.add('text-on-surface-variant');
+                        circle.innerHTML = stepNum;
+                    }
+                });
+
+                // Update Buttons
+                if (currentStep === 1) {
+                    btnBack.classList.add('invisible');
+                } else {
+                    btnBack.classList.remove('invisible');
+                }
+
+                if (currentStep === totalSteps) {
+                    btnNext.classList.add('hidden');
+                    btnSubmit.classList.remove('hidden');
+                    btnSubmit.classList.add('flex');
+                } else {
+                    btnNext.classList.remove('hidden');
+                    btnNext.classList.add('flex');
+                    btnSubmit.classList.add('hidden');
+                    btnSubmit.classList.remove('flex');
+                }
+            }
+
+            btnNext.addEventListener('click', () => {
+                if (currentStep < totalSteps) {
+                    currentStep++;
+                    updateUI();
+                }
+            });
+
+            btnBack.addEventListener('click', () => {
+                if (currentStep > 1) {
+                    currentStep--;
+                    updateUI();
+                }
+            });
+
+            // Initialize
+            updateUI();
+        });
+    </script>
+<script src="crypto.js"></script>
+<script src="app.js"></script>
+</body></html>

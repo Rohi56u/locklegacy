@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+
+<html class="h-full" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>LegacyLock - Settings</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Manrope:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "error-container": "#ffdad6",
+                        "on-error-container": "#93000a",
+                        "danger-red": "#EF4444",
+                        "error": "#ba1a1a",
+                        "surface-container-highest": "#e3e2e1",
+                        "on-secondary-container": "#fffbff",
+                        "tertiary-fixed": "#6ffbbe",
+                        "secondary-fixed": "#e2dfff",
+                        "secondary-fixed-dim": "#c3c0ff",
+                        "on-secondary-fixed-variant": "#3323cc",
+                        "on-primary": "#ffffff",
+                        "verified-emerald": "#10B981",
+                        "on-secondary": "#ffffff",
+                        "on-background": "#1a1c1c",
+                        "outline": "#76767c",
+                        "surface-container-lowest": "#ffffff",
+                        "tertiary": "#000000",
+                        "on-tertiary-fixed": "#002113",
+                        "primary-container": "#171b28",
+                        "on-primary-fixed-variant": "#434654",
+                        "on-secondary-fixed": "#0f0069",
+                        "attention-amber": "#F59E0B",
+                        "tertiary-fixed-dim": "#4edea3",
+                        "surface-container-low": "#f4f3f2",
+                        "outline-variant": "#c7c6cc",
+                        "border-subtle": "#E5E7EB",
+                        "secondary": "#4b41e1",
+                        "surface-variant": "#e3e2e1",
+                        "inverse-surface": "#2f3130",
+                        "tertiary-container": "#002113",
+                        "primary-fixed-dim": "#c3c6d7",
+                        "surface": "#faf9f8",
+                        "surface-container-high": "#e9e8e7",
+                        "on-tertiary": "#ffffff",
+                        "primary-fixed": "#dfe2f3",
+                        "secondary-container": "#645efb",
+                        "inverse-on-surface": "#f1f0f0",
+                        "surface-dim": "#dadad9",
+                        "on-surface-variant": "#46464c",
+                        "on-tertiary-fixed-variant": "#005236",
+                        "background": "#faf9f8",
+                        "on-error": "#ffffff",
+                        "on-surface": "#1a1c1c",
+                        "primary": "#000000",
+                        "on-primary-container": "#808393",
+                        "surface-container": "#eeeeed",
+                        "on-tertiary-container": "#009668",
+                        "surface-bright": "#faf9f8",
+                        "surface-tint": "#5a5e6d",
+                        "on-primary-fixed": "#171b28",
+                        "inverse-primary": "#c3c6d7"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "base": "8px",
+                        "margin-desktop": "40px",
+                        "margin-mobile": "20px",
+                        "container-max": "1280px",
+                        "gutter": "24px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Manrope"],
+                        "body-md": ["Inter"],
+                        "headline-lg": ["Manrope"],
+                        "label-md": ["Inter"],
+                        "headline-lg-mobile": ["Manrope"],
+                        "headline-xl": ["Manrope"],
+                        "body-lg": ["Inter"],
+                        "label-caps": ["Inter"],
+                        "body-sm": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "fontWeight": "500" }],
+                        "headline-lg-mobile": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "headline-xl": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "label-caps": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-surface h-full flex flex-col md:flex-row antialiased" data-page="settings_data_controls_desktop.html">
+<!-- TopNavBar (Mobile Only) -->
+<header class="md:hidden bg-surface flex justify-between items-center w-full px-margin-mobile py-4 border-b border-outline-variant z-10 sticky top-0">
+<div class="font-headline-md text-headline-md font-extrabold text-primary">
+            LegacyLock
+        </div>
+<div class="flex gap-4 items-center">
+<span class="material-symbols-outlined text-primary cursor-pointer hover:text-secondary transition-colors" data-icon="notifications">notifications</span>
+<span class="material-symbols-outlined text-primary cursor-pointer hover:text-secondary transition-colors" data-icon="shield_person">shield_person</span>
+<img alt="Administrator Profile" class="w-8 h-8 rounded-full object-cover" data-alt="A small circular profile picture of an administrator, featuring a diverse professional in a modern, brightly lit office environment. The style is clean, corporate modern, and high-quality, fitting the minimalist aesthetic of the interface. 50 words." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCyT0mbiNcookhjKe4dSiDR7xTDgxcPmDT9zSuk8t4F5SlY0B_hspRLOrop-N0gg1Yiog6DJ1o9G9xFlguNAraepCD36vOd8jrG0Uxvi2Mhk9arbNqwa_AUYPJnXPCqYETJiGAXuyZZMONkCMNoFv9MfBhifdtCu1VGZNYMn017_hHsEzaYCTW23BtmT9I33jikyHjK-utHbtz9GwrOh1ZmCS4-yECSGMh6FNYRsItM3vfCHKDpH3q-"/>
+</div>
+</header>
+<!-- SideNavBar (Desktop) -->
+<nav class="hidden md:flex flex-col h-screen p-base w-64 bg-surface-container-lowest border-r border-outline-variant fixed left-0 top-0 z-20">
+<div class="px-4 py-6 mb-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-on-primary" data-icon="lock" style="font-variation-settings: 'FILL' 1;">lock</span>
+</div>
+<div>
+<h1 class="font-headline-md text-headline-md font-black text-primary leading-tight">LegacyLock</h1>
+<p class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider">Premium Security</p>
+</div>
+</div>
+</div>
+<button class="mx-4 mb-8 bg-secondary text-on-secondary font-label-md text-label-md h-[44px] rounded-DEFAULT flex items-center justify-center gap-2 hover:bg-opacity-90 transition-all scale-98 active:scale-95">
+<span class="material-symbols-outlined text-[20px]" data-icon="add">add</span>
+            New Invite
+        </button>
+<ul class="flex-1 space-y-1">
+<li>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg font-label-md text-label-md text-on-surface-variant opacity-80 hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+                    Dashboard
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg font-label-md text-label-md text-on-surface-variant opacity-80 hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="account_balance_wallet">account_balance_wallet</span>
+                    Managed Estates
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg font-label-md text-label-md text-on-surface-variant opacity-80 hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="lock_person">lock_person</span>
+                    Access Control
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg font-label-md text-label-md text-on-surface-variant opacity-80 hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="history_edu">history_edu</span>
+                    Security Audit
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg font-label-md text-label-md bg-secondary-container text-on-secondary-container font-bold" href="#">
+<span class="material-symbols-outlined" data-icon="settings" style="font-variation-settings: 'FILL' 1;">settings</span>
+                    Settings
+                </a>
+</li>
+</ul>
+<div class="mt-auto border-t border-outline-variant pt-4 space-y-1">
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg font-label-md text-label-md text-on-surface-variant opacity-80 hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="contact_support">contact_support</span>
+                Support
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg font-label-md text-label-md text-on-surface-variant opacity-80 hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+                Sign Out
+            </a>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="flex-1 w-full md:ml-64 max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-8 md:py-12 bg-surface">
+<header class="mb-12">
+<h2 class="font-headline-xl text-headline-xl text-primary mb-2">Settings</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Manage your account preferences and security controls.</p>
+</header>
+<div class="flex flex-col lg:flex-row gap-12">
+<!-- Settings Navigation (Local to Settings Page) -->
+<aside class="w-full lg:w-64 shrink-0">
+<nav class="flex flex-row lg:flex-col overflow-x-auto lg:overflow-visible gap-2 pb-4 lg:pb-0 hide-scrollbar">
+<a class="whitespace-nowrap px-4 py-3 rounded-DEFAULT font-label-md text-label-md text-on-surface-variant hover:bg-surface-container-high transition-colors" href="#">Profile</a>
+<a class="whitespace-nowrap px-4 py-3 rounded-DEFAULT font-label-md text-label-md text-on-surface-variant hover:bg-surface-container-high transition-colors" href="#">Notifications</a>
+<a class="whitespace-nowrap px-4 py-3 rounded-DEFAULT font-label-md text-label-md text-on-surface-variant hover:bg-surface-container-high transition-colors" href="#">Privacy</a>
+<a class="whitespace-nowrap px-4 py-3 rounded-DEFAULT font-label-md text-label-md bg-primary-container text-on-primary-container font-semibold border-l-4 border-secondary-container" href="#">Data controls</a>
+<a class="whitespace-nowrap px-4 py-3 rounded-DEFAULT font-label-md text-label-md text-on-surface-variant hover:bg-surface-container-high transition-colors" href="#">Billing</a>
+<a class="whitespace-nowrap px-4 py-3 rounded-DEFAULT font-label-md text-label-md text-on-surface-variant hover:bg-surface-container-high transition-colors" href="#">Support</a>
+</nav>
+</aside>
+<!-- Content Area: Data Controls -->
+<div class="flex-1 max-w-3xl space-y-12">
+<!-- Data Ownership -->
+<section>
+<div class="flex items-center gap-3 mb-6 pb-2 border-b border-border-subtle">
+<div class="w-8 h-8 rounded-full bg-primary-container bg-opacity-10 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-[20px]" data-icon="database">database</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-primary">Data Ownership</h3>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mb-8">Your data belongs to you. Export or manage your vault contents securely at any time.</p>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Export Card -->
+<div class="bg-surface-container-lowest border border-border-subtle rounded-xl p-6 hover:shadow-[0_4px_20px_rgba(10,14,26,0.04)] transition-shadow">
+<span class="material-symbols-outlined text-secondary mb-4 text-[32px]" data-icon="file_download">file_download</span>
+<h4 class="font-label-md text-label-md font-semibold text-primary mb-2">Export Encrypted Vault</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-6">Download a full, encrypted backup of your entire digital estate.</p>
+<button class="w-full bg-surface text-primary border border-primary font-label-md text-label-md h-[44px] rounded-DEFAULT hover:bg-surface-container-high transition-colors">
+                                Export Vault
+                            </button>
+</div>
+<!-- Report Card -->
+<div class="bg-surface-container-lowest border border-border-subtle rounded-xl p-6 hover:shadow-[0_4px_20px_rgba(10,14,26,0.04)] transition-shadow">
+<span class="material-symbols-outlined text-secondary mb-4 text-[32px]" data-icon="analytics">analytics</span>
+<h4 class="font-label-md text-label-md font-semibold text-primary mb-2">Download Activity Report</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-6">Generate an audit log of all access and modifications.</p>
+<button class="w-full bg-surface text-primary border border-primary font-label-md text-label-md h-[44px] rounded-DEFAULT hover:bg-surface-container-high transition-colors">
+                                Generate Report
+                            </button>
+</div>
+</div>
+</section>
+<!-- Session Management -->
+<section>
+<div class="flex items-center gap-3 mb-6 pb-2 border-b border-border-subtle">
+<div class="w-8 h-8 rounded-full bg-primary-container bg-opacity-10 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-[20px]" data-icon="devices">devices</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-primary">Session Management</h3>
+</div>
+<div class="bg-surface-container-lowest border border-border-subtle rounded-xl p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+<div>
+<h4 class="font-label-md text-label-md font-semibold text-primary mb-1">Active Sessions</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Sign out of all other active sessions across all devices immediately.</p>
+</div>
+<button class="shrink-0 bg-surface text-primary border border-primary font-label-md text-label-md h-[44px] px-6 rounded-DEFAULT hover:bg-surface-container-high transition-colors">
+                            Revoke all other sessions
+                        </button>
+</div>
+</section>
+<!-- General Settings -->
+<section>
+<div class="flex items-center gap-3 mb-6 pb-2 border-b border-border-subtle">
+<div class="w-8 h-8 rounded-full bg-primary-container bg-opacity-10 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-[20px]" data-icon="tune">tune</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-primary">General Preferences</h3>
+</div>
+<div class="space-y-6 max-w-lg">
+<div>
+<label class="block font-label-md text-label-md text-primary mb-2">Language</label>
+<select class="w-full bg-surface-container-lowest border border-border-subtle rounded-DEFAULT h-[48px] px-4 font-body-md text-body-md text-primary focus:border-secondary focus:ring-1 focus:ring-secondary transition-colors outline-none appearance-none cursor-pointer">
+<option>English (US)</option>
+<option>English (UK)</option>
+<option>Spanish</option>
+<option>French</option>
+</select>
+</div>
+<div>
+<label class="block font-label-md text-label-md text-primary mb-2">Timezone</label>
+<select class="w-full bg-surface-container-lowest border border-border-subtle rounded-DEFAULT h-[48px] px-4 font-body-md text-body-md text-primary focus:border-secondary focus:ring-1 focus:ring-secondary transition-colors outline-none appearance-none cursor-pointer">
+<option>Pacific Time (PT)</option>
+<option>Eastern Time (ET)</option>
+<option>Greenwich Mean Time (GMT)</option>
+<option>Central European Time (CET)</option>
+</select>
+</div>
+<div>
+<label class="block font-label-md text-label-md text-primary mb-2">Retention Preferences</label>
+<select class="w-full bg-surface-container-lowest border border-border-subtle rounded-DEFAULT h-[48px] px-4 font-body-md text-body-md text-primary focus:border-secondary focus:ring-1 focus:ring-secondary transition-colors outline-none appearance-none cursor-pointer">
+<option>Indefinite</option>
+<option>Delete after 5 years of inactivity</option>
+<option>Delete after 10 years of inactivity</option>
+</select>
+</div>
+<div class="pt-4 border-t border-border-subtle">
+<h4 class="font-label-md text-label-md font-semibold text-primary mb-4">Accessibility</h4>
+<label class="flex items-center justify-between cursor-pointer mb-4">
+<div>
+<span class="block font-body-md text-body-md text-primary">High Contrast Mode</span>
+<span class="block font-body-sm text-body-sm text-on-surface-variant">Increase legibility across the application.</span>
+</div>
+<div class="relative">
+<input class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-container-high peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-secondary"></div>
+</div>
+</label>
+<label class="flex items-center justify-between cursor-pointer">
+<div>
+<span class="block font-body-md text-body-md text-primary">Reduce Motion</span>
+<span class="block font-body-sm text-body-sm text-on-surface-variant">Disable non-essential animations.</span>
+</div>
+<div class="relative">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-container-high peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-secondary"></div>
+</div>
+</label>
+</div>
+</div>
+</section>
+<!-- Danger Zone -->
+<section class="mt-16 pt-8 border-t border-error-container">
+<div class="flex items-center gap-3 mb-6 pb-2">
+<div class="w-8 h-8 rounded-full bg-error-container bg-opacity-20 flex items-center justify-center">
+<span class="material-symbols-outlined text-danger-red text-[20px]" data-icon="warning">warning</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-danger-red">Danger Zone</h3>
+</div>
+<div class="bg-error-container bg-opacity-10 border border-error-container rounded-xl p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+<div>
+<h4 class="font-label-md text-label-md font-semibold text-primary mb-1">Delete Account</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant max-w-md">Permanently remove your account and all associated data. This action is irreversible.</p>
+</div>
+<button class="shrink-0 bg-danger-red text-on-error border border-danger-red font-label-md text-label-md h-[44px] px-6 rounded-DEFAULT hover:bg-opacity-90 transition-colors">
+                            Delete Account
+                        </button>
+</div>
+</section>
+</div>
+</div>
+</main>
+<style>
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<script src="crypto.js"></script>
+<script src="app.js"></script>
+</body></html>

@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Security &amp; Privacy - LegacyLock</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-surface": "#2f3130",
+                        "tertiary-fixed-dim": "#4edea3",
+                        "on-error-container": "#93000a",
+                        "on-primary-container": "#808393",
+                        "danger-red": "#EF4444",
+                        "primary": "#000000",
+                        "surface-container-low": "#f4f3f2",
+                        "primary-container": "#171b28",
+                        "on-primary": "#ffffff",
+                        "primary-fixed": "#dfe2f3",
+                        "surface-container-lowest": "#ffffff",
+                        "surface": "#faf9f8",
+                        "on-surface": "#1a1c1c",
+                        "background": "#faf9f8",
+                        "surface-dim": "#dadad9",
+                        "tertiary-fixed": "#6ffbbe",
+                        "border-subtle": "#E5E7EB",
+                        "outline": "#76767c",
+                        "tertiary": "#000000",
+                        "inverse-primary": "#c3c6d7",
+                        "outline-variant": "#c7c6cc",
+                        "verified-emerald": "#10B981",
+                        "surface-tint": "#5a5e6d",
+                        "on-error": "#ffffff",
+                        "secondary-fixed": "#e2dfff",
+                        "on-secondary-container": "#fffbff",
+                        "secondary": "#4b41e1",
+                        "tertiary-container": "#002113",
+                        "on-background": "#1a1c1c",
+                        "on-secondary-fixed-variant": "#3323cc",
+                        "on-primary-fixed-variant": "#434654",
+                        "on-primary-fixed": "#171b28",
+                        "on-tertiary-fixed": "#002113",
+                        "inverse-on-surface": "#f1f0f0",
+                        "attention-amber": "#F59E0B",
+                        "secondary-container": "#645efb",
+                        "surface-container": "#eeeeed",
+                        "primary-fixed-dim": "#c3c6d7",
+                        "surface-variant": "#e3e2e1",
+                        "on-tertiary-fixed-variant": "#005236",
+                        "on-tertiary-container": "#009668",
+                        "on-secondary": "#ffffff",
+                        "on-surface-variant": "#46464c",
+                        "on-secondary-fixed": "#0f0069",
+                        "secondary-fixed-dim": "#c3c0ff",
+                        "surface-container-high": "#e9e8e7",
+                        "surface-bright": "#faf9f8",
+                        "error": "#ba1a1a",
+                        "on-tertiary": "#ffffff",
+                        "surface-container-highest": "#e3e2e1",
+                        "error-container": "#ffdad6",
+                        "electric-indigo": "#645efb",
+                        "shell-navy": "#0a0e1a",
+                        "surface-warm": "#fcfcfb"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px",
+                        "card": "20px"
+                    },
+                    "spacing": {
+                        "gutter": "24px",
+                        "container-max": "1280px",
+                        "margin-mobile": "20px",
+                        "margin-desktop": "40px",
+                        "base": "8px",
+                        "section-gap": "48px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Manrope"],
+                        "body-lg": ["Inter"],
+                        "label-caps": ["Inter"],
+                        "label-md": ["Inter"],
+                        "headline-lg-mobile": ["Manrope"],
+                        "body-md": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "headline-xl": ["Manrope"],
+                        "headline-md": ["Manrope"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+                        "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "headline-xl": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            background-color: #0a0e1a; /* Enforce shell navy background */
+            color: #fcfcfb; /* Enforce warm surface text for general layout */
+        }
+    </style>
+</head>
+<body class="font-body-md bg-shell-navy text-surface-warm antialiased selection:bg-electric-indigo selection:text-white" data-page="security_privacy_console.html">
+<!-- Top Navigation from JSON -->
+<nav class="bg-surface/80 dark:bg-shell-navy/80 backdrop-blur-xl fixed top-0 w-full border-b border-subtle dark:border-outline-variant flat no shadows z-50">
+<div class="flex justify-between items-center h-20 px-base md:px-margin-desktop max-w-container-max mx-auto">
+<a class="font-headline-md text-headline-md font-bold text-shell-navy dark:text-surface-warm" href="#">LegacyLock</a>
+<div class="hidden md:flex space-x-gutter items-center">
+<a class="font-label-md text-label-md text-on-surface-variant dark:text-on-primary-container hover:text-electric-indigo transition-colors duration-200" href="#">Product</a>
+<a aria-current="page" class="font-label-md text-label-md text-primary font-bold border-b-2 border-primary pb-1 active:scale-95 transition-transform hover:text-electric-indigo transition-colors duration-200" href="#">Security</a>
+<a class="font-label-md text-label-md text-on-surface-variant dark:text-on-primary-container hover:text-electric-indigo transition-colors duration-200" href="#">Pricing</a>
+<a class="font-label-md text-label-md text-on-surface-variant dark:text-on-primary-container hover:text-electric-indigo transition-colors duration-200" href="#">Support</a>
+</div>
+<button class="bg-electric-indigo text-white font-label-md text-label-md h-[44px] px-6 rounded-md hover:bg-electric-indigo/90 transition-colors hidden md:block">Get Started</button>
+<!-- Mobile Menu Toggle -->
+<button aria-label="Open menu" class="md:hidden text-surface-warm">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</nav>
+<!-- Main Content -->
+<main class="pt-[120px] pb-section-gap px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+<!-- Header Section -->
+<header class="text-center mb-section-gap max-w-3xl mx-auto">
+<h1 class="font-headline-xl text-headline-xl text-surface-warm mb-6">Privacy is not a feature. It is the foundation.</h1>
+<p class="font-body-lg text-body-lg text-on-primary-container max-w-2xl mx-auto mb-8">We treat your data with the utmost respect. Our architecture guarantees that only you and your designated beneficiaries hold the keys to your legacy.</p>
+<div class="inline-flex items-center justify-center space-x-2 bg-verified-emerald/10 text-verified-emerald px-4 py-2 rounded-full border border-verified-emerald/20">
+<span class="material-symbols-outlined text-[18px]">shield</span>
+<span class="font-label-caps text-label-caps">End-to-End Encrypted</span>
+</div>
+</header>
+<!-- Security Cards Section -->
+<section class="mb-[80px]">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter">
+<!-- Card 1 -->
+<div class="bg-surface text-on-surface p-6 rounded-card border border-border-subtle shadow-[0_4px_20px_rgba(10,14,26,0.04)] hover:shadow-lg transition-shadow">
+<div class="w-12 h-12 bg-shell-navy/10 rounded-lg flex items-center justify-center mb-4">
+<span class="material-symbols-outlined text-[24px] text-electric-indigo" style="font-variation-settings: 'FILL' 1;">enhanced_encryption</span>
+</div>
+<h3 class="font-headline-md text-headline-md mb-2">Encrypted on your device</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Your files are secured before they ever leave your computer or phone.</p>
+</div>
+<!-- Card 2 -->
+<div class="bg-surface text-on-surface p-6 rounded-card border border-border-subtle shadow-[0_4px_20px_rgba(10,14,26,0.04)] hover:shadow-lg transition-shadow">
+<div class="w-12 h-12 bg-shell-navy/10 rounded-lg flex items-center justify-center mb-4">
+<span class="material-symbols-outlined text-[24px] text-electric-indigo" style="font-variation-settings: 'FILL' 1;">password</span>
+</div>
+<h3 class="font-headline-md text-headline-md mb-2">No plaintext passwords in logs</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">We never store your master password. If you lose it, we cannot recover your data.</p>
+</div>
+<!-- Card 3 -->
+<div class="bg-surface text-on-surface p-6 rounded-card border border-border-subtle shadow-[0_4px_20px_rgba(10,14,26,0.04)] hover:shadow-lg transition-shadow">
+<div class="w-12 h-12 bg-shell-navy/10 rounded-lg flex items-center justify-center mb-4">
+<span class="material-symbols-outlined text-[24px] text-electric-indigo" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+</div>
+<h3 class="font-headline-md text-headline-md mb-2">Multi-step release controls</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Rigorous identity verification required before any asset is transferred to beneficiaries.</p>
+</div>
+<!-- Card 4 -->
+<div class="bg-surface text-on-surface p-6 rounded-card border border-border-subtle shadow-[0_4px_20px_rgba(10,14,26,0.04)] hover:shadow-lg transition-shadow">
+<div class="w-12 h-12 bg-shell-navy/10 rounded-lg flex items-center justify-center mb-4">
+<span class="material-symbols-outlined text-[24px] text-electric-indigo" style="font-variation-settings: 'FILL' 1;">history</span>
+</div>
+<h3 class="font-headline-md text-headline-md mb-2">Complete activity history</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">An immutable log of every login, access attempt, and configuration change.</p>
+</div>
+</div>
+</section>
+<!-- Key-Flow Diagram Section -->
+<section class="mb-[80px] bg-primary-container rounded-card border border-surface-tint p-8 lg:p-12">
+<div class="text-center mb-8">
+<h2 class="font-headline-lg text-headline-lg text-surface-warm mb-4">Zero-Knowledge Architecture</h2>
+<p class="font-body-lg text-body-lg text-inverse-primary max-w-2xl mx-auto">Your data never leaves your device unencrypted.</p>
+</div>
+<div class="relative w-full max-w-4xl mx-auto rounded-xl overflow-hidden border border-outline/30 bg-black/50">
+<!-- Fallback gradient if image fails, and placeholder for image injection -->
+<div class="w-full h-[400px] flex items-center justify-center bg-gradient-to-br from-shell-navy to-primary-container">
+<img class="object-cover w-full h-full opacity-80 mix-blend-screen" data-alt="A highly detailed technical diagram illustrating end-to-end encryption flow. The image features a dark mode aesthetic with glowing neon blue and electric indigo lines connecting device icons to cloud server icons via locked shield symbols. The background is a deep midnight navy, evoking a secure, high-tech cybersecurity environment." src="https://www.gstatic.com/labs-code/stitch/stitch-placeholder-300x300.svg"/>
+</div>
+</div>
+</section>
+<!-- Your Controls Section (Bento Grid Style) -->
+<section class="mb-[80px]">
+<div class="flex items-center justify-between mb-8">
+<h2 class="font-headline-lg text-headline-lg text-surface-warm">Your Controls</h2>
+<div class="hidden sm:flex items-center space-x-2 text-on-primary-container">
+<span class="material-symbols-outlined text-[16px]">lock</span>
+<span class="font-label-caps text-label-caps uppercase tracking-widest">Client-Side Controlled</span>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<!-- Tile 1: Passkey -->
+<div class="bg-surface text-on-surface rounded-card border border-border-subtle p-6 flex flex-col justify-between h-[160px] hover:-translate-y-1 transition-transform cursor-pointer">
+<div class="flex justify-between items-start">
+<h3 class="font-headline-md text-headline-md">Passkey</h3>
+<span class="material-symbols-outlined text-electric-indigo">fingerprint</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Phishing-resistant authentication without passwords.</p>
+</div>
+<!-- Tile 2: MFA -->
+<div class="bg-surface text-on-surface rounded-card border border-border-subtle p-6 flex flex-col justify-between h-[160px] hover:-translate-y-1 transition-transform cursor-pointer">
+<div class="flex justify-between items-start">
+<h3 class="font-headline-md text-headline-md">MFA</h3>
+<span class="material-symbols-outlined text-electric-indigo">security</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Require multiple forms of verification for access.</p>
+</div>
+<!-- Tile 3: Recovery Kit -->
+<div class="bg-surface text-on-surface rounded-card border border-border-subtle p-6 flex flex-col justify-between h-[160px] hover:-translate-y-1 transition-transform cursor-pointer bg-gradient-to-br from-surface to-surface-container">
+<div class="flex justify-between items-start">
+<h3 class="font-headline-md text-headline-md">Recovery Kit</h3>
+<span class="material-symbols-outlined text-electric-indigo">health_and_safety</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Printable backup codes for emergency access.</p>
+</div>
+<!-- Tile 4: Trusted Contacts -->
+<div class="bg-surface text-on-surface rounded-card border border-border-subtle p-6 flex flex-col justify-between h-[160px] hover:-translate-y-1 transition-transform cursor-pointer md:col-span-2">
+<div class="flex justify-between items-start">
+<h3 class="font-headline-md text-headline-md">Trusted Contacts</h3>
+<span class="material-symbols-outlined text-electric-indigo">group_add</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant max-w-md">Designate individuals who can request access to your vault if you become incapacitated, governed by a strict waiting period.</p>
+</div>
+<!-- Tile 5: Pause Release -->
+<div class="bg-surface text-on-surface rounded-card border border-border-subtle p-6 flex flex-col justify-between h-[160px] hover:-translate-y-1 transition-transform cursor-pointer">
+<div class="flex justify-between items-start">
+<h3 class="font-headline-md text-headline-md">Pause Release</h3>
+<span class="material-symbols-outlined text-attention-amber">pause_circle</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Instantly halt any pending asset transfers.</p>
+</div>
+<!-- Tile 6: Delete/Export -->
+<div class="bg-surface text-on-surface rounded-card border border-danger-red/30 p-6 flex flex-col justify-between h-[160px] hover:-translate-y-1 transition-transform cursor-pointer">
+<div class="flex justify-between items-start">
+<h3 class="font-headline-md text-headline-md text-danger-red">Delete / Export</h3>
+<span class="material-symbols-outlined text-danger-red">delete_forever</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">You own your data. Export it all or permanently erase your vault.</p>
+</div>
+</div>
+</section>
+<!-- CTA & Disclaimer -->
+<section class="text-center pb-8 border-b border-surface-tint">
+<button class="bg-electric-indigo text-white font-label-md text-label-md h-[48px] px-8 rounded-md hover:bg-electric-indigo/90 transition-colors mb-6 shadow-lg shadow-electric-indigo/20">
+                Read our security model
+            </button>
+<p class="font-label-caps text-label-caps text-on-primary-container uppercase tracking-wider opacity-60">
+                Security claims should be independently audited before production.
+            </p>
+</section>
+</main>
+<!-- Footer from JSON -->
+<footer class="bg-shell-navy dark:bg-black w-full bg-shell-navy flat no shadows">
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center py-section-gap px-base md:px-margin-desktop max-w-container-max mx-auto border-t border-surface-tint/30">
+<div class="mb-6 md:mb-0">
+<span class="font-headline-sm text-headline-sm text-surface-warm block mb-2 font-bold">LegacyLock</span>
+<p class="font-body-sm text-body-sm text-on-primary-container max-w-sm">
+                    © 2024 LegacyLock. Your legacy is your own. All data is end-to-end encrypted and remains your exclusive property.
+                </p>
+</div>
+<div class="flex flex-wrap gap-4 md:gap-gutter">
+<a class="font-body-sm text-body-sm text-on-primary-container hover:text-tertiary-fixed-dim transition-colors cursor-pointer" href="#">Privacy Policy</a>
+<a class="font-body-sm text-body-sm text-on-primary-container hover:text-tertiary-fixed-dim transition-colors cursor-pointer" href="#">Terms of Service</a>
+<a class="font-body-sm text-body-sm text-on-primary-container hover:text-tertiary-fixed-dim transition-colors cursor-pointer" href="#">Security Whitepaper</a>
+<a class="font-body-sm text-body-sm text-on-primary-container hover:text-tertiary-fixed-dim transition-colors cursor-pointer" href="#">Data Ownership</a>
+</div>
+</div>
+</footer>
+<script src="crypto.js"></script>
+<script src="app.js"></script>
+</body></html>

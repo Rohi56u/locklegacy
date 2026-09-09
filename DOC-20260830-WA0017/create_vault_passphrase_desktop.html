@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Create Master Passphrase - LegacyLock</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Manrope:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        background: "#faf9f8",
+                        "primary-fixed": "#dfe2f3",
+                        "surface-tint": "#5a5e6d",
+                        "surface-variant": "#e3e2e1",
+                        "secondary-container": "#645efb",
+                        "inverse-primary": "#c3c6d7",
+                        "on-secondary-container": "#fffbff",
+                        "border-subtle": "#E5E7EB",
+                        "on-error": "#ffffff",
+                        surface: "#faf9f8",
+                        "surface-container-highest": "#e3e2e1",
+                        "on-primary": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "on-primary-container": "#808393",
+                        "surface-bright": "#faf9f8",
+                        "tertiary-container": "#002113",
+                        primary: "#000000",
+                        "primary-container": "#171b28",
+                        "surface-dim": "#dadad9",
+                        "on-tertiary-fixed-variant": "#005236",
+                        error: "#ba1a1a",
+                        "on-background": "#1a1c1c",
+                        "inverse-on-surface": "#f1f0f0",
+                        "outline-variant": "#c7c6cc",
+                        "danger-red": "#EF4444",
+                        "primary-fixed-dim": "#c3c6d7",
+                        "tertiary-fixed-dim": "#4edea3",
+                        outline: "#76767c",
+                        "surface-container-low": "#f4f3f2",
+                        "on-tertiary": "#ffffff",
+                        "tertiary-fixed": "#6ffbbe",
+                        secondary: "#4b41e1",
+                        "surface-container-high": "#e9e8e7",
+                        "surface-container-lowest": "#ffffff",
+                        tertiary: "#000000",
+                        "inverse-surface": "#2f3130",
+                        "on-tertiary-fixed": "#002113",
+                        "error-container": "#ffdad6",
+                        "secondary-fixed": "#e2dfff",
+                        "attention-amber": "#F59E0B",
+                        "on-surface-variant": "#46464c",
+                        "on-primary-fixed": "#171b28",
+                        "on-error-container": "#93000a",
+                        "secondary-fixed-dim": "#c3c0ff",
+                        "on-secondary-fixed-variant": "#3323cc",
+                        "surface-container": "#eeeeed",
+                        "on-secondary-fixed": "#0f0069",
+                        "on-surface": "#1a1c1c",
+                        "verified-emerald": "#10B981",
+                        "on-primary-fixed-variant": "#434654",
+                        "on-tertiary-container": "#009668"
+                    },
+                    borderRadius: {
+                        DEFAULT: "0.25rem",
+                        lg: "0.5rem",
+                        xl: "0.75rem",
+                        full: "9999px"
+                    },
+                    spacing: {
+                        "margin-desktop": "40px",
+                        gutter: "24px",
+                        "margin-mobile": "20px",
+                        base: "8px",
+                        "container-max": "1280px"
+                    },
+                    fontFamily: {
+                        "body-sm": ["Inter"],
+                        "label-caps": ["Inter"],
+                        "headline-lg": ["Manrope"],
+                        "label-md": ["Inter"],
+                        "headline-xl": ["Manrope"],
+                        "body-md": ["Inter"],
+                        "headline-lg-mobile": ["Manrope"],
+                        "body-lg": ["Inter"],
+                        "headline-md": ["Manrope"]
+                    },
+                    fontSize: {
+                        "body-sm": ["14px", { lineHeight: "20px", fontWeight: "400" }],
+                        "label-caps": ["12px", { lineHeight: "16px", letterSpacing: "0.05em", fontWeight: "600" }],
+                        "headline-lg": ["32px", { lineHeight: "40px", letterSpacing: "-0.01em", fontWeight: "600" }],
+                        "label-md": ["14px", { lineHeight: "20px", fontWeight: "500" }],
+                        "headline-xl": ["48px", { lineHeight: "56px", letterSpacing: "-0.02em", fontWeight: "700" }],
+                        "body-md": ["16px", { lineHeight: "24px", fontWeight: "400" }],
+                        "headline-lg-mobile": ["24px", { lineHeight: "32px", fontWeight: "600" }],
+                        "body-lg": ["18px", { lineHeight: "28px", fontWeight: "400" }],
+                        "headline-md": ["24px", { lineHeight: "32px", fontWeight: "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined[data-weight="fill"] {
+            font-variation-settings: 'FILL' 1;
+        }
+        
+        /* Focus ring for inputs */
+        .secure-input:focus {
+            outline: none;
+            border-color: #645efb; /* secondary-container */
+            box-shadow: 0 0 0 1px #645efb;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md antialiased min-h-screen flex flex-col selection:bg-secondary-fixed selection:text-on-secondary-fixed" data-page="create_vault_passphrase_desktop.html">
+<!-- TopNavBar (Nav suppressed for Transactional Intent, but brand logo remains as anchor) -->
+<header class="fixed top-0 w-full z-50 bg-surface dark:bg-inverse-surface border-b border-border-subtle dark:border-outline-variant h-12 flex justify-between items-center px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary dark:text-inverse-primary" data-icon="lock" data-weight="fill">lock</span>
+<span class="font-headline-md text-headline-md font-bold text-primary dark:text-inverse-primary">LegacyLock</span>
+</div>
+<!-- Shell nav suppressed for focus -->
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-grow flex items-center justify-center pt-24 pb-12 px-margin-mobile md:px-margin-desktop">
+<!-- Secure Container Container -->
+<div class="w-full max-w-lg bg-surface-container-lowest border border-border-subtle rounded-xl p-8 md:p-12 shadow-[0_8px_30px_rgb(10,14,26,0.04)]">
+<!-- Header Section -->
+<div class="text-center mb-8">
+<div class="inline-flex items-center justify-center w-12 h-12 bg-primary-fixed rounded-full mb-4">
+<span class="material-symbols-outlined text-primary-container" data-icon="key">key</span>
+</div>
+<h1 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-primary mb-2">
+                    Secure your vault with a master passphrase
+                </h1>
+<p class="font-body-md text-body-md text-on-surface-variant">
+                    This passphrase protects your encrypted vault. It is never sent to us.
+                </p>
+</div>
+<!-- Trust / Warning Banner -->
+<div class="bg-[#FFFBEB] border border-[#FEF3C7] rounded-lg p-4 mb-8 flex gap-3 items-start">
+<span class="material-symbols-outlined text-attention-amber flex-shrink-0 mt-0.5" data-icon="warning" data-weight="fill">warning</span>
+<div>
+<h3 class="font-label-md text-label-md font-semibold text-[#92400E] mb-1">Critical Warning</h3>
+<p class="font-body-sm text-body-sm text-[#B45309]">
+                        If you lose this passphrase and your recovery kit, we may not be able to restore vault contents. <span class="font-semibold underline cursor-pointer">Write this down.</span>
+</p>
+</div>
+</div>
+<!-- Form Area -->
+<form class="space-y-6" id="passphraseForm">
+<!-- Master Passphrase Input Group -->
+<div class="space-y-2">
+<div class="flex justify-between items-end">
+<label class="font-label-md text-label-md text-on-surface" for="passphrase">Master Passphrase</label>
+<button class="font-label-caps text-label-caps text-secondary hover:text-on-secondary-fixed transition-colors flex items-center gap-1" type="button">
+<span class="material-symbols-outlined text-[16px]" data-icon="autorenew">autorenew</span> Generate Strong
+                        </button>
+</div>
+<div class="relative group">
+<input class="secure-input w-full h-12 px-4 py-2 bg-surface border border-border-subtle rounded-lg font-body-md text-body-md text-on-surface transition-all" id="passphrase" placeholder="Enter a memorable phrase (e.g., correct horse battery staple)" type="password"/>
+<button aria-label="Toggle visibility" class="absolute right-3 top-1/2 -translate-y-1/2 text-on-surface-variant hover:text-on-surface p-1 rounded transition-colors" type="button">
+<span class="material-symbols-outlined" data-icon="visibility">visibility</span>
+</button>
+</div>
+<!-- Strength Meter -->
+<div class="pt-1">
+<div class="flex justify-between items-center mb-1">
+<span class="font-label-caps text-label-caps text-on-surface-variant">Strength</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant" id="strengthLabel">Weak</span>
+</div>
+<div class="flex gap-1 h-1.5">
+<div class="flex-1 bg-border-subtle rounded-full overflow-hidden">
+<div class="h-full bg-danger-red w-full rounded-full transition-all duration-300"></div>
+</div>
+<div class="flex-1 bg-border-subtle rounded-full overflow-hidden">
+<div class="h-full bg-attention-amber w-0 rounded-full transition-all duration-300"></div>
+</div>
+<div class="flex-1 bg-border-subtle rounded-full overflow-hidden">
+<div class="h-full bg-verified-emerald w-0 rounded-full transition-all duration-300"></div>
+</div>
+<div class="flex-1 bg-border-subtle rounded-full overflow-hidden">
+<div class="h-full bg-verified-emerald w-0 rounded-full transition-all duration-300"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Confirm Passphrase Input Group -->
+<div class="space-y-2 pt-2">
+<label class="font-label-md text-label-md text-on-surface block" for="confirmPassphrase">Confirm Passphrase</label>
+<div class="relative">
+<input class="secure-input w-full h-12 px-4 py-2 bg-surface border border-border-subtle rounded-lg font-body-md text-body-md text-on-surface transition-all opacity-50 cursor-not-allowed" disabled="" id="confirmPassphrase" placeholder="Re-enter to confirm" type="password"/>
+<button aria-label="Toggle visibility" class="absolute right-3 top-1/2 -translate-y-1/2 text-on-surface-variant hover:text-on-surface p-1 rounded transition-colors opacity-50 cursor-not-allowed" disabled="" type="button">
+<span class="material-symbols-outlined" data-icon="visibility">visibility</span>
+</button>
+</div>
+</div>
+<!-- Primary CTA -->
+<div class="pt-6">
+<button class="w-full h-12 bg-secondary-container hover:bg-secondary text-on-secondary-container font-label-md text-label-md rounded-lg flex items-center justify-center gap-2 transition-colors duration-200 shadow-sm opacity-80 cursor-not-allowed" disabled="" type="submit">
+<span class="material-symbols-outlined" data-icon="enhanced_encryption">enhanced_encryption</span>
+                        Encrypt my vault
+                    </button>
+</div>
+<div class="text-center pt-4">
+<p class="font-body-sm text-body-sm text-on-surface-variant flex items-center justify-center gap-1">
+<span class="material-symbols-outlined text-[16px]" data-icon="lock" data-weight="fill">lock</span> Encrypted with AES-256
+                    </p>
+</div>
+</form>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full border-t border-border-subtle dark:border-outline-variant bg-surface-container dark:bg-inverse-surface py-base px-margin-desktop max-w-container-max mx-auto flex flex-col md:flex-row justify-between items-center gap-gutter">
+<div class="font-label-caps text-label-caps font-black tracking-widest text-primary dark:text-inverse-primary">
+            © 2024 LegacyLock Digital Estate Management. Encrypted with AES-256.
+        </div>
+<nav class="flex flex-wrap gap-4">
+<a class="font-body-sm text-body-sm text-on-surface-variant dark:text-surface-variant hover:text-secondary dark:hover:text-secondary-fixed transition-colors duration-200" href="#">Terms of Service</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant dark:text-surface-variant hover:text-secondary dark:hover:text-secondary-fixed transition-colors duration-200" href="#">Privacy Policy</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant dark:text-surface-variant hover:text-secondary dark:hover:text-secondary-fixed transition-colors duration-200" href="#">Security Audit</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant dark:text-surface-variant hover:text-secondary dark:hover:text-secondary-fixed transition-colors duration-200" href="#">Compliance</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant dark:text-surface-variant hover:text-secondary dark:hover:text-secondary-fixed transition-colors duration-200" href="#">Contact Support</a>
+</nav>
+</footer>
+<script>
+        // Simple UI interaction logic (visibility toggles)
+        document.querySelectorAll('button[aria-label="Toggle visibility"]').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const input = this.previousElementSibling;
+                const icon = this.querySelector('.material-symbols-outlined');
+                
+                if (input.disabled) return;
+
+                if (input.type === 'password') {
+                    input.type = 'text';
+                    icon.textContent = 'visibility_off';
+                } else {
+                    input.type = 'password';
+                    icon.textContent = 'visibility';
+                }
+            });
+        });
+
+        // Mock strength meter behavior
+        const passInput = document.getElementById('passphrase');
+        const confInput = document.getElementById('confirmPassphrase');
+        const submitBtn = document.querySelector('button[type="submit"]');
+        
+        passInput.addEventListener('input', function(e) {
+            const val = e.target.value;
+            
+            // Enable confirm if pass has length
+            if(val.length > 0) {
+                confInput.disabled = false;
+                confInput.classList.remove('opacity-50', 'cursor-not-allowed');
+                confInput.nextElementSibling.disabled = false;
+                confInput.nextElementSibling.classList.remove('opacity-50', 'cursor-not-allowed');
+            } else {
+                confInput.disabled = true;
+                confInput.classList.add('opacity-50', 'cursor-not-allowed');
+                confInput.nextElementSibling.disabled = true;
+                confInput.nextElementSibling.classList.add('opacity-50', 'cursor-not-allowed');
+                confInput.value = '';
+            }
+            checkSubmit();
+        });
+
+        confInput.addEventListener('input', checkSubmit);
+
+        function checkSubmit() {
+            if(passInput.value.length > 8 && passInput.value === confInput.value) {
+                submitBtn.disabled = false;
+                submitBtn.classList.remove('opacity-80', 'cursor-not-allowed');
+            } else {
+                submitBtn.disabled = true;
+                submitBtn.classList.add('opacity-80', 'cursor-not-allowed');
+            }
+        }
+    </script>
+<script src="crypto.js"></script>
+<script src="app.js"></script>
+</body></html>

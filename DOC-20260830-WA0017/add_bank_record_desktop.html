@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>LegacyLock - Add Deposit Record</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-high": "#e9e8e7",
+                        "on-error-container": "#93000a",
+                        "surface-container-lowest": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "surface-container-highest": "#e3e2e1",
+                        "on-primary-fixed": "#171b28",
+                        "secondary-fixed-dim": "#c3c0ff",
+                        "surface-bright": "#faf9f8",
+                        "on-background": "#1a1c1c",
+                        "tertiary-container": "#002113",
+                        "attention-amber": "#F59E0B",
+                        "inverse-primary": "#c3c6d7",
+                        "inverse-surface": "#2f3130",
+                        "secondary-container": "#645efb",
+                        "border-subtle": "#E5E7EB",
+                        "on-error": "#ffffff",
+                        "secondary": "#4b41e1",
+                        "tertiary": "#000000",
+                        "background": "#faf9f8",
+                        "verified-emerald": "#10B981",
+                        "inverse-on-surface": "#f1f0f0",
+                        "surface-tint": "#5a5e6d",
+                        "primary-fixed-dim": "#c3c6d7",
+                        "primary": "#000000",
+                        "on-surface": "#1a1c1c",
+                        "outline": "#76767c",
+                        "surface-container-low": "#f4f3f2",
+                        "on-tertiary-container": "#009668",
+                        "tertiary-fixed": "#6ffbbe",
+                        "on-tertiary": "#ffffff",
+                        "on-tertiary-fixed-variant": "#005236",
+                        "surface-container": "#eeeeed",
+                        "on-primary": "#ffffff",
+                        "secondary-fixed": "#e2dfff",
+                        "on-secondary-container": "#fffbff",
+                        "on-primary-container": "#808393",
+                        "on-secondary-fixed": "#0f0069",
+                        "danger-red": "#EF4444",
+                        "outline-variant": "#c7c6cc",
+                        "on-secondary-fixed-variant": "#3323cc",
+                        "on-secondary": "#ffffff",
+                        "surface-dim": "#dadad9",
+                        "tertiary-fixed-dim": "#4edea3",
+                        "surface-variant": "#e3e2e1",
+                        "primary-container": "#171b28",
+                        "on-tertiary-fixed": "#002113",
+                        "surface": "#faf9f8",
+                        "primary-fixed": "#dfe2f3",
+                        "on-surface-variant": "#46464c",
+                        "on-primary-fixed-variant": "#434654",
+                        "error": "#ba1a1a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-mobile": "20px",
+                        "margin-desktop": "40px",
+                        "gutter": "24px",
+                        "base": "8px",
+                        "container-max": "1280px"
+                    },
+                    "fontFamily": {
+                        "headline-lg-mobile": ["Manrope"],
+                        "headline-md": ["Manrope"],
+                        "headline-xl": ["Manrope"],
+                        "label-caps": ["Inter"],
+                        "label-md": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "body-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-lg": ["Manrope"]
+                    },
+                    "fontSize": {
+                        "headline-lg-mobile": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "headline-xl": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "label-caps": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "fontWeight": "500" }],
+                        "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3, h4, h5, h6, .font-headline-lg, .font-headline-md, .font-headline-xl { font-family: 'Manrope', sans-serif; }
+        .bg-indigo-cta { background-color: #4b41e1; color: white; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface min-h-screen flex flex-col font-body-md text-body-md" data-page="add_bank_record_desktop.html">
+<!-- TopNavBar -->
+<header class="bg-surface dark:bg-inverse-surface text-primary dark:text-inverse-primary font-headline-md text-headline-md font-body-md text-body-md font-label-md text-label-md fixed top-0 w-full z-50 border-b border-border-subtle dark:border-outline-variant flat no shadows">
+<div class="flex justify-between items-center px-margin-desktop max-w-container-max mx-auto h-12">
+<div class="font-headline-md text-headline-md font-bold text-primary dark:text-inverse-primary">
+                LegacyLock
+            </div>
+<nav class="hidden md:flex gap-gutter items-center h-full">
+<a class="text-on-surface-variant dark:text-surface-variant font-medium hover:text-secondary dark:hover:text-secondary-fixed transition-colors duration-200 active:opacity-80 transition-all duration-200" href="#">Portfolio</a>
+<a class="text-on-surface-variant dark:text-surface-variant font-medium hover:text-secondary dark:hover:text-secondary-fixed transition-colors duration-200 active:opacity-80 transition-all duration-200" href="#">Legal Wills</a>
+<a class="text-on-surface-variant dark:text-surface-variant font-medium hover:text-secondary dark:hover:text-secondary-fixed transition-colors duration-200 active:opacity-80 transition-all duration-200" href="#">Security</a>
+<a class="text-secondary dark:text-secondary-fixed font-semibold border-b-2 border-secondary pb-1 hover:text-secondary dark:hover:text-secondary-fixed transition-colors duration-200 active:opacity-80 transition-all duration-200 h-full flex items-center mt-[2px]" href="#">Vaults</a>
+</nav>
+<div class="flex items-center gap-4">
+<button class="hover:text-secondary transition-colors"><span class="material-symbols-outlined" data-icon="lock">lock</span></button>
+<button class="hover:text-secondary transition-colors"><span class="material-symbols-outlined" data-icon="notifications">notifications</span></button>
+</div>
+</div>
+</header>
+<!-- Main Content -->
+<main class="flex-grow pt-[88px] pb-margin-desktop px-margin-mobile md:px-margin-desktop w-full max-w-container-max mx-auto flex justify-center">
+<div class="w-full max-w-3xl">
+<!-- Stepper -->
+<div class="mb-12 flex justify-between items-center relative">
+<div class="absolute top-1/2 left-0 w-full h-[1px] bg-border-subtle -z-10"></div>
+<div class="absolute top-1/2 left-0 w-1/4 h-[2px] bg-secondary -z-10"></div>
+<div class="flex flex-col items-center gap-2 bg-surface px-2">
+<div class="w-8 h-8 rounded-full bg-secondary text-white flex items-center justify-center font-label-md text-label-md">1</div>
+<span class="font-label-caps text-label-caps text-secondary">INSTITUTION</span>
+</div>
+<div class="flex flex-col items-center gap-2 bg-surface px-2">
+<div class="w-8 h-8 rounded-full border border-outline-variant text-on-surface-variant flex items-center justify-center font-label-md text-label-md">2</div>
+<span class="font-label-caps text-label-caps text-on-surface-variant">NOMINEE STATUS</span>
+</div>
+<div class="flex flex-col items-center gap-2 bg-surface px-2">
+<div class="w-8 h-8 rounded-full border border-outline-variant text-on-surface-variant flex items-center justify-center font-label-md text-label-md">3</div>
+<span class="font-label-caps text-label-caps text-on-surface-variant">CLAIM GUIDANCE</span>
+</div>
+<div class="flex flex-col items-center gap-2 bg-surface px-2">
+<div class="w-8 h-8 rounded-full border border-outline-variant text-on-surface-variant flex items-center justify-center font-label-md text-label-md">4</div>
+<span class="font-label-caps text-label-caps text-on-surface-variant">REVIEW</span>
+</div>
+</div>
+<!-- Header -->
+<div class="mb-12 text-center">
+<h1 class="font-headline-lg text-headline-lg mb-4">Add Deposit Record</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Enter the details of your financial institution and account.</p>
+</div>
+<!-- Form Card -->
+<div class="bg-surface-container-lowest border border-border-subtle rounded-xl p-8 shadow-[0_4px_20px_rgba(10,14,26,0.04)] mb-8">
+<h2 class="font-headline-md text-headline-md mb-6 border-b border-border-subtle pb-4">Institution &amp; Account Details</h2>
+<form class="space-y-6">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="space-y-2">
+<label class="font-label-md text-label-md text-on-surface">Bank Name</label>
+<input class="w-full h-12 px-4 rounded border border-outline-variant focus:border-secondary focus:ring-1 focus:ring-secondary outline-none transition-colors" placeholder="e.g. Chase Bank" type="text"/>
+</div>
+<div class="space-y-2">
+<label class="font-label-md text-label-md text-on-surface">Branch / City</label>
+<input class="w-full h-12 px-4 rounded border border-outline-variant focus:border-secondary focus:ring-1 focus:ring-secondary outline-none transition-colors" placeholder="e.g. New York, NY" type="text"/>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="space-y-2">
+<label class="font-label-md text-label-md text-on-surface">Account Type</label>
+<select class="w-full h-12 px-4 rounded border border-outline-variant focus:border-secondary focus:ring-1 focus:ring-secondary outline-none transition-colors bg-white">
+<option>Checking</option>
+<option>Savings</option>
+<option>Certificate of Deposit (CD)</option>
+<option>Money Market</option>
+</select>
+</div>
+<div class="space-y-2">
+<label class="font-label-md text-label-md text-on-surface">Last 4 Digits</label>
+<input class="w-full h-12 px-4 rounded border border-outline-variant focus:border-secondary focus:ring-1 focus:ring-secondary outline-none transition-colors" maxlength="4" placeholder="1234" type="text"/>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Full account numbers are never stored.</p>
+</div>
+</div>
+</form>
+</div>
+<!-- Security Note -->
+<div class="flex items-center gap-4 p-4 rounded-lg bg-surface-container border border-border-subtle mb-12">
+<div class="w-10 h-10 rounded bg-tertiary-container/10 flex items-center justify-center text-on-tertiary-container">
+<span class="material-symbols-outlined" data-icon="lock" data-weight="fill" style="font-variation-settings: 'FILL' 1;">lock</span>
+</div>
+<div>
+<h3 class="font-label-md text-label-md text-on-surface mb-1">Zero-Knowledge Encryption</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Your data is encrypted locally before being stored. LegacyLock never sees your private financial details.</p>
+</div>
+</div>
+<!-- Actions -->
+<div class="flex justify-between items-center border-t border-border-subtle pt-6">
+<button class="h-12 px-6 font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors">Cancel</button>
+<button class="bg-indigo-cta h-[48px] px-8 rounded font-label-md text-label-md hover:opacity-90 transition-opacity flex items-center gap-2">
+                    Continue to Nominee Status
+                    <span class="material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container dark:bg-inverse-surface text-on-surface dark:text-inverse-on-surface font-body-sm text-body-sm font-label-caps text-label-caps w-full border-t border-border-subtle dark:border-outline-variant flat no shadows mt-auto">
+<div class="flex flex-col md:flex-row justify-between items-center py-base px-margin-desktop max-w-container-max mx-auto gap-gutter">
+<div class="font-label-caps text-label-caps font-black tracking-widest text-primary dark:text-inverse-primary">
+                © 2024 LegacyLock Digital Estate Management. Encrypted with AES-256.
+            </div>
+<nav class="flex gap-4 flex-wrap justify-center">
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-secondary dark:hover:text-secondary-fixed transition-colors duration-200" href="#">Terms of Service</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-secondary dark:hover:text-secondary-fixed transition-colors duration-200" href="#">Privacy Policy</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-secondary dark:hover:text-secondary-fixed transition-colors duration-200" href="#">Security Audit</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-secondary dark:hover:text-secondary-fixed transition-colors duration-200" href="#">Compliance</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-secondary dark:hover:text-secondary-fixed transition-colors duration-200" href="#">Contact Support</a>
+</nav>
+</div>
+</footer>
+<script src="crypto.js"></script>
+<script src="app.js"></script>
+</body></html>

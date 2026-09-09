@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Release Complete - LegacyLock</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Manrope:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "primary-container": "#171b28",
+                      "inverse-primary": "#c3c6d7",
+                      "background": "#faf9f8",
+                      "outline": "#76767c",
+                      "error": "#ba1a1a",
+                      "inverse-on-surface": "#f1f0f0",
+                      "secondary-fixed": "#e2dfff",
+                      "secondary-fixed-dim": "#c3c0ff",
+                      "on-tertiary": "#ffffff",
+                      "surface-container-low": "#f4f3f2",
+                      "on-surface-variant": "#46464c",
+                      "on-primary-fixed-variant": "#434654",
+                      "primary": "#000000",
+                      "on-error-container": "#93000a",
+                      "attention-amber": "#F59E0B",
+                      "surface-container-high": "#e9e8e7",
+                      "inverse-surface": "#2f3130",
+                      "on-error": "#ffffff",
+                      "tertiary-fixed-dim": "#4edea3",
+                      "on-secondary-container": "#fffbff",
+                      "surface-container-lowest": "#ffffff",
+                      "surface": "#faf9f8",
+                      "verified-emerald": "#10B981",
+                      "on-primary": "#ffffff",
+                      "surface-bright": "#faf9f8",
+                      "danger-red": "#EF4444",
+                      "border-subtle": "#E5E7EB",
+                      "on-tertiary-fixed": "#002113",
+                      "surface-tint": "#5a5e6d",
+                      "outline-variant": "#c7c6cc",
+                      "surface-container-highest": "#e3e2e1",
+                      "surface-dim": "#dadad9",
+                      "error-container": "#ffdad6",
+                      "on-tertiary-fixed-variant": "#005236",
+                      "on-surface": "#1a1c1c",
+                      "primary-fixed": "#dfe2f3",
+                      "on-background": "#1a1c1c",
+                      "on-secondary-fixed": "#0f0069",
+                      "tertiary-container": "#002113",
+                      "on-secondary-fixed-variant": "#3323cc",
+                      "tertiary-fixed": "#6ffbbe",
+                      "on-primary-fixed": "#171b28",
+                      "secondary-container": "#645efb",
+                      "surface-container": "#eeeeed",
+                      "on-tertiary-container": "#009668",
+                      "surface-variant": "#e3e2e1",
+                      "on-primary-container": "#808393",
+                      "secondary": "#4b41e1",
+                      "primary-fixed-dim": "#c3c6d7",
+                      "on-secondary": "#ffffff",
+                      "tertiary": "#000000"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "base": "8px",
+                      "container-max": "1280px",
+                      "margin-desktop": "40px",
+                      "margin-mobile": "20px",
+                      "gutter": "24px"
+              },
+              "fontFamily": {
+                      "body-lg": [
+                              "Inter"
+                      ],
+                      "label-caps": [
+                              "Inter"
+                      ],
+                      "body-md": [
+                              "Inter"
+                      ],
+                      "headline-xl": [
+                              "Manrope"
+                      ],
+                      "headline-md": [
+                              "Manrope"
+                      ],
+                      "headline-lg": [
+                              "Manrope"
+                      ],
+                      "headline-lg-mobile": [
+                              "Manrope"
+                      ],
+                      "body-sm": [
+                              "Inter"
+                      ],
+                      "label-md": [
+                              "Inter"
+                      ]
+              },
+              "fontSize": {
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label-caps": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-xl": [
+                              "48px",
+                              {
+                                      "lineHeight": "56px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "headline-md": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-lg": [
+                              "32px",
+                              {
+                                      "lineHeight": "40px",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-lg-mobile": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-sm": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "500"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+          font-variation-settings:
+          'FILL' 0,
+          'wght' 400,
+          'GRAD' 0,
+          'opsz' 24
+        }
+        .material-symbols-outlined.fill {
+            font-variation-settings: 'FILL' 1;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body-md min-h-screen flex flex-col antialiased" data-page="release_complete_desktop.html">
+<!-- TopNavBar (Nav suppressed for focused transactional screen, but retaining branding) -->
+<header class="bg-surface border-b border-border-subtle w-full h-12 md:h-14 flex justify-between items-center px-margin-desktop max-w-container-max mx-auto shrink-0 z-50">
+<div class="font-headline-md text-headline-md font-bold text-primary tracking-tight">LegacyLock</div>
+<div class="flex items-center gap-4 text-on-surface-variant">
+<span class="material-symbols-outlined cursor-pointer hover:text-primary transition-colors duration-200">shield</span>
+<span class="material-symbols-outlined cursor-pointer hover:text-primary transition-colors duration-200">help</span>
+</div>
+</header>
+<main class="flex-grow w-full max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-12 flex flex-col items-center">
+<!-- Header -->
+<div class="text-center max-w-2xl w-full mb-12">
+<div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-verified-emerald/10 text-verified-emerald mb-6">
+<span class="material-symbols-outlined text-[32px] fill">check_circle</span>
+</div>
+<h1 class="font-headline-xl text-headline-lg-mobile md:text-headline-xl text-primary mb-4">Approved information is now available.</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Your requested documents have been securely compiled and are ready for download.</p>
+</div>
+<div class="w-full max-w-4xl flex flex-col gap-12">
+<!-- Secure Download Center -->
+<section class="bg-surface-container-lowest border border-border-subtle rounded-xl p-6 md:p-8 flex flex-col gap-6">
+<div class="flex items-center gap-3 border-b border-border-subtle pb-4">
+<span class="material-symbols-outlined text-primary">markdown_copy</span>
+<h2 class="font-headline-md text-headline-md text-primary">Secure Download Center</h2>
+</div>
+<div class="flex flex-col gap-4">
+<!-- Row 1 -->
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4 p-4 bg-surface rounded-lg border border-border-subtle">
+<div class="flex flex-col gap-1">
+<span class="font-label-md text-label-md text-primary font-medium">Financial Accounts Dossier</span>
+<div class="flex items-center gap-3">
+<span class="inline-flex items-center gap-1 font-label-caps text-label-caps text-verified-emerald bg-verified-emerald/10 px-2 py-1 rounded">
+<span class="material-symbols-outlined text-[14px]">shield</span> Watermarked
+                                </span>
+<span class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">timer</span> Link expires in 48h
+                                </span>
+</div>
+</div>
+<button class="bg-secondary text-on-secondary h-12 px-6 rounded-DEFAULT font-label-md text-label-md flex items-center justify-center gap-2 hover:opacity-90 transition-opacity whitespace-nowrap">
+<span class="material-symbols-outlined">download</span> Download secure packet
+                        </button>
+</div>
+<!-- Row 2 -->
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4 p-4 bg-surface rounded-lg border border-border-subtle">
+<div class="flex flex-col gap-1">
+<span class="font-label-md text-label-md text-primary font-medium">Property &amp; Real Estate Dossier</span>
+<div class="flex items-center gap-3">
+<span class="inline-flex items-center gap-1 font-label-caps text-label-caps text-verified-emerald bg-verified-emerald/10 px-2 py-1 rounded">
+<span class="material-symbols-outlined text-[14px]">shield</span> Watermarked
+                                </span>
+<span class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">timer</span> Link expires in 48h
+                                </span>
+</div>
+</div>
+<button class="bg-secondary text-on-secondary h-12 px-6 rounded-DEFAULT font-label-md text-label-md flex items-center justify-center gap-2 hover:opacity-90 transition-opacity whitespace-nowrap">
+<span class="material-symbols-outlined">download</span> Download secure packet
+                        </button>
+</div>
+</div>
+</section>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Next Steps -->
+<section class="md:col-span-2 flex flex-col gap-6">
+<h2 class="font-headline-md text-headline-md text-primary flex items-center gap-3">
+<span class="material-symbols-outlined">list_alt</span> Next Steps
+                    </h2>
+<!-- Institution 1 -->
+<div class="bg-surface-container-lowest border border-border-subtle rounded-xl p-6 flex flex-col gap-4 relative overflow-hidden">
+<div class="absolute top-0 left-0 w-1 h-full bg-primary-container"></div>
+<div class="flex justify-between items-start">
+<h3 class="font-label-md text-label-md text-primary font-bold">Chase Bank</h3>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">Next steps: Submit Dossier to Branch</p>
+<div class="flex flex-col sm:flex-row gap-3 pt-2">
+<button class="border border-primary text-primary h-12 px-4 rounded-DEFAULT font-label-md text-label-md flex items-center justify-center gap-2 hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined">link</span> Claim contact link
+                            </button>
+<button class="border border-border-subtle text-on-surface-variant h-12 px-4 rounded-DEFAULT font-label-md text-label-md flex items-center justify-center gap-2 hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined">check</span> Mark institution contacted
+                            </button>
+</div>
+</div>
+<!-- Institution 2 -->
+<div class="bg-surface-container-lowest border border-border-subtle rounded-xl p-6 flex flex-col gap-4 relative overflow-hidden">
+<div class="absolute top-0 left-0 w-1 h-full bg-primary-container"></div>
+<div class="flex justify-between items-start">
+<h3 class="font-label-md text-label-md text-primary font-bold">Vanguard</h3>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">Next steps: Submit Dossier to Branch</p>
+<div class="flex flex-col sm:flex-row gap-3 pt-2">
+<button class="border border-primary text-primary h-12 px-4 rounded-DEFAULT font-label-md text-label-md flex items-center justify-center gap-2 hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined">link</span> Claim contact link
+                            </button>
+<button class="border border-border-subtle text-on-surface-variant h-12 px-4 rounded-DEFAULT font-label-md text-label-md flex items-center justify-center gap-2 hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined">check</span> Mark institution contacted
+                            </button>
+</div>
+</div>
+</section>
+<!-- Timeline & Actions -->
+<aside class="flex flex-col gap-8">
+<!-- Timeline -->
+<section class="bg-surface-container-lowest border border-border-subtle rounded-xl p-6">
+<h3 class="font-label-caps text-label-caps text-on-surface-variant mb-6 uppercase tracking-wider">Release Timeline</h3>
+<div class="relative pl-6 border-l-2 border-border-subtle flex flex-col gap-6">
+<div class="relative">
+<div class="absolute -left-[31px] w-4 h-4 rounded-full bg-verified-emerald ring-4 ring-surface-container-lowest"></div>
+<h4 class="font-label-md text-label-md text-primary font-medium">Release Approved</h4>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Today</span>
+</div>
+<div class="relative">
+<div class="absolute -left-[31px] w-4 h-4 rounded-full bg-surface-container-high border-2 border-outline ring-4 ring-surface-container-lowest"></div>
+<h4 class="font-label-md text-label-md text-on-surface-variant font-medium">Dossier Downloaded</h4>
+<span class="font-body-sm text-body-sm text-outline">Pending</span>
+</div>
+<div class="relative">
+<div class="absolute -left-[31px] w-4 h-4 rounded-full bg-surface-container-high border-2 border-outline ring-4 ring-surface-container-lowest"></div>
+<h4 class="font-label-md text-label-md text-on-surface-variant font-medium">Institution Review</h4>
+<span class="font-body-sm text-body-sm text-outline">Estimated 5-7 days</span>
+</div>
+</div>
+</section>
+<!-- Actions -->
+<section class="flex flex-col gap-3">
+<button class="w-full bg-surface-container-lowest border border-border-subtle text-primary h-12 px-4 rounded-DEFAULT font-label-md text-label-md flex items-center justify-center gap-2 hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined">share</span> Share with authorized professional
+                        </button>
+<button class="w-full text-on-surface-variant h-12 px-4 rounded-DEFAULT font-label-md text-label-md flex items-center justify-center gap-2 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">flag</span> Report an issue
+                        </button>
+</section>
+</aside>
+</div>
+<!-- Disclaimer -->
+<div class="mt-8 pt-8 border-t border-border-subtle text-center">
+<p class="font-body-sm text-body-sm text-on-surface-variant max-w-2xl mx-auto flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[16px]">info</span> Funds and account access remain subject to the institution’s independent verification and legal processes.
+                </p>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-lowest border-t border-border-subtle w-full px-margin-desktop py-base mt-auto">
+<div class="max-w-container-max mx-auto flex flex-col md:flex-row justify-between items-center gap-gutter">
+<div class="font-headline-md text-headline-md font-bold text-primary">LegacyLock</div>
+<div class="flex flex-wrap items-center justify-center gap-4 md:gap-6 font-label-caps text-label-caps text-on-surface-variant">
+<a class="hover:underline transition-all hover:text-secondary" href="#">Encryption Protocol</a>
+<a class="hover:underline transition-all hover:text-secondary" href="#">Privacy Policy</a>
+<a class="hover:underline transition-all hover:text-secondary" href="#">Compliance</a>
+<a class="hover:underline transition-all hover:text-secondary" href="#">Terms of Service</a>
+<a class="hover:underline transition-all hover:text-secondary" href="#">Support</a>
+</div>
+<div class="font-label-caps text-label-caps text-on-surface-variant text-center md:text-right">
+                © 2024 LegacyLock. AES-256 Encrypted &amp; SOC2 Compliant. Your legacy is secure.
+            </div>
+</div>
+</footer>
+<script src="crypto.js"></script>
+<script src="app.js"></script>
+</body></html>

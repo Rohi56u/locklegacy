@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>LegacyLock Security Center</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Manrope:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-tint": "#5a5e6d",
+                        "primary-fixed": "#dfe2f3",
+                        "on-secondary-container": "#fffbff",
+                        "error": "#ba1a1a",
+                        "inverse-surface": "#2f3130",
+                        "surface-container": "#eeeeed",
+                        "border-subtle": "#E5E7EB",
+                        "surface": "#faf9f8",
+                        "secondary": "#4b41e1",
+                        "primary": "#000000",
+                        "on-tertiary-container": "#009668",
+                        "outline-variant": "#c7c6cc",
+                        "surface-container-high": "#e9e8e7",
+                        "on-primary-container": "#808393",
+                        "on-error-container": "#93000a",
+                        "tertiary-container": "#002113",
+                        "on-surface": "#1a1c1c",
+                        "on-secondary-fixed-variant": "#3323cc",
+                        "tertiary": "#000000",
+                        "surface-dim": "#dadad9",
+                        "danger-red": "#EF4444",
+                        "on-primary-fixed": "#171b28",
+                        "surface-container-low": "#f4f3f2",
+                        "on-error": "#ffffff",
+                        "secondary-fixed": "#e2dfff",
+                        "secondary-fixed-dim": "#c3c0ff",
+                        "surface-container-highest": "#e3e2e1",
+                        "on-primary-fixed-variant": "#434654",
+                        "inverse-on-surface": "#f1f0f0",
+                        "surface-container-lowest": "#ffffff",
+                        "primary-fixed-dim": "#c3c6d7",
+                        "surface-variant": "#e3e2e1",
+                        "attention-amber": "#F59E0B",
+                        "on-secondary-fixed": "#0f0069",
+                        "outline": "#76767c",
+                        "tertiary-fixed": "#6ffbbe",
+                        "primary-container": "#171b28",
+                        "tertiary-fixed-dim": "#4edea3",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary-fixed": "#002113",
+                        "on-surface-variant": "#46464c",
+                        "on-tertiary": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "on-primary": "#ffffff",
+                        "background": "#faf9f8",
+                        "verified-emerald": "#10B981",
+                        "surface-bright": "#faf9f8",
+                        "on-tertiary-fixed-variant": "#005236",
+                        "on-background": "#1a1c1c",
+                        "secondary-container": "#645efb",
+                        "inverse-primary": "#c3c6d7"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-desktop": "40px",
+                        "container-max": "1280px",
+                        "base": "8px",
+                        "gutter": "24px",
+                        "margin-mobile": "20px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Inter"],
+                        "headline-xl": ["Manrope"],
+                        "body-md": ["Inter"],
+                        "headline-lg": ["Manrope"],
+                        "label-caps": ["Inter"],
+                        "headline-md": ["Manrope"],
+                        "headline-lg-mobile": ["Manrope"],
+                        "label-md": ["Inter"],
+                        "body-sm": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "headline-xl": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "label-caps": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "headline-lg-mobile": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "fontWeight": "500" }],
+                        "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen flex flex-col font-body-md antialiased" data-page="security_center_desktop.html">
+<!-- TopNavBar -->
+<header class="bg-surface border-b border-border-subtle docked full-width top-0 z-50">
+<div class="flex justify-between items-center w-full px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto h-12">
+<div class="flex items-center gap-6">
+<div class="font-headline-md text-headline-md font-bold text-primary">LegacyLock</div>
+</div>
+<nav aria-label="Main Navigation" class="hidden md:flex items-center gap-6">
+<a class="text-on-surface-variant font-label-md hover:text-secondary transition-colors duration-200" href="#">Dashboard</a>
+<a class="text-on-surface-variant font-label-md hover:text-secondary transition-colors duration-200" href="#">Accounts</a>
+<a class="text-secondary font-semibold border-b-2 border-secondary font-label-md" href="#">Security</a>
+<a class="text-on-surface-variant font-label-md hover:text-secondary transition-colors duration-200" href="#">Support</a>
+</nav>
+<div class="flex items-center gap-4">
+<button aria-label="notifications" class="text-on-surface-variant hover:text-secondary transition-colors duration-200 cursor-pointer active:opacity-70">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button aria-label="settings" class="text-on-surface-variant hover:text-secondary transition-colors duration-200 cursor-pointer active:opacity-70">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<img alt="User profile photo" class="w-8 h-8 rounded-full border border-border-subtle object-cover ml-2" data-alt="A professional headshot of a user against a neutral gray background. The image is cropped in a tight circle, suitable for a user profile avatar in a minimalist, corporate UI design. The lighting is soft and even." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDngdqe9vjK3K_Udm3FfW1tt9sUixGO4JNOA0Xqzzul957iivierEKyiKGiDHXQBFzu8g7EXDOolGxAar_aGB9aKLhg-XSHpV5eAw8E2MiF08jAtRYPAikxfV7FW8sRlFrLJbANPkxq705fkOGaAln7iRKdxzEd3f_xB32lVdZnC26QlLdQy2vQ1fjUV4H6q9YPYP3zfHY9K6FusMWsfZidp6SGhq5Z7cytUKCaLEFg4DbUOdvxFn_B"/>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-grow w-full px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto py-12 flex flex-col gap-12">
+<!-- Page Header -->
+<div class="flex flex-col gap-2">
+<h1 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-primary">Security Center</h1>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-2xl">Review and strengthen the security posture of your digital estate.</p>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+<!-- Left Column: Core Security & Devices (Occupies 8 cols) -->
+<div class="lg:col-span-8 flex flex-col gap-12">
+<!-- Section 1: Security Posture -->
+<section class="bg-surface-container-low rounded-xl border border-border-subtle p-8 flex flex-col md:flex-row items-center gap-8 shadow-[0_4px_20px_rgba(10,14,26,0.02)]">
+<div class="relative w-40 h-40 flex items-center justify-center shrink-0">
+<svg class="w-full h-full transform -rotate-90" viewbox="0 0 100 100">
+<circle class="text-border-subtle" cx="50" cy="50" fill="none" r="45" stroke="currentColor" stroke-width="8"></circle>
+<circle class="text-verified-emerald transition-all duration-1000 ease-out" cx="50" cy="50" fill="none" r="45" stroke="currentColor" stroke-dasharray="283" stroke-dashoffset="50.94" stroke-width="8"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center text-center">
+<span class="font-headline-lg text-headline-lg text-primary">82</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant">/ 100</span>
+</div>
+</div>
+<div class="flex flex-col gap-4 text-center md:text-left">
+<div>
+<h2 class="font-headline-md text-headline-md text-primary">Strong Health Score</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1">Your estate's security is currently assessed as strong. Addressing outstanding recommendations will further fortify your protection.</p>
+</div>
+<div class="flex items-center justify-center md:justify-start gap-2 text-verified-emerald font-label-md text-label-md bg-verified-emerald/10 px-3 py-1.5 rounded-full w-fit">
+<span class="material-symbols-outlined" style="font-size: 16px;">format_image_left</span>
+                            Assessment Verified
+                        </div>
+</div>
+</section>
+<!-- Section 2: Safeguard Status Grid -->
+<section class="flex flex-col gap-6">
+<h3 class="font-headline-md text-headline-md text-primary">Safeguard Status</h3>
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+<!-- Safeguard Card 1 -->
+<div class="bg-surface border border-border-subtle rounded-lg p-5 flex flex-col gap-3">
+<div class="flex justify-between items-start">
+<div class="w-10 h-10 rounded-full bg-primary-container/5 flex items-center justify-center text-primary-container">
+<span class="material-symbols-outlined">key</span>
+</div>
+<span class="text-verified-emerald font-label-md text-label-md flex items-center gap-1"><span class="material-symbols-outlined" style="font-size:16px;">check_circle</span> Enabled</span>
+</div>
+<div>
+<h4 class="font-label-md text-label-md text-primary font-bold">Passkey</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Hardware-backed authentication.</p>
+</div>
+</div>
+<!-- Safeguard Card 2 -->
+<div class="bg-surface border border-border-subtle rounded-lg p-5 flex flex-col gap-3">
+<div class="flex justify-between items-start">
+<div class="w-10 h-10 rounded-full bg-primary-container/5 flex items-center justify-center text-primary-container">
+<span class="material-symbols-outlined">smartphone</span>
+</div>
+<span class="text-verified-emerald font-label-md text-label-md flex items-center gap-1"><span class="material-symbols-outlined" style="font-size:16px;">check_circle</span> Enabled</span>
+</div>
+<div>
+<h4 class="font-label-md text-label-md text-primary font-bold">Multi-Factor Auth</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Authenticator app configured.</p>
+</div>
+</div>
+<!-- Safeguard Card 3 -->
+<div class="bg-surface border border-border-subtle rounded-lg p-5 flex flex-col gap-3">
+<div class="flex justify-between items-start">
+<div class="w-10 h-10 rounded-full bg-primary-container/5 flex items-center justify-center text-primary-container">
+<span class="material-symbols-outlined">description</span>
+</div>
+<span class="text-verified-emerald font-label-md text-label-md flex items-center gap-1"><span class="material-symbols-outlined" style="font-size:16px;">check_circle</span> Verified</span>
+</div>
+<div>
+<h4 class="font-label-md text-label-md text-primary font-bold">Recovery Kit</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Generated &amp; securely stored.</p>
+</div>
+</div>
+<!-- Safeguard Card 4 -->
+<div class="bg-surface border border-border-subtle rounded-lg p-5 flex flex-col gap-3">
+<div class="flex justify-between items-start">
+<div class="w-10 h-10 rounded-full bg-primary-container/5 flex items-center justify-center text-primary-container">
+<span class="material-symbols-outlined">devices</span>
+</div>
+<span class="text-on-surface-variant font-label-md text-label-md flex items-center gap-1">2 Active</span>
+</div>
+<div>
+<h4 class="font-label-md text-label-md text-primary font-bold">Trusted Devices</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Authorized hardware sessions.</p>
+</div>
+</div>
+<!-- Safeguard Card 5 -->
+<div class="bg-surface border border-border-subtle rounded-lg p-5 flex flex-col gap-3">
+<div class="flex justify-between items-start">
+<div class="w-10 h-10 rounded-full bg-primary-container/5 flex items-center justify-center text-primary-container">
+<span class="material-symbols-outlined">group</span>
+</div>
+<span class="text-attention-amber font-label-md text-label-md flex items-center gap-1"><span class="material-symbols-outlined" style="font-size:16px;">warning</span> 1 Pending</span>
+</div>
+<div>
+<h4 class="font-label-md text-label-md text-primary font-bold">Trusted Contacts</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">2 Active, 1 requires check-in.</p>
+</div>
+</div>
+<!-- Safeguard Card 6 -->
+<div class="bg-surface border border-border-subtle rounded-lg p-5 flex flex-col gap-3">
+<div class="flex justify-between items-start">
+<div class="w-10 h-10 rounded-full bg-primary-container/5 flex items-center justify-center text-primary-container">
+<span class="material-symbols-outlined">event</span>
+</div>
+<span class="text-on-surface-variant font-label-md text-label-md flex items-center gap-1">Oct 24, 2023</span>
+</div>
+<div>
+<h4 class="font-label-md text-label-md text-primary font-bold">Last Security Review</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Comprehensive audit completed.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 3: Managed Devices -->
+<section class="flex flex-col gap-6">
+<div class="flex items-center justify-between">
+<h3 class="font-headline-md text-headline-md text-primary">Managed Devices</h3>
+<a class="font-label-md text-label-md text-secondary hover:underline" href="#">Manage All</a>
+</div>
+<div class="bg-surface border border-border-subtle rounded-xl overflow-hidden">
+<ul class="divide-y divide-border-subtle">
+<!-- Device 1 -->
+<li class="p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4 hover:bg-surface-container-low transition-colors duration-150">
+<div class="flex items-start gap-4">
+<div class="w-12 h-12 rounded bg-surface-container-high flex items-center justify-center shrink-0 text-on-surface-variant">
+<span class="material-symbols-outlined">laptop_mac</span>
+</div>
+<div class="flex flex-col">
+<span class="font-body-md text-body-md font-semibold text-primary">Chrome on macOS</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined" style="font-size: 14px;">location_on</span> San Francisco, CA
+                                        </span>
+<span class="font-label-caps text-label-caps text-verified-emerald mt-1">Current Session</span>
+</div>
+</div>
+<div>
+<button class="px-4 py-2 border border-border-subtle rounded-lg font-label-md text-label-md text-on-surface hover:bg-surface-container-high transition-colors" disabled="">Active</button>
+</div>
+</li>
+<!-- Device 2 -->
+<li class="p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4 hover:bg-surface-container-low transition-colors duration-150">
+<div class="flex items-start gap-4">
+<div class="w-12 h-12 rounded bg-surface-container-high flex items-center justify-center shrink-0 text-on-surface-variant">
+<span class="material-symbols-outlined">phone_iphone</span>
+</div>
+<div class="flex flex-col">
+<span class="font-body-md text-body-md font-semibold text-primary">LegacyLock App on iPhone 15</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined" style="font-size: 14px;">location_on</span> San Francisco, CA
+                                        </span>
+<span class="font-label-caps text-label-caps text-on-surface-variant mt-1">Last active 2 days ago</span>
+</div>
+</div>
+<div>
+<button class="px-4 py-2 border border-border-subtle rounded-lg font-label-md text-label-md text-danger-red hover:bg-error-container transition-colors">Revoke</button>
+</div>
+</li>
+</ul>
+</div>
+</section>
+</div>
+<!-- Right Column: Proactive Recommendations (Occupies 4 cols) -->
+<div class="lg:col-span-4 flex flex-col gap-6">
+<div class="sticky top-20 flex flex-col gap-6">
+<h3 class="font-headline-md text-headline-md text-primary">Recommendations</h3>
+<div class="flex flex-col gap-4">
+<!-- Recommendation 1 -->
+<div class="bg-surface border border-border-subtle rounded-xl p-5 hover:shadow-[0_4px_20px_rgba(10,14,26,0.04)] transition-shadow duration-300">
+<div class="flex items-start gap-3">
+<div class="mt-0.5 text-secondary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">lightbulb</span>
+</div>
+<div class="flex flex-col gap-3">
+<div>
+<h4 class="font-label-md text-label-md text-primary font-bold">Enable Advanced Passkey</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Upgrade your primary authentication for faster, safer login across all devices.</p>
+</div>
+<button class="bg-secondary text-on-secondary font-label-md text-label-md h-10 px-4 rounded-lg self-start hover:opacity-90 transition-opacity">Enable Now</button>
+</div>
+</div>
+</div>
+<!-- Recommendation 2 -->
+<div class="bg-surface border border-attention-amber/30 rounded-xl p-5 hover:shadow-[0_4px_20px_rgba(10,14,26,0.04)] transition-shadow duration-300 relative overflow-hidden">
+<div class="absolute top-0 left-0 w-1 h-full bg-attention-amber"></div>
+<div class="flex items-start gap-3 ml-2">
+<div class="mt-0.5 text-attention-amber">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">warning</span>
+</div>
+<div class="flex flex-col gap-3">
+<div>
+<h4 class="font-label-md text-label-md text-primary font-bold">Review Inactive Contacts</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">1 trusted contact hasn't checked in recently. Review their status to ensure recovery readiness.</p>
+</div>
+<button class="border border-border-subtle text-primary font-label-md text-label-md h-10 px-4 rounded-lg self-start hover:bg-surface-container-high transition-colors">Review Contacts</button>
+</div>
+</div>
+</div>
+<!-- Recommendation 3 -->
+<div class="bg-surface border border-border-subtle rounded-xl p-5 hover:shadow-[0_4px_20px_rgba(10,14,26,0.04)] transition-shadow duration-300">
+<div class="flex items-start gap-3">
+<div class="mt-0.5 text-on-surface-variant">
+<span class="material-symbols-outlined">autorenew</span>
+</div>
+<div class="flex flex-col gap-3">
+<div>
+<h4 class="font-label-md text-label-md text-primary font-bold">Rotate Recovery Method</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">It is recommended to generate a new recovery kit every 12 months to maintain optimal security.</p>
+</div>
+<button class="border border-border-subtle text-primary font-label-md text-label-md h-10 px-4 rounded-lg self-start hover:bg-surface-container-high transition-colors">Rotate Method</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-low border-t border-border-subtle full-width mt-12">
+<div class="w-full py-8 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+<div class="font-label-caps text-label-caps text-on-surface-variant">
+                © 2024 LegacyLock Digital Estate Management. Encrypted &amp; Secure.
+            </div>
+<div class="flex flex-wrap justify-center gap-6">
+<a class="text-on-surface-variant font-label-md hover:text-secondary transition-colors duration-200 cursor-pointer" href="#">Privacy Policy</a>
+<a class="text-on-surface-variant font-label-md hover:text-secondary transition-colors duration-200 cursor-pointer" href="#">Terms of Service</a>
+<a class="text-on-surface-variant font-label-md hover:text-secondary transition-colors duration-200 cursor-pointer" href="#">Security Disclosure</a>
+<a class="text-on-surface-variant font-label-md hover:text-secondary transition-colors duration-200 cursor-pointer" href="#">Regulatory Info</a>
+<a class="text-on-surface-variant font-label-md hover:text-secondary transition-colors duration-200 cursor-pointer" href="#">Contact Support</a>
+</div>
+</div>
+</footer>
+<script src="crypto.js"></script>
+<script src="app.js"></script>
+</body></html>
